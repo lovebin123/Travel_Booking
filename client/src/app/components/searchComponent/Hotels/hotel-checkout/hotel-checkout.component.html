@@ -1,0 +1,19 @@
+<div class="d-flex flex-column align-items-center justify-content-center depModal" style="cursor: pointer;">
+<button (click)="d.open()" autoclose="outside" type="button" placement="bottom" [ngbPopover] class="btn text-center text-black" style="width:13rem;background-color: white;border: none;">
+  <div class="text-black fs-4">Check Out
+          <i class="fa-regular fa-calendar fa-xs"></i>
+    </div>
+</button>
+  <input
+    class="form-control"
+    name="check_in"
+    id="check_in"
+    [(ngModel)]="checkoutDateModel"
+    (ngModelChange)="findDateMonth()"
+    ngbDatepicker
+    #d="ngbDatepicker"
+    style="opacity: 0; height: 0; padding: 0; border: none; margin: 0;"
+  />
+    <div *ngIf="checkoutDateModel" class="fs-4 fw-bold text-black  mb-2"> {{dateDetails.date }} {{ dateDetails.month }} {{checkoutDateModel.year}}
+  </div>
+</div>

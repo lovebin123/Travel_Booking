@@ -1,0 +1,12 @@
+<div class="d-flex flex-column justify-content-center align-items-center gap-2  height: 100vh;">
+@for (item of data; track $index) {
+@if(item.isAvailable==0)
+{
+    <app-car-rental-list  [type]="'Confirm Payment'" [carRentaldata]="item" [data]="item.carRental" [pickupdate]="data.bookedFromDate" [pickuptime]="data.bookedFromTime" [dropoffdate]="data.bookedTillDate" [dropofftime]="data.bookedTillTime"/>
+}
+@else {
+<app-car-rental-list  [type]="'Ticket'" [carRentaldata]="item" [data]="item.carRental" [pickupdate]="data.bookedFromDate" [pickuptime]="data.bookedFromTime" [dropoffdate]="data.bookedTillDate" [dropofftime]="data.bookedTillTime"/>
+}
+}
+
+</div>

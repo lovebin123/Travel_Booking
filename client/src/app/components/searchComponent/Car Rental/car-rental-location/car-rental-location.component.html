@@ -1,0 +1,28 @@
+<ng-template #fromPop>
+    <div class="mb-3 row">
+        <label for="source" class="col-xs-3 col-sm-auto col-form-label">Pick up Location:</label>
+        <div class="col">
+            <input
+                id="source"
+                name="source"
+                type="text"
+                class="form-control col"
+                [(ngModel)]="locationName"
+                [ngbTypeahead]="search1"
+                [inputFormatter]="formatter1"
+                [resultFormatter]="formatter1"
+                [selectOnExact]="true"
+                (ngModelChange)="onLocationSelection($event)"
+            />
+        </div>
+    </div>    
+</ng-template> 
+           <button autoClose="outside" type="button" placement="bottom" [ngbPopover]="fromPop"  class="btn text-start text-center " style="width: 20rem;background-color: white; border: none;">
+            <div class="text-black fs-4">
+                    Pick up Location
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 20px;"><path d="M17.464 6.56a8.313 8.313 0 1 1-15.302 6.504A8.313 8.313 0 0 1 17.464 6.56zm1.38-.586C16.724.986 10.963-1.339 5.974.781.988 2.9-1.337 8.662.783 13.65c2.12 4.987 7.881 7.312 12.87 5.192 4.987-2.12 7.312-7.881 5.192-12.87zM15.691 16.75l7.029 7.03a.75.75 0 0 0 1.06-1.06l-7.029-7.03a.75.75 0 0 0-1.06 1.06z"></path></svg>   
+
+                </div>
+                <div  class="text-black fs-3 fw-bold">{{locationName?.name1}}
+                </div>
+            </button>

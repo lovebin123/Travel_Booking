@@ -1,0 +1,94 @@
+<div class="d-flex flex-column gap-1 pt-2 pb-2 gap-2">
+    <div class="d-flex justify-content-center" style="font-size:x-large;font-weight: 700;">
+        CarRental Data
+    </div>
+    <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Car Name</div>
+        <input class="form-control" type="text" [(ngModel)]="carRentalData.carName" [value]="carRentalData.carName" style="width: 15rem;">
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>Hotel Location</div>
+        <input class="form-control" type="text" [(ngModel)]="carRentalData.location" [value]="carRentalData.location">
+    </div>
+    </div>
+        <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-column gap-1">
+        <div>Price</div>
+        <input class="form-control" type="number" [(ngModel)]="carRentalData.price" [value]="carRentalData.price">
+        
+        </div>
+    </div>
+    <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Available From Date</div>
+                <div class="input-group" style="width: 16rem;">
+            <input class="form-control" [value]="carRentalData.AvailableFromDate"  ngbDatepicker #d="ngbDatepicker" [(ngModel)]="availableFromDate" (click)="d.open()" (ngModelChange)="findAvailableFromDate()">
+            <span class="input-group-text">
+            <i class="fa-regular fa-calendar" (click)="d.open()"></i>
+            </span>
+            </div>
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>Available To Date</div>
+        <div class="input-group" style="width: 16rem;">
+            <input class="form-control" [value]="carRentalData.AvailableUntilDate"  ngbDatepicker #d1="ngbDatepicker" [(ngModel)]="availableToDate" (click)="d1.open()" (ngModelChange)="findAvailableToDate()">
+            <span class="input-group-text">
+            <i class="fa-regular fa-calendar" (click)="d1.open()"></i>
+            </span>
+            </div>
+    </div>
+    </div>
+          <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Available From Time</div>
+                 <input class="form-control" type="text" [(ngModel)]="carRentalData.AvailableFromTime" [value]="carRentalData.AvailableFromTime">
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>Available To Time</div>
+                 <input class="form-control" type="text" [(ngModel)]="carRentalData.AvailableUntilTime" [value]="carRentalData.AvailableUntilTime">
+    </div>
+    </div>
+       <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Number of Seats</div>
+                 <input class="form-control" type="text" [(ngModel)]="carRentalData.no_of_seats" [value]="carRentalData.no_of_seats">
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>Drive Type</div>
+                 <input class="form-control" type="text" [(ngModel)]="carRentalData.drive_type" [value]="carRentalData.drive_type">
+    </div>
+    </div>
+       <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Rating</div>
+                 <input class="form-control" type="text" [(ngModel)]="carRentalData.rating" [value]="carRentalData.rating">
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>User Review</div>
+                 <input class="form-control" type="text" [(ngModel)]="carRentalData.user_review" [value]="carRentalData.user_review">
+    </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column align-items-center">
+            <div>Is Available</div>
+             <select class="form-select w-100" [(ngModel)]="carRentalData.is_available">
+        <ng-container *ngFor="let item of [true,false]">
+            <option [selected]="carRentalData.is_available" [value]="item">{{item}}</option>
+        </ng-container>
+        </select> 
+        </div>
+    </div>
+    @if(type==='Add')
+    {
+    <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary" (click)="add(carRentalData)" >Submit</button>
+    </div>
+    }
+    @else if(type==='Edit')
+    {
+         <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary" (click)="update(id,carRentalData)" >Change</button>
+    </div>
+    }
+</div>

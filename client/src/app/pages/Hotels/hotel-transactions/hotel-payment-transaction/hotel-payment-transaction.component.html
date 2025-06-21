@@ -1,0 +1,5 @@
+<div class="d-flex flex-column gap-2">
+@for (item of data; track $index) {
+<app-hotel-payment-list [data]="item"/>
+}
+</div>

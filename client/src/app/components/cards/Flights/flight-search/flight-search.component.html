@@ -1,0 +1,31 @@
+<ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-warning text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+Please fill all details
+</ngb-toast>
+<div class="card" >
+    <div class=" card-body  " >
+        <input type="radio" name="typName"  checked>
+        <label for="typName">One way</label>
+        <div class="d-flex justify-content-center align-items-center gap-3  pt-2" style="height: 12rem;border-radius: 10px; border: 1px solid #e0e0e0;">
+            <app-flight-from [fromData]="flightDetails.source" (handleFromEmitter)="handleFrom($event)" (handleLocationsSetEmitter)="handleLocations($event)" />
+            <div class="vr">
+            </div>
+            <div class="d-flex  flex-column justify-content-center align-items-center " style="transform: translateX(-40px)">
+            <div class="d-flex rounded-circle " style="background-color: #003580;height: 45px;" >
+                <button type="submit" class="btn btn-xs rounded-5 " (click)="swap()" >
+                <svg style="fill: hsl(180, 80%, 56%);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px"><path d="M10.5 15.75h12.75a.75.75 0 0 0 0-1.5H10.5a.75.75 0 0 0 0 1.5m9.22-3.22 3 3v-1.06l-3 3a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06M13.5 8.25H.75a.75.75 0 0 0 0 1.5H13.5a.75.75 0 0 0 0-1.5m-9.22 3.22-3-3v1.06l3-3a.75.75 0 0 0-1.06-1.06l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 0 0 1.06-1.06"></path></svg>
+            </button>
+        </div>
+        </div>
+        <app-flight-to [locations]="locations" (toEmiited)="handleTo($event)" [toData]="flightDetails.destination" />
+        <div class="vr"></div>
+        <app-flight-destination-date (destinationDateEmitter)="handleDateofDeparture($event)"/>
+        <div class="vr"></div>
+        <app-flight-passengar (passengerDetailsEmitted)="handlePassengerDetails($event)" (seatTypeEmitted)="handleSeatType($event)"/>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button (click)="printVals()" type="submit"  class="d-flex justify-content-center align-items-center btn fs-4 text-white rounded-5" style="height: 3.6rem;width:10rem ;background-color: #003580;" >
+                Search
+            </button>
+        </div>
+    </div>
+</div>

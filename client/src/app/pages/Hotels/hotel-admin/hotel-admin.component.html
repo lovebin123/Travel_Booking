@@ -1,0 +1,19 @@
+<ng-template #content let-modal>
+    <app-hotel-admin-add-update-modal [type]="'Add'" (componentEmitted)="handleChange($event)"/>
+</ng-template>
+<ngb-toast *ngIf="additionSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="additionSuccessfull=false">
+Hotel Added Successfully
+</ngb-toast>
+<div class="d-flex flex-column gap-3 pt-3 pb-3 align-items-center">
+    <div class="d-flex w-75 justify-content-end">
+        <button class="btn btn-primary btn-lg" (click)="addHotels(content)">
+        <div class="d-flex gap-1 align-items-center">
+            <i class="fa-regular fa-plus"></i>
+            <div>Add</div>
+            </div>
+        </button>  
+    </div>
+    @for (item of data; track $index) {
+        <app-hotel-list [price]="item.price" [hotelData]="item" [type]="'Edit'" (updateEmitted)="handleChange($event)" (deleteEmitted)="handleChange($event)"/>
+    }
+</div>

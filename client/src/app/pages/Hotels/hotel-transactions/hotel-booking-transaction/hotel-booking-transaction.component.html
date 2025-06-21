@@ -1,0 +1,5 @@
+<div class="d-flex flex-column justify-content-center align-items-center gap-2  height: 100vh;">
+@for (item of data; track $index) {
+<app-hotel-list [hotelData]="item.hotel" [price]="item.price" [type]="'Confirm Payment'" [data]="item"/>
+}
+</div>

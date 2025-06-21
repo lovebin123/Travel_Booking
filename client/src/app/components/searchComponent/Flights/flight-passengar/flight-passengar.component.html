@@ -1,0 +1,56 @@
+   <ng-template #economy>
+ <div class="d-flex flex-column gap-5">
+    <label class="ecoomy-selector">
+    <div class="d-flex flex-column">
+    <div style="font-weight: 700;">Adults(12+)</div>
+    <div style="font-weight: lighter;">on the day of travel</div>
+    <div class="btn-group gap-1" role="group" >
+      <ng-container *ngFor="let item of [1,2,3,4,5,6]" >
+        <input  type="radio" class="btn-check" name="adultsGroup" [id]="'adults'+item" [value]="item" [(ngModel)]="travellerDetails.adults" autocomplete="off" (ngModelChange)="findTotalTravellers()">
+        <label class="btn btn-outline-primary" [for]="'adults'+item">{{item}}</label>
+      </ng-container>
+    </div>
+    </div>
+     <div class="d-flex flex-column">
+    <div style="font-weight: 700;">Children</div>
+    <div style="font-weight: lighter;">on the day of travel</div>
+    <div class="btn-group gap-1" role="group" >
+      <ng-container *ngFor="let item of [0,1,2,3,4,5]">
+        <input  type="radio" class="btn-check" name="options1" [id]="'child'+item" [value]="item" [(ngModel)]="travellerDetails.children" autocomplete="off" (ngModelChange)="findTotalTravellers()">
+        <label class="btn btn-outline-primary" [for]="'child'+item">{{item}}</label>
+        </ng-container>
+    </div>
+    </div>
+    <div class="d-flex flex-column">
+    <div style="font-weight: 700;">Choose Travel Class</div>
+    <div class="btn-group text-center align-content-center" role="group" >
+    <ng-container *ngFor="let item of ['Economy','Premium Economy','Business','First Class']">
+        <input  type="radio" class="btn-check" name="options2" [id]="'seat'+item" [value]="item" [(ngModel)]="seatType" autocomplete="off" (ngModelChange)="findTotalTravellers()">
+        <label class="btn btn-outline-primary" [for]="'seat'+item">{{item}}</label>
+        </ng-container>
+    </div>
+    </div>
+    <div class="d-flex justify-content-end mt-2">
+    <button class="btn btn-primary " (click)="p.close()">Apply</button>
+    </div>
+     </label>
+ </div>
+  </ng-template>
+   <button id="economy" autoClose="outside" triggers="manual" placement="bottom-right"   popoverClass="custom-popover"
+ class="btn text-start text-black" style="background-color: white; border: none;width:16rem;" [ngbPopover]="economy" #p="ngbPopover" (click)="p.open()" >
+            <div class="text-black fs-4">Travellers & Class</div>
+            <div class="d-flex flex-column">
+        <div class="text-black fw-bold fs-4">
+        @if(no_of_travellers==0)
+        {
+            1 Traveller
+        }
+        @else{
+            {{no_of_travellers}} Travellers
+        }
+        </div>
+         <div class="text-black" style="font-size:15px;font-weight: lighter;" >
+            {{seatType}}
+        </div>
+        </div>
+        </button>

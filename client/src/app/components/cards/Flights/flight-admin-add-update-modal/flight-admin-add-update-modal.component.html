@@ -1,0 +1,72 @@
+<div class="d-flex flex-column gap-1 pt-2 pb-2 gap-2">
+    <div class="d-flex justify-content-center" style="font-size:x-large;font-weight: 700;">
+        Flight Data
+    </div>
+    <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Flight Name</div>
+        <input class="form-control" type="text" [(ngModel)]="flightData.name" [value]="flightData.name" style="width: 15rem;">
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>Flight Price</div>
+        <input class="form-control" type="number" [(ngModel)]="flightData.price" [value]="flightData.price">
+    </div>
+    </div>
+    <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Source</div>
+        <input class="form-control" type="text" [(ngModel)]="flightData.source" [value]="flightData.source">
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>Destination</div>
+        <input class="form-control" type="text" [(ngModel)]="flightData.destination" [value]="flightData.destination">
+    </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-column gap-1">
+        <div>Date of Departure</div>
+        <div class="input-group" style="width: 16rem;">
+            <input class="form-control" [value]="flightData.date_of_departure"   ngbDatepicker #d3="ngbDatepicker" [(ngModel)]="dateOfDepartureModal" (click)="d3.open()" (ngModelChange)="findChanges()">
+            <span class="input-group-text">
+            <i class="fa-regular fa-calendar" (click)="d3.open()"></i>
+            </span>
+            </div>
+        </div>
+    </div>
+       <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Time of Departure</div>
+                 <input class="form-control" type="text" [(ngModel)]="flightData.time_of_departure" [value]="flightData.time_of_departure">
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>Time of Arrival</div>
+                 <input class="form-control" type="text" [(ngModel)]="flightData.time_of_arrival" [value]="flightData.time_of_arrival">
+    </div>
+    </div>
+        <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+    <div class="d-flex flex-column gap-1">
+        <div>Seat Type</div>
+        <select class="form-select w-100" [(ngModel)]="flightData.seatType">
+        <ng-container *ngFor="let item of ['Economy','Premium Economy','Business','First Class']">
+            <option [selected]="data?.seatType" [value]="item">{{item}}</option>
+        </ng-container>
+        </select>
+    </div>
+      <div class="d-flex flex-column gap-1">
+        <div>No of seats</div>
+        <input class="form-control" type="number" [(ngModel)]="flightData.no_of_seats" [value]="data?.no_of_seats">
+    </div>
+    </div>
+    @if(type==='Add')
+    {
+    <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary" (click)="add()" >Submit</button>
+    </div>
+    }
+    @else if(type==='Edit')
+    {
+         <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary" (click)="update(id,flightData)" >Change</button>
+    </div>
+    }
+</div>

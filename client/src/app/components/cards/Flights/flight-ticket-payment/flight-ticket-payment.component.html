@@ -1,0 +1,23 @@
+<div class="d-flex flex-column gap-3 w-100 pb-2">
+    <div style="font-weight: bold; font-size: larger;">Payment</div>
+    <div class="d-flex  w-100 flex-wrap" style="gap: 30rem;">
+        <div class="d-flex flex-column ">
+            <div style="font-weight: 600;">
+            Ticket Total
+            </div>
+            <div style="font-size: small;">Including taxs and charges</div>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div style="font-weight: 600;">INR {{paymentDetails.amount}}</div>
+            <div>
+                @if(paymentDetails.card_type==="mastercard")
+                {
+                <img src="../../../../assets/ma_symbol_opt_73_3x.png" width="75px" height="60px">
+                }
+                @else if (paymentDetails.card_type==="visa") {
+                    <img src="../../../../assets/visa.png">
+                }
+            </div>
+        </div>
+    </div>
+</div>

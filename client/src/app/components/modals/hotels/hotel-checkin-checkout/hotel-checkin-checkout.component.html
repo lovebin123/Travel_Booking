@@ -1,0 +1,30 @@
+<div class="d-flex w-100 justify-content-evenly align-items-center pt-2 pb-2" style="background-color: #f5f1f1;;border-top: 1px solid gray;border-bottom: 1px solid gray;">
+<div class="d-flex flex-column">
+<div>Checkin</div>
+<div class="d-flex gap-1">
+    {{checkin_date.day}}
+    <div style="font-weight: bold;">{{checkin_date.date}} {{checkin_date.month}}</div>
+    <div>{{checkin_date.year}}</div>
+</div>
+<div>2 PM</div>
+</div>
+<div style="background-color: white; font-size: 12px;width: fit-content;height: fit-content;padding: 2px 6px;" class="rounded">
+  1 Night
+</div><div class="d-flex flex-column">
+<div>Checkout</div>
+<div class="d-flex gap-1">
+   {{checkout_date.day}}
+    <div style="font-weight: bold;">    {{checkout_date.date}} {{checkout_date.month}}</div>
+    <div>{{checkout_date.year}}</div>
+</div>
+<div>11 AM</div>
+</div>
+<div class="d-flex">
+    <div style="font-weight: bold;">{{adults}}</div>
+    <div>Adults,</div>
+    <div style="font-weight: bold;">{{children}}</div>
+    <div>Child |</div>
+    <div>{{rooms}} Room</div>
+
+</div>
+</div>

@@ -1,0 +1,26 @@
+<ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-danger text-white position-fixed top-0 end-0 m-3" (hidden)="showToast=false">Email doesnt exist</ngb-toast>
+<ngb-toast *ngIf="showToast1" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-white position-fixed top-0 end-0 m-3" (hidden)="showToast1=false">Verification Link sent Successfully</ngb-toast>
+<div class="d-flex flex-column justify-content-center align-items-center" style="height:calc(100vh - 0px);background-color: #003580; ">
+    <div class="card" style="width: 32rem;height: 23rem;">
+        <div class="card-body">
+            <form (ngSubmit)="verify_mail()">
+            <div class="d-flex flex-column">
+                <div class="d-flex mt-3 justify-content-center align-items-center ">
+                    <h3 class="align-center">Verify Email</h3>
+                </div>
+                <p class="fs-5 pt-3 mb-2 ">Email</p>
+                <div class="input-group  " style="width: 27em;">
+                    <span class="input-group-text" >
+                        <fa-icon [icon]="faEnvelope"></fa-icon>
+                      </span>
+                    <input [(ngModel)]="userData.email" name="email" id="email"  type="text" class="form-control p-2 btn-x border-start-0" aria-label="Email" >
+                  </div>
+                  <div class="d-flex flex-column align-items-center justify-content-center pt-5 gap-3">
+                  <button  type="submit" class="btn btn-success btn-lg text-white  " style="width: 10rem;" >Verify</button>
+                  <button routerLink="/login" type="button" class="btn btn-lg text-white  " style="width: 10rem;background-color: #003580;" >Back</button>
+                </div>
+            </div>
+        </form>
+        </div>
+</div>
+</div>

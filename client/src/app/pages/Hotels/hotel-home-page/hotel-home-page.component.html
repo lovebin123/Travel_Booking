@@ -1,0 +1,18 @@
+<div class="d-flex align-items-center flex-column" style="background-color: #003580; height: 24rem;">
+<app-hotel-search (hotelsEmitted)="getAllHotels($event)" (hotelSearchEmitted)="getCheckinCheckout($event)" (roomAdultsEmitted)="getRoomAdults($event)"/>
+</div>
+<div class="d-flex flex-column gap-2" style="background-color:  #e0dfdf;height: 100vh;">
+    <div class="d-flex flex-column gap-1">
+<div class=" fw-bold" style="font-size: small;">
+    Hotels you may prefer
+</div>
+<div class="fw-medium" style="font-size: smaller;">
+    Based on price and convinience
+</div>
+</div>
+<div class="d-flex justify-content-center align-items-center flex-column gap-3" style="background-color:  #e0dfdf;">
+@for (item of data; track $index) {
+<app-hotel-list [hotelData]="item" [CheckinCheckout]="checkiCheckout" [roomAdults]="roomAdults" [price]="item.price * roomAdults.rooms" [type]="'Book'"/> 
+}
+</div>
+</div>   

@@ -1,0 +1,21 @@
+<ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-warning text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+Please fill all details
+</ngb-toast>
+<div class="card" >
+<div class=" card-body">
+<div class="d-flex justify-content-center align-items-center gap-3  pt-2" style="height: 12rem;border-radius: 10px; border: 1px solid #e0e0e0;">
+<app-hotel-location (locationClicked)="handleLocation($event)"/>
+<div class="vr"></div>
+<app-hotel-checkin (checkinDateEmited)="handleCheckin($event)"/>
+  <div class="vr"></div>
+<app-hotel-checkout (checkoutEmitter)="handleCheckout($event)"/>
+  <div class="vr"></div>
+    <app-hotel-adults-rooms (roomEmitter)="handleRoomsAdults($event)"/>
+</div>
+        <div class="d-flex justify-content-center mt-4">
+            <button (click)="getHotels()" type="submit"  class="d-flex justify-content-center align-items-center btn fs-4 text-white rounded-5" style="height: 3.6rem;width:10rem ;background-color: #003580;" >
+                Search
+            </button>
+        </div>
+</div>    
+</div>
