@@ -13,6 +13,7 @@ import { TabsComponent } from "../nav-tabs/tabs.component";
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  role=localStorage.getItem('role');
   @Input()firstName='';
   faUser=faUser;
     constructor(private router:Router,private auth:AuthService){}
@@ -22,7 +23,14 @@ export class NavComponent {
     this.auth.logout();
   }
   hero() {
-  this.router.navigateByUrl('/hero');
+  if(this.role==='User')
+  this.router.navigateByUrl('/dashboard');
+else
+  this.router.navigate(['/admin'])
+}
+viewProfile()
+{
+  this.router.navigate(['/editProfile'])
 }
 
 }

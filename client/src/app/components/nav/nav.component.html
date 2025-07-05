@@ -6,14 +6,6 @@
         </div>
         <div class="d-flex text-white align-items-center ">
             <div class="d-flex " style="gap: 2rem;">
-                <div class="fs=5">INR</div>
-                <div style="width: 30px; height: 30px; background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/330px-Flag_of_India.svg.png'); background-repeat: no-repeat; background-size: cover;background-position: center; border-radius: 50%; ">
-                <button type="button" class="btn"></button>
-                </div>
-                <div class="d-flex  justify-content-center align-items-center" style="width: 30px; height: 30px;border: 1px solid white; background-repeat: no-repeat; background-size: cover;background-position: center; border-radius: 50%; overflow: hidden;">
-                    <button type="button" class="btn text-white">?</button>
-                </div>
-                <div class="fs=5  " style="font-weight: 500;">List Your Property</div>
                 <div ngbDropdown class="d-inline-block">
                 <button type="button" class=" d-flex align-items-center" id="dB1" ngbDropdownToggle style="gap: 8px; border: none; background: transparent; padding: 0;display: none;">
                     <div class="d-flex justify-content-center align-items-center" 
@@ -26,12 +18,15 @@
                     <a (click)="hero()" ngbDropdownItem class="justify-content-center align-items-center">
                         <i class="fa-regular fa-house"></i> &nbsp;
                         Home</a>
-                    <a ngbDropdownItem class="justify-content-center align-items-center">
-                        <i class="fa-light fa-user"></i>&nbsp;
-                        My Account</a>
+                    @if(role==='User')
+                    {
                     <a ngbDropdownItem href="http://localhost:4200/transactions">
                         <i class="fa-light fa-suitcase"></i>&nbsp;
                         Bookings</a>
+                    }
+                    <a (click)="viewProfile()" ngbDropdownItem class="justify-content-center align-items-center">
+                        <i class="fa-light fa-user"></i> &nbsp;
+                        Profile</a>
                     <a (click)="logout()" ngbDropdownItem>
                         <i class="fa-light fa-arrow-up-left-from-circle"></i>&nbsp;
                         Log out</a>

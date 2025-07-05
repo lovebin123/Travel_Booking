@@ -12,9 +12,11 @@ import { HotelListComponent } from "../../../components/cards/Hotels/hotel-list/
 export class HotelHomePageComponent {
   data:any;
   checkiCheckout:any;
+  searchClicked=false;
   roomAdults:any;
   getAllHotels(data:any)
   {
+    this.searchClicked=true;
     this.data=data;
   }
   getCheckinCheckout(data:any)

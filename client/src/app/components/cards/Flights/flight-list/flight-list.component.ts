@@ -7,6 +7,7 @@ import { FlightBookingService } from '../../../../services/Flights/FlightBooking
 import { FlightAdminAddUpdateModalComponent } from "../flight-admin-add-update-modal/flight-admin-add-update-modal.component";
 import { FlightDeleteAdminComponent } from '../flight-delete-admin/flight-delete-admin.component';
 import { Router } from '@angular/router';
+import { DateTimeService } from '../../../../services/DateTime/date-time.service';
 @Component({
   selector: 'app-flight-list',
   standalone: true,
@@ -20,13 +21,14 @@ import { Router } from '@angular/router';
 export class FlightListComponent implements OnChanges {
   private modal=inject(NgbModal);
   private addUpdateModal=inject(NgbModal);
-  constructor(private flightBooking:FlightBookingService,private modalService:NgbModal,private activeModal:NgbActiveModal,private router:Router){}
+  constructor(private flightBooking:FlightBookingService,private modalService:NgbModal,private activeModal:NgbActiveModal,private router:Router,private dateTime:DateTimeService){}
 @Input() name: string = '';
   @Input()time_of_departure: string = '';
   @Input()source: string = '';
   @Input()time_of_arrival: string = '';
   @Input()destination: string = '';
   @Input()price: number = 0; 
+  @Input()date_of_departure:any;
   @Input()id:number=0;
   @Input()data1:any;
   @Input()isBooked:any;
@@ -39,6 +41,7 @@ export class FlightListComponent implements OnChanges {
   data:any={};
   flightBooked=[];
   bookingId:any;
+  dateDetails={date:'',day:'',month:'',year:''}
   userBooked=[];
   showToast=false;
   f1:number=0;
@@ -53,6 +56,8 @@ export class FlightListComponent implements OnChanges {
 }
 
   ngOnChanges(): void {
+    if(this.date_of_departure!=undefined)
+    this.dateDetails=this.dateTime.findDateTime(this.date_of_departure);
     const time_of_departure=this.time_of_departure;
     const time_of_arrival=this.time_of_arrival;
     const [hours1,minutes1]=time_of_departure.split(":").map(Number);
@@ -62,11 +67,11 @@ export class FlightListComponent implements OnChanges {
     const dataObj2=new Date();
     dataObj2.setHours(hours2,minutes2);
   const diffMs=dataObj2.getTime()-dataObj1.getTime();
-
     const diffMinutes = Math.floor(diffMs / 60000);
 const hours = Math.floor(diffMinutes / 60);
 const minutes = diffMinutes % 60;
 this.diff = `${this.padZero(hours)}:${this.padZero(minutes)}`;
+
   }
   onClick()
   {

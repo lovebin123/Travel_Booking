@@ -1,5 +1,9 @@
 <div #ticketContent1 class="d-flex flex-column px-3" >
+<div class="d-flex flex-column">
 <div class="fs-2" style="font-family: cursive;color:#003580 ;">BookVoyage</div>
+    <a class="text-blue" style="cursor: pointer;" #ticketLink (click)="backHome()">Back Home <i class="fa-regular fa-left-from-bracket"></i></a>
+            </div>
+</div>
 <div class="d-flex justify-content-center align-items-center gap-1 pt-3">
             <div style="font-size: large; font-weight: 600;">
             Booking Confirmed
@@ -8,8 +12,7 @@
             <img width="35" height="35" src="../../../../assets/verified_account.png" alt="verified-account--v1"/>
         </div>
                                <div>
-            <a  (click)="backHome()">Back Home <i class="fa-regular fa-left-from-bracket"></i></a>
-            </div>
+        
 <hr>
 
 <div class="d-flex align-items-center">

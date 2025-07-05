@@ -49,11 +49,14 @@ export class CarRentalTicketPageComponent implements OnInit {
       id:any;
       @ViewChild('ticketContent',{static:false})ticketContent!:ElementRef;
       @ViewChild('ticketBtn',{static:false})ticketBtn!:ElementRef;
+      @ViewChild('ticketLink',{static:false})ticketLink!:ElementRef;
   downloadPdf() {
     const node = this.ticketContent.nativeElement;
     const button = this.ticketBtn.nativeElement;
     const originalDisplay = button.style.display;
+    const link=this.ticketLink.nativeElement;
     button.style.display = 'none';
+    link.style.display='none';
     domtoimage.toPng(node, { bgcolor: '#fff' }).then((dataUrl: string) => {
       const img = new Image();
       img.src = dataUrl;
@@ -65,7 +68,7 @@ export class CarRentalTicketPageComponent implements OnInit {
         const width = doc.internal.pageSize.getWidth();
         const height = doc.internal.pageSize.getHeight();
         doc.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        doc.save(`Hotel_ticket_${this.data.stripe_payement_intent_id}.pdf`);
+        doc.save(`CarRental_${this.data.stripe_payement_intent_id}.pdf`);
         button.style.display = originalDisplay;
       };
     }).catch((error) => {

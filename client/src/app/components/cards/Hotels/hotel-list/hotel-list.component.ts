@@ -8,6 +8,7 @@ import { HotelAdminAddUpdateModalComponent } from "../hotel-admin-add-update-mod
 import { HotelAdminDeleteModalComponent } from "../hotel-admin-delete-modal/hotel-admin-delete-modal.component";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { createHotelBooking } from '../../../../models/createHotelBooking';
 
 @Component({
   selector: 'app-hotel-list',
@@ -29,6 +30,13 @@ export class HotelListComponent implements OnInit {
   date1={date:'',month:'',day:'',year:''};
   date2={date:'',month:'',day:'',year:''};
   @ViewChild ('loveBtn',{static:false}) loveBtn!:ElementRef;
+  createHotelBooking:createHotelBooking={
+    check_in_date:'',
+    check_out_date:'',
+    no_of_adults:'',
+    no_of_children:'',
+    no_of_rooms:''
+  }
   no_of_stars:any;
   showToast=false;
 ngOnInit(): void {
@@ -51,7 +59,12 @@ handleDeleteEmitter(event:any)
 }
 bookHotel(id:any,content:TemplateRef<any>)
 {
-  this.hotelBooking.postHotelBooking(id,this.roomAdults.rooms,this.roomAdults.adults,this.roomAdults.children,this.CheckinCheckout.checkin,this.CheckinCheckout.checkout).subscribe({
+  this.createHotelBooking.check_in_date=this.CheckinCheckout.checkin;
+  this.createHotelBooking.check_out_date=this.CheckinCheckout.checkout;
+  this.createHotelBooking.no_of_adults=this.roomAdults.adults;
+  this.createHotelBooking.no_of_children=this.roomAdults.children;
+  this.createHotelBooking.no_of_rooms=this.roomAdults.rooms;
+  this.hotelBooking.postHotelBooking(id,this.createHotelBooking).subscribe({
     next:(response:any)=>{
       this.modal.open(content,{size:'lg',centered:true});
       this.data=response;

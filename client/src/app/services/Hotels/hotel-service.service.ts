@@ -17,13 +17,17 @@ private url="http://localhost:5253/api/hotels";
   {
     return this.http.get(`${this.url}/getHotelsFromQuery?location=${location}`);
   }
-  getAllHotels():Observable<any>
+  searchByHotelName(name:any):Observable<any>
+{
+  return this.http.get(`${this.url}/searchByHotelName?name=${name}`);
+}
+  getAllHotels(page:number,pageSize:number):Observable<any>
   {
     const token=localStorage.getItem('token');
   const headers=new HttpHeaders({
     'Authorization':`Bearer ${token}`
   });
-    return this.http.get(`${this.url}/getAllHotels`,{headers:headers});
+    return this.http.get(`${this.url}/getAllHotels?pageNumber=${pageSize.toString()}&pageSize=${page.toString()}`,{headers:headers});
   }
   addHotel(hotelData:Hotel):Observable<any>
   {

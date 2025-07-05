@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {JwtHelperService} from "@auth0/angular-jwt"
-import { timeout } from 'rxjs';
+import { Observable, timeout } from 'rxjs';
+import { UserDetails } from '../../models/userDetails';
 @Injectable({
   providedIn: 'root'
 })
@@ -73,5 +74,21 @@ getUserName() {
   {
     const token=localStorage.getItem('token');
     return token ? this.jwtHelper.isTokenExpired(token) :false;
+  }
+  getAllUserDetails():Observable<any>
+  {
+     const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`,
+  });
+    return this.http.get(`${this.url}/userDetails`,{headers:headers})
+  }
+  updateUserDetails(userDetails:UserDetails):Observable<any>
+  {
+      const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`,
+  });
+  return this.http.put(`${this.url}/editDetails`,userDetails,{headers:headers});
   }
 }

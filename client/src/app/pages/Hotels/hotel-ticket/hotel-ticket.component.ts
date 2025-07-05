@@ -57,11 +57,14 @@ export class HotelTicketComponent implements OnInit {
   }
       @ViewChild('ticketContent1', { static: false }) ticketContent!: ElementRef;
       @ViewChild('ticketButton1', { static: false }) ticketButton!: ElementRef;
+      @ViewChild('ticketLink',{static:false})ticketLink!:ElementRef;
 downloadPdf() {
   const node = this.ticketContent.nativeElement;
   const button = this.ticketButton.nativeElement;
+  const link=this.ticketLink.nativeElement;
   const originalDisplay = button.style.display;
   button.style.display = 'none';
+  link.style.display='none';
   domtoimage.toPng(node, { bgcolor: '#fff' }).then((dataUrl: string) => {
     const img = new Image();
     img.src = dataUrl;

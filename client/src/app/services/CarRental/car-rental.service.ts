@@ -17,13 +17,13 @@ export class CarRentalService {
   {
     return this.http.get(`${this.url}/getLocations`);
   }
-  getAllCarRentals():Observable<any>
+  getAllCarRentals(pageNumber:number,pageSize:number):Observable<any>
   {
     const token=localStorage.getItem('token');
     const headers=new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.get(`${this.url}/getAllCarRentals`,{headers:headers});
+    return this.http.get(`${this.url}/getAllCarRentals?pageNumber=${pageNumber.toString()}&pageSize=${pageSize.toString()}`,{headers:headers});
   }
   getById(id:any):Observable<any>
   {
@@ -40,6 +40,10 @@ export class CarRentalService {
       'Authorization':`Bearer ${token}`
     });
     return this.http.post(`${this.url}/createCarRental`,carRentalData,{headers:headers});
+  }
+  searchByCarName(name:any):Observable<any>
+  {
+    return this.http.get(`${this.url}/searchByCarName?name=${name}`);
   }
 updateCarRental(id:any,carRentalData:CarRental)
 {

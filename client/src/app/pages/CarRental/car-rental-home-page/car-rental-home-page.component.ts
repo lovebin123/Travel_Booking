@@ -13,13 +13,14 @@ import { CarRentalListComponent } from "../../../components/cards/Car Rental/car
 export class CarRentalHomePageComponent {
 data:any;
 search:any;
+searchClicked=false;
 handleCarRentalSearchEmitted(data:any)
 {
   this.search=data;
 }
   handleCarRentalsEmitted(data:any)
 {
+  this.searchClicked=true;
 this.data=data;
-console.log(data);
 }
 }

@@ -13,7 +13,16 @@ Flight Added Successfully
             </div>
         </button>  
     </div>
+    <div class="d-flex w-50 pb-3">
+    <div class="input-group">
+        <div class="input-group-text">
+            <i class="fa-light fa-magnifying-glass"></i>
+        </div>
+        <input placeholder="Search By Flight Name" class="form-control" [(ngModel)]="searchQuery" (ngModelChange)="searchByFlightName()">
+    </div>
+    </div>
     @for (item of data; track $index) {
-        <app-flight-list (deleteEmitter)="handleChange($event)" (editEmitter)="handleChange($event)"   [id]="item.id" [btnTitle]="'Edit'" [destination]="item.destination" [name]="item.name" [price]="item.price" [source]="item.source" [time_of_departure]="item.time_of_departure" [time_of_arrival]="item.time_of_arrival" />
+        <app-flight-list (deleteEmitter)="handleChange($event)" (editEmitter)="handleChange($event)" [btnTitle]="'Edit'"  [id]="item.id" [btnTitle]="'Edit'" [destination]="item.destination" [name]="item.name" [price]="item.price" [source]="item.source" [time_of_departure]="item.time_of_departure" [time_of_arrival]="item.time_of_arrival" />
     }
+    <ngb-pagination [collectionSize]="totalRecords" [(page)]="page" [pageSize]="pageSize"  (pageChange)="onPageChange($event)" ></ngb-pagination>
 </div>

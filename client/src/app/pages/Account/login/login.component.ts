@@ -33,7 +33,7 @@ login() {
       if(this.userData.email==='admin@gmail.com')
           this.router.navigate(['/admin'])
       else
-          this.router.navigate(['/hero']);
+          this.router.navigate(['/dashboard']);
     },
     error: () => {
       this.showToast=true;

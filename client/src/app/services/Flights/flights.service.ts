@@ -17,13 +17,17 @@ getByQuery(flightData: any): Observable<any> {
   const queryParams = `?source=${flightData.source}&destination=${flightData.destination}&date_of_departure=${flightData.date_of_departure}&seatType=${flightData.seatType}`;
   return this.http.get<any[]>(this.url + '/getByQuery' + queryParams);
 }
-getAllFlights():Observable<any>
+getAllFlights(page:number,pageSize:number):Observable<any>
 {
   const token=localStorage.getItem('token');
   const headers=new HttpHeaders({
     'Authorization':`Bearer ${token}`
   });
-  return this.http.get(`${this.url}/getAllFlights`,{headers:headers});
+  return this.http.get(`${this.url}/getAllFlights?pageNumber=${page.toString()}&pageSize=${pageSize.toString()}`,{headers:headers});
+}
+searchByFlightName(name:any):Observable<any>
+{
+  return this.http.get(`${this.url}/searchByFlightName?name=${name}`)
 }
 getSources():Observable<any>
 {

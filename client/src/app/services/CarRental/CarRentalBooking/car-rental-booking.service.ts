@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { createCarRentalBooking } from '../../../models/createCarRentalBooking';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,13 @@ import { Observable } from 'rxjs';
 export class CarRentalBookingService {
 private url='http://localhost:5253/api/carRentalBooking';
   constructor(private http:HttpClient) { }
-  createBooking(id:any,pickupDate:any,dropoffDate:any,pickupTime:any,dropoffTime:any,diff:any):Observable<any>
+  createBooking(id:any,createCarRentalBooking:createCarRentalBooking):Observable<any>
   {
     const token=localStorage.getItem('token');
     const headers=new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.post(`${this.url}/createBooking?id=${id}&pickupDate=${pickupDate}&dropoffDate=${dropoffDate}&pickupTime=${pickupTime}&dropoffTime=${dropoffTime}&diff=${diff}`,{},{headers:headers});
+    return this.http.post(`${this.url}/createBooking?id=${id}`,createCarRentalBooking,{headers:headers});
   }
   createCheckout(id:any):Observable<any>
   {

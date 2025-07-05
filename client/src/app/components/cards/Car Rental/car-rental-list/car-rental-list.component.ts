@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CarRemtalAddUpdateModalComponent } from "../car-remtal-add-update-modal/car-remtal-add-update-modal.component";
 import { CarRentalAdminDeleteComponent } from "../car-rental-admin-delete/car-rental-admin-delete.component";
+import { createCarRentalBooking } from '../../../../models/createCarRentalBooking';
 
 @Component({
   selector: 'app-car-rental-list',
@@ -29,6 +30,13 @@ export class CarRentalListComponent implements OnInit {
  @Input()dropoffdate:any;
   @Input()pickuptime:any;
  @Input()dropofftime:any;
+ createCarRentalBooking:createCarRentalBooking={
+  diff:0,
+  dropoffDate:'',
+  dropoffTime:'',
+  pickupDate:'',
+  pickupTime:''
+ };
   ngOnInit(): void {
     if(this.carRentaldata===undefined)
     {
@@ -46,7 +54,12 @@ export class CarRentalListComponent implements OnInit {
 }
 book(id:any,content:TemplateRef<any>)
 {
-this.carRental.createBooking(id,this.pickupdate,this.dropoffdate,this.pickuptime,this.dropofftime,this.diff).subscribe({
+  this.createCarRentalBooking.diff=this.diff;
+  this.createCarRentalBooking.dropoffDate=this.dropoffdate;
+  this.createCarRentalBooking.pickupDate=this.pickupdate;
+  this.createCarRentalBooking.pickupTime=this.pickuptime;
+  this.createCarRentalBooking.dropoffTime=this.dropofftime;
+this.carRental.createBooking(id,this.createCarRentalBooking).subscribe({
   next:(response:any)=>{
       this.modal.open(content,{size:'lg',centered:true});
     this.carData=response;
@@ -61,7 +74,6 @@ pay(id:any)
 {
   this.carRental.createCheckout(id).subscribe({
     next:(response)=>{
-      console.log(response);
       document.location.href=response.url;
     }
   })

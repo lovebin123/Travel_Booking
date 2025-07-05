@@ -1,5 +1,5 @@
 <div class="d-flex flex-column justify-content-center align-items-center gap-2  height: 100vh;">
 @for (item of data; track $index) {
-<app-flight-list [isBooked]="item.isBooked" [paymentId]="item.paymentId" [btnTitle]="'Confirm Payment'" [destination]="item.flight.destination" [name]="item.flight.name" [id]="item.id" [price]="item.amount" [source]="item.flight.source" [time_of_arrival]="item.flight.time_of_arrival"  [time_of_departure]="item.flight.time_of_departure"  />
+<app-flight-list [date_of_departure]="item.flight.date_of_departure" [isBooked]="item.isBooked" [paymentId]="item.paymentId" [btnTitle]="'Confirm Payment'" [destination]="item.flight.destination" [name]="item.flight.name" [id]="item.id" [price]="item.amount" [source]="item.flight.source" [time_of_arrival]="item.flight.time_of_arrival"  [time_of_departure]="item.flight.time_of_departure"  />
 }
 </div>

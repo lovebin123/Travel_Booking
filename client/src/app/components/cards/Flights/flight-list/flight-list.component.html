@@ -39,8 +39,14 @@ Flight Edited Successfully
         </div>
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center">
+    @if(btnTitle==='Book' || btnTitle==='Edit')
+    {
         {{diff}}
-    <span class="badge " style="font-size:7px;height: 1px;background-color: rgb(81, 226, 194);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    }
+    @else {
+       <div style="font-size:small;font-weight: lighter;"> {{dateDetails.day}} {{dateDetails.month}} {{dateDetails.date}}</div>
+    }
+    <span class="badge " style="font-size:7px;height: 1px;background-color: rgb(81, 226, 194);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <div style="font-size: x-small;font-weight: lighter;">Non stop</div>
 </div>
 <div class="d-flex flex-column justify-content-center align-items-center">
@@ -64,7 +70,7 @@ Flight Edited Successfully
     <button  (click)="pay(id)" type="submit" class="btn text-white bg-success p-2">Confirm Payment</button>
 }
 @else if (isBooked!=undefined && isBooked==1) {
-            <button class="btn" style="background-color: #e0dfdf;color:#003580; font-weight: 800;" (click)="navToPayment()">View Ticket</button>
+            <button class="btn" style="background-color: #003580;color:white; " (click)="navToPayment()">View Ticket</button>
 }
 @else  if(btnTitle==='Edit'){
     <div class="d-flex flex-column gap-2 ">

@@ -1,8 +1,12 @@
 <div #ticketContent class="d-flex flex-column px-3" >
-<div class="fs-2" style="font-family: cursive;color:#003580 ;">BookVoyage</div>
-            <div>
-            <a  (click)="backHome()">Back Home <i class="fa-regular fa-left-from-bracket"></i></a>
+       <div class="d-flex flex-column gap-1">
+            <div class="fs-2" style="font-family: cursive;color:#003580 ;">
+                BookVoyage
             </div>
+            <div>
+            <a #ticketLink href="http://localhost:4200/transactions">Back Home <i class="fa-regular fa-left-from-bracket"></i></a>
+            </div>
+        </div>
 <div class="d-flex justify-content-center align-items-center gap-1 pt-3">
             <div style="font-size: large; font-weight: 600;">
             Booking Confirmed

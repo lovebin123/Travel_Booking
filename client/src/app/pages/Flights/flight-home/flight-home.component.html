@@ -6,12 +6,15 @@ Please fill all details
 </div>
 <div class="d-flex flex-column gap-2" style="background-color:  #e0dfdf;height: 100vh;">
     <div class="d-flex flex-column gap-1">
+@if(searchClicked==true)
+{
 <div class=" fw-bold" style="font-size: small;">
     Flights you may prefer
 </div>
 <div class="fw-medium" style="font-size: smaller;">
     Based on price and convinience
 </div>
+}
 </div>
 <div class="d-flex justify-content-center align-items-center flex-column gap-1" style="background-color:  #e0dfdf;">
 @for (item of temp; track $index) {

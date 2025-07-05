@@ -13,13 +13,14 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { authGuardGuard } from './services/AuthGuard/auth-guard.guard';
 import { userGuardGuard } from './services/AuthGuard/user-guard.guard';
 import { adminGuard } from './services/AuthGuard/admin-guard.guard';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 export const routes: Routes = [
     {path:'login',component:LoginComponent},
     {path:'signup',component:SignupComponent},
     {path:'admin',component:AdminDashboardComponent,canActivate:[authGuardGuard,adminGuard]},
     {path:'forgotPassword/:sessionID',component:ForgotPasswordComponent},
     {path:'verifyEmail',component:VerifyEmailComponent},
-    {path:'hero',component:HeroComponent,canActivate:[authGuardGuard,userGuardGuard]},
+    {path:'dashboard',component:HeroComponent,canActivate:[authGuardGuard,userGuardGuard]},
     {path:'hotelTicket/:sessionID',component:HotelTicketComponent,canActivate:[authGuardGuard]},
     {path:'hotelTicket',component:HotelTicketComponent,canActivate:[authGuardGuard]},
     {path:'flightTicket/:sessionID',component:FlightTicketComponent,canActivate:[authGuardGuard]},
@@ -27,6 +28,7 @@ export const routes: Routes = [
     {path:'carRentalTicket',component:CarRentalTicketPageComponent,canActivate:[authGuardGuard]},
     {path:'carRentalTicket/:sessionID',component:CarRentalTicketPageComponent,canActivate:[authGuardGuard]},
     {path:'transactions',component:TransactionsComponent,canActivate:[authGuardGuard,userGuardGuard]},
+    {path:'editProfile',component:EditProfileComponent,canActivate:[authGuardGuard]},
     {path:'failure',component:PaymentFailureComponent},
     {path:'',redirectTo:'login',pathMatch:'full'},
     {path:'**',redirectTo:'login'},
