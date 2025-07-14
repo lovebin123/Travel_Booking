@@ -84,6 +84,7 @@ namespace api.Repository.Car_Rentals
                 booking_time=TimeOnly.FromDateTime(DateTime.Now).ToString("hh:mm tt")
             };
             booking.isBooked = 1;
+            booking.carRental.is_available = false;
             booking.paymentId =session.PaymentIntentId;
             await _context.SaveChangesAsync();
             return payment;

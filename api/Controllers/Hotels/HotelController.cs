@@ -28,12 +28,18 @@ namespace api.Controllers.Hotels
             var hotels = await _hotelRepo.GetHotelsByQuery(hotelQuery);
             return Ok(hotels);
         }
+        [HttpGet("searchByHotelName")]
+        public async Task<IActionResult> SearchByHotelName(string name)
+        {
+            var hotels = await _hotelRepo.GetByHotelName(name);
+            return Ok(hotels);
+        }
         [HttpGet("getAllHotels")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> GetAllHotels()
+        public async Task<IActionResult> GetAllHotels(int pageNumber=1,int pageSize=20)
         {
-            var hotels = await _hotelRepo.GetAllHotels();
-            return Ok(hotels);
+            var (hotels,totalCount) = await _hotelRepo.GetAllHotels(pageNumber,pageSize);
+            return Ok(new {hotels,totalCount});
         }
         [HttpGet("getLocations")]
         public async Task<IActionResult> GetLocations()

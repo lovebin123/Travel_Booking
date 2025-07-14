@@ -86,7 +86,7 @@ downloadPdf() {
       const width = doc.internal.pageSize.getWidth();
       const height = doc.internal.pageSize.getHeight();
       doc.addImage(dataUrl, 'PNG', 10, 10, width, height);
-      doc.save('Flight_Ticket.pdf');
+      doc.save(`Flight_Ticket_${this.data.stripe_payement_intent_id}.pdf`);
       button.style.display = originalDisplay;
     };
   }).catch((error) => {

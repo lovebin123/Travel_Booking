@@ -10,7 +10,8 @@ namespace api.Interfaces.Hotels
         List<string> GetLocations();
         Task<Hotel> GetById(int id);
         Task<List<Hotel>> GetHotelsByQuery(HotelQueryObject hotelQueryObject);
-        Task<List<Hotel>> GetAllHotels();
+        Task<List<Hotel>> GetByHotelName(string name);
+        Task<(List<Hotel> hotels, int totalCount)> GetAllHotels(int pageNumber,int pageSize);
         Task<Hotel> CreateHotel(HotelDTO hotelModel);
         Task<Hotel> UpdateHotel(int id, HotelDTO hotelDTO);
         Task DeleteHotel(int id);

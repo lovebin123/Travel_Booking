@@ -22,11 +22,13 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 {
     options.CommandTimeout(60);
 }));
-builder.Services.AddIdentity<AppUser,IdentityRole>(options=>{
-    options.Password.RequireDigit=true;
-    options.Password.RequiredLength=8;
-    options.Password.RequireLowercase=true;
-    options.Password.RequireUppercase=true;
+builder.Services.AddIdentity<AppUser,IdentityRole>(options=>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    
 }).AddEntityFrameworkStores<ApplicationDBContext>();
 var jwtSettings = builder.Configuration.GetSection("JWT");
 var signingKey = jwtSettings["SigningKey"];

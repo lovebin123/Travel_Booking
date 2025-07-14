@@ -10,7 +10,8 @@ namespace api.Interfaces.Flights
     {
         Task<Flight?> GetByIdAsync(int id);
         Task<List<Flight>> GetFlightsByQuery(QueryObject query);
-        Task<List<Flight>> GetAllFlights();
+        Task<(List<Flight>flights1,int totalCount)> GetAllFlights(int PageNumber,int PageSize);
+        Task<List<Flight>> GetSearchFlights(string flightName);
         List<string> GetSources();
         List<string> GetDestinations();
         Task<Flight> CreateFlight(FlightDTO flightModal);

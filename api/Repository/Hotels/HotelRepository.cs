@@ -36,7 +36,7 @@ namespace api.Repository.Hotels
             await _context.SaveChangesAsync();
             return hotel;
         }
-
+        
         public async Task DeleteHotel(int id)
         {
             var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
@@ -45,9 +45,10 @@ namespace api.Repository.Hotels
             
         }
 
-        public async Task<List<Hotel>> GetAllHotels()
+        public async Task<(List<Hotel>hotels,int totalCount)> GetAllHotels(int PageSize,int PageNumber)
         {
-            var hotels = await _context.hotels.Select(x => new Hotel
+            var totalCount = await _context.hotels.CountAsync();
+            var hotels1 = await _context.hotels.Select(x => new Hotel
             {
                 bed_type = x.bed_type,
                 bedroom_type = x.bedroom_type,
@@ -59,9 +60,11 @@ namespace api.Repository.Hotels
                 rating = x.rating,
                 id = x.id,
                 user_review = x.user_review
-            }).ToListAsync();
-            return hotels;
+            }).Skip((PageNumber-1)*PageSize).Take(PageSize).ToListAsync();
+            return (hotels1,totalCount);
         }
+
+       
 
         public async Task<Hotel> GetById(int id)
         {
@@ -78,7 +81,15 @@ namespace api.Repository.Hotels
             }
             return await hotels.OrderBy(x=>x.price).ToListAsync();
         }
-        
+        public async Task<List<Hotel>> GetByHotelName(string name)
+        {
+            var hotels = _context.hotels.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                hotels = hotels.Where(x => x.name.Contains(name));
+            }
+            return await hotels.ToListAsync();
+        }
 
         public List<string> GetLocations()
         {

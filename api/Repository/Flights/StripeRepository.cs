@@ -25,7 +25,7 @@ namespace api.Service
         public async Task<Session> CreateFlightBookingPaymentSession(int bookingId)
         {
             var flightBooking = await _flightBookingRepository.GetById(bookingId);
-            if (flightBooking == null || flightBooking.Flight == null)
+            if (flightBooking == null)
                 throw new Exception("Booking or flight not found");
             var sessionOptions = new SessionCreateOptions
             {
@@ -42,13 +42,6 @@ namespace api.Service
                             {
                                 Name = flightBooking.Flight.name,
                                 Images=new List<string>{"https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/AI.png?v=20%22"},
-                                Metadata = new Dictionary<string, string>
-                                {
-                                    {"booking_id",bookingId.ToString()},
-                                    { "source", flightBooking.Flight.source ?? "" },
-                                    { "destination", flightBooking.Flight.destination ?? "" },
-                                    { "seatType", flightBooking.Flight.seatType ?? "" }
-                                }
                             }
                         },
                         Quantity = 1
@@ -93,8 +86,7 @@ namespace api.Service
                 card = card
             };
             booking.isBooked = 1;
-            booking.paymentId = session.PaymentIntentId;
-            await _context.flightPayements.AddAsync(payment);
+            booking.paymentId =payment.stripe_payement_intent_id;
             await _context.SaveChangesAsync();
             return payment;
         }

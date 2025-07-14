@@ -67,7 +67,10 @@ getUserName() {
   logout()
   {
     if(typeof window!="undefined")
+    {
       localStorage.removeItem('token');
+      localStorage.removeItem('role');
+    }
     this.router.navigate(['/login']);
   }
   isAuthenticated():boolean

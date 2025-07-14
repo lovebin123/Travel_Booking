@@ -38,9 +38,9 @@ namespace api.Repository.Car_Rentals
             return rental;
         }
 
-        public async Task<List<CarRental>> GetAllCarRentals()
+        public async Task<(List<CarRental>carRentals,int totalCount)> GetAllCarRentals(int pageSize,int pageNumber)
         {
-            var carRentals = await _context.CarRentals.Select(x => new CarRental
+            var carRentals1 = await _context.CarRentals.Select(x => new CarRental
             {
                 AvailableFromDate = x.AvailableFromDate,
                 AvailableFromTime = x.AvailableFromTime,
@@ -55,8 +55,9 @@ namespace api.Repository.Car_Rentals
                 price = x.price,
                 rating = x.rating,
                 user_review = x.user_review,
-            }).ToListAsync();
-            return carRentals;
+            }).Skip((pageNumber-1)*pageSize).Take(pageSize).ToListAsync();
+            var totalCount = await _context.CarRentals.CountAsync();
+            return (carRentals1,totalCount);
         }
 
         public async Task<List<string>> GetLocations()
@@ -112,6 +113,16 @@ namespace api.Repository.Car_Rentals
             _context.CarRentals.Remove(carRental);
             _context.SaveChanges();
 
+        }
+
+        public async Task<List<CarRental>> SearchByCarName(string name)
+        {
+            var carRentals = _context.CarRentals.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                carRentals = carRentals.Where(x => x.car_name.Contains(name));
+            }
+            return await carRentals.ToListAsync();
         }
     }
 }

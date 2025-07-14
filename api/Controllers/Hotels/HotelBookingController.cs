@@ -1,4 +1,5 @@
 using System;
+using api.DTO.Hotel;
 using api.Extensions;
 using api.Interfaces.Hotels;
 using api.Models;
@@ -30,7 +31,7 @@ namespace api.Controllers.Hotels
         }
         [HttpPost("postBooking")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles ="User")]
-        public async Task<IActionResult> CreateHotelBooking(int id, string no_of_rooms1, string no_of_adults1, string no_of_children1, string check_in_date, string check_out_date)
+        public async Task<IActionResult> CreateHotelBooking(int id, CreateHotelBookingDTO hotelBookingDTO)
         {
             var username = User.GetFirstName();
             if (username == null)
@@ -39,21 +40,20 @@ namespace api.Controllers.Hotels
             if (user == null)
                 return Unauthorized("User does not exist");
             var hotel = await _hotelRepository.GetById(id);
-            Console.WriteLine(no_of_adults1);
-            Console.WriteLine(no_of_children1);
-            if (hotel.price - Int32.Parse(no_of_rooms1) < 0)
+            
+            if (hotel.price - Int32.Parse(hotelBookingDTO.no_of_rooms) < 0)
                 return BadRequest();
             var booking = new HotelBooking
             {
 
-                check_in_date = check_in_date,
-                check_out_date = check_out_date,
-                no_of_adults = Int32.Parse(no_of_adults1),
-                no_of_children = Int32.Parse(no_of_children1),
-                no_of_rooms = Int32.Parse(no_of_rooms1),
+                check_in_date = hotelBookingDTO.check_in_date,
+                check_out_date = hotelBookingDTO.check_out_date,
+                no_of_adults = Int32.Parse(hotelBookingDTO.no_of_adults),
+                no_of_children = Int32.Parse(hotelBookingDTO.no_of_children),
+                no_of_rooms = Int32.Parse(hotelBookingDTO.no_of_rooms),
                 hotel_id = hotel.id,
                 user_id = user.Id,
-                price = (int)(hotel.price * Int32.Parse(no_of_rooms1)),
+                price = (int)(hotel.price * Int32.Parse(hotelBookingDTO.no_of_rooms)),
             };
             await _hotelBookingRepo.CreateHotelBooking(booking);
             return Ok(booking);

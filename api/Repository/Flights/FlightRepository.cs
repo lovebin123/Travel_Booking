@@ -37,6 +37,15 @@ namespace api.Repository.Flights
             }
             return await flights.OrderBy(x => x.price).ToListAsync();
         }
+        public async Task<List<Flight>> GetSearchFlights(string flightName)
+        {
+            var flights = _context.Flights.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(flightName))
+            {
+                flights = flights.Where(x => x.name.Contains(flightName.ToLower()));
+            }
+            return await flights.ToListAsync();
+        }
         public List<string> GetSources()
         {
             var sources = _context.Flights.Select(x => x.source).ToList();
@@ -54,8 +63,9 @@ namespace api.Repository.Flights
             return destinations;
         }
 
-        public async Task<List<Flight>> GetAllFlights()
+        public async Task<(List<Flight>flights1,int totalCount)> GetAllFlights(int PageSize,int PageNumber)
         {
+            var totalCount = await _context.Flights.CountAsync();
             var flights = await _context.Flights.Select(x => new Flight
             {
                 date_of_departure = x.date_of_departure,
@@ -68,8 +78,8 @@ namespace api.Repository.Flights
                 id = x.id,
                 time_of_arrival = x.time_of_arrival,
                 time_of_departure = x.time_of_departure
-            }).ToListAsync();
-            return flights;
+            }).Skip((PageSize-1)*PageNumber).Take(PageNumber).ToListAsync();
+            return (flights,totalCount);
         }
 
         public async Task<Flight> CreateFlight(FlightDTO flightModal)
@@ -119,5 +129,7 @@ namespace api.Repository.Flights
             _context.SaveChanges();
             
         }
+
+      
     }
 }

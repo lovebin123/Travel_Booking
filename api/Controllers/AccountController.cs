@@ -1,5 +1,6 @@
 using System;
 using api.DTO.Account;
+using api.Extensions;
 using api.Interfaces;
 using api.Models;
 using api.Service;
@@ -21,7 +22,7 @@ namespace api.Controllers
         private readonly ITokenService _tokenService;
         private readonly SignInManager<AppUser> _signinManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager,RoleManager<IdentityRole>roleManager)
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signinManager = signInManager;
@@ -61,7 +62,7 @@ namespace api.Controllers
                                 FirstName = user.FirstName,
                                 LastName = user.LastName,
                                 Email = user.Email,
-                                Token =_tokenService.CreateToken(user),
+                                Token = _tokenService.CreateToken(user),
                                 Role = role,
                             }
                         );
@@ -87,10 +88,10 @@ namespace api.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDTO.Email.ToLower());
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => string.Compare(x.UserName, loginDTO.Email.ToLower()) == 0);
             if (user == null)
                 return Unauthorized("Invalid username");
-            var result = await _signinManager.CheckPasswordSignInAsync(user, loginDTO.Password, false);
+            var result = await _signinManager.PasswordSignInAsync(loginDTO.Email, loginDTO.Password, isPersistent: true, lockoutOnFailure: false);
             if (!result.Succeeded)
                 return Unauthorized("Username does not exist");
             var role = user.Email == "admin@gmail.com" ? "Admin" : "User";
@@ -101,14 +102,14 @@ namespace api.Controllers
                 LastName = user.LastName,
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
-                Role=role
+                Role = role
 
             });
         }
         [HttpPost("verifyEmail")]
         public async Task<IActionResult> VerifyEmail(VerifyEmailDTO verifyEmailDTO)
         {
-            var apiKey = "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";
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_ID");
             var client = new SendGridClient(apiKey);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -117,7 +118,7 @@ namespace api.Controllers
             {
                 return Unauthorized("Email does not exist");
             }
-            var from = new EmailAddress("bookvoyage@maildrop.cc","Travel Voyage");
+            var from = new EmailAddress("bookvoyage@maildrop.cc", "Book Voyage");
             var to = new EmailAddress(user.Email);
             var token = _tokenService.CreateToken(user);
             Console.WriteLine(token);
@@ -126,12 +127,12 @@ namespace api.Controllers
             var subject = "Password reset mail";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, link, htmlContent);
             var response = await client.SendEmailAsync(msg);
-              if (response.IsSuccessStatusCode)
-            return Ok(new { username = verifyEmailDTO.Email });
-    else
-        return StatusCode((int)response.StatusCode, "Failed to send email");
-}
-        
+            if (response.IsSuccessStatusCode)
+                return Ok(new { username = verifyEmailDTO.Email });
+            else
+                return StatusCode((int)response.StatusCode, "Failed to send email");
+        }
+
         [HttpPost("forgotPassword")]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO forgotPasswordDTO)
         {
@@ -158,6 +159,42 @@ namespace api.Controllers
             if (user == null)
                 return Unauthorized();
             return Ok(user);
+        }
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("userDetails")]
+        public async Task<IActionResult> GetUserDetails()
+        {
+            var userName = User.GetFirstName();
+            var user = await _userManager.FindByNameAsync(userName);
+            var userDetails = new
+            {
+                user.FirstName,
+                user.LastName,
+                user.Email,
+                user.PhoneNumber,
+            };
+            Console.WriteLine(userDetails);
+            return Ok(userDetails);
+        }
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("editDetails")]
+        public async Task<IActionResult> EditUserDetails(editUserDTO userDTO)
+        {
+            var userName = User.GetFirstName();
+            var user = await _userManager.FindByNameAsync(userName);
+            user.FirstName = userDTO.firstName;
+            user.LastName = userDTO.lastName;
+            user.Email = userDTO.email;
+            user.PhoneNumber = userDTO.phoneNumber;
+            await _userManager.UpdateAsync(user);
+             var userDetails = new
+            {
+                user.FirstName,
+                user.LastName,
+                user.Email,
+                user.PhoneNumber,
+            };
+            return Ok(userDetails);
         }
        
     }

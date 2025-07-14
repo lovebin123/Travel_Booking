@@ -28,7 +28,7 @@ export class SignupComponent {
   constructor(private authservice: AuthService, private router: Router) {}
   checkPassword()
   {
-    if(this.userData.password!=this.cpassword)
+    if(this.userData.password==this.cpassword)
     {
       this.passwordMismach=true;
       return;

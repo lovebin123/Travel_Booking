@@ -33,12 +33,25 @@ namespace api.Controllers
             var flights = await _flightRepo.GetFlightsByQuery(query);
             return Ok(flights);
         }
+        [HttpGet("searchByFlightName")]
+        public async Task<IActionResult> SearchByFlightName([FromQuery] string name)
+        {
+            var flights = await _flightRepo.GetSearchFlights(name);
+            return Ok(flights);
+        }
         [HttpGet("getAllFlights")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> GetAllFlights()
+        public async Task<IActionResult> GetAllFlights(int pageNumber=1,int pageSize=20)
         {
-            var flights = await _flightRepo.GetAllFlights();
-            return Ok(flights);
+            var (flights,totalCount) = await _flightRepo.GetAllFlights(pageNumber,pageSize);
+            return Ok(new
+            {
+                flights,
+                totalCount,
+                pageNumber,
+                pageSize
+                
+            });
         }
         [HttpGet("getSources")]
         public async Task<IActionResult> GetSources()

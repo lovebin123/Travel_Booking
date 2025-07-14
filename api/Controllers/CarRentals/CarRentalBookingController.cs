@@ -1,4 +1,5 @@
 using System;
+using api.DTO.Car_Rental;
 using api.Extensions;
 using api.Interfaces.Car_Rentals;
 using api.Models;
@@ -27,7 +28,7 @@ namespace api.Controllers.CarRentals
         }
         [HttpPost("createBooking")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles ="User")]
-        public async Task<IActionResult> CreateCarRentalBooking(int id, string pickupDate, string dropoffDate, string pickupTime, string dropoffTime, int diff)
+        public async Task<IActionResult> CreateCarRentalBooking(int id, CreateCarRentalBookingDTO carRentalBookingDTO)
         {
             var userName = User.GetFirstName();
             if (userName == null)
@@ -38,12 +39,12 @@ namespace api.Controllers.CarRentals
             var carRental = await _carRentalRepository.GetById(id);
             var booking = new CarRentalBooking
             {
-                bookedFromDate = pickupDate,
-                bookedTillDate = dropoffDate,
-                bookedFromTime = pickupTime,
-                bookedTillTime = dropoffTime,
+                bookedFromDate = carRentalBookingDTO.pickupDate,
+                bookedTillDate = carRentalBookingDTO.dropoffDate,
+                bookedFromTime = carRentalBookingDTO.pickupTime,
+                bookedTillTime = carRentalBookingDTO.dropoffTime,
                 isBooked=0,
-                amount = (double)(carRental.price * (diff + 1)),
+                amount = (double)(carRental.price * (carRentalBookingDTO.diff + 1)),
                 user_id = user.Id,
                 bookingId = carRental.id,
             };

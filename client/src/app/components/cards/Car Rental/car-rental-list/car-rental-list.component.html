@@ -16,6 +16,12 @@
 <ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-danger text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
 Car already booked by user
 </ngb-toast>
+<ngb-toast *ngIf="deletionSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="deletionSuccessfull=false">
+Car Deletion Successfull
+</ngb-toast>
+<ngb-toast *ngIf="editSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
+Car Edited Successfully
+</ngb-toast>
 <div class="d-flex flex-column gap-3 pb-2">
 <div class="card" style="width: 60rem;">
     <div class="card-body">
