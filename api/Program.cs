@@ -16,6 +16,9 @@ using System.Security.Claims;
 using api.Interfaces.Car_Rentals;
 using api.Repository.Car_Rentals;
 using DotNetEnv;
+using api.Mappers;
+using AutoWrapper;
+using api.Mappers.Hotels;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDBContext>(options=>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),options=>
@@ -59,8 +62,9 @@ builder.Services.AddControllers().AddNewtonsoftJson(options=>{
     options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options=>{
-     options.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -85,6 +89,9 @@ builder.Services.AddSwaggerGen(options=>{
         }
     });
 });
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<FlightMapper>();
+builder.Services.AddScoped<HotelMapper>();
 builder.Services.AddScoped<IFlightRepository,FlightRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IStripePayementRepository, StripeRepository>();
@@ -101,14 +108,16 @@ builder.Services.AddScoped<ICarRentalPaymentRepository, CarRentalPaymentReposito
 builder.Services.AddCors();
 Env.Load();
 var app = builder.Build();
-if(app.Environment.IsDevelopment())
+app.UseApiResponseAndExceptionWrapper();
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c=>{
+    app.UseSwaggerUI(c =>
+    {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
     });
 }
-app.UseCors(x=>x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+app.UseCors(x=>x.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

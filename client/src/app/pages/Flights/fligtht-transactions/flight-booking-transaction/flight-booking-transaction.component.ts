@@ -17,8 +17,8 @@ data:any=null;
   bookingId:any;
 constructor(private  flightBooking:FlightBookingService){}
   ngOnInit(): void {
-    this.flightBooking.getUserBookings().subscribe((response)=>{
-      this.data=response;
+    this.flightBooking.getUserBookings().subscribe((response:any)=>{
+      this.data=response.result;
       console.log(response);
       for(let i=0;i<this.data.length;i++)
       {

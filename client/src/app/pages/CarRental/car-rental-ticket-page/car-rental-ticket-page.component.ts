@@ -33,14 +33,14 @@ export class CarRentalTicketPageComponent implements OnInit {
       this.carRental.getLatestPayment(sessionId).subscribe({
         next:(response)=>{
           console.log(response);
-          this.data=response;
+          this.data=response.result;
         }
       })
     }
     else{
     this.carRental.getById(this.id).subscribe({
       next:(response)=>{
-        this.data=response;
+        this.data=response.result;
       }
     });
     }

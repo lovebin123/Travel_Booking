@@ -33,8 +33,8 @@ ngOnInit(): void {
 }
 proceedToPayement(id:number)
 {
-  this.bookingService.goToPayement(id).subscribe((response)=>{
-    this.data=response;
+  this.bookingService.goToPayement(id).subscribe((response:any)=>{
+    this.data=response.result;
         document.location.href=this.data.url;
   })
 }

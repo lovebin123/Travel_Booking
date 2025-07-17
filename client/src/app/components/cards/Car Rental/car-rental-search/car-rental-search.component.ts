@@ -51,7 +51,8 @@ onSearch()
     return;
   }
   this.carRental.getFromQuery(this.carRentalSearch).subscribe({
-    next:(response)=>{
+    next:(response:any)=>{
+      response=response.result;
       this.data=response;
       this.carRentalsEmitted.emit(this.data);
       this.carRentalSearchEmitted.emit(this.carRentalSearch);

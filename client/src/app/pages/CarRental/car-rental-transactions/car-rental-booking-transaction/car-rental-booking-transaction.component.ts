@@ -23,7 +23,7 @@ data2:any={};
   {
      this.carRental1.getUserBooking().subscribe({
     next:(response:any)=>{
-      this.data=response;
+      this.data=response.result;
       console.log(this.data);
     }
    })

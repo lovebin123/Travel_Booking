@@ -18,7 +18,7 @@ namespace api.Models.Hotels
         
         public int isBooked { get; set; }
         public string? paymentId { get; set; }
-        public List<HotelPayment> hotelPayments { get; set; }
+        public IEnumerable<HotelPayment> hotelPayments { get; set; } = new List<HotelPayment>(); 
 
     }
 }

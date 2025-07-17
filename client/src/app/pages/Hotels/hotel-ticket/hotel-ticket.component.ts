@@ -41,7 +41,8 @@ export class HotelTicketComponent implements OnInit {
     {
       const sessionID=this.route.snapshot.paramMap.get('sessionID');
     this.hotel.getLatest(sessionID).subscribe({
-      next:(response)=>{
+      next:(response:any)=>{
+        response=response.result;
         console.log(response);
         this.data=response;
       }
@@ -50,6 +51,7 @@ export class HotelTicketComponent implements OnInit {
   else{
     this.hotel.getById(this.id).subscribe({
       next:(response)=>{
+        response=response.result;
         this.data=response;
       }
     })

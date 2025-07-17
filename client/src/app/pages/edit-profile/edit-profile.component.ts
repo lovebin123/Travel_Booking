@@ -26,8 +26,8 @@ export class EditProfileComponent implements OnInit{
   };
   constructor(private auth:AuthService){}
  ngOnInit(): void {
-  this.auth.getUserName().subscribe((response)=>{
-   this.data=response;
+  this.auth.getUserName().subscribe((response:any)=>{
+   this.data=response.result;
       this.firstName=this.data.firstName;
   }
 )
@@ -38,7 +38,7 @@ loadData()
    this.auth.getAllUserDetails().subscribe({
     next:(response)=>{
       console.log(response);
-      this.userData=response;
+      this.userData=response.result;
       this.data1.email=this.userData.email;
       this.data1.firstName=this.userData.firstName;
       this.data1.lastName=this.userData.lastName;

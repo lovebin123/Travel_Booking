@@ -17,7 +17,7 @@ namespace api.Models.Car_Rental
         public string AvailableUntilDate { get; set; }
         public string AvailableFromTime { get; set; }
         public string AvailableUntilTime { get; set; }
-        public List<CarRentalBooking> CarRentalBookings { get; set; } = new List<CarRentalBooking>();
+        public IEnumerable<CarRentalBooking> CarRentalBookings { get; set; } = new List<CarRentalBooking>();
 
     }
 }

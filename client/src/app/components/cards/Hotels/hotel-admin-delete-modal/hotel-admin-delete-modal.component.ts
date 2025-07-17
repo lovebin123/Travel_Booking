@@ -21,6 +21,7 @@ delete1(id:any)
   console.log(this.id);
   this.hotel.deleteHotel(id).subscribe({
     next:(response)=>{
+      response=response.result;
         const msg="Successful";
   this.deleteEmitted.emit(msg);
   this.modal.dismissAll(this.showToast=true);

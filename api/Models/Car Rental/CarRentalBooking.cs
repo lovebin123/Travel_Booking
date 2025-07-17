@@ -16,6 +16,6 @@ namespace api.Models.Car_Rental
         public int isBooked { get; set; }
         public string? paymentId { get; set; }
         public double amount { get; set; }
-        public List<CarRentalPayment> CarRentalPayments { get; set; } = new List<CarRentalPayment>();
+        public IEnumerable<CarRentalPayment> CarRentalPayments { get; set; } = new List<CarRentalPayment>();
     }
 }

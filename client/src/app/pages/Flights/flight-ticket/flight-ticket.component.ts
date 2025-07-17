@@ -47,7 +47,7 @@ else{
   {
     console.log(this.sessionId);
    this.flightPayment.getLastPayement(this.sessionId).subscribe((response:any)=>{
-    this.data=response;
+    this.data=response.result;
     this.flightDetails=this.data.flightBooking.flight;
     this.userDetails=this.data.flightBooking.appUser;
     this.paymentDetails.paymen_id=this.data.stripe_payement_intent_id;
@@ -59,7 +59,7 @@ else{
         console.log(this.id);
     this.flightPayment.getByid(this.id).subscribe((response:any)=>{
       console.log(response);
-      this.data=response;
+      this.data=response.result;
     this.flightDetails=this.data.flightBooking.flight;
     this.userDetails=this.data.flightBooking.appUser;
     this.paymentDetails.paymen_id=this.data.stripe_payement_intent_id;

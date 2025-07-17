@@ -15,6 +15,7 @@ data:any={};
   ngOnInit(): void {
    this.hotels.getUserBookings().subscribe({
     next:(response:any)=>{
+      response=response.result;
       this.data=response;
     }
    })

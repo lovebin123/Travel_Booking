@@ -19,11 +19,7 @@ getByQuery(flightData: any): Observable<any> {
 }
 getAllFlights(page:number,pageSize:number):Observable<any>
 {
-  const token=localStorage.getItem('token');
-  const headers=new HttpHeaders({
-    'Authorization':`Bearer ${token}`
-  });
-  return this.http.get(`${this.url}/getAllFlights?pageNumber=${page.toString()}&pageSize=${pageSize.toString()}`,{headers:headers});
+  return this.http.get(`${this.url}/getAllFlights?pageNumber=${page.toString()}&pageSize=${pageSize.toString()}`);
 }
 searchByFlightName(name:any):Observable<any>
 {
@@ -39,34 +35,18 @@ getDestinations():Observable<any>
 }
 createFlight(flightData:Flight):Observable<any>
 {
-  const token=localStorage.getItem('token');
-  const headers=new HttpHeaders({
-    'Authorization':`Bearer ${token}`
-  });
-  return this.http.post(`${this.url}/createFlight`,flightData,{headers:headers});
+  return this.http.post(`${this.url}/createFlight`,flightData);
 }
 getById(id:any):Observable<any>
 {
-   const token=localStorage.getItem('token');
-  const headers=new HttpHeaders({
-    'Authorization':`Bearer ${token}`
-  });
-  return this.http.get(`${this.url}/getById?id=${id}`,{headers:headers});
+  return this.http.get(`${this.url}/getById?id=${id}`);
 }
 updateFlight(id:any,flightData:Flight):Observable<any>
 {
-  const token=localStorage.getItem('token');
-  const headers=new HttpHeaders({
-    'Authorization':`Bearer ${token}`
-  });
-  return this.http.put(`${this.url}/updateFlight?id=${id}`,flightData,{headers:headers})
+  return this.http.put(`${this.url}/updateFlight?id=${id}`,flightData)
 }
 deleteById(id:any)
 {
-    const token=localStorage.getItem('token');
-  const headers=new HttpHeaders({
-    'Authorization':`Bearer ${token}`
-  });
-  return this.http.delete(`${this.url}/deleteFlight?id=${id}`,{headers:headers});
+  return this.http.delete(`${this.url}/deleteFlight?id=${id}`);
 }
 }

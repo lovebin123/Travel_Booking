@@ -16,6 +16,6 @@ namespace api.Models.Flights
         public string? paymentId { get; set; }
         public Flight Flight { get; set; }
         public AppUser AppUser { get; set; }
-        public List<FlightPayement> flightPayements { get; set; } = new List<FlightPayement>();
+        public IEnumerable<FlightPayement> flightPayements { get; set; } = new List<FlightPayement>();
     }
 }

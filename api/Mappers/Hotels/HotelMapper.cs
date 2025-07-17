@@ -1,26 +1,24 @@
 using System;
 using api.DTO.Hotel;
 using api.Models.Hotels;
+using AutoMapper;
 
 namespace api.Mappers.Hotels
 {
-    public static class HotelMapper
+    public class HotelMapper
     {
-        public static HotelDTO ToHotelDTO(this Hotel hotelModal)
+        private readonly IMapper _mapper;
+        public HotelMapper(IMapper mapper)
         {
-            return new HotelDTO
-            {
-                location = hotelModal.location,
-                name = hotelModal.name,
-                no_of_rooms_available = hotelModal.no_of_rooms_available,
-                price = hotelModal.price,
-                rating = hotelModal.rating,
-                user_review = hotelModal.user_review,
-                bedroom_type = hotelModal.bedroom_type,
-                no_of_stars = hotelModal.no_of_stars,
-                bed_type=hotelModal.bed_type
-
-            };
+            _mapper = mapper;
+        }
+        public HotelDTO HotelToHotelDTO(Hotel hotel)
+        {
+            return _mapper.Map<HotelDTO>(hotel);
+        }
+        public Hotel HotelDTOToHotel(HotelDTO hotelDTO)
+        {
+            return _mapper.Map<Hotel>(hotelDTO);
         }
     }
 }

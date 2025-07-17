@@ -74,7 +74,8 @@ printVals()
     return;
   }
 this.flights.getByQuery(this.flightDetails).subscribe({
-  next:(response)=>{
+  next:(response:any)=>{
+    response=response.result;
     if(!this.travellerDetails)
     {
       this.showToast=true;

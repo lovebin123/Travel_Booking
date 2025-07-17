@@ -15,6 +15,6 @@ namespace api.Models.Flights
         public string? time_of_arrival { get; set; }
         public string? seatType { get; set; }
         public int no_of_seats { get; set; }
-        public List<FlightBooking> FlightBookings { get; set; } = new List<FlightBooking>();
+        public IEnumerable<FlightBooking> FlightBookings { get; set; } = new List<FlightBooking>();
     }
 }

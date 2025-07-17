@@ -24,8 +24,8 @@ export class HeroComponent implements OnInit {
   constructor(private router:Router,private auth:AuthService){
   }
   ngOnInit(): void {
-  this.auth.getUserName().subscribe((response)=>{
-   this.data=response;
+  this.auth.getUserName().subscribe((response:any)=>{
+   this.data=response.result;
       this.firstName=this.data.firstName;
   }
     );

@@ -4,6 +4,7 @@ using api.DTO.Flight;
 using api.Helpers;
 using api.Interfaces;
 using api.Interfaces.Flights;
+using api.Mappers;
 using api.Models.Flights;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ namespace api.Repository.Flights
     public class FlightRepository : IFlightRepository
     {
         private readonly ApplicationDBContext _context;
-        public FlightRepository(ApplicationDBContext context)
+        private readonly FlightMapper _flightMapper;
+        public FlightRepository(ApplicationDBContext context, FlightMapper flightMapper)
         {
             _context = context;
+            _flightMapper = flightMapper;
         }
         public async Task<List<Flight>> GetFlightsByQuery(QueryObject query)
         {
@@ -84,18 +87,8 @@ namespace api.Repository.Flights
 
         public async Task<Flight> CreateFlight(FlightDTO flightModal)
         {
-            var flights = new Flight
-            {
-                date_of_departure = flightModal.date_of_departure,
-                destination = flightModal.destination,
-                name = flightModal.name,
-                no_of_seats = flightModal.no_of_seats,
-                price = flightModal.price,
-                seatType = flightModal.seatType,
-                time_of_arrival = flightModal.time_of_arrival,
-                source = flightModal.source,
-                time_of_departure = flightModal.time_of_departure
-            };
+
+            var flights = _flightMapper.ConvertFlightDTOToFlight(flightModal);
             await _context.AddAsync(flights);
             await _context.SaveChangesAsync();
             return flights;
@@ -130,6 +123,9 @@ namespace api.Repository.Flights
             
         }
 
-      
+        public Task<FlightDTO> SampleFlightToFlightDTO(Flight flight)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

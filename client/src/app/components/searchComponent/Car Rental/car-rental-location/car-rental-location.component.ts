@@ -19,7 +19,8 @@ export class CarRentalLocationComponent implements OnInit{
   constructor(private carRental:CarRentalService){}
     locationName:any;
   ngOnInit(): void {
-   this.carRental.getLocations().subscribe((response)=>{
+   this.carRental.getLocations().subscribe((response:any)=>{
+    response=response.result;
     for(let i=0;i<response.length;i++)
     {
       this.locations.add(response[i]);

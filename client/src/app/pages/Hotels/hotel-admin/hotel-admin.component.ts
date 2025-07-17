@@ -29,8 +29,8 @@ loadData()
 {
    this.hotel.getAllHotels(this.page,this.pageSize).subscribe({
   next:(response:any)=>{
-    this.data=response.hotels;
-    this.totalRecords=response.totalCount;
+    this.data=response.result.hotels;
+    this.totalRecords=response.result.totalCount;
   }
  })
 }
@@ -53,7 +53,8 @@ addHotels(content:TemplateRef<any>)
 searchByHotelName()
 {
   this.hotel.searchByHotelName(this.searchQuery).subscribe({
-    next:(response)=>{
+    next:(response:any)=>{
+      response=response.result;
       this.data=response;
     }
   }

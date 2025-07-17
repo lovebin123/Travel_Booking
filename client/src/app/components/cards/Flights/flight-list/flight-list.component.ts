@@ -82,6 +82,7 @@ this.diff = `${this.padZero(hours)}:${this.padZero(minutes)}`;
     console.log(this.data1);
     this.flightBooking.postFlightBooking(id,this.no_of_adults,this.no_of_children).subscribe({
       next:(response:any)=>{
+        response=response.result;
         this.modal.open(content,{size:'lg',centered:true});
         this.data=response;
         this.flightBooked=this.data.flight;
@@ -98,6 +99,7 @@ this.diff = `${this.padZero(hours)}:${this.padZero(minutes)}`;
 {
   this.flightBooking.goToPayement(id).subscribe(
     (response:any)=>{
+      response=response.result;
       document.location.href=response.url;
     }
   )

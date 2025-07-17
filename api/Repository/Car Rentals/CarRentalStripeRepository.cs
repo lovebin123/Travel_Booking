@@ -15,7 +15,7 @@ namespace api.Repository.Car_Rentals
         {
             _context = context;
             _carRentalBookingRepository = carRentalBookingRepository;
-            StripeConfiguration.ApiKey =Environment.GetEnvironmentVariable("STRIPE_ID") ;
+            StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("STRIPE_ID"); ;
         }
         public async Task<Session> CreateCheckoutSession(int bookingId)
         {

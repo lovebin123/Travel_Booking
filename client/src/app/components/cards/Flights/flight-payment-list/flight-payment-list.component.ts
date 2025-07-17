@@ -38,6 +38,7 @@ showTicket()
   this.flights.getByid(this.id).subscribe(
     {
       next:(response:any)=>{
+        response=response.result;
         console.log(response);
         this.router.navigate(['/flightTicket'],{
           state:{id:this.id}

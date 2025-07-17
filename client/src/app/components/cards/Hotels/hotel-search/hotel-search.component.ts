@@ -48,6 +48,7 @@ export class HotelSearchComponent {
     }
     this.hotelService.getHotelsFromQuery(this.location).subscribe({
       next:(response:any)=>{
+        response=response.result;
         this.hotelsEmitted.emit(response);
         this.hotelSearchEmitted.emit(this.hotelSearch);
         this.roomAdultsEmitted.emit(this.roomsAdults);

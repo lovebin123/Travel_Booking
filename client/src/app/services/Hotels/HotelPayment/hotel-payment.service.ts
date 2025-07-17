@@ -14,11 +14,7 @@ export class HotelPaymentService {
   }
   getAllPayments():Observable<any>
   {
-    const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
-    return this.http.get(`${this.url}/getAllPayments`,{headers:headers});
+    return this.http.get(`${this.url}/getAllPayments`);
   }
   getById(id:any):Observable<any>
   {

@@ -10,6 +10,7 @@ import { UserDetails } from '../../models/userDetails';
 export class AuthService {
   private url="http://localhost:5253/api/account";
   private jwtHelper=new JwtHelperService();
+
   constructor(private http:HttpClient,private router:Router) { }
   signup(userData:any)
   {
@@ -57,12 +58,8 @@ export class AuthService {
   }
  
 getUserName() {
-  const token = localStorage.getItem('token');
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`,
-  });
   const email = this.getEmail();
-  return this.http.get(this.url + `/getUserName?email=${email}`, { headers });
+  return this.http.get(this.url + `/getUserName?email=${email}`);
 }
   logout()
   {
@@ -76,22 +73,14 @@ getUserName() {
   isAuthenticated():boolean
   {
     const token=localStorage.getItem('token');
-    return token ? this.jwtHelper.isTokenExpired(token) :false;
+    return token != null && token.length > 0;
   }
   getAllUserDetails():Observable<any>
   {
-     const token = localStorage.getItem('token');
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`,
-  });
-    return this.http.get(`${this.url}/userDetails`,{headers:headers})
+    return this.http.get(`${this.url}/userDetails`)
   }
   updateUserDetails(userDetails:UserDetails):Observable<any>
   {
-      const token = localStorage.getItem('token');
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`,
-  });
-  return this.http.put(`${this.url}/editDetails`,userDetails,{headers:headers});
+  return this.http.put(`${this.url}/editDetails`,userDetails);
   }
 }

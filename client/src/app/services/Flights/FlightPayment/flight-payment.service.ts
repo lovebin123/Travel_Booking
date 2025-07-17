@@ -17,12 +17,12 @@ export class FlightPaymentService {
   {
     const token=localStorage.getItem('token');
     const headers=new HttpHeaders({'Authorization':`Bearer ${token}`});
-    return this.http.get(this.url+"/getAllPayments",{headers:headers});
+    return this.http.get(this.url+"/getAllPayments");
   }
   getByid(id: any):Observable<any>
   {
      const token=localStorage.getItem('token');
     const headers=new HttpHeaders({'Authorization':`Bearer ${token}`});
-    return this.http.get(`${this.url}/getById?id=${id}`,{headers:headers});
+    return this.http.get(`${this.url}/getById?id=${id}`);
   }
 }

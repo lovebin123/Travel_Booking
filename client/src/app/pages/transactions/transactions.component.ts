@@ -19,7 +19,8 @@ export class TransactionsComponent implements OnInit {
   firstName='';
   constructor(private auth:AuthService){}
  ngOnInit(): void {
-  this.auth.getUserName().subscribe((response)=>{
+  this.auth.getUserName().subscribe((response:any)=>{
+    response=response.result;
    this.data=response;
     console.log(this.data);
       this.firstName=this.data.firstName;

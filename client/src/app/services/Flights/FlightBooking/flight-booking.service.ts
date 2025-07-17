@@ -15,7 +15,7 @@ postFlightBooking(id: any,no_of_adults:string,no_of_children:string): Observable
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${token}`,
   });
-  return this.http.post(`${this.url}/postBooking?id=${id}&no_of_adults1=${no_of_adults}&no_of_children11=${no_of_children}`,  {},{headers:headers});
+  return this.http.post(`${this.url}/postBooking?id=${id}&no_of_adults1=${no_of_adults}&no_of_children11=${no_of_children}`,  {},);
 }
 goToPayement(id:number):Observable<any[]>
 {
@@ -26,6 +26,6 @@ getUserBookings():Observable<any[]>{
   const headers=new HttpHeaders({
     'Authorization':`Bearer ${token}`,
   });
-  return this.http.get<any[]>(this.url+'/getBookings',{headers:headers});
+  return this.http.get<any[]>(this.url+'/getBookings');
 }
 }

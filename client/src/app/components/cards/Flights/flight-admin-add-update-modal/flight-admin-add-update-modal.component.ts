@@ -25,7 +25,7 @@ export class FlightAdminAddUpdateModalComponent implements OnInit{
       console.log(this.id);
       this.flight.getById(this.id).subscribe({
         next:(response)=>{
-          console.log(response);
+          response=response.result;
           this.data=response;
           this.flightData.date_of_departure=this.data.date_of_departure;
           this.flightData.destination=this.data.destination;
@@ -59,7 +59,8 @@ export class FlightAdminAddUpdateModalComponent implements OnInit{
   add()
   {
     this.flight.createFlight(this.flightData).subscribe({
-      next:(response)=>{
+      next:(response:any)=>{
+        response=response.result;
         this.data=response;
         this.showToast1=true;
           this.modal.dismissAll(this.showToast1=true);

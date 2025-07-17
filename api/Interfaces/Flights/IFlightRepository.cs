@@ -9,6 +9,7 @@ namespace api.Interfaces.Flights
     public interface IFlightRepository
     {
         Task<Flight?> GetByIdAsync(int id);
+        Task<FlightDTO> SampleFlightToFlightDTO(Flight flight);
         Task<List<Flight>> GetFlightsByQuery(QueryObject query);
         Task<(List<Flight>flights1,int totalCount)> GetAllFlights(int PageNumber,int PageSize);
         Task<List<Flight>> GetSearchFlights(string flightName);

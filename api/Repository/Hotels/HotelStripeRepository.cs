@@ -15,7 +15,7 @@ namespace api.Repository.Hotels
         private readonly IHotelBookingRepository _hotelBookingRepository;
         public HotelStripeRepository (IHotelBookingRepository hotelBookingRepository, ApplicationDBContext context)
         {
-            StripeConfiguration.ApiKey =Environment.GetEnvironmentVariable("STRIPE_ID") ;
+            StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("STRIPE_ID"); ;
             _hotelBookingRepository = hotelBookingRepository;
             _context = context;
         }

@@ -14,7 +14,7 @@ export class FlightPaymentTransactionComponent implements OnInit {
   data:any=null;
   ngOnInit(): void {
     this.flight.getAllPayments().subscribe((response:any)=>{
-      this.data=response;
+      this.data=response.result;
       console.log(response);
     })
   }

@@ -23,7 +23,8 @@ export class FlightDeleteAdminComponent {
 delete1(id:any)
 {
 this.flight.deleteById(id).subscribe({
-next:(response)=>{
+next:(response:any)=>{
+  response=response.result;
   console.log(id);
   const msg="Successful";
   this.deleteEmitter.emit(msg);

@@ -10,7 +10,7 @@ namespace api.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<FlightBooking> FlightBookings { get; set; } = new List<FlightBooking>();
+        public IEnumerable<FlightBooking> FlightBookings { get; set; } = new List<FlightBooking>();
         public List<HotelBooking> HotelBookings { get; set; } = new List<HotelBooking>();
         public List<CarRentalBooking> CarRentalBookings { get; set; } = new List<CarRentalBooking>();
     }

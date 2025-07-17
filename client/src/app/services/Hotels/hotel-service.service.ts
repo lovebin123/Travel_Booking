@@ -23,42 +23,23 @@ private url="http://localhost:5253/api/hotels";
 }
   getAllHotels(page:number,pageSize:number):Observable<any>
   {
-    const token=localStorage.getItem('token');
-  const headers=new HttpHeaders({
-    'Authorization':`Bearer ${token}`
-  });
-    return this.http.get(`${this.url}/getAllHotels?pageNumber=${pageSize.toString()}&pageSize=${page.toString()}`,{headers:headers});
+    return this.http.get(`${this.url}/getAllHotels?pageNumber=${pageSize.toString()}&pageSize=${page.toString()}`);
   }
   addHotel(hotelData:Hotel):Observable<any>
   {
-      const token=localStorage.getItem('token');
-  const headers=new HttpHeaders({
-    'Authorization':`Bearer ${token}`
-  });
-  return this.http.post(`${this.url}/createHotel`,hotelData,{headers:headers});
+  return this.http.post(`${this.url}/createHotel`,hotelData);
   }
   updateHotel(id:any,hotelData:any):Observable<any>
   {
-  const token=localStorage.getItem('token');
-  const headers=new HttpHeaders({
-    'Authorization':`Bearer ${token}`
-  });
-  return this.http.put(`${this.url}/updateHotel?id=${id}`,hotelData,{headers:headers});
+  return this.http.put(`${this.url}/updateHotel?id=${id}`,hotelData);
   }
   deleteHotel(id:any):Observable<any>
   {
-    const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
-    return this.http.delete(`${this.url}/deleteHotel?id=${id}`,{headers:headers});
+    return this.http.delete(`${this.url}/deleteHotel?id=${id}`);
   }
   getById(id:any):Observable<any>
   {
-        const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
-    return this.http.get(`${this.url}/getById?id=${id}`,{headers:headers});
+      
+    return this.http.get(`${this.url}/getById?id=${id}`);
   }
 }

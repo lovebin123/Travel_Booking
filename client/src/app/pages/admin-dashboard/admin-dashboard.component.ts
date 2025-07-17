@@ -19,7 +19,7 @@ export class AdminDashboardComponent implements OnInit{
   ngOnInit(): void {
     this.firstName=this.auth.getUserName().subscribe({
       next:(response:any)=>{
-        this.firstName=response.firstName;
+        this.firstName=response.result.firstName;
       }
     })
   }

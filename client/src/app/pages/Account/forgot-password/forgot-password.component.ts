@@ -41,7 +41,7 @@ export class ForgotPasswordComponent implements OnInit {
         this.checkPassword();
         console.log(response);
         console.log("Password reset successfully");
-        localStorage.setItem('token',response.token);
+        localStorage.setItem('token',response.result.token);
         this.showToast=true;
         this.userData.email='';
         this.userData.password='';

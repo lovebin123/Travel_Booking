@@ -5,6 +5,7 @@ using api.Helpers;
 using api.Interfaces;
 using api.Interfaces.Flights;
 using api.Mappers;
+using api.Models.Flights;
 using api.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -19,24 +20,25 @@ namespace api.Controllers
         private readonly ApplicationDBContext _context;
         private readonly IFlightRepository _flightRepo;
         private readonly StripeRepository _stripe;
-        public FLightController(ApplicationDBContext context, IFlightRepository flightRepo)
+        private readonly ILogger<Flight> _logger;
+        public FLightController(ApplicationDBContext context, IFlightRepository flightRepo, ILogger<Flight> logger)
         {
             _context = context;
+            _logger = logger;
             _flightRepo = flightRepo;
         }
         [HttpGet("getByQuery")]
         public async Task<IActionResult> GetFromQuery([FromQuery] QueryObject query)
         {
-            Console.WriteLine(query.date_of_departure);
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
             var flights = await _flightRepo.GetFlightsByQuery(query);
+            _logger.LogInformation("Flights listed successfully based on query");
             return Ok(flights);
         }
         [HttpGet("searchByFlightName")]
         public async Task<IActionResult> SearchByFlightName([FromQuery] string name)
         {
             var flights = await _flightRepo.GetSearchFlights(name);
+            _logger.LogInformation("Flights fetched successfully based on name");
             return Ok(flights);
         }
         [HttpGet("getAllFlights")]
@@ -44,13 +46,14 @@ namespace api.Controllers
         public async Task<IActionResult> GetAllFlights(int pageNumber=1,int pageSize=20)
         {
             var (flights,totalCount) = await _flightRepo.GetAllFlights(pageNumber,pageSize);
+            _logger.LogInformation("Listed all flights");
             return Ok(new
             {
                 flights,
                 totalCount,
                 pageNumber,
                 pageSize
-                
+
             });
         }
         [HttpGet("getSources")]

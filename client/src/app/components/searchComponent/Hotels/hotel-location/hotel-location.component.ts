@@ -18,7 +18,8 @@ export class HotelLocationComponent implements OnInit{
   locations:Set<string>=new Set<string>();
   constructor(private hotelService:HotelServiceService){}
   ngOnInit(): void {
-   this.hotelService.getHotelLocations().subscribe((response)=>{
+   this.hotelService.getHotelLocations().subscribe((response:any)=>{
+    response=response.result;
     for(let i=0;i<response.length;i++)
     {
       this.locations.add(response[i]);

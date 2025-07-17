@@ -23,7 +23,7 @@ export class CarRentalService {
     const headers=new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.get(`${this.url}/getAllCarRentals?pageNumber=${pageNumber.toString()}&pageSize=${pageSize.toString()}`,{headers:headers});
+    return this.http.get(`${this.url}/getAllCarRentals?pageNumber=${pageNumber.toString()}&pageSize=${pageSize.toString()}`);
   }
   getById(id:any):Observable<any>
   {
@@ -31,7 +31,7 @@ export class CarRentalService {
     const headers=new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.get(`${this.url}/getById?id=${id}`,{headers:headers});
+    return this.http.get(`${this.url}/getById?id=${id}`);
   }
   createCarRental(carRentalData:CarRental)
   {
@@ -39,7 +39,7 @@ export class CarRentalService {
     const headers=new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.post(`${this.url}/createCarRental`,carRentalData,{headers:headers});
+    return this.http.post(`${this.url}/createCarRental`,carRentalData);
   }
   searchByCarName(name:any):Observable<any>
   {
@@ -51,7 +51,7 @@ updateCarRental(id:any,carRentalData:CarRental)
     const headers=new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.put(`${this.url}/updateCarRental?id=${id}`,carRentalData,{headers:headers});
+    return this.http.put(`${this.url}/updateCarRental?id=${id}`,carRentalData);
 }
 deleteCarRental(id:any)
 {
@@ -59,6 +59,6 @@ deleteCarRental(id:any)
     const headers=new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.delete(`${this.url}/deleteCarRental?id=${id}`,{headers:headers});
+    return this.http.delete(`${this.url}/deleteCarRental?id=${id}`);
 }
 }

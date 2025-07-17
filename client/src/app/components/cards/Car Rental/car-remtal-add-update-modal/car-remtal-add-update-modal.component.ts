@@ -17,7 +17,8 @@ export class CarRemtalAddUpdateModalComponent implements OnInit {
   ngOnInit(): void {
     if(this.id!=undefined)
     {
-        this.carRental.getById(this.id).subscribe((response)=>{
+        this.carRental.getById(this.id).subscribe((response:any)=>{
+          response=response.result;
           this.data=response;
           console.log(this.data);
           this.carRentalData.AvailableFromDate=this.data.availableFromDate;

@@ -19,7 +19,8 @@ export class HotelAdminAddUpdateModalComponent implements OnInit {
     if(this.id!=undefined)
     {
        this.hotel.getById(this.id).subscribe({
-      next:(response)=>{
+      next:(response:any)=>{
+        response=response.result;
         console.log(response);
         this.data=response;
          this.hotelData.bed_type=this.data.bed_type;
@@ -39,6 +40,7 @@ export class HotelAdminAddUpdateModalComponent implements OnInit {
   {
     this.hotel.getById(this.id).subscribe({
       next:(response)=>{
+        response=response.result;
         this.data=response;
       }
     })
@@ -63,6 +65,7 @@ add()
 {
   this.hotel.addHotel(this.hotelData).subscribe({
     next:(response)=>{
+      response=response.result;
       const modelRef=this.modal.dismissAll(this.showToast1=true);
       this.componentEmitted.emit();
     }
@@ -73,6 +76,7 @@ update(id:any,hotelData:Hotel)
 {
   this.hotel.updateHotel(id,hotelData).subscribe({
     next:(response)=>{
+      response=response.result;
       this.modal.dismissAll(this.showToast2=true);
       this.updaterEmitted.emit();
     }

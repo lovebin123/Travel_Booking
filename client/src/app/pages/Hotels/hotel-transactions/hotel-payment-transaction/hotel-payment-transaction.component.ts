@@ -15,6 +15,7 @@ constructor(private hotel:HotelPaymentService){}
   ngOnInit(): void {
     this.hotel.getAllPayments().subscribe({
       next:(response)=>{
+        response=response.result;
         this.data=response;
       }
     })

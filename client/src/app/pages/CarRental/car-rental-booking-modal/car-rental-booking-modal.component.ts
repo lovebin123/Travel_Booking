@@ -19,7 +19,7 @@ book(id:any)
   this.carRental.createCheckout(id).subscribe({
     next:(response)=>{
       console.log(response);
-      document.location.href=response.url;
+      document.location.href=response.result.url;
     }
   })
 }

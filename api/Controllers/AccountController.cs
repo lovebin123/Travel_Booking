@@ -4,6 +4,7 @@ using api.Extensions;
 using api.Interfaces;
 using api.Models;
 using api.Service;
+using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -22,14 +23,17 @@ namespace api.Controllers
         private readonly ITokenService _tokenService;
         private readonly SignInManager<AppUser> _signinManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
+        private readonly ILogger<AppUser> _logger;
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, ILogger<AppUser> logger)
         {
+            Env.Load();
             _userManager = userManager;
             _signinManager = signInManager;
             _tokenService = tokenService;
             _roleManager = roleManager;
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_ID");
             var client = new SendGridClient(apiKey);
+            _logger = logger;
         }
 
 
@@ -50,12 +54,12 @@ namespace api.Controllers
                 var createdUser = await _userManager.CreateAsync(user, signUpDTO.password);
                 if (createdUser.Succeeded)
                 {
+                    _logger.LogInformation("User created successfully");
                     var role = user.Email == "admin@gmail.com" ? "Admin" : "User";
                     var roleResult = await _userManager.AddToRoleAsync(user, role);
-                    Console.WriteLine(role);
-                    Console.WriteLine(roleResult);
                     if (roleResult.Succeeded)
                     {
+                        _logger.LogInformation("Role assigned successfully");
                         return Ok(
                             new NewUserDTO
                             {
@@ -69,17 +73,20 @@ namespace api.Controllers
                     }
                     else
                     {
+                        _logger.LogInformation("User creation failed");
                         return StatusCode(500, roleResult.Errors);
                     }
                 }
                 else
                 {
+                    _logger.LogInformation("Error");
                     return StatusCode(500, createdUser.Errors);
                 }
 
             }
             catch (Exception e)
             {
+                _logger.LogInformation("Catch block error");
                 return StatusCode(500, e);
             }
         }

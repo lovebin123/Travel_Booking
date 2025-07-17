@@ -11,19 +11,11 @@ export class HotelBookingServiceService {
   private url='http://localhost:5253/api/hotelBooking';
   getUserBookings():Observable<any>
   {
-    const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
-    return this.http.get(`${this.url}/getUserBookings`,{headers:headers});
+    return this.http.get(`${this.url}/getUserBookings`);
   }
   postHotelBooking(id:any,createHotelBooking:createHotelBooking):Observable<any>
   {
-    const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    })
-    return this.http.post(`${this.url}/postBooking?id=${id}`,createHotelBooking,{headers:headers});
+    return this.http.post(`${this.url}/postBooking?id=${id}`,createHotelBooking);
   }
   createSession(id:any):Observable<any>
   {

@@ -25,6 +25,7 @@ pay(id:any)
 {
   this.hotel.createSession(id).subscribe({
     next:(response:any)=>{
+      response=response.result;
       document.location.href=response.url;
     }
   })
