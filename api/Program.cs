@@ -21,7 +21,7 @@ using AutoWrapper;
 using api.Mappers.Hotels;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDBContext>(options=>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),options=>
+options.UseSqlServer(Environment.GetEnvironmentVariable("DB_STRING"),options=>
 {
     options.CommandTimeout(60);
 }));

@@ -29,12 +29,13 @@ namespace api.Repository.Flights
 
         public async Task<List<FlightBooking>> GetUserFlightBookings(AppUser user)
         {
+            
             return await _context.FlightBookings.Where(u => u.user_id == user.Id).Select(fb => new FlightBooking
             {
                 id = fb.id,
                 user_id = fb.user_id,
-                isBooked=fb.isBooked,
-                paymentId=fb.paymentId,
+                isBooked = fb.isBooked,
+                paymentId = fb.paymentId,
                 Flight = new Flight
                 {
                     id = fb.flight_id,
@@ -47,8 +48,8 @@ namespace api.Repository.Flights
                     time_of_departure = fb.Flight.time_of_departure,
 
                 },
-                amount=fb.amount
-            }).OrderByDescending(x=>x.isBooked).ToListAsync();
+                amount = fb.amount
+            }).OrderByDescending(x => x.isBooked).ToListAsync();
         }
         
     }
