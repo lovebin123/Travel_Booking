@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using Serilog;
 
 namespace api.Controllers
 {
@@ -54,12 +55,12 @@ namespace api.Controllers
                 var createdUser = await _userManager.CreateAsync(user, signUpDTO.password);
                 if (createdUser.Succeeded)
                 {
-                    _logger.LogInformation("User created successfully");
+                    Log.Information("User created successfully");
                     var role = user.Email == "admin@gmail.com" ? "Admin" : "User";
                     var roleResult = await _userManager.AddToRoleAsync(user, role);
                     if (roleResult.Succeeded)
                     {
-                        _logger.LogInformation("Role assigned successfully");
+                        Log.Information("Role assigned successfully");
                         return Ok(
                             new NewUserDTO
                             {
@@ -73,20 +74,20 @@ namespace api.Controllers
                     }
                     else
                     {
-                        _logger.LogInformation("User creation failed");
+                       Log.Information("User creation failed");
                         return StatusCode(500, roleResult.Errors);
                     }
                 }
                 else
                 {
-                    _logger.LogInformation("Error");
+                    Log.Information("Error");
                     return StatusCode(500, createdUser.Errors);
                 }
 
             }
             catch (Exception e)
             {
-                _logger.LogInformation("Catch block error");
+               Log.Information("Catch block error");
                 return StatusCode(500, e);
             }
         }
@@ -97,10 +98,16 @@ namespace api.Controllers
                 return BadRequest(ModelState);
             var user = await _userManager.Users.FirstOrDefaultAsync(x => string.Compare(x.UserName, loginDTO.Email.ToLower()) == 0);
             if (user == null)
+            {
+                Log.Information("Invalid username");
                 return Unauthorized("Invalid username");
+            }
             var result = await _signinManager.PasswordSignInAsync(loginDTO.Email, loginDTO.Password, isPersistent: true, lockoutOnFailure: false);
             if (!result.Succeeded)
+            {
+                Log.Information("Username does not exist");
                 return Unauthorized("Username does not exist");
+            }
             var role = user.Email == "admin@gmail.com" ? "Admin" : "User";
             var roleResult = await _userManager.AddToRoleAsync(user, role);
             return Ok(new NewUserDTO
@@ -123,6 +130,7 @@ namespace api.Controllers
             var user = await _userManager.FindByNameAsync(verifyEmailDTO.Email);
             if (user == null)
             {
+                Log.Information("Email does not exist");
                 return Unauthorized("Email does not exist");
             }
             var from = new EmailAddress("bookvoyage@maildrop.cc", "Book Voyage");
@@ -135,9 +143,15 @@ namespace api.Controllers
             var msg = MailHelper.CreateSingleEmail(from, to, subject, link, htmlContent);
             var response = await client.SendEmailAsync(msg);
             if (response.IsSuccessStatusCode)
+            {
+                Log.Information("Email successfully sent");
                 return Ok(new { username = verifyEmailDTO.Email });
+            }
             else
+            {
+                Log.Information("Failed to send email");
                 return StatusCode((int)response.StatusCode, "Failed to send email");
+            }
         }
 
         [HttpPost("forgotPassword")]
@@ -147,13 +161,23 @@ namespace api.Controllers
                 return BadRequest(ModelState);
             var user = await _userManager.FindByNameAsync(forgotPasswordDTO.Email);
             if (user == null)
+            {
+                Log.Information("User does not exist");
                 return Unauthorized("User does not exist");
+            }
             var result = await _userManager.RemovePasswordAsync(user);
             if (!result.Succeeded)
+            {
+                Log.Information("Failed to change password");
                 return Unauthorized("Failed to change password");
+            }
             result = await _userManager.AddPasswordAsync(user, forgotPasswordDTO.Password);
             if (!result.Succeeded)
+            {
+                Log.Information("Password change failed");
                 return Unauthorized("Password change failed");
+            }
+            Log.Information("Password change was successful");
             return Ok(new { message = "Password change was successful" });
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -164,7 +188,11 @@ namespace api.Controllers
                 return BadRequest();
             var user = await _userManager.FindByNameAsync(email);
             if (user == null)
+            {
+                Log.Information("User name does not exist");
                 return Unauthorized();
+            }
+            Log.Information("User name successfully found");
             return Ok(user);
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -181,6 +209,7 @@ namespace api.Controllers
                 user.PhoneNumber,
             };
             Console.WriteLine(userDetails);
+            Log.Information("Successfully fetched user details");
             return Ok(userDetails);
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -201,6 +230,7 @@ namespace api.Controllers
                 user.Email,
                 user.PhoneNumber,
             };
+            Log.Information("Edited details successfylly");
             return Ok(userDetails);
         }
        
