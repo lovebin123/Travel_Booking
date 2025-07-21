@@ -17,6 +17,7 @@ using api.Interfaces.Car_Rentals;
 using api.Repository.Car_Rentals;
 using DotNetEnv;
 using api.Mappers;
+using Serilog;
 using AutoWrapper;
 using api.Mappers.Hotels;
 var builder = WebApplication.CreateBuilder(args);
@@ -106,6 +107,10 @@ builder.Services.AddScoped<ICarRentalBookingRepository, CarRentalBookingReposito
 builder.Services.AddScoped<ICarRentalStripeRepository, CarRentalStripeRepository>();
 builder.Services.AddScoped<ICarRentalPaymentRepository, CarRentalPaymentRepository>();
 builder.Services.AddCors();
+using var log = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
+Log.Logger = log;
 Env.Load();
 var app = builder.Build();
 app.UseApiResponseAndExceptionWrapper();

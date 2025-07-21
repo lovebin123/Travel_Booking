@@ -8,7 +8,6 @@ namespace api.Models.Flights
         public int id { get; set; }
         [MaxLength(255)]
         public string? name { get; set; }
-        [Range(1000,3000)]
         public double price { get; set; }
         public string? source { get; set; }
         public string? destination { get; set; }
