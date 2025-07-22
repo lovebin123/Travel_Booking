@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace api.Controllers.Hotels
 {
@@ -26,12 +27,14 @@ namespace api.Controllers.Hotels
             if (!ModelState.IsValid)
                 return BadRequest();
             var hotels = await _hotelRepo.GetHotelsByQuery(hotelQuery);
+            Log.Information("Fetched hotels based on query");
             return Ok(hotels);
         }
         [HttpGet("searchByHotelName")]
         public async Task<IActionResult> SearchByHotelName(string name)
         {
             var hotels = await _hotelRepo.GetByHotelName(name);
+            Log.Information("Fetched hotels based on name");
             return Ok(hotels);
         }
         [HttpGet("getAllHotels")]
