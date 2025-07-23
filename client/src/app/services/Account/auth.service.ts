@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {JwtHelperService} from "@auth0/angular-jwt"
-import { Observable, timeout } from 'rxjs';
+import { Observable, Subject, throwError, timeout } from 'rxjs';
 import { UserDetails } from '../../models/userDetails';
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,6 @@ import { UserDetails } from '../../models/userDetails';
 export class AuthService {
   private url="http://localhost:5253/api/account";
   private jwtHelper=new JwtHelperService();
-
   constructor(private http:HttpClient,private router:Router) { }
   signup(userData:any)
   {
@@ -27,12 +26,13 @@ export class AuthService {
   {
     return this.http.post(this.url+'/forgotPassword',userData);
   }
-  saveToken(token:string)
+  refreshToken():Observable<any>
   {
-    if(typeof window!="undefined")
-    {
-      localStorage.setItem('token',token);
-    }
+    return this.http.get(`${this.url}/refresh`);
+  }
+  revokeToken():Observable<any>
+  {
+    return this.http.delete(`${this.url}/revokeToken`);
   }
   findEmail(token:any)
   {
@@ -56,7 +56,11 @@ export class AuthService {
     else
     return null;
   }
- 
+ saveUser(user:any)
+ {
+    localStorage.removeItem('user');
+    localStorage.setItem('user',JSON.stringify(user));
+ }
 getUserName() {
   const email = this.getEmail();
   return this.http.get(this.url + `/getUserName?email=${email}`);

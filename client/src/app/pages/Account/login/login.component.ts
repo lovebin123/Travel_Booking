@@ -1,8 +1,8 @@
-import { ChangeDetectorRef, Component, DoCheck, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, DoCheck, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {faUser,faEnvelope,faLock} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Router, RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators,ReactiveFormsModule } from '@angular/forms';
 import {CommonModule} from "@angular/common";
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../../services/Account/auth.service';
@@ -10,53 +10,52 @@ import { tick } from '@angular/core/testing';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FontAwesomeModule,RouterLink,FormsModule,CommonModule,NgbToastModule],
+  imports: [FontAwesomeModule,RouterLink,FormsModule,CommonModule,NgbToastModule,ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent implements OnDestroy,DoCheck {
-no_of_ticks:number=0;
-oldData:string='';
-data:string[]=['initial'];
+export class LoginComponent implements OnDestroy,OnInit {
+  registerForm!:FormGroup;
+  submitted=false;
   faUser=faUser;
 faEnvelope=faEnvelope;
 faKey=faLock;
-userData={email:'',password:''};
 showToast=false;
-constructor(private auth:AuthService,private router:Router,private change:ChangeDetectorRef){
-  this.change.detach();
-  setTimeout(()=>{
-    this.oldData='final';
-    this.data.push('intermediate');
-  },3000);
-  setTimeout(()=>{
-    this.data.push('final');
-    this.change.markForCheck();
-  },6000);
+errorMessage='';
+constructor(private auth:AuthService,private router:Router,private fb:FormBuilder){
 }
-
-  ngDoCheck(): void {
-   console.log(++this.no_of_ticks);
-   if(this.data[this.data.length-1]!==this.oldData)
-    this.change.detectChanges();
-
+  ngOnInit(): void {
+    this.registerForm=this.fb.group({
+      email:['',Validators.required,Validators.email],
+      password:['',Validators.required]
+    })
   }
   ngOnDestroy(): void {
-    this.userData.email='';
-    this.userData.password='';
+    this.registerForm.value.email='';
+    this.registerForm.value.password='';
   }
 @ViewChild('showPassword',{static:false}) showPassword!:ElementRef;
 @ViewChild('password',{static:false})password!:ElementRef;
+get registerFormControlEmail()
+{
+  return this.registerForm.get('email');
+}
+get registerFormControlPassword()
+{
+  return this.registerForm.get('password');
+}
 login() {
+  this.submitted=true;
+  console.log(this.registerForm.value);
   this.auth.login({
-    email:this.userData.email,
-    password:this.userData.password
+    email:this.registerForm.value.email,
+    password:this.registerForm.value.password
   }).subscribe({
     next: (response: any) => {
       console.log(response);
       localStorage.setItem('token', response.result.token);
       localStorage.setItem('role',response.result.role);
-      if(this.userData.email==='admin@gmail.com')
+      if(this.registerForm.value.email==='admin@gmail.com')
       {
         this.ngOnDestroy();
           this.router.navigate(['/admin'])
@@ -64,9 +63,10 @@ login() {
       else
           this.router.navigate(['/dashboard']);
     },
-    error: () => {
+    error: (err:any) => {
       this.showToast=true;
-      console.log("Error");
+      this.errorMessage=err.error.responseException.exceptionMessage;
+      console.log(this.errorMessage)
     }
   });
 }

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Flight } from '../../models/flight';
 
 @Injectable({
@@ -11,7 +11,8 @@ import { Flight } from '../../models/flight';
 export class FlightsService {
 private jwtHelper=new JwtHelperService();
 private url='http://localhost:5253/api/flights';
-  constructor(private http:HttpClient,private router:Router) { }
+  tokenExpired$:Subject<boolean>=new Subject<boolean>();  
+constructor(private http:HttpClient,private router:Router) { }
 getByQuery(flightData: any): Observable<any> {
   
   const queryParams = `?source=${flightData.source}&destination=${flightData.destination}&date_of_departure=${flightData.date_of_departure}&seatType=${flightData.seatType}`;
