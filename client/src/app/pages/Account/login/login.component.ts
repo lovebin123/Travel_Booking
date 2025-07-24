@@ -26,7 +26,7 @@ constructor(private auth:AuthService,private router:Router,private fb:FormBuilde
 }
   ngOnInit(): void {
     this.registerForm=this.fb.group({
-      email:['',Validators.required,Validators.email],
+      email:['',[Validators.required,Validators.email]],
       password:['',Validators.required]
     })
   }

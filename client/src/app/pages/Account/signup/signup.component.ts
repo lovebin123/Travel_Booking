@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -10,22 +10,49 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterLink, NgbToastModule,FontAwesomeModule],
+  imports: [CommonModule,FormsModule,RouterLink, NgbToastModule,FontAwesomeModule,ReactiveFormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
+  registerForm!:FormGroup;
   userData = { firstName: '', lastName: '', email: '', password: '' };
   cpassword = '';
   accepted_terms = false;
   error_message = '';
   passwordMismach = false;
   showToast = false;
+  submitted=false;
   faEnvelope = faEnvelope;
   faKey = faLock;
   faUser = faUser;
 
-  constructor(private authservice: AuthService, private router: Router) {}
+  constructor(private authservice: AuthService, private router: Router,private fb:FormBuilder) {}
+  ngOnInit(): void {
+    this.registerForm=this.fb.group({
+      firstName:['',Validators.required],
+      lastName:[''],
+      email:['',[Validators.required,Validators.email]],
+      password:['',Validators.required],
+      confirmPassword:['',Validators.required]
+    })
+
+  }
+  get registerFormFirstName(){
+    return this.registerForm.get('firstName');
+  }
+  get registerFormlastName()
+  {
+    return this.registerForm.get('lastName');
+  }
+  get registerFormEmail()
+  {
+    return this.registerForm.get('email');
+  }
+  get registerFormPassword()
+  {
+    return this.registerForm.get('password')
+  }
   checkPassword()
   {
     if(this.userData.password==this.cpassword)

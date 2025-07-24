@@ -11,7 +11,7 @@
 }
 
 <div class="d-flex justify justify-content-center align-items-center bg-custom" style="height:calc(100vh - 0px);">
-  <form class="form" [formGroup]="registerForm" (ngSubmit)="login()">
+  <form class="form was-validated" [formGroup]="registerForm" (ngSubmit)="login()">
   <div class="card " style="width: 36rem; height: 36rem;">
     <div class="card-body d-flex flex-column justify-content-center align-items-center">
       <div class="d-flex gap-md-4 flex-column justify-content-center align-items-center " >
@@ -24,7 +24,7 @@
     <span class="input-group-text" >
   <fa-icon [icon]="faEnvelope"></fa-icon>
 </span>
-<input required name="email" id="email" formControlName="email" type="text" class="form-control p-2 btn-x border-start-0" placeholder="Email" >
+<input required name="email" id="email" formControlName="email" type="text" class="form-control p-2 btn-x border-start-0" required placeholder="Email" >
 </div>
  <span class="text-danger"  *ngIf="(registerFormControlEmail?.touched && registerFormControlEmail?.invalid) && registerFormControlEmail?.errors">
                              Email is required
