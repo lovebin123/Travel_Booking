@@ -8,6 +8,7 @@ namespace api.DTO.Account
         public string LastName { get; set; }
         public string? Email { get; set; }
         public string? Token { get; set; }
+        public string RefreshToken { get; set; }
         public string Role { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OOfmaHNCGdc=",
+  "dgSpecHash": "R67sI8H3oY0=",
   "success": true,
   "projectFilePath": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking_Website\\Travel_Booking\\api\\api.csproj",
   "expectedPackageFiles": [
@@ -83,6 +83,7 @@
     "C:\\Users\\A2832859\\.nuget\\packages\\sendgrid\\9.29.3\\sendgrid.9.29.3.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\serilog\\4.3.0\\serilog.4.3.0.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\serilog.sinks.console\\6.0.0\\serilog.sinks.console.6.0.0.nupkg.sha512",
+    "C:\\Users\\A2832859\\.nuget\\packages\\serilog.sinks.file\\7.0.0\\serilog.sinks.file.7.0.0.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\sprache\\2.3.1\\sprache.2.3.1.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\starkbank-ecdsa\\1.3.3\\starkbank-ecdsa.1.3.3.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\stripe.net\\48.1.0\\stripe.net.48.1.0.nupkg.sha512",

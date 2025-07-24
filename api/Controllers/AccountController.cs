@@ -25,9 +25,11 @@ namespace api.Controllers
         private readonly SignInManager<AppUser> _signinManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<AppUser> _logger;
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, ILogger<AppUser> logger)
+        private readonly IConfiguration _config;
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, ILogger<AppUser> logger,IConfiguration config)
         {
             Env.Load();
+            _config = config;
             _userManager = userManager;
             _signinManager = signInManager;
             _tokenService = tokenService;
@@ -69,6 +71,7 @@ namespace api.Controllers
                                 Email = user.Email,
                                 Token = _tokenService.CreateToken(user),
                                 Role = role,
+                                RefreshToken = _tokenService.GenerateRefreshToken()
                             }
                         );
                     }
@@ -105,16 +108,20 @@ namespace api.Controllers
             var result = await _signinManager.PasswordSignInAsync(loginDTO.Email, loginDTO.Password, isPersistent: true, lockoutOnFailure: false);
             if (!result.Succeeded)
             {
-                Log.Error("Username does not exist");
-                return Unauthorized("Username does not exist");
+                Log.Error("Invalid credentials");
+                return Unauthorized("Invalid credentials");
             }
             var role = user.Email == "admin@gmail.com" ? "Admin" : "User";
             var roleResult = await _userManager.AddToRoleAsync(user, role);
+            var accessToken = _tokenService.CreateToken(user);
+            var refreshToken = _tokenService.GenerateRefreshToken();
+          
             return Ok(new NewUserDTO
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
+                RefreshToken = refreshToken,
                 Token = _tokenService.CreateToken(user),
                 Role = role
 
@@ -233,6 +240,18 @@ namespace api.Controllers
             Log.Information("Edited details successfylly");
             return Ok(userDetails);
         }
+        [HttpPost("refresh")]
+        public async Task<IActionResult>RefreshPage(TokenResponse tokenResponse)
+        {
+            var newAccessToken = _tokenService.GenerateAccessTokenRefreshToken(tokenResponse.AccessToken, _config["SigningKey"]);
+            var refreshToken = _tokenService.GenerateRefreshToken();
+            var response = new TokenResponse
+            {
+                AccessToken = newAccessToken,
+                RefreshToken = refreshToken
+            };
+            return Ok(response);
+                }
        
     }
 }

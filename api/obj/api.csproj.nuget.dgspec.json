@@ -115,6 +115,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Stripe.net": {
               "target": "Package",
               "version": "[48.1.0, )"
