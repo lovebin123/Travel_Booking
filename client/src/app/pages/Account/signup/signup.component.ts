@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from '../../../services/Account/auth.service';
 import { Router } from '@angular/router';
+import { invalid } from 'moment';
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -33,10 +34,11 @@ export class SignupComponent implements OnInit{
       firstName:['',Validators.required],
       lastName:[''],
       email:['',[Validators.required,Validators.email]],
-      password:['',Validators.required],
+      password:['',[Validators.required,Validators.minLength(8)]],
       confirmPassword:['',Validators.required]
+    },{
+      validatiors:this.checkPassword('password','confirmPassword')
     })
-
   }
   get registerFormFirstName(){
     return this.registerForm.get('firstName');
@@ -49,19 +51,40 @@ export class SignupComponent implements OnInit{
   {
     return this.registerForm.get('email');
   }
-  get registerFormPassword()
+   get registerFormPassword()
   {
-    return this.registerForm.get('password')
+    return this.registerForm.get('password');
   }
-  checkPassword()
+    get registerFormConfirmPassword()
   {
-    if(this.userData.password==this.cpassword)
-    {
-      this.passwordMismach=true;
-      return;
+    return this.registerForm.get('confirmPassword');
+  }
+  checkPassword(password:string,confirmPassword:string):ValidatorFn
+  {
+    return (formGroup:AbstractControl):{ [ key:string ]: any }| null=>{
+      console.log(formGroup.get(password));
+      const passwordControl=formGroup.get(password);
+      const confirmPasswordCOntrol=formGroup.get(confirmPassword);
+      if(!passwordControl || !confirmPasswordCOntrol)
+      {
+        return null
+      }
+      if(confirmPasswordCOntrol.errors && !confirmPasswordCOntrol.errors['checkPassword'])
+      {
+        return null;
+      }
+      if(passwordControl.value !==confirmPasswordCOntrol.value)
+      {
+        confirmPasswordCOntrol.setErrors({ passwordMismatch:true });
+        return { passwordMismach:true };
+      }
+        else{
+        confirmPasswordCOntrol.setErrors(null);
+        return null;   
+        }
+      }
     }
-    this.passwordMismach=false;
-  }
+  
   handleChange()
   {
    if(this.accepted_terms==false)
@@ -76,10 +99,15 @@ export class SignupComponent implements OnInit{
     this.showToast1=true;
     return;
     }
-    this.authservice.signup(this.userData).subscribe({
+    this.authservice.signup({
+      firstName:this.registerForm.value.firstName,
+      lastName:this.registerForm.value.lastName,
+      email:this.registerForm.value.email,
+      password:this.registerForm.value.password,
+
+    }).subscribe({
       next: (response: any) => {
-        this.checkPassword();
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('token', response.result.token);
         this.router.navigate(['/login']);
       },
       error: () => {

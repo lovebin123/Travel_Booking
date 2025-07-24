@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Logs\" />
+    <Folder Include="Service\Flights\" />
   </ItemGroup>
 
 </Project>

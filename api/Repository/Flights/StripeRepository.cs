@@ -29,11 +29,15 @@ namespace api.Service
                 throw new Exception("Booking or flight not found");
             var sessionOptions = new SessionCreateOptions
             {
+                CustomerEmail=flightBooking.AppUser.Email,
+                
                 PaymentMethodTypes = new List<string> { "card" },
                 LineItems = new List<SessionLineItemOptions>
                 {
+                   
                     new SessionLineItemOptions
                     {
+                        
                         PriceData = new SessionLineItemPriceDataOptions
                         {
                             Currency = "inr",
@@ -42,7 +46,8 @@ namespace api.Service
                             {
                                 Name = flightBooking.Flight.name,
                                 Images=new List<string>{"https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/AI.png?v=20%22"},
-                            }
+                            },
+                          
                         },
                         Quantity = 1
                     }

@@ -1,3 +1,15 @@
 2025-07-24 12:21:52.858 +05:30 [INF] Listed all destinations
 2025-07-24 12:22:01.471 +05:30 [INF] Listed all destinations
 2025-07-24 12:22:01.493 +05:30 [INF] User name successfully found
+2025-07-24 12:53:29.318 +05:30 [INF] Listed all destinations
+2025-07-24 12:53:29.330 +05:30 [INF] User name successfully found
+2025-07-24 12:54:29.702 +05:30 [INF] Flights listed successfully based on query
+2025-07-24 13:06:19.125 +05:30 [INF] User name successfully found
+2025-07-24 13:06:19.151 +05:30 [INF] Listed all destinations
+2025-07-24 13:06:33.914 +05:30 [ERR] Invalid credentials
+2025-07-24 18:02:39.195 +05:30 [INF] User created successfully
+2025-07-24 18:02:39.288 +05:30 [INF] Role assigned successfully
+2025-07-24 20:20:43.428 +05:30 [INF] User created successfully
+2025-07-24 20:20:43.440 +05:30 [INF] Role assigned successfully
+2025-07-24 20:44:32.033 +05:30 [INF] User created successfully
+2025-07-24 20:44:32.047 +05:30 [INF] Role assigned successfully

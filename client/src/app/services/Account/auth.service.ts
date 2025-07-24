@@ -13,6 +13,7 @@ export class AuthService {
   constructor(private http:HttpClient,private router:Router) { }
   signup(userData:any)
   {
+    console.log(userData);
     return this.http.post(this.url+'/signup',userData);
   }
   login(userData: any) {

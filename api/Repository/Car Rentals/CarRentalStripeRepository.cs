@@ -24,6 +24,7 @@ namespace api.Repository.Car_Rentals
                 throw new Exception("Booking not found");
             var sessionOptions = new SessionCreateOptions
             {
+                CustomerEmail=booking.user.Email,
                 PaymentMethodTypes = new List<string> { "card" },
                 LineItems = new List<SessionLineItemOptions>
                 {
