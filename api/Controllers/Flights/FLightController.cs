@@ -20,12 +20,12 @@ namespace api.Controllers
     {
         private readonly ApplicationDBContext _context;
         private readonly IFlightRepository _flightRepo;
-        private readonly StripeRepository _stripe;
-        private readonly ILogger<Flight> _logger;
-        public FLightController(ApplicationDBContext context, IFlightRepository flightRepo, ILogger<Flight> logger)
+        private readonly FlightMapper _flightMapper;
+        
+        public FLightController(ApplicationDBContext context, IFlightRepository flightRepo,FlightMapper mapper)
         {
             _context = context;
-            _logger = logger;
+            _flightMapper = mapper;
             _flightRepo = flightRepo;
         }
         [HttpGet("getByQuery")]
@@ -39,7 +39,6 @@ namespace api.Controllers
         public async Task<IActionResult> SearchByFlightName([FromQuery] string name)
         {
             var flights = await _flightRepo.GetSearchFlights(name);
-            _logger.LogInformation("Flights fetched successfully based on name");
             return Ok(flights);
         }
         [HttpGet("getAllFlights")]
@@ -78,7 +77,8 @@ namespace api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> CreateFlight(FlightDTO flightModal)
         {
-            var flights = await _flightRepo.CreateFlight(flightModal);
+           var flight= _flightMapper.ConvertFlightDTOToFlight(flightModal);
+            var flights = await _flightRepo.AddAsync(flight);
             Log.Information("Created Flight Successfully");
             return Ok(flights);
         }
@@ -86,7 +86,7 @@ namespace api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
-            var flight = await _flightRepo.GetById(id);
+            var flight = await _flightRepo.GetByIdAsync(id);
             Log.Information("Fetched based on Id");
             return Ok(flight);
         }
@@ -94,7 +94,8 @@ namespace api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> UpdateFlight(int id, FlightDTO flightModal)
         {
-            var flight = await _flightRepo.UpdateFlight(id, flightModal);
+            var nFlight = _flightMapper.ConvertFlightDTOToFlight(flightModal);
+            var flight = await _flightRepo.UpdateAsync( nFlight,id);
             Log.Information("Updated Flight Successfully");
             return Ok(flight);
         }
@@ -102,7 +103,7 @@ namespace api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> DeleteFlight(int id)
         {
-             await _flightRepo.DeleteById(id);
+             await _flightRepo.DeleteAsync(id);
             Log.Information("Deleted flight Successfully");
             return NoContent();
         }

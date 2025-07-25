@@ -54,7 +54,7 @@ namespace api.Controllers.Flights
                 amount = (int)((Int32.Parse(no_of_adults1) + Int32.Parse(no_of_children11)) * flight.price),
 
             };
-            await _flightBookingRepository.CreateAsync(flightBooking);
+            await _flightBookingRepository.AddAsync(flightBooking);
             return Ok(flightBooking);
         }
         [HttpGet("getBookings")]

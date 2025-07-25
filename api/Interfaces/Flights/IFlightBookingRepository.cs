@@ -4,10 +4,9 @@ using api.Models.Flights;
 
 namespace api.Interfaces.Flights
 {
-    public interface IFlightBookingRepository
+    public interface IFlightBookingRepository:IGenericRepository<FlightBooking>
     {
         Task<List<FlightBooking>>GetUserFlightBookings(AppUser user);
-        Task<FlightBooking?> GetById(int id);
-        Task<FlightBooking> CreateAsync(FlightBooking flightBooking);
+     
     }
 }

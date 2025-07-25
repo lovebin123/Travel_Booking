@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using api.Data;
 using api.DTO.Flight;
 using api.Helpers;
@@ -10,14 +11,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository.Flights
 {
-    public class FlightRepository : IFlightRepository
+    public class FlightRepository : IFlightRepository,IDisposable
     {
         private readonly ApplicationDBContext _context;
-        private readonly FlightMapper _flightMapper;
-        public FlightRepository(ApplicationDBContext context, FlightMapper flightMapper)
+        public FlightRepository(ApplicationDBContext context)
         {
             _context = context;
-            _flightMapper = flightMapper;
         }
         public async Task<List<Flight>> GetFlightsByQuery(QueryObject query)
         {
@@ -84,48 +83,57 @@ namespace api.Repository.Flights
             }).Skip((PageSize-1)*PageNumber).Take(PageNumber).ToListAsync();
             return (flights,totalCount);
         }
+ 
 
-        public async Task<Flight> CreateFlight(FlightDTO flightModal)
+        public async Task<Flight> AddAsync(Flight entity)
         {
-
-            var flights = _flightMapper.ConvertFlightDTOToFlight(flightModal);
-            await _context.AddAsync(flights);
+            await _context.Flights.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return flights;
-        }
-        public async Task<Flight> GetById(int id)
-        {
-            var flight = await _context.Flights.Where(x => x.id == id).FirstOrDefaultAsync();
-            return flight;
+            return entity;
         }
 
-        public async Task<Flight> UpdateFlight(int id, FlightDTO flightDTO)
+
+        public async Task<Flight> UpdateAsync(Flight entity,int id)
         {
             var flights = await _context.Flights.Where(x => x.id == id).FirstOrDefaultAsync();
-            flights.date_of_departure = flightDTO.date_of_departure;
-            flights.destination = flightDTO.destination;
-            flights.name = flightDTO.name;
-            flights.no_of_seats = flightDTO.no_of_seats;
-            flights.price = flightDTO.price;
-            flights.seatType = flightDTO.seatType;
-            flights.time_of_arrival = flightDTO.time_of_arrival;
-            flights.source = flightDTO.source;
-            flights.time_of_departure = flightDTO.time_of_departure;
+            flights.date_of_departure = entity.date_of_departure;
+            flights.destination = entity.destination;
+            flights.name = entity.name;
+            flights.no_of_seats = entity.no_of_seats;
+            flights.price = entity.price;
+            flights.seatType = entity.seatType;
+            flights.time_of_arrival = entity.time_of_arrival;
+            flights.source = entity.source;
+            flights.time_of_departure = entity.time_of_departure;
             _context.SaveChanges();
             return flights;
         }
 
-        public async Task DeleteById(int id)
+        public async Task DeleteAsync(int id)
         {
-            var flights = await _context.Flights.FirstOrDefaultAsync(x=>x.id==id);
+            var flights = await _context.Flights.FirstOrDefaultAsync(x => x.id == id);
             _context.Flights.Remove(flights);
             _context.SaveChanges();
-            
+        }
+        private bool _disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            _disposed = true;
         }
 
-        public Task<FlightDTO> SampleFlightToFlightDTO(Flight flight)
+        public void Dispose()
         {
-            throw new NotImplementedException();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+      
     }
 }

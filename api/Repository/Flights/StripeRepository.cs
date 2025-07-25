@@ -24,7 +24,7 @@ namespace api.Service
 
         public async Task<Session> CreateFlightBookingPaymentSession(int bookingId)
         {
-            var flightBooking = await _flightBookingRepository.GetById(bookingId);
+            var flightBooking = await _flightBookingRepository.GetByIdAsync(bookingId);
             if (flightBooking == null)
                 throw new Exception("Booking or flight not found");
             var sessionOptions = new SessionCreateOptions
@@ -73,7 +73,7 @@ namespace api.Service
         {
             var sessionService = new SessionService();
             var session = sessionService.Get(sessionId);
-            var booking = await _flightBookingRepository.GetById(bookingId);
+            var booking = await _flightBookingRepository.GetByIdAsync(bookingId);
             var payementIntentService = new PaymentIntentService();
             var paymentIntent = payementIntentService.Get(session.PaymentIntentId);
             var chargeId = paymentIntent.LatestChargeId;

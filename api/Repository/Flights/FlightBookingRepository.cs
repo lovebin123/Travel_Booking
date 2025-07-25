@@ -14,16 +14,23 @@ namespace api.Repository.Flights
         {
             _context = context;
         }
-        public async Task<FlightBooking> CreateAsync(FlightBooking flightBooking)
+        public async Task<FlightBooking> AddAsync(FlightBooking flightBooking)
         {
             await _context.FlightBookings.AddAsync(flightBooking);
             await _context.SaveChangesAsync();
             return flightBooking;
         }
 
-        public async Task<FlightBooking?> GetById(int id)
+        public async Task DeleteAsync(int id)
         {
-         return await _context.FlightBookings.Include(ft=>ft.Flight).Include(u=>u.AppUser).FirstOrDefaultAsync(x => x.id == id);
+             var flights = await _context.FlightBookings.FirstOrDefaultAsync(x => x.id== id);
+            _context.FlightBookings.Remove(flights);
+            _context.SaveChanges();
+        }
+
+        public async Task<FlightBooking?> GetByIdAsync(int id)
+        {
+            return await _context.FlightBookings.FirstOrDefaultAsync(x => x.id == id);
 
         }
 
@@ -51,6 +58,10 @@ namespace api.Repository.Flights
                 amount = fb.amount
             }).OrderByDescending(x => x.isBooked).ToListAsync();
         }
-        
+
+        public Task<FlightBooking> UpdateAsync(FlightBooking entity, int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

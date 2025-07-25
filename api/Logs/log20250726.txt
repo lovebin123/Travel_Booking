@@ -1,0 +1,5 @@
+2025-07-26 00:03:13.926 +05:30 [INF] User created successfully
+2025-07-26 00:03:14.056 +05:30 [INF] Role assigned successfully
+2025-07-26 00:03:23.020 +05:30 [INF] User name successfully found
+2025-07-26 00:03:23.046 +05:30 [INF] Listed all destinations
+2025-07-26 00:03:34.495 +05:30 [INF] Flights listed successfully based on query
