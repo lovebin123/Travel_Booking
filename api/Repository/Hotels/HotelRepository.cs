@@ -18,7 +18,7 @@ namespace api.Repository.Hotels
             _context = context;
         }
 
-        public async Task<Hotel> CreateHotel(HotelDTO hotelModel)
+        public async Task<Hotel> AddAsync(Hotel hotelModel)
         {
             var hotel = new Hotel
             {
@@ -37,7 +37,7 @@ namespace api.Repository.Hotels
             return hotel;
         }
         
-        public async Task DeleteHotel(int id)
+        public async Task DeleteAsync(int id)
         {
             var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
             _context.hotels.Remove(hotel);
@@ -66,7 +66,7 @@ namespace api.Repository.Hotels
 
        
 
-        public async Task<Hotel> GetById(int id)
+        public async Task<Hotel> GetByIdAsync(int id)
         {
             var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
             return hotel;
@@ -97,7 +97,7 @@ namespace api.Repository.Hotels
             return locations;
         }
 
-        public async Task<Hotel> UpdateHotel(int id, HotelDTO hotelDTO)
+        public async Task<Hotel> UpdateAsync( Hotel hotelDTO,int id)
         {
             var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
             hotel.bed_type = hotelDTO.bed_type;
@@ -112,5 +112,7 @@ namespace api.Repository.Hotels
             await _context.SaveChangesAsync();
             return hotel;
         }
+
+       
     }
 }

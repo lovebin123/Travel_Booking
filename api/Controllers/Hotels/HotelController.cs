@@ -17,9 +17,11 @@ namespace api.Controllers.Hotels
     public class HotelController : ControllerBase
     {
         private readonly IHotelRepository _hotelRepo;
-        public HotelController(IHotelRepository hotelRepo, UserManager<AppUser> userManager)
+        private readonly HotelMapper _hotelMapper;
+        public HotelController(IHotelRepository hotelRepo, HotelMapper hotelMapper)
         {
             _hotelRepo = hotelRepo;
+            _hotelMapper = hotelMapper;
         }
         [HttpGet("getHotelsFromQuery")]
         public async Task<IActionResult> GetFromQuery([FromQuery] HotelQueryObject hotelQuery)
@@ -54,28 +56,30 @@ namespace api.Controllers.Hotels
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> CreateHotel(HotelDTO hotelModal)
         {
-            var hotel = await _hotelRepo.CreateHotel(hotelModal);
+            var nHotel=_hotelMapper.HotelDTOToHotel(hotelModal);
+            var hotel = await _hotelRepo.AddAsync(nHotel);
             return Ok(hotel);
         }
         [HttpPut("updateHotel")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> UpdatHotel(int id, HotelDTO hotelDTO)
         {
-            var hotel = await _hotelRepo.UpdateHotel(id, hotelDTO);
+            var nHotel=_hotelMapper.HotelDTOToHotel(hotelDTO);
+            var hotel = await _hotelRepo.UpdateAsync( nHotel,id);
             return Ok(hotel);
         }
         [HttpGet("getById")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
-            var hotel = await _hotelRepo.GetById(id);
+            var hotel = await _hotelRepo.GetByIdAsync(id);
             return Ok(hotel);
         }
         [HttpDelete("deleteHotel")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> DeleteHotel(int id)
         {
-            await _hotelRepo.DeleteHotel(id);
+            await _hotelRepo.DeleteAsync(id);
             return NoContent();
         }
     }

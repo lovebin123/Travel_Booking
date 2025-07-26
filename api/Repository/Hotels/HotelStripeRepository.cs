@@ -21,7 +21,7 @@ namespace api.Repository.Hotels
         }
         public async Task<Session> CreateCheckoutSession(int bookingId)
         {
-            var booking = await _hotelBookingRepository.GetById(bookingId);
+            var booking = await _hotelBookingRepository.GetByIdAsync(bookingId);
             if (booking == null)
                 throw new Exception("Booking not found");
             var sessionOptions = new SessionCreateOptions
@@ -65,7 +65,7 @@ namespace api.Repository.Hotels
         {
             var sessionService = new SessionService();
             var session = sessionService.Get(sessionId);
-            var booking = await _hotelBookingRepository.GetById(bookingId);
+            var booking = await _hotelBookingRepository.GetByIdAsync(bookingId);
             if (booking == null)
                 throw new Exception("Booking not found");
             var payementIntentService = new PaymentIntentService();

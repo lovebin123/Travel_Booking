@@ -39,7 +39,7 @@ namespace api.Controllers.Hotels
             var user = await _userManager.FindByNameAsync(username);
             if (user == null)
                 return Unauthorized("User does not exist");
-            var hotel = await _hotelRepository.GetById(id);
+            var hotel = await _hotelRepository.GetByIdAsync(id);
             
             if (hotel.price - Int32.Parse(hotelBookingDTO.no_of_rooms) < 0)
                 return BadRequest();
@@ -55,7 +55,7 @@ namespace api.Controllers.Hotels
                 user_id = user.Id,
                 price = (int)(hotel.price * Int32.Parse(hotelBookingDTO.no_of_rooms)),
             };
-            await _hotelBookingRepo.CreateHotelBooking(booking);
+            await _hotelBookingRepo.AddAsync(booking);
             return Ok(booking);
         }
         [HttpPost("payment-session")]

@@ -16,6 +16,7 @@ namespace api.Mappers
             CreateMap<Flight, FlightDTO>().ReverseMap();
             CreateMap<Hotel, HotelDTO>().ReverseMap();
             CreateMap<CarRental, CarRentalDTO>().ReverseMap();
+           
         }
     }
 }

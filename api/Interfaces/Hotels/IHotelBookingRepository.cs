@@ -4,10 +4,8 @@ using api.Models.Hotels;
 
 namespace api.Interfaces.Hotels
 {
-    public interface IHotelBookingRepository
+    public interface IHotelBookingRepository:IGenericRepository<HotelBooking>
     {
-        Task<HotelBooking> CreateHotelBooking(HotelBooking hotelBooking);
-        Task<HotelBooking> GetById(int bookingId);
         Task<List<HotelBooking>> GetUserBookings(AppUser user);
         
     }

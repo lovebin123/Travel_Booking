@@ -62,7 +62,7 @@ searchByFlightName()
 {
   this.flights.searchByFlightName(this.searchQuery).subscribe({
     next:(response)=>{
-      response=response.result;
+      response=response;
       console.log(response);
       this.data=response;
     }
