@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FlightsService } from '../../../services/Flights/flights.service';
 import { FlightListComponent } from "../../../components/cards/Flights/flight-list/flight-list.component";
-import { NgbModal, NgbPagination, NgbPaginationModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal,NgbPaginationModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlightAdminAddUpdateModalComponent } from "../../../components/cards/Flights/flight-admin-add-update-modal/flight-admin-add-update-modal.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -62,7 +62,7 @@ searchByFlightName()
 {
   this.flights.searchByFlightName(this.searchQuery).subscribe({
     next:(response)=>{
-      response=response.result;
+      response=response;
       console.log(response);
       this.data=response;
     }

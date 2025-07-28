@@ -24,10 +24,8 @@ delete1(id:any)
 {
 this.flight.deleteById(id).subscribe({
 next:(response:any)=>{
-  response=response.result;
   console.log(id);
-  const msg="Successful";
-  this.deleteEmitter.emit(msg);
+  this.deleteEmitter.emit();
   this.modal.dismissAll(this.showToast=true);
 }
 })

@@ -9,6 +9,6 @@ namespace api.Interfaces.Hotels
         Task<HotelBooking> CreateHotelBooking(HotelBooking hotelBooking);
         Task<HotelBooking> GetById(int bookingId);
         Task<List<HotelBooking>> GetUserBookings(AppUser user);
-        
+
     }
 }
