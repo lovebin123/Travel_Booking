@@ -13,31 +13,3 @@
 2025-07-24 20:20:43.440 +05:30 [INF] Role assigned successfully
 2025-07-24 20:44:32.033 +05:30 [INF] User created successfully
 2025-07-24 20:44:32.047 +05:30 [INF] Role assigned successfully
-2025-07-24 23:19:12.854 +05:30 [INF] User name successfully found
-2025-07-24 23:19:12.870 +05:30 [INF] Listed all destinations
-2025-07-24 23:19:17.409 +05:30 [INF] User name successfully found
-2025-07-24 23:40:10.140 +05:30 [INF] User name successfully found
-2025-07-24 23:40:10.197 +05:30 [INF] Listed all flights
-2025-07-24 23:40:12.452 +05:30 [INF] Fetched based on Id
-2025-07-24 23:40:34.851 +05:30 [INF] Listed all flights
-2025-07-24 23:40:34.851 +05:30 [INF] User name successfully found
-2025-07-24 23:40:37.346 +05:30 [INF] Fetched based on Id
-2025-07-24 23:40:46.864 +05:30 [INF] Listed all flights
-2025-07-24 23:40:46.864 +05:30 [INF] User name successfully found
-2025-07-24 23:40:47.691 +05:30 [INF] Listed all flights
-2025-07-24 23:40:47.692 +05:30 [INF] User name successfully found
-2025-07-24 23:40:49.099 +05:30 [INF] Fetched based on Id
-2025-07-24 23:41:16.920 +05:30 [INF] User name successfully found
-2025-07-24 23:41:16.923 +05:30 [INF] Listed all flights
-2025-07-24 23:41:19.556 +05:30 [INF] Fetched based on Id
-2025-07-24 23:41:33.918 +05:30 [INF] User name successfully found
-2025-07-24 23:41:33.918 +05:30 [INF] Listed all flights
-2025-07-24 23:41:40.893 +05:30 [INF] Fetched based on Id
-2025-07-24 23:41:47.824 +05:30 [INF] Fetched based on Id
-2025-07-24 23:42:57.842 +05:30 [INF] User name successfully found
-2025-07-24 23:42:57.842 +05:30 [INF] Listed all flights
-2025-07-24 23:43:07.932 +05:30 [INF] User name successfully found
-2025-07-24 23:43:07.934 +05:30 [INF] Listed all flights
-2025-07-24 23:43:11.609 +05:30 [INF] Fetched based on Id
-2025-07-24 23:44:22.909 +05:30 [INF] User name successfully found
-2025-07-24 23:44:22.910 +05:30 [INF] Listed all flights

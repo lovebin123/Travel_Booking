@@ -1,14 +1,15 @@
-using System;
 using api.DTO.Hotel;
 using api.Helpers;
 using api.Interfaces.Hotels;
 using api.Mappers.Hotels;
 using api.Models;
+using api.Service.Hotels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System;
 
 namespace api.Controllers.Hotels
 {
@@ -16,71 +17,78 @@ namespace api.Controllers.Hotels
     [ApiController]
     public class HotelController : ControllerBase
     {
-        private readonly IHotelRepository _hotelRepo;
-        private readonly HotelMapper _hotelMapper;
-        public HotelController(IHotelRepository hotelRepo, HotelMapper hotelMapper)
+        private readonly IHotelService _hotelService;
+
+        public HotelController(IHotelService hotelService)
         {
-            _hotelRepo = hotelRepo;
-            _hotelMapper = hotelMapper;
+            _hotelService = hotelService;
         }
+
         [HttpGet("getHotelsFromQuery")]
         public async Task<IActionResult> GetFromQuery([FromQuery] HotelQueryObject hotelQuery)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-            var hotels = await _hotelRepo.GetHotelsByQuery(hotelQuery);
+
+            var hotels = await _hotelService.GetHotelsByQuery(hotelQuery);
             Log.Information("Fetched hotels based on query");
             return Ok(hotels);
         }
+
         [HttpGet("searchByHotelName")]
         public async Task<IActionResult> SearchByHotelName(string name)
         {
-            var hotels = await _hotelRepo.GetByHotelName(name);
+            var hotels = await _hotelService.GetByHotelName(name);
             Log.Information("Fetched hotels based on name");
             return Ok(hotels);
         }
+
         [HttpGet("getAllHotels")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> GetAllHotels(int pageNumber=1,int pageSize=20)
+        public async Task<IActionResult> GetAllHotels(int pageNumber = 1, int pageSize = 20)
         {
-            var (hotels,totalCount) = await _hotelRepo.GetAllHotels(pageNumber,pageSize);
-            return Ok(new {hotels,totalCount});
+            var (hotels, totalCount) = await _hotelService.GetAllHotels(pageSize, pageNumber);
+            return Ok(new { hotels, totalCount });
         }
+
         [HttpGet("getLocations")]
-        public async Task<IActionResult> GetLocations()
+        public IActionResult GetLocations()
         {
-            var locations = _hotelRepo.GetLocations();
+            var locations = _hotelService.GetLocations();
             return Ok(locations);
         }
+
         [HttpPost("createHotel")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> CreateHotel(HotelDTO hotelModal)
+        public async Task<IActionResult> CreateHotel(HotelDTO hotelModel)
         {
-            var nHotel=_hotelMapper.HotelDTOToHotel(hotelModal);
-            var hotel = await _hotelRepo.AddAsync(nHotel);
+            var hotel = await _hotelService.CreateHotel(hotelModel);
             return Ok(hotel);
         }
+
         [HttpPut("updateHotel")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> UpdatHotel(int id, HotelDTO hotelDTO)
+        public async Task<IActionResult> UpdateHotel(int id, HotelDTO hotelDTO)
         {
-            var nHotel=_hotelMapper.HotelDTOToHotel(hotelDTO);
-            var hotel = await _hotelRepo.UpdateAsync( nHotel,id);
+            var hotel = await _hotelService.UpdateHotel(id, hotelDTO);
             return Ok(hotel);
         }
+
         [HttpGet("getById")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
-            var hotel = await _hotelRepo.GetByIdAsync(id);
+            var hotel = await _hotelService.GetById(id);
             return Ok(hotel);
         }
+
         [HttpDelete("deleteHotel")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> DeleteHotel(int id)
         {
-            await _hotelRepo.DeleteAsync(id);
+            await _hotelService.DeleteHotel(id);
             return NoContent();
         }
     }
 }
+

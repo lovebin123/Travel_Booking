@@ -13,12 +13,13 @@ namespace api.Repository.Hotels
     public class HotelRepository : IHotelRepository
     {
         private readonly ApplicationDBContext _context;
+
         public HotelRepository(ApplicationDBContext context)
         {
             _context = context;
         }
 
-        public async Task<Hotel> AddAsync(Hotel hotelModel)
+        public async Task<Hotel> CreateHotel(HotelDTO hotelModel)
         {
             var hotel = new Hotel
             {
@@ -30,76 +31,68 @@ namespace api.Repository.Hotels
                 no_of_stars = hotelModel.no_of_stars,
                 price = hotelModel.price,
                 rating = hotelModel.rating,
-                user_review=hotelModel.user_review
+                user_review = hotelModel.user_review
             };
-            await _context.AddAsync(hotel);
+            await _context.hotels.AddAsync(hotel);
             await _context.SaveChangesAsync();
             return hotel;
         }
-        
-        public async Task DeleteAsync(int id)
+
+        public async Task DeleteHotel(int id)
         {
             var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
-            _context.hotels.Remove(hotel);
-            _context.SaveChanges();
-            
+            if (hotel != null)
+            {
+                _context.hotels.Remove(hotel);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public async Task<(List<Hotel>hotels,int totalCount)> GetAllHotels(int PageSize,int PageNumber)
+        public async Task<(List<Hotel> hotels, int totalCount)> GetAllHotels(int pageNumber, int pageSize)
         {
             var totalCount = await _context.hotels.CountAsync();
-            var hotels1 = await _context.hotels.Select(x => new Hotel
-            {
-                bed_type = x.bed_type,
-                bedroom_type = x.bedroom_type,
-                location = x.location,
-                name = x.name,
-                no_of_rooms_available = x.no_of_rooms_available,
-                no_of_stars = x.no_of_stars,
-                price = x.price,
-                rating = x.rating,
-                id = x.id,
-                user_review = x.user_review
-            }).Skip((PageNumber-1)*PageSize).Take(PageSize).ToListAsync();
-            return (hotels1,totalCount);
+            var hotels = await _context.hotels
+                .OrderBy(f => f.id)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+            return (hotels, totalCount);
         }
 
-       
-
-        public async Task<Hotel> GetByIdAsync(int id)
+        public async Task<Hotel> GetById(int id)
         {
-            var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
-            return hotel;
+            return await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
         }
 
         public async Task<List<Hotel>> GetHotelsByQuery(HotelQueryObject query)
         {
             var hotels = _context.hotels.AsQueryable();
-            if (!String.IsNullOrWhiteSpace(query.location))
+
+            if (!string.IsNullOrWhiteSpace(query.location))
             {
-                hotels = hotels.Where(s => s.location.Contains(query.location));
+                hotels = hotels.Where(h => h.location.Contains(query.location));
             }
-            return await hotels.OrderBy(x=>x.price).ToListAsync();
+
+            return await hotels.OrderBy(h => h.price).ToListAsync();
         }
+
         public async Task<List<Hotel>> GetByHotelName(string name)
         {
-            var hotels = _context.hotels.AsQueryable();
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                hotels = hotels.Where(x => x.name.Contains(name));
-            }
-            return await hotels.ToListAsync();
+            return await _context.hotels
+                .Where(h => h.name.Contains(name))
+                .ToListAsync();
         }
 
         public List<string> GetLocations()
         {
-            var locations = _context.hotels.Select(x => x.location).ToList();
-            return locations;
+            return _context.hotels.Select(h => h.location).Distinct().ToList();
         }
 
-        public async Task<Hotel> UpdateAsync( Hotel hotelDTO,int id)
+        public async Task<Hotel> UpdateHotel(int id, HotelDTO hotelDTO)
         {
             var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
+            if (hotel == null) return null;
+
             hotel.bed_type = hotelDTO.bed_type;
             hotel.name = hotelDTO.name;
             hotel.user_review = hotelDTO.user_review;
@@ -109,10 +102,9 @@ namespace api.Repository.Hotels
             hotel.no_of_stars = hotelDTO.no_of_stars;
             hotel.price = hotelDTO.price;
             hotel.rating = hotelDTO.rating;
+
             await _context.SaveChangesAsync();
             return hotel;
         }
-
-       
     }
 }

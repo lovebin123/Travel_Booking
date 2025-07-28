@@ -5,8 +5,7 @@ namespace api.Interfaces.Flights
 {
     public interface IStripePayementRepository
     {
-        Task<Session> CreateFlightBookingPaymentSession(int bookingId);
-            Task<FlightPayement> CreateFlightPayment(FlightPayement payment);
-        Task<FlightPayement> GetSuccess(string sessionId, int bookingId);
+        Task SavePaymentAsync(FlightPayement payment);
+
     }
 }

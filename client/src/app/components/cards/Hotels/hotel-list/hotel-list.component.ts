@@ -66,6 +66,7 @@ bookHotel(id:any,content:TemplateRef<any>)
   this.createHotelBooking.no_of_rooms=this.roomAdults.rooms;
   this.hotelBooking.postHotelBooking(id,this.createHotelBooking).subscribe({
     next:(response:any)=>{
+      response=response.result;
       this.modal.open(content,{size:'lg',centered:true});
       this.data=response;
           },
@@ -77,7 +78,8 @@ bookHotel(id:any,content:TemplateRef<any>)
 pay(id:any)
 {
   this.hotelBooking.createSession(id).subscribe({
-    next:(response)=>{
+    next:(response:any)=>{
+      response=response.result;
       document.location.href=response.url;
     }
   })

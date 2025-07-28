@@ -14,6 +14,7 @@ export class CarRentalDetailsComponent implements OnInit {
   dropoff_date={date:'',month:'',day:'',year:''};
       constructor(private dateService:DateTimeService){}
   ngOnInit(): void {
+    
     this.pickup_date=this.dateService.findDateTime(this.data.bookedFromDate);
     this.dropoff_date=this.dateService.findDateTime(this.data.bookedTillDate);
   }

@@ -1,5 +1,4 @@
 using System;
-using System.Linq.Expressions;
 using api.Data;
 using api.DTO.Flight;
 using api.Helpers;
@@ -11,47 +10,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository.Flights
 {
-    public class FlightRepository : IFlightRepository,IDisposable
+    public class FlightRepository : IFlightRepository
     {
         private readonly ApplicationDBContext _context;
         public FlightRepository(ApplicationDBContext context)
         {
             _context = context;
         }
-        public async Task<List<Flight>> GetFlightsByQuery(QueryObject query)
+        public IQueryable<Flight> GetFlightsAsQueryable()
         {
-            var flights = _context.Flights.AsQueryable();
-            if (!string.IsNullOrWhiteSpace(query.source))
-            {
-                flights = flights.Where(s => s.source.Contains(query.source.ToLower()));
-            }
-            if (!string.IsNullOrWhiteSpace(query.destination))
-            {
-                flights = flights.Where(s => s.destination.Contains(query.destination.ToLower()));
-            }
-            if (!string.IsNullOrWhiteSpace(query.date_of_departure))
-            {
-                flights = flights.Where(s => s.date_of_departure == query.date_of_departure);
-            }
-            if (!string.IsNullOrWhiteSpace(query.seatType))
-            {
-                flights = flights.Where(s => s.seatType.Contains(query.seatType.ToLower()));
-            }
-            return await flights.OrderBy(x => x.price).ToListAsync();
-        }
-        public async Task<List<Flight>> GetSearchFlights(string flightName)
-        {
-            var flights = _context.Flights.AsQueryable();
-            if (!string.IsNullOrWhiteSpace(flightName))
-            {
-                flights = flights.Where(x => x.name.Contains(flightName.ToLower()));
-            }
-            return await flights.ToListAsync();
-        }
-        public List<string> GetSources()
-        {
-            var sources = _context.Flights.Select(x => x.source).ToList();
-            return sources;
+            return _context.Flights.AsQueryable();
         }
 
         public async Task<Flight?> GetByIdAsync(int id)
@@ -59,81 +27,54 @@ namespace api.Repository.Flights
             return await _context.Flights.FirstOrDefaultAsync(x => x.id == id);
         }
 
-        public List<string> GetDestinations()
+        public async Task AddAsync(Flight flight)
         {
-            var destinations = _context.Flights.Select(x => x.destination).ToList();
-            return destinations;
+            await _context.Flights.AddAsync(flight);
         }
 
-        public async Task<(List<Flight>flights1,int totalCount)> GetAllFlights(int PageSize,int PageNumber)
+        public void Update(Flight flight)
         {
-            var totalCount = await _context.Flights.CountAsync();
-            var flights = await _context.Flights.Select(x => new Flight
-            {
-                date_of_departure = x.date_of_departure,
-                destination = x.destination,
-                name = x.name,
-                no_of_seats = x.no_of_seats,
-                price = x.price,
-                seatType = x.seatType,
-                source = x.source,
-                id = x.id,
-                time_of_arrival = x.time_of_arrival,
-                time_of_departure = x.time_of_departure
-            }).Skip((PageSize-1)*PageNumber).Take(PageNumber).ToListAsync();
-            return (flights,totalCount);
-        }
- 
-
-        public async Task<Flight> AddAsync(Flight entity)
-        {
-            await _context.Flights.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return entity;
+            _context.Flights.Update(flight);
         }
 
-
-        public async Task<Flight> UpdateAsync(Flight entity,int id)
+        public void Delete(Flight flight)
         {
-            var flights = await _context.Flights.Where(x => x.id == id).FirstOrDefaultAsync();
-            flights.date_of_departure = entity.date_of_departure;
-            flights.destination = entity.destination;
-            flights.name = entity.name;
-            flights.no_of_seats = entity.no_of_seats;
-            flights.price = entity.price;
-            flights.seatType = entity.seatType;
-            flights.time_of_arrival = entity.time_of_arrival;
-            flights.source = entity.source;
-            flights.time_of_departure = entity.time_of_departure;
-            _context.SaveChanges();
+            _context.Flights.Remove(flight);
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
+
+        public List<string> GetSources()
+        {
+
+            var flights= _context.Flights.Select(x => x.source).ToList();
             return flights;
         }
 
-        public async Task DeleteAsync(int id)
+        public List<string> GetDestinations()
         {
-            var flights = await _context.Flights.FirstOrDefaultAsync(x => x.id == id);
-            _context.Flights.Remove(flights);
-            _context.SaveChanges();
-        }
-        private bool _disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-            _disposed = true;
+            return _context.Flights.Select(x => x.destination).Distinct().ToList();
         }
 
-        public void Dispose()
+        public async Task<int> GetTotalCountAsync()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            return await _context.Flights.CountAsync();
         }
-      
+
+        public async Task<(List<Flight> Flights, int TotalCount)> GetPagedAsync(int pageSize, int pageNumber)
+        {
+            var totalCount = await _context.Flights.CountAsync();
+
+            var flights = await _context.Flights
+                .OrderBy(f => f.id)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (flights, totalCount);
+        }
     }
 }

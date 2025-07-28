@@ -51,13 +51,13 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dd5e6dcc-bc5a-4b8f-b8a5-22932d8d8625",
+                            Id = "34cab88d-d23c-4818-a27a-b71932933e5c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "3b11f9a7-58da-4fd4-acf4-e199eb3ca243",
+                            Id = "2ab2f423-88a7-4f24-b34a-37c05307d597",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -218,9 +218,6 @@ namespace api.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("RefreshToken")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -412,8 +409,7 @@ namespace api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("no_of_seats")
                         .HasColumnType("int");

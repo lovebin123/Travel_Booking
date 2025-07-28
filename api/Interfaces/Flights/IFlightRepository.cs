@@ -6,13 +6,17 @@ using api.Models.Flights;
 
 namespace api.Interfaces.Flights
 {
-    public interface IFlightRepository:IGenericRepository<Flight>
+    public interface IFlightRepository
     {
-        Task<List<Flight>> GetFlightsByQuery(QueryObject query);
-        Task<(List<Flight>flights1,int totalCount)> GetAllFlights(int PageNumber,int PageSize);
-        Task<List<Flight>> GetSearchFlights(string flightName);
+        IQueryable<Flight> GetFlightsAsQueryable();
+        Task<Flight?> GetByIdAsync(int id);
+        Task AddAsync(Flight flight);
+        void Update(Flight flight);
+        void Delete(Flight flight);
+        Task<int> SaveChangesAsync();
         List<string> GetSources();
         List<string> GetDestinations();
-      
+        Task<int> GetTotalCountAsync();
+        Task<(List<Flight> Flights, int TotalCount)> GetPagedAsync(int skip, int take);
     }
 }

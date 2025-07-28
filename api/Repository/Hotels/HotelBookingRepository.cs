@@ -14,21 +14,14 @@ namespace api.Repository.Hotels
         {
             _context = context;
         }
-        public async Task<HotelBooking> AddAsync(HotelBooking hotelBooking)
+        public async Task<HotelBooking> CreateHotelBooking(HotelBooking hotelBooking)
         {
             await _context.HotelBookings.AddAsync(hotelBooking);
             await _context.SaveChangesAsync();
             return hotelBooking;
         }
 
-        public async Task DeleteAsync(int id)
-        {
-            var hotels = await _context.HotelBookings.FirstOrDefaultAsync(x => x.id == id);
-            _context.HotelBookings.Remove(hotels);
-            _context.SaveChanges();
-        }
-
-        public async Task<HotelBooking> GetByIdAsync(int bookingId)
+        public async Task<HotelBooking> GetById(int bookingId)
         {
             var booking = await _context.HotelBookings.Include(x => x.user).Include(x => x.hotel).FirstOrDefaultAsync(x => x.id == bookingId);
             if (booking == null)
@@ -59,11 +52,6 @@ namespace api.Repository.Hotels
                 price = x.price
             }).OrderByDescending(x=>x.isBooked).ToListAsync();
             return bookings;
-        }
-
-        public Task<HotelBooking> UpdateAsync(HotelBooking entity, int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

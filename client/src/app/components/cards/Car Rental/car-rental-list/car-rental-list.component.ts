@@ -61,9 +61,9 @@ book(id:any,content:TemplateRef<any>)
   this.createCarRentalBooking.dropoffTime=this.dropofftime;
 this.carRental.createBooking(id,this.createCarRentalBooking).subscribe({
   next:(response:any)=>{
+    console.log(response.result);
       this.modal.open(content,{size:'lg',centered:true});
-    this.carData=response;
-    console.log(response);
+    this.carData=response.result;
   },
   error:(error)=>{
     this.showToast=true;
@@ -73,7 +73,8 @@ this.carRental.createBooking(id,this.createCarRentalBooking).subscribe({
 pay(id:any)
 {
   this.carRental.createCheckout(id).subscribe({
-    next:(response)=>{
+    next:(response:any)=>{
+      console.log(response);
       response=response.result;
       document.location.href=response.url;
     }
