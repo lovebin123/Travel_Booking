@@ -8,16 +8,15 @@ namespace api.Interfaces.Flights
 {
     public interface IFlightRepository
     {
+        IQueryable<Flight> GetFlightsAsQueryable();
         Task<Flight?> GetByIdAsync(int id);
-        Task<FlightDTO> SampleFlightToFlightDTO(Flight flight);
-        Task<List<Flight>> GetFlightsByQuery(QueryObject query);
-        Task<(List<Flight>flights1,int totalCount)> GetAllFlights(int PageNumber,int PageSize);
-        Task<List<Flight>> GetSearchFlights(string flightName);
+        Task AddAsync(Flight flight);
+        void Update(Flight flight);
+        void Delete(Flight flight);
+        Task<int> SaveChangesAsync();
         List<string> GetSources();
         List<string> GetDestinations();
-        Task<Flight> CreateFlight(FlightDTO flightModal);
-        Task<Flight> GetById(int id);
-        Task<Flight> UpdateFlight(int id, FlightDTO flightDTO);
-        Task DeleteById(int id);
+        Task<int> GetTotalCountAsync();
+        Task<(List<Flight> Flights, int TotalCount)> GetPagedAsync(int skip, int take);
     }
 }

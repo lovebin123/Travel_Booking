@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R67sI8H3oY0=",
+  "dgSpecHash": "qeAIIj4c+TE=",
   "success": true,
-  "projectFilePath": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking_Website\\Travel_Booking\\api\\api.csproj",
+  "projectFilePath": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\New folder\\hhg\\Travel_Booking\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\A2832859\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\autowrapper.core\\4.5.1\\autowrapper.core.4.5.1.nupkg.sha512",

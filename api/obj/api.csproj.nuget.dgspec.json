@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking_Website\\Travel_Booking\\api\\api.csproj": {}
+    "C:\\OneDrive - H&R BLOCK LTD\\Documents\\New folder\\hhg\\Travel_Booking\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking_Website\\Travel_Booking\\api\\api.csproj": {
+    "C:\\OneDrive - H&R BLOCK LTD\\Documents\\New folder\\hhg\\Travel_Booking\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking_Website\\Travel_Booking\\api\\api.csproj",
+        "projectUniqueName": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\New folder\\hhg\\Travel_Booking\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking_Website\\Travel_Booking\\api\\api.csproj",
+        "projectPath": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\New folder\\hhg\\Travel_Booking\\api\\api.csproj",
         "packagesPath": "C:\\Users\\A2832859\\.nuget\\packages\\",
-        "outputPath": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking_Website\\Travel_Booking\\api\\obj\\",
+        "outputPath": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\New folder\\hhg\\Travel_Booking\\api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

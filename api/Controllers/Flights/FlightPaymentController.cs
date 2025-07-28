@@ -1,6 +1,7 @@
 using api.Extensions;
 using api.Interfaces.Flights;
 using api.Models;
+using api.Service.Flight;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,37 +12,41 @@ namespace api.Controllers.Flights
     [ApiController]
     public class FlightPaymentController : ControllerBase
     {
-        private readonly IFlightPaymentRepository _flightRepo;
+        private readonly IFlightPaymentService _paymentService;
         private readonly UserManager<AppUser> _userManager;
 
-        public FlightPaymentController(IFlightPaymentRepository flightRepo, UserManager<AppUser> userManager)
+        public FlightPaymentController(IFlightPaymentService paymentService, UserManager<AppUser> userManager)
         {
-            _flightRepo = flightRepo;
+            _paymentService = paymentService;
             _userManager = userManager;
         }
+
         [HttpGet("getLatestPayment")]
         public async Task<IActionResult> GetLatest(string sessionId)
         {
-            var payments = await _flightRepo.GetLatestPayment(sessionId);
-            return Ok(payments);
+            var payment = await _paymentService.GetLatestPaymentAsync(sessionId);
+            if (payment == null) return NotFound("Payment not found");
+            return Ok(payment);
         }
+
         [HttpGet("getAllPayments")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetPayments()
         {
             var userName = User.GetFirstName();
             var user = await _userManager.FindByNameAsync(userName);
-            if (user == null)
-                return BadRequest("User does not exist");
-            var payments = await _flightRepo.GetAllPayments(user);
-            return Ok(payments);
-        }
-        [HttpGet("getById")]
-        public async Task<IActionResult> GetById(string id)
-        {
-            var payments = await _flightRepo.GetById(id);
+            if (user == null) return BadRequest("User not found");
+
+            var payments = await _paymentService.GetAllPaymentsAsync(user);
             return Ok(payments);
         }
 
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            var payment = await _paymentService.GetByPaymentIntentIdAsync(id);
+            if (payment == null) return NotFound("Payment not found");
+            return Ok(payment);
+        }
     }
 }

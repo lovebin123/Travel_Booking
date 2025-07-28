@@ -1,24 +1,19 @@
-using System;
-using api.Data;
-using api.Interfaces.Flights;
+﻿using api.Data;
 using api.Models;
 using api.Models.Flights;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace api.Repository.Flights
+namespace api.Service.Flight
 {
-    public class FlightPaymentRepository : IFlightPaymentRepository
+    public class FlightPaymentService : IFlightPaymentService
     {
         private readonly ApplicationDBContext _context;
-
-        public FlightPaymentRepository(ApplicationDBContext context)
+        public FlightPaymentService(ApplicationDBContext context)
         {
             _context = context;
         }
 
-        public async Task<List<FlightPayement>> GetAllPayments(AppUser user)
+        public async Task<List<FlightPayement>> GetAllPaymentsAsync(AppUser user)
         {
             return await _context.flightPayements
                 .Where(fb => fb.flightBooking.user_id == user.Id)
@@ -33,7 +28,7 @@ namespace api.Repository.Flights
                             FirstName = fb.flightBooking.AppUser.FirstName,
                             LastName = fb.flightBooking.AppUser.LastName
                         },
-                        Flight = new Flight
+                        Flight = new api.Models.Flights.Flight
                         {
                             name = fb.flightBooking.Flight.name,
                             source = fb.flightBooking.Flight.source,
@@ -43,42 +38,37 @@ namespace api.Repository.Flights
                             time_of_departure = fb.flightBooking.Flight.time_of_departure,
                         }
                     }
-                })
-                .ToListAsync();
+                }).ToListAsync();
         }
 
-        public async Task<FlightPayement?> GetById(string intentId)
+        public async Task<FlightPayement?> GetByPaymentIntentIdAsync(string id)
         {
             return await _context.flightPayements
                 .Include(x => x.flightBooking.AppUser)
                 .Include(x => x.flightBooking.Flight)
-                .FirstOrDefaultAsync(x => x.stripe_payement_intent_id == intentId);
+                .FirstOrDefaultAsync(x => x.stripe_payement_intent_id == id);
         }
 
-        public async Task<FlightPayement?> GetLatestPayment(string sessionId)
+        public async Task<FlightPayement?> GetLatestPaymentAsync(string sessionId)
         {
-            return await _context.flightPayements
+            var payment = await _context.flightPayements
                 .Include(x => x.flightBooking.AppUser)
                 .Include(x => x.flightBooking.Flight)
                 .FirstOrDefaultAsync(x => x.sessionId == sessionId);
-        }
 
-        public async Task DeductFlightSeatsAsync(int bookingId)
-        {
-            var booking = await _context.FlightBookings.FindAsync(bookingId);
-            if (booking == null) return;
+            if (payment == null) return null;
 
-            var flight = await _context.Flights.FindAsync(booking.flight_id);
-            if (flight == null) return;
+            var booking = await _context.FlightBookings.FindAsync(payment.FlightBookingId);
+            var flight = await _context.Flights.FindAsync(payment.flightBooking.flight_id);
 
-            int seatsToDeduct = int.Parse(booking.no_of_adults) + int.Parse(booking.no_of_children);
-
-            if (flight.no_of_seats >= seatsToDeduct)
+            if (flight?.no_of_seats > 0)
             {
-                flight.no_of_seats -= seatsToDeduct;
-                _context.Flights.Update(flight);
+                flight.no_of_seats -= int.Parse(booking.no_of_adults) + int.Parse(booking.no_of_children);
+                _context.Update(flight);
                 await _context.SaveChangesAsync();
             }
+
+            return payment;
         }
     }
 }

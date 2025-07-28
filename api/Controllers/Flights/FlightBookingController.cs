@@ -4,6 +4,7 @@ using api.Extensions;
 using api.Interfaces.Flights;
 using api.Models;
 using api.Models.Flights;
+using api.Service.Flight;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -19,66 +20,56 @@ namespace api.Controllers.Flights
     public class FlightBookingController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly IFlightRepository _flightRepository;
-        private readonly IStripePayementRepository _stripe;
-        private readonly ApplicationDBContext _context;
-        private readonly IFlightBookingRepository _flightBookingRepository;
-        public FlightBookingController(ApplicationDBContext context, UserManager<AppUser> userManager, IFlightRepository flightRepository, IFlightBookingRepository flightBookingRepository, IStripePayementRepository stripe)
+        private readonly IFlightBookingService _bookingService;
+        private readonly IStripeService _stripeService;
+
+        public FlightBookingController(UserManager<AppUser> userManager, IFlightBookingService bookingService, IStripeService stripeService)
         {
             _userManager = userManager;
-            _flightBookingRepository = flightBookingRepository;
-            _flightRepository = flightRepository;
-            _stripe = stripe;
-            _context = context;
+            _bookingService = bookingService;
+            _stripeService = stripeService;
         }
+
         [HttpPost("postBooking")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
         public async Task<IActionResult> CreateFlightBooking(int id, string no_of_adults1, string no_of_children11)
         {
             var userName = User.GetFirstName();
             var appUser = await _userManager.FindByNameAsync(userName);
-            if (appUser == null)
-                return BadRequest();
-            var flight = await _flightRepository.GetByIdAsync(id);
-            if (flight == null)
-                return BadRequest();
-            var userBooking = await _flightBookingRepository.GetUserFlightBookings(appUser);
-            if (userBooking == null)
-                return BadRequest();
-            var flightBooking = new FlightBooking
-            {
-                user_id = appUser.Id,
-                flight_id = flight.id,
-                no_of_adults = no_of_adults1,
-                no_of_children = no_of_children11,
-                amount = (int)((Int32.Parse(no_of_adults1) + Int32.Parse(no_of_children11)) * flight.price),
+            if (appUser == null) return BadRequest();
 
-            };
-            await _flightBookingRepository.CreateAsync(flightBooking);
-            return Ok(flightBooking);
+            var booking = await _bookingService.CreateBookingAsync(
+                appUser,
+                id,
+                int.Parse(no_of_adults1),
+                int.Parse(no_of_children11));
+
+            return Ok(booking);
         }
+
         [HttpGet("getBookings")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
         public async Task<IActionResult> GetUserFlightBookings()
         {
             var userName = User.GetFirstName();
             var appUser = await _userManager.FindByNameAsync(userName);
-            if (appUser == null)
-                return BadRequest();
-            var userBooking = await _flightBookingRepository.GetUserFlightBookings(appUser);
-            return Ok(userBooking);
+            if (appUser == null) return BadRequest();
+
+            var bookings = await _bookingService.GetUserBookingsAsync(appUser);
+            return Ok(bookings);
         }
+
         [HttpPost("payement-session")]
         public async Task<IActionResult> CreateCheckoutSession(int id)
         {
-            var session = await _stripe.CreateFlightBookingPaymentSession(id);
+            var session = await _stripeService.CreateFlightBookingPaymentSession(id);
             return Ok(session);
         }
+
         [HttpGet("success")]
         public async Task<Results<RedirectHttpResult, BadRequest>> CheckOutSuccess([FromQuery(Name = "sessionId")] string sessionId, [FromQuery(Name = "booking_id")] int bookingId)
         {
-            var payment = await _stripe.GetSuccess(sessionId, bookingId);
-            var result = await _stripe.CreateFlightPayment(payment);
+            var payment = await _stripeService.HandleSuccessfulPayment(sessionId, bookingId);
             return TypedResults.Redirect($"http://localhost:4200/flightTicket/{payment.sessionId}", true, true);
         }
     }
