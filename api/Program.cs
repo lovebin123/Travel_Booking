@@ -12,6 +12,9 @@ using api.Repository.Hotels;
 using api.Service;
 using api.Service.Flight;
 using api.Service.Hotels;
+using api.Repository.Generic;
+using api.Repository.Hotels;
+using api.Service;
 using AutoWrapper;
 using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -46,6 +49,9 @@ if (string.IsNullOrEmpty(signingKey))
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+        options.SaveToken = true;
+        options.RequireHttpsMetadata =false;
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(signingKey)),
@@ -53,6 +59,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = jwtSettings["Issuer"],
             ValidateAudience = true,
             ValidAudience = jwtSettings["Audience"],
+            ClockSkew=TimeSpan.Zero,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             RoleClaimType = ClaimTypes.Role 
@@ -93,6 +100,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<FlightMapper>();
 builder.Services.AddScoped<HotelMapper>();
 builder.Services.AddScoped<IFlightRepository,FlightRepository>();
