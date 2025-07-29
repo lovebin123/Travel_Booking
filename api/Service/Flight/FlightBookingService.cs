@@ -1,4 +1,5 @@
 ﻿using api.Extensions;
+using api.Interfaces;
 using api.Interfaces.Flights;
 using api.Models;
 using api.Models.Flights;
@@ -11,18 +12,16 @@ namespace api.Service.Flight
 {
     public class FlightBookingService : IFlightBookingService
     {
-        private readonly IFlightRepository _flightRepository;
-        private readonly IFlightBookingRepository _bookingRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public FlightBookingService(IFlightRepository flightRepository, IFlightBookingRepository bookingRepository)
+        public FlightBookingService(IUnitOfWork unitOfWork)
         {
-            _flightRepository = flightRepository;
-            _bookingRepository = bookingRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<FlightBooking> CreateBookingAsync(AppUser user, int flightId, int noOfAdults, int noOfChildren)
         {
-            var flight = await _flightRepository.GetByIdAsync(flightId);
+            var flight = await _unitOfWork.FlightRepository.GetByIdAsync(flightId);
             if (flight == null) throw new Exception("Flight not found");
 
             var totalAmount = (noOfAdults + noOfChildren) * flight.price;
@@ -36,12 +35,16 @@ namespace api.Service.Flight
                 amount = (int)totalAmount
             };
 
-            return await _bookingRepository.CreateAsync(booking);
+            var result = await _unitOfWork.FlightBookingRepository.CreateAsync(booking);
+
+            await _unitOfWork.CompleteAsync();
+
+            return result;
         }
 
         public async Task<List<FlightBooking>> GetUserBookingsAsync(AppUser user)
         {
-            return await _bookingRepository.GetUserFlightBookings(user);
+            return await _unitOfWork.FlightBookingRepository.GetUserFlightBookings(user);
         }
     }
 }

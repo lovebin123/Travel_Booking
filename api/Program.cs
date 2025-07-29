@@ -8,6 +8,7 @@ using api.Mappers.Hotels;
 using api.Models;
 using api.Repository.Car_Rentals;
 using api.Repository.Flights;
+using api.Repository.Generic;
 using api.Repository.Hotels;
 using api.Service;
 using api.Service.CarRental;
@@ -118,6 +119,10 @@ builder.Services.AddScoped<ICarRentalBookingRepository, CarRentalBookingReposito
 builder.Services.AddScoped<ICarRentalStripeRepository, CarRentalStripeRepository>();
 builder.Services.AddScoped<ICarRentalPaymentRepository, CarRentalPaymentRepository>();
 builder.Services.AddCors();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+
 var log = new LoggerConfiguration().WriteTo.File("C:\\OneDrive - H&R BLOCK LTD\\Documents\\New folder\\hhg\\Travel_Booking\\api\\Logs\\log.txt", rollingInterval: RollingInterval.Day).CreateLogger();
 Log.Logger = log;
 Env.Load();

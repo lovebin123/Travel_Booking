@@ -6,57 +6,36 @@ using api.Interfaces;
 using api.Interfaces.Flights;
 using api.Mappers;
 using api.Models.Flights;
+using api.Repository.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository.Flights
 {
-    public class FlightRepository : IFlightRepository
+    public class FlightRepository :GenericRepository<Flight>, IFlightRepository
     {
         private readonly ApplicationDBContext _context;
-        public FlightRepository(ApplicationDBContext context)
+
+        public FlightRepository(ApplicationDBContext context) : base(context)
         {
             _context = context;
-        }
-        public IQueryable<Flight> GetFlightsAsQueryable()
-        {
-            return _context.Flights.AsQueryable();
-        }
-
-        public async Task<Flight?> GetByIdAsync(int id)
-        {
-            return await _context.Flights.FirstOrDefaultAsync(x => x.id == id);
-        }
-
-        public async Task AddAsync(Flight flight)
-        {
-            await _context.Flights.AddAsync(flight);
-        }
-
-        public void Update(Flight flight)
-        {
-            _context.Flights.Update(flight);
-        }
-
-        public void Delete(Flight flight)
-        {
-            _context.Flights.Remove(flight);
-        }
-
-        public async Task<int> SaveChangesAsync()
-        {
-            return await _context.SaveChangesAsync();
         }
 
         public List<string> GetSources()
         {
-
-            var flights= _context.Flights.Select(x => x.source).ToList();
-            return flights;
+            return _context.Flights
+                .Select(x => x.source)
+                .Where(x => !string.IsNullOrEmpty(x))
+                .Distinct()
+                .ToList();
         }
 
         public List<string> GetDestinations()
         {
-            return _context.Flights.Select(x => x.destination).Distinct().ToList();
+            return _context.Flights
+                .Select(x => x.destination)
+                .Where(x => !string.IsNullOrEmpty(x))
+                .Distinct()
+                .ToList();
         }
 
         public async Task<int> GetTotalCountAsync()

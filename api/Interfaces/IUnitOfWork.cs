@@ -7,10 +7,7 @@ namespace api.Interfaces
     {
         IFlightRepository FlightRepository { get; }
         IFlightBookingRepository FlightBookingRepository { get; }
-        IFlightPaymentRepository FlightPaymentRepository { get; }
-        IHotelRepository HotelRepository { get; }
-        IHotelBookingRepository HotelBookingRepository { get; }
-        IHotelPaymentRepository HotelPaymentRepository { get; }
-        Task<int> SaveAsync();
+        IRepository<TEntity> Repository<TEntity>() where TEntity : class;
+        Task CompleteAsync();
     }
 }

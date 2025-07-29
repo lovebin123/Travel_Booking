@@ -6,14 +6,8 @@ using api.Models.Flights;
 
 namespace api.Interfaces.Flights
 {
-    public interface IFlightRepository
+    public interface IFlightRepository : IRepository<Flight>
     {
-        IQueryable<Flight> GetFlightsAsQueryable();
-        Task<Flight?> GetByIdAsync(int id);
-        Task AddAsync(Flight flight);
-        void Update(Flight flight);
-        void Delete(Flight flight);
-        Task<int> SaveChangesAsync();
         List<string> GetSources();
         List<string> GetDestinations();
         Task<int> GetTotalCountAsync();

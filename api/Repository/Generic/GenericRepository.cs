@@ -1,36 +1,50 @@
 ﻿using api.Data;
+using api.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace api.Repository.Generic
 {
-    public class GenericRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDBContext _context;
         private readonly DbSet<T> _dbSet;
+
         public GenericRepository(ApplicationDBContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
         }
-        public async Task<T?> GetByIdAsync(int id) => await _dbSet.FirstOrDefaultAsync(e => EF.Property<int>(e, "id") == id);
-        public async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
-        public async Task UpdateAsync(T entity)
+
+        public IQueryable<T> GetQueryable() 
+        {
+            return _dbSet.AsQueryable();
+        }
+
+        public async Task<T?> GetByIdAsync(int id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+
+        public async Task AddAsync(T entity)
+        {
+            await _dbSet.AddAsync(entity);
+        }
+
+        public void Update(T entity)
         {
             _dbSet.Update(entity);
-            await Task.CompletedTask;
         }
-        public async Task DeleteAsync(int id)
+
+        public void Remove(T entity)
         {
-            var entity = await _dbSet.FirstOrDefaultAsync(e => EF.Property<int>(e, "id") == id);
-            if (entity != null)
-            {
-                _dbSet.Remove(entity);
-                await _context.SaveChangesAsync();
-            }
+            _dbSet.Remove(entity);
         }
 
-
-
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
     }
+
 }

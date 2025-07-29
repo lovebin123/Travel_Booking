@@ -25,7 +25,7 @@ export class FlightFromComponent implements OnInit {
   }
     ngOnInit(): void {
       this.flights.getSources().subscribe((response)=>{
-        response=response.result.result;
+        response=response.result;
       for(let i=0;i<response.length;i++)
       {
           this.locations.add(response[i]);

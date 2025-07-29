@@ -61,7 +61,7 @@ namespace api.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var sources = _flightService.GetSources();
+            var sources = await _flightService.GetSources();
             Console.WriteLine(sources);
             return Ok(sources);
         }
@@ -71,7 +71,7 @@ namespace api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             Log.Information("Listed all destinations");
-            var destinations = _flightService.GetDestinations();
+            var destinations =await  _flightService.GetDestinations();
             return Ok(destinations);
         }
         [HttpPost("createFlight")]
