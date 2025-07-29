@@ -1,24 +1,23 @@
-﻿using api.Interfaces.Flights;
+﻿using api.Interfaces;
+using api.Interfaces.Flights;
 using api.Models.Flights;
-using Stripe.Checkout;
 using Stripe;
+using Stripe.Checkout;
 namespace api.Service.Flight
 {
     public class StripeService : IStripeService
     {
-        private readonly IFlightBookingRepository _bookingRepository;
-        private readonly IStripePayementRepository _stripeRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public StripeService(IFlightBookingRepository bookingRepository, IStripePayementRepository stripeRepository)
+        public StripeService(IUnitOfWork unitOfWork)
         {
-            _bookingRepository = bookingRepository;
-            _stripeRepository = stripeRepository;
+            _unitOfWork = unitOfWork;
             StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("STRIPE_ID");
         }
 
         public async Task<Session> CreateFlightBookingPaymentSession(int bookingId)
         {
-            var booking = await _bookingRepository.GetById(bookingId);
+            var booking = await _unitOfWork.FlightBookingRepository.GetById(bookingId);
             if (booking == null || booking.Flight == null || booking.AppUser == null)
                 throw new Exception("Invalid booking details");
 
@@ -37,7 +36,7 @@ namespace api.Service.Flight
                             ProductData = new SessionLineItemPriceDataProductDataOptions
                             {
                                 Name = booking.Flight.name,
-                                Images = new List<string> {"https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/AI.png?v=20"},
+                                Images = new List<string> { "https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/AI.png?v=20" },
                             }
                         },
                         Quantity = 1
@@ -63,7 +62,10 @@ namespace api.Service.Flight
             var chargeService = new ChargeService();
             var charge = chargeService.Get(paymentIntent.LatestChargeId);
 
-            var booking = await _bookingRepository.GetById(bookingId);
+            var booking = await _unitOfWork.FlightBookingRepository.GetById(bookingId);
+            if (booking == null)
+                throw new Exception("Booking not found");
+
             booking.isBooked = 1;
             booking.paymentId = session.PaymentIntentId;
 
@@ -77,8 +79,11 @@ namespace api.Service.Flight
                 card = charge.PaymentMethodDetails.Card.Brand
             };
 
-            await _stripeRepository.SavePaymentAsync(payment);
+            await _unitOfWork.StripePayementRepository.SavePaymentAsync(payment);
+
+            await _unitOfWork.CompleteAsync();
+
             return payment;
         }
     }
-        }
+}

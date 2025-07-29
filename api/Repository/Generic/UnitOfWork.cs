@@ -4,6 +4,7 @@ using api.Interfaces.Flights;
 using api.Interfaces.Hotels;
 using api.Repository.Flights;
 using api.Repository.Hotels;
+using api.Service;
 using Microsoft.EntityFrameworkCore;
 using System.Collections;
 using System.Data;
@@ -17,7 +18,8 @@ namespace api.Repository.Generic
 
         public IFlightRepository FlightRepository { get; }
         public IFlightBookingRepository FlightBookingRepository { get; }
-
+        public IStripePayementRepository StripePayementRepository { get; }
+        public IFlightPaymentRepository FlightPaymentRepository { get; }
         public UnitOfWork(ApplicationDBContext context)
         {
             _context = context;
@@ -25,6 +27,9 @@ namespace api.Repository.Generic
 
             FlightRepository = new FlightRepository(_context);
             FlightBookingRepository = new FlightBookingRepository(_context);
+            StripePayementRepository = new StripeRepository(_context);
+            FlightPaymentRepository = new FlightPaymentRepository(_context);
+            
         }
 
         public async Task CompleteAsync()

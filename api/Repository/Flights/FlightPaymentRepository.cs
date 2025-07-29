@@ -22,28 +22,8 @@ namespace api.Repository.Flights
         {
             return await _context.flightPayements
                 .Where(fb => fb.flightBooking.user_id == user.Id)
-                .Select(fb => new FlightPayement
-                {
-                    id = fb.id,
-                    stripe_payement_intent_id = fb.stripe_payement_intent_id,
-                    flightBooking = new FlightBooking
-                    {
-                        AppUser = new AppUser
-                        {
-                            FirstName = fb.flightBooking.AppUser.FirstName,
-                            LastName = fb.flightBooking.AppUser.LastName
-                        },
-                        Flight = new Flight
-                        {
-                            name = fb.flightBooking.Flight.name,
-                            source = fb.flightBooking.Flight.source,
-                            destination = fb.flightBooking.Flight.destination,
-                            date_of_departure = fb.flightBooking.Flight.date_of_departure,
-                            time_of_arrival = fb.flightBooking.Flight.time_of_arrival,
-                            time_of_departure = fb.flightBooking.Flight.time_of_departure,
-                        }
-                    }
-                })
+                .Include(fb => fb.flightBooking.AppUser)
+                .Include(fb => fb.flightBooking.Flight)
                 .ToListAsync();
         }
 
@@ -79,6 +59,36 @@ namespace api.Repository.Flights
                 _context.Flights.Update(flight);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public IQueryable<FlightPayement> GetQueryable()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<FlightPayement?> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddAsync(FlightPayement entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(FlightPayement entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(FlightPayement entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

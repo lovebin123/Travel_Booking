@@ -1,8 +1,11 @@
 ﻿namespace api.DTO.Account
 {
-    public class AppUserDto
+    public record AppUserDto
     {
-        string firstName;
-        string lastName;
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+
     }
 }

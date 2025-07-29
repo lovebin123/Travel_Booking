@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace api.Interfaces.Flights
 {
-    public interface IFlightPaymentRepository
+    public interface IFlightPaymentRepository : IRepository<FlightPayement>
     {
-        Task<FlightPayement> GetLatestPayment(string sessionId);
+        Task<FlightPayement?> GetLatestPayment(string sessionId);
         Task<List<FlightPayement>> GetAllPayments(AppUser user);
-        Task<FlightPayement> GetById(string id);
+        Task<FlightPayement?> GetById(string intentId);
+        Task DeductFlightSeatsAsync(int bookingId);
     }
 }

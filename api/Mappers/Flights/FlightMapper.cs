@@ -18,9 +18,4 @@ public class FlightMapper
     {
         return _mapper.Map<Flight>(flightDTO);
     }
-
-    internal object ConvertFlightDTOToFlight(IQueryable<Flight> flights)
-    {
-        throw new NotImplementedException();
-    }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace api.Service.Flight
 {
@@ -22,7 +23,12 @@ namespace api.Service.Flight
         public async Task<FlightBooking> CreateBookingAsync(AppUser user, int flightId, int noOfAdults, int noOfChildren)
         {
             var flight = await _unitOfWork.FlightRepository.GetByIdAsync(flightId);
-            if (flight == null) throw new Exception("Flight not found");
+            if (flight == null)
+            {
+                Log.Error("Flight not found");
+                throw new Exception("Flight not found");
+            }
+
 
             var totalAmount = (noOfAdults + noOfChildren) * flight.price;
 
@@ -36,7 +42,7 @@ namespace api.Service.Flight
             };
 
             var result = await _unitOfWork.FlightBookingRepository.CreateAsync(booking);
-
+            Log.Information("Created booking successfully");
             await _unitOfWork.CompleteAsync();
 
             return result;

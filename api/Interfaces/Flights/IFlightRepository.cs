@@ -11,6 +11,6 @@ namespace api.Interfaces.Flights
         List<string> GetSources();
         List<string> GetDestinations();
         Task<int> GetTotalCountAsync();
-        Task<(List<Flight> Flights, int TotalCount)> GetPagedAsync(int skip, int take);
+        Task<(List<ResponseFlightDto> Flights, int TotalCount)> GetPagedAsync(int skip, int take);
     }
 }

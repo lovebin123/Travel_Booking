@@ -43,7 +43,7 @@ namespace api.Repository.Flights
             return await _context.Flights.CountAsync();
         }
 
-        public async Task<(List<Flight> Flights, int TotalCount)> GetPagedAsync(int pageSize, int pageNumber)
+        public async Task<(List<ResponseFlightDto> Flights, int TotalCount)> GetPagedAsync(int pageSize, int pageNumber)
         {
             var totalCount = await _context.Flights.CountAsync();
 
@@ -51,6 +51,22 @@ namespace api.Repository.Flights
                 .OrderBy(f => f.id)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
+                .Select(x=>new ResponseFlightDto
+                {
+                    date_of_departure=x.date_of_departure,
+                    destination=x.destination,
+                    FlightBookings = x.FlightBookings,
+                    id=x.id,
+                    name=x.name,
+                    no_of_seats=x.no_of_seats,
+                    price=x.price,
+                    seatType = x.seatType,
+                    source=x.source,
+                    time_of_arrival=x.time_of_arrival,
+                    time_of_departure = x.time_of_departure,
+                    
+
+                })
                 .ToListAsync();
 
             return (flights, totalCount);
