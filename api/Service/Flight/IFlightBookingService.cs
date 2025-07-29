@@ -1,11 +1,12 @@
-﻿using api.Models;
+﻿using api.DTO.Flight;
+using api.Models;
 using api.Models.Flights;
 
 namespace api.Service.Flight
 {
     public interface IFlightBookingService
     {
-        Task<FlightBooking> CreateBookingAsync(AppUser user, int flightId, int noOfAdults, int noOfChildren);
-        Task<List<FlightBooking>> GetUserBookingsAsync(AppUser user);
+        Task<ResponseFlightBookingDto> CreateBookingAsync(AppUser user, int flightId, int noOfAdults, int noOfChildren);
+        Task<List<ResponseFlightBookingDto>> GetUserBookingsAsync(AppUser user);
     }
 }

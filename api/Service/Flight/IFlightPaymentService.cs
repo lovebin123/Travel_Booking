@@ -1,12 +1,13 @@
-﻿using api.Models;
+﻿using api.DTO.Flight;
+using api.Models;
 using api.Models.Flights;
 
 namespace api.Service.Flight
 {
     public interface IFlightPaymentService
     {
-        Task<List<FlightPayement>> GetAllPaymentsAsync(AppUser user);
-        Task<FlightPayement?> GetByPaymentIntentIdAsync(string id);
-        Task<FlightPayement?> GetLatestPaymentAsync(string sessionId);
+        Task<List<ResponseFlightPaymentDto>> GetAllPaymentsAsync(AppUser user);
+        Task<ResponseFlightPaymentDto?> GetByPaymentIntentIdAsync(string id);
+        Task<ResponseFlightPaymentDto?> GetLatestPaymentAsync(string sessionId);
     }
 }

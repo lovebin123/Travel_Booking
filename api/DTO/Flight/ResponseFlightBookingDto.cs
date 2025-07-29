@@ -16,5 +16,7 @@ namespace api.DTO.Flight
         public string? paymentId { get; set; }
         public ResponseFlightDto Flight { get; set; }
         public AppUserDto AppUser { get; set; }
+
+     
     }
 }

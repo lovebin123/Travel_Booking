@@ -1,4 +1,5 @@
-﻿using api.Interfaces;
+﻿using api.DTO.Flight;
+using api.Interfaces;
 using api.Interfaces.Flights;
 using api.Models.Flights;
 using Stripe;
@@ -51,7 +52,7 @@ namespace api.Service.Flight
             return sessionService.Create(sessionOptions);
         }
 
-        public async Task<FlightPayement> HandleSuccessfulPayment(string sessionId, int bookingId)
+        public async Task<ResponseFlightPaymentDto> HandleSuccessfulPayment(string sessionId, int bookingId)
         {
             var sessionService = new SessionService();
             var session = sessionService.Get(sessionId);
@@ -82,8 +83,42 @@ namespace api.Service.Flight
             await _unitOfWork.StripePayementRepository.SavePaymentAsync(payment);
 
             await _unitOfWork.CompleteAsync();
-
-            return payment;
+            var responseDto = new ResponseFlightPaymentDto
+            {
+                id = payment.id,
+                stripe_payement_intent_id = payment.stripe_payement_intent_id,
+                payement_status = payment.payement_status,
+                amount = payment.amount,
+                sessionId = payment.sessionId,
+                card = payment.card,
+                FlightBookingId = payment.FlightBookingId,
+                flightBooking = new ResponseFlightBookingDto
+                {
+                    id = booking.id,
+                    flight_id = booking.flight_id,
+                    user_id = booking.user_id,
+                    isBooked = booking.isBooked,
+                    amount = booking.amount,
+                    no_of_adults = booking.no_of_adults,
+                    no_of_children = booking.no_of_children,
+                    paymentId = booking.paymentId,
+                    Flight=new ResponseFlightDto
+                    {
+                        date_of_departure=booking.Flight.date_of_departure,
+                        destination=booking.Flight.destination,
+                        id=booking.flight_id,
+                        name=booking.Flight.name,
+                        no_of_seats=booking.Flight.no_of_seats,
+                        price=booking.Flight.price,
+                        seatType=booking.Flight.seatType,
+                        source=booking.Flight.source,
+                        time_of_arrival=booking.Flight.time_of_arrival,
+                        time_of_departure=booking.Flight.time_of_departure,
+                        FlightBookings = booking.Flight.FlightBookings
+                    }
+                }
+            };
+            return responseDto;
         }
     }
 }

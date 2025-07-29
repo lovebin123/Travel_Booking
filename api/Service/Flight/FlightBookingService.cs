@@ -1,4 +1,5 @@
-﻿using api.Extensions;
+﻿using api.DTO.Flight;
+using api.Extensions;
 using api.Interfaces;
 using api.Interfaces.Flights;
 using api.Models;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System.Linq;
 
 namespace api.Service.Flight
 {
@@ -20,7 +22,7 @@ namespace api.Service.Flight
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<FlightBooking> CreateBookingAsync(AppUser user, int flightId, int noOfAdults, int noOfChildren)
+        public async Task<ResponseFlightBookingDto> CreateBookingAsync(AppUser user, int flightId, int noOfAdults, int noOfChildren)
         {
             var flight = await _unitOfWork.FlightRepository.GetByIdAsync(flightId);
             if (flight == null)
@@ -44,13 +46,79 @@ namespace api.Service.Flight
             var result = await _unitOfWork.FlightBookingRepository.CreateAsync(booking);
             Log.Information("Created booking successfully");
             await _unitOfWork.CompleteAsync();
-
-            return result;
+            var responseDto = new ResponseFlightBookingDto
+            {
+                amount = result.amount,
+                flight_id = result.flight_id,
+                AppUser = new DTO.Account.AppUserDto
+                {
+                    Email = result.AppUser.Email,
+                    FirstName = result.AppUser.FirstName,
+                    LastName = result.AppUser.LastName,
+                    Id = result.AppUser.Id
+                },
+                isBooked = result.isBooked,
+                no_of_adults = result.no_of_adults,
+                id = result.id,
+                no_of_children = result.no_of_children,
+                paymentId = result.paymentId,
+                Flight = new ResponseFlightDto
+                {
+                    date_of_departure = result.Flight.date_of_departure,
+                    destination = result.Flight.destination,
+                    id = result.Flight.id,
+                    FlightBookings = result.Flight.FlightBookings.ToList(),
+                    name = result.Flight.name,
+                    no_of_seats = result.Flight.no_of_seats,
+                    price = result.Flight.price,
+                    seatType = result.Flight.seatType,
+                    source = result.Flight.source,
+                    time_of_arrival = result.Flight.time_of_arrival,
+                    time_of_departure = result.Flight.time_of_departure
+                },
+                user_id = result.user_id
+            };
+            return responseDto;
         }
 
-        public async Task<List<FlightBooking>> GetUserBookingsAsync(AppUser user)
+        public async Task<List<ResponseFlightBookingDto>>GetUserBookingsAsync(AppUser user)
         {
-            return await _unitOfWork.FlightBookingRepository.GetUserFlightBookings(user);
+            var res = await _unitOfWork.FlightBookingRepository.GetUserFlightBookings(user);
+
+            var responseDto = res.Select(result => new ResponseFlightBookingDto
+            {
+                amount = result.amount,
+                flight_id = result.flight_id,
+                AppUser = result.AppUser == null ? null : new DTO.Account.AppUserDto
+                {
+                    Email = result.AppUser.Email,
+                    FirstName = result.AppUser.FirstName,
+                    LastName = result.AppUser.LastName,
+                    Id = result.AppUser.Id
+                },
+                isBooked = result.isBooked,
+                no_of_adults = result.no_of_adults,
+                id = result.id,
+                no_of_children = result.no_of_children,
+                paymentId = result.paymentId,
+                Flight = result.Flight == null ? null : new ResponseFlightDto
+                {
+                    date_of_departure = result.Flight.date_of_departure,
+                    destination = result.Flight.destination,
+                    id = result.Flight.id,
+                    FlightBookings = result.Flight.FlightBookings?.ToList() ?? new List<FlightBooking>(),
+                    name = result.Flight.name,
+                    no_of_seats = result.Flight.no_of_seats,
+                    price = result.Flight.price,
+                    seatType = result.Flight.seatType,
+                    source = result.Flight.source,
+                    time_of_arrival = result.Flight.time_of_arrival,
+                    time_of_departure = result.Flight.time_of_departure
+                },
+                user_id = result.user_id
+            }).ToList();
+
+            return responseDto;
         }
     }
 }
