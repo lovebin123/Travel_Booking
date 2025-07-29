@@ -23,22 +23,22 @@ namespace api.Repository.Car_Rentals
                 rentals = rentals.Where(x => x.location == queryObject.location);
             if (queryObject.AvailableFromDate != default && queryObject.AvailableUntilDate != default)
             {
-                rentals = rentals.Where(x => string.Compare(queryObject.AvailableFromDate, x.AvailableFromDate) >= 0 && string.Compare(x.AvailableUntilDate, queryObject.AvailableFromDate) >= 0); 
+                rentals = rentals.Where(x => string.Compare(queryObject.AvailableFromDate, x.AvailableFromDate) >= 0 && string.Compare(x.AvailableUntilDate, queryObject.AvailableFromDate) >= 0);
             }
             if (!string.IsNullOrWhiteSpace(queryObject.AvailableFromTime) && !string.IsNullOrWhiteSpace(queryObject.AvailableUntilTime))
             {
-                rentals = rentals.Where(x =>String.Compare(queryObject.AvailableFromTime,x.AvailableFromTime)>=0 && String.Compare(x.AvailableUntilTime,queryObject.AvailableFromTime)>=0);
+                rentals = rentals.Where(x => String.Compare(queryObject.AvailableFromTime, x.AvailableFromTime) >= 0 && String.Compare(x.AvailableUntilTime, queryObject.AvailableFromTime) >= 0);
             }
-            return await rentals.OrderBy(x=>x.price).ToListAsync();
+            return await rentals.OrderBy(x => x.price).ToListAsync();
         }
 
         public async Task<CarRental> GetById(int id)
         {
-            var rental = await _context.CarRentals.FirstOrDefaultAsync(x=>x.id==id);
+            var rental = await _context.CarRentals.FirstOrDefaultAsync(x => x.id == id);
             return rental;
         }
 
-        public async Task<(List<CarRental>carRentals,int totalCount)> GetAllCarRentals(int pageSize,int pageNumber)
+        public async Task<(List<CarRental> carRentals, int totalCount)> GetAllCarRentals(int pageSize, int pageNumber)
         {
             var carRentals1 = await _context.CarRentals.Select(x => new CarRental
             {
@@ -55,9 +55,9 @@ namespace api.Repository.Car_Rentals
                 price = x.price,
                 rating = x.rating,
                 user_review = x.user_review,
-            }).Skip((pageNumber-1)*pageSize).Take(pageSize).ToListAsync();
+            }).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
             var totalCount = await _context.CarRentals.CountAsync();
-            return (carRentals1,totalCount);
+            return (carRentals1, totalCount);
         }
 
         public async Task<List<string>> GetLocations()

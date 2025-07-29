@@ -27,7 +27,7 @@ namespace api.Controllers.CarRentals
             _userManager = userManager;
         }
         [HttpPost("createBooking")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles ="User")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
         public async Task<IActionResult> CreateCarRentalBooking(int id, CreateCarRentalBookingDTO carRentalBookingDTO)
         {
             var userName = User.GetFirstName();
@@ -43,7 +43,7 @@ namespace api.Controllers.CarRentals
                 bookedTillDate = carRentalBookingDTO.dropoffDate,
                 bookedFromTime = carRentalBookingDTO.pickupTime,
                 bookedTillTime = carRentalBookingDTO.dropoffTime,
-                isBooked=0,
+                isBooked = 0,
                 amount = (double)(carRental.price * (carRentalBookingDTO.diff + 1)),
                 user_id = user.Id,
                 bookingId = carRental.id,
@@ -52,13 +52,13 @@ namespace api.Controllers.CarRentals
             return Ok(booking);
         }
         [HttpGet("getUserBooking")]
-        [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
         public async Task<IActionResult> GetUserBookings()
         {
             var userName = User.GetFirstName();
             if (userName == null)
                 return BadRequest();
-            var user =await _userManager.FindByNameAsync(userName);
+            var user = await _userManager.FindByNameAsync(userName);
             if (user == null)
                 return BadRequest();
             var bookings = await _carRentalBookingRepository.GetUserCarRentalBookings(user);
@@ -68,7 +68,7 @@ namespace api.Controllers.CarRentals
         [HttpPost("create-session")]
         public async Task<IActionResult> CreateCheckoutSession(int bookingId)
         {
-            var session =await _carRentalStripeRepository.CreateCheckoutSession(bookingId);
+            var session = await _carRentalStripeRepository.CreateCheckoutSession(bookingId);
             return Ok(session);
         }
         [HttpGet("success")]

@@ -29,15 +29,15 @@ namespace api.Repository.Car_Rentals
             return booking;
         }
 
-        public async Task<CarRentalBooking> GetById(int id)
+        public async Task<CarRentalBooking?> GetById(int id)
         {
-            var booking = await _context.CarRentalBookings.Where(x => x.id == id).Include(x => x.carRental).FirstOrDefaultAsync();
+            var booking = await _context.CarRentalBookings.Include(x => x.user).Include(x => x.carRental).FirstOrDefaultAsync(x => x.id ==id);
             return booking;
         }
 
         public async Task<List<CarRentalBooking>> GetUserCarRentalBookings(AppUser user)
         {
-            var bookings = await _context.CarRentalBookings.Where(x => x.user_id == user.Id).Select(x=>new CarRentalBooking
+            var bookings = await _context.CarRentalBookings.Where(x => x.user_id == user.Id).Select(x => new CarRentalBooking
             {
                 amount = x.amount,
                 bookedFromDate = x.bookedFromDate,
@@ -45,9 +45,9 @@ namespace api.Repository.Car_Rentals
                 bookedTillTime = x.bookedTillTime,
                 bookedTillDate = x.bookedTillDate,
                 id = x.id,
-                isBooked=x.isBooked,
-                paymentId=x.paymentId,
-                carRental =new CarRental
+                isBooked = x.isBooked,
+                paymentId = x.paymentId,
+                carRental = new CarRental
                 {
                     car_name = x.carRental.car_name,
                     drive_type = x.carRental.drive_type,
@@ -55,9 +55,9 @@ namespace api.Repository.Car_Rentals
                     price = x.carRental.price,
                     no_of_seats = x.carRental.no_of_seats,
                     rating = x.carRental.rating,
-                    user_review=x.carRental.user_review
+                    user_review = x.carRental.user_review
                 }
-            }).OrderByDescending(x=>x.isBooked).ToListAsync();
+            }).OrderByDescending(x => x.isBooked).ToListAsync();
             return bookings;
         }
 

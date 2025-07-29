@@ -24,9 +24,9 @@ namespace api.Controllers.CarRentals
         }
         [HttpGet("getAllCarRentals")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> GetAllCarRentals(int pageNumber,int pageSize)
+        public async Task<IActionResult> GetAllCarRentals(int pageNumber, int pageSize)
         {
-            var (carRentals,totalCount) = await _carRentalRepository.GetAllCarRentals(pageNumber,pageSize);
+            var (carRentals, totalCount) = await _carRentalRepository.GetAllCarRentals(pageNumber, pageSize);
             return Ok(new { carRentals, totalCount });
         }
         [HttpGet("searchByCarName")]

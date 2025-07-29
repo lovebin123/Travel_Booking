@@ -17,7 +17,7 @@ namespace api.Repository.Car_Rentals
 
         public async Task<CarRentalPayment> GetById(string paymentId)
         {
-            var payment = await _context.CarRentalPayments.Include(x => x.carRentalBooking).Include(x => x.carRentalBooking.carRental).Include(x => x.carRentalBooking.user).Where(x => string.Compare(x.stripe_payement_intent_id,paymentId)==0).FirstOrDefaultAsync();
+            var payment = await _context.CarRentalPayments.Include(x => x.carRentalBooking).Include(x => x.carRentalBooking.carRental).Include(x => x.carRentalBooking.user).Where(x => string.Compare(x.stripe_payement_intent_id, paymentId) == 0).FirstOrDefaultAsync();
             return payment;
         }
 
@@ -48,7 +48,7 @@ namespace api.Repository.Car_Rentals
 
         public async Task<CarRentalPayment> GetLatestCarRentalPayment(string sessionId)
         {
-            var payement = await _context.CarRentalPayments.Where(x => string.Compare(x.sessionId,sessionId)==0).Include(x=>x.carRentalBooking).Include(x=>x.carRentalBooking.carRental).Include(x=>x.carRentalBooking.user).FirstOrDefaultAsync();
+            var payement = await _context.CarRentalPayments.Where(x => string.Compare(x.sessionId, sessionId) == 0).Include(x => x.carRentalBooking).Include(x => x.carRentalBooking.carRental).Include(x => x.carRentalBooking.user).FirstOrDefaultAsync();
             return payement;
         }
     }

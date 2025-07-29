@@ -19,12 +19,13 @@ namespace api.Repository.Car_Rentals
         }
         public async Task<Session> CreateCheckoutSession(int bookingId)
         {
-            var booking =await _carRentalBookingRepository.GetById(bookingId);
+            var booking = await _carRentalBookingRepository.GetById(bookingId);
+            Console.WriteLine(booking);
             if (booking == null)
                 throw new Exception("Booking not found");
             var sessionOptions = new SessionCreateOptions
             {
-                CustomerEmail=booking.user.Email,
+                CustomerEmail = booking.user.Email,
                 PaymentMethodTypes = new List<string> { "card" },
                 LineItems = new List<SessionLineItemOptions>
                 {
@@ -48,13 +49,13 @@ namespace api.Repository.Car_Rentals
                 CancelUrl = "http://localhost:4200/failure"
             };
             var sessionService = new SessionService();
-            Session session=sessionService.Create(sessionOptions);
+            Session session = sessionService.Create(sessionOptions);
             return session;
         }
 
         public async Task<CarRentalPayment> CreateCarRentalPayment(CarRentalPayment payment)
         {
-           await _context.AddAsync(payment);
+            await _context.AddAsync(payment);
             await _context.SaveChangesAsync();
             return payment;
         }
@@ -77,16 +78,16 @@ namespace api.Repository.Car_Rentals
             {
                 stripe_payement_intent_id = session.PaymentIntentId,
                 status = session.PaymentStatus,
-                sessionId=session.Id,
+                sessionId = session.Id,
                 amount = (session.AmountTotal ?? 0) / 100.0,
                 bookingId = booking.id,
                 card = card,
                 booking_date = DateOnly.FromDateTime(DateTime.Now).ToString("yyyy-MM-dd"),
-                booking_time=TimeOnly.FromDateTime(DateTime.Now).ToString("hh:mm tt")
+                booking_time = TimeOnly.FromDateTime(DateTime.Now).ToString("hh:mm tt")
             };
             booking.isBooked = 1;
             booking.carRental.is_available = false;
-            booking.paymentId =session.PaymentIntentId;
+            booking.paymentId = session.PaymentIntentId;
             await _context.SaveChangesAsync();
             return payment;
         }

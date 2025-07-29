@@ -17,9 +17,10 @@ constructor(private carRental:CarRentalBookingService){}
 book(id:any)
 {
   this.carRental.createCheckout(id).subscribe({
-    next:(response)=>{
+    next:(response:any)=>{
+      response=response.result;
       console.log(response);
-      document.location.href=response.result.url;
+      document.location.href=response.url;
     }
   })
 }
