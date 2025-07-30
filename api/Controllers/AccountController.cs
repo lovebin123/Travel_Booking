@@ -71,7 +71,7 @@ namespace api.Controllers
                                 Email = user.Email,
                                 Token = _tokenService.CreateToken(user),
                                 Role = role,
-                                RefreshToken = _tokenService.GenerateRefreshToken()
+                                RefreshToken = _tokenService.GenerateRefreshToken(),
                             }
                         );
                     }
@@ -115,18 +115,22 @@ namespace api.Controllers
             var roleResult = await _userManager.AddToRoleAsync(user, role);
             var accessToken = _tokenService.CreateToken(user);
             var refreshToken = _tokenService.GenerateRefreshToken();
-          
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+            await _userManager.UpdateAsync(user);
             return Ok(new NewUserDTO
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                RefreshToken = refreshToken,
                 Token = _tokenService.CreateToken(user),
-                Role = role
+                Role = role,
+                RefreshTokenExpiryTime = DateTime.UtcNow.AddMinutes(5),
+                RefreshToken=refreshToken
 
             });
         }
+
         [HttpPost("verifyEmail")]
         public async Task<IActionResult> VerifyEmail(VerifyEmailDTO verifyEmailDTO)
         {
@@ -194,6 +198,7 @@ namespace api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
             var user = await _userManager.FindByNameAsync(email);
+            Console.WriteLine(user);
             if (user == null)
             {
                 Log.Error("User name does not exist");
@@ -243,15 +248,49 @@ namespace api.Controllers
         [HttpPost("refresh")]
         public async Task<IActionResult>RefreshPage(TokenResponse tokenResponse)
         {
-            var newAccessToken = _tokenService.GenerateAccessTokenRefreshToken(tokenResponse.AccessToken, _config["SigningKey"]);
-            var refreshToken = _tokenService.GenerateRefreshToken();
-            var response = new TokenResponse
+            var token = tokenResponse.AccessToken;
+            Console.WriteLine(token);
+            var refreshToken = tokenResponse.RefreshToken;
+            if (string.IsNullOrEmpty(refreshToken))
             {
-                AccessToken = newAccessToken,
-                RefreshToken = refreshToken
-            };
-            return Ok(response);
-                }
+                Log.Error("Refresh token not found");
+                return Unauthorized("Refresh token not found");
+            }
+            var principal = _tokenService.GetPrincipalFromExpiredToken(token);
+            var email = principal.GetFirstName();
+            var user=await _userManager.FindByNameAsync(email);
+            if (user == null ||
+        user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+            {
+                Log.Error("Invalid refresh path");
+                return Unauthorized();
+            }
+            var newAccessToken = _tokenService.CreateToken(user);
+            var newRefreshToken = _tokenService.GenerateRefreshToken();
+           user.RefreshToken = newRefreshToken;
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+            await _userManager.UpdateAsync(user);
+            return Ok(new NewUserDTO
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Token = newAccessToken,
+                RefreshToken = newRefreshToken,
+            }
+            );
+        }
+        [Authorize]
+        [HttpDelete("revoke")]
+        public async Task<IActionResult> Revoke()
+        {
+            var username = User.GetFirstName();
+            var user=await _userManager.FindByNameAsync(username);
+            user.RefreshToken = null;
+            user.RefreshTokenExpiryTime = null;
+            await _userManager.UpdateAsync(user);
+            return NoContent();
+        }
        
     }
 }

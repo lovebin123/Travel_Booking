@@ -43,7 +43,7 @@ namespace api.Controllers
             return Ok(flights);
         }
         [HttpGet("getAllFlights")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+        [Authorize( Roles = "Admin")]
         public async Task<IActionResult> GetAllFlights(int pageNumber=1,int pageSize=20)
         {
             var (flights,totalCount) = await _flightService.GetPagedFlightsAsync(pageSize,pageNumber);
@@ -75,7 +75,7 @@ namespace api.Controllers
             return Ok(destinations);
         }
         [HttpPost("createFlight")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateFlight(FlightDTO flightModal)
         {
 
@@ -84,7 +84,7 @@ namespace api.Controllers
             return Ok(flights);
         }
         [HttpGet("getById")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             var flight = await _flightService.GetById(id);
@@ -92,7 +92,7 @@ namespace api.Controllers
             return Ok(flight);
         }
         [HttpPut("updateFlight")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateFlight(int id, FlightDTO flightModal)
         {
             var flight = await _flightService.UpdateFlightAsync(id, flightModal);
@@ -100,7 +100,7 @@ namespace api.Controllers
             return Ok(flight);
         }
         [HttpDelete("deleteFlight")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteFlight(int id)
         {
              await _flightService.DeleteFlightAsync(id);

@@ -7,6 +7,7 @@ import {CommonModule} from "@angular/common";
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../../services/Account/auth.service';
 import { tick } from '@angular/core/testing';
+import {CookieService} from "ngx-cookie-service"
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -22,7 +23,7 @@ faEnvelope=faEnvelope;
 faKey=faLock;
 showToast=false;
 errorMessage='';
-constructor(private auth:AuthService,private router:Router,private fb:FormBuilder){
+constructor(private auth:AuthService,private router:Router,private fb:FormBuilder,private cookieService:CookieService){
 }
   ngOnInit(): void {
     this.registerForm=this.fb.group({
@@ -55,6 +56,7 @@ login() {
       console.log(response);
       localStorage.setItem('token', response.result.token);
       localStorage.setItem('role',response.result.role);
+      localStorage.setItem("refreshToken",response.result.refreshToken)
       if(this.registerForm.value.email==='admin@gmail.com')
       {
         this.ngOnDestroy();

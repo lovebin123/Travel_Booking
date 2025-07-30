@@ -52,7 +52,7 @@ export class AuthService {
     if(token)
     {
       const decodedToken=this.jwtHelper.decodeToken(token);
-      return decodedToken?.email;
+      return decodedToken.email;
     }
     else
     return null;

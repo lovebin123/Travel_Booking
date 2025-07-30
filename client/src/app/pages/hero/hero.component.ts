@@ -25,6 +25,7 @@ export class HeroComponent implements OnInit {
   }
   ngOnInit(): void {
   this.auth.getUserName().subscribe((response:any)=>{
+    console.log(response);
    this.data=response.result;
       this.firstName=this.data.firstName;
   }

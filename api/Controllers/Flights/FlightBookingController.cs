@@ -31,7 +31,7 @@ namespace api.Controllers.Flights
         }
 
         [HttpPost("postBooking")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> CreateFlightBooking(int id, string no_of_adults1, string no_of_children11)
         {
             var userName = User.GetFirstName();
@@ -48,7 +48,7 @@ namespace api.Controllers.Flights
         }
 
         [HttpGet("getBookings")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserFlightBookings()
         {
             var userName = User.GetFirstName();

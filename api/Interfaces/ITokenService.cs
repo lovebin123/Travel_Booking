@@ -1,5 +1,6 @@
-using System;
 using api.Models;
+using System;
+using System.Security.Claims;
 
 namespace api.Interfaces
 {
@@ -7,8 +8,7 @@ namespace api.Interfaces
     {
         string CreateToken(AppUser user);
         string GenerateRefreshToken();
-        string GenerateAccessTokenRefreshToken(string refreshToken, string secret);
 
-
+        ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
     }
 }

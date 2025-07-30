@@ -16,6 +16,7 @@ using api.Service.Flight;
 using api.Service.Hotels;
 using AutoWrapper;
 using DotNetEnv;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -45,22 +46,38 @@ if (string.IsNullOrEmpty(signingKey))
 {
     throw new InvalidOperationException("JWT SigningKey is missing in configuration.");
 }
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+var validationParams = new TokenValidationParameters
+{
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(signingKey)),
+    ValidateIssuer = true,
+    ValidIssuer = jwtSettings["Issuer"],
+    ValidateAudience = true,
+    ValidAudience = jwtSettings["Audience"],
+    ValidateLifetime = true,
+    ValidateIssuerSigningKey = true,
+    RoleClaimType = ClaimTypes.Role,
+};
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(signingKey)),
-            ValidateIssuer = true,
-            ValidIssuer = jwtSettings["Issuer"],
-            ValidateAudience = true,
-            ValidAudience = jwtSettings["Audience"],
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            RoleClaimType = ClaimTypes.Role
-        };
-    })
-    ;
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(signingKey)),
+        ValidateIssuer = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidateAudience = true,
+        ValidAudience = jwtSettings["Audience"],
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        RoleClaimType = ClaimTypes.Role,
+        ClockSkew = TimeSpan.Zero,
+        RequireExpirationTime = true
+    };
+});
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddControllers().AddNewtonsoftJson(options => {
@@ -136,7 +153,7 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
     });
 }
-app.UseCors(x => x.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
+app.UseCors(x => x.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
