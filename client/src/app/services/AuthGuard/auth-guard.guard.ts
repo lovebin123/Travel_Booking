@@ -9,7 +9,7 @@ export const authGuardGuard: CanActivateFn = (route, state): Observable<boolean>
   const jwtHelper = inject(JwtHelperService);
   const router = inject(Router);
   const http = inject(HttpClient);
-
+  
   const token = localStorage.getItem('token');
 
   if (token && !jwtHelper.isTokenExpired(token)) {
@@ -29,7 +29,7 @@ export const authGuardGuard: CanActivateFn = (route, state): Observable<boolean>
 function tryRefreshingTokens(http: HttpClient): Observable<boolean> {
   const token = localStorage.getItem('token');
   const refreshToken = localStorage.getItem('refreshToken');
-
+console.log(refreshToken);
   if (!token || !refreshToken) {
     return of(false);
   }
@@ -41,7 +41,7 @@ function tryRefreshingTokens(http: HttpClient): Observable<boolean> {
 
   return http.post<any>("http://localhost:5253/api/account/refresh", credentials).pipe(
     map((res: any) => {
-      if (res?.result) {
+      if (res) {
         localStorage.setItem('token', res.result.token);
         localStorage.setItem('refreshToken', res.result.refreshToken);
         return true;

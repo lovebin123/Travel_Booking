@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JVak3UYh4xA=",
+  "dgSpecHash": "/nY9W+QS6Wc=",
   "success": true,
   "projectFilePath": "C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\api.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\A2832859\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\8.0.13\\microsoft.aspnetcore.identity.entityframeworkcore.8.0.13.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.13\\microsoft.aspnetcore.jsonpatch.8.0.13.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\8.0.13\\microsoft.aspnetcore.mvc.newtonsoftjson.8.0.13.nupkg.sha512",
+    "C:\\Users\\A2832859\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.1.0\\microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.13\\microsoft.aspnetcore.openapi.8.0.13.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\A2832859\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

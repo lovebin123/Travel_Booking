@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from '../../../services/Account/auth.service';
 import { Router } from '@angular/router';
 import { invalid } from 'moment';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -28,7 +29,7 @@ export class SignupComponent implements OnInit{
   faKey = faLock;
   faUser = faUser;
 
-  constructor(private authservice: AuthService, private router: Router,private fb:FormBuilder) {}
+  constructor(private authservice: AuthService, private router: Router,private fb:FormBuilder,private cookieService:CookieService) {}
   ngOnInit(): void {
     this.registerForm=this.fb.group({
       firstName:['',Validators.required],

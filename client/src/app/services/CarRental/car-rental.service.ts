@@ -19,26 +19,16 @@ export class CarRentalService {
   }
   getAllCarRentals(pageNumber:number,pageSize:number):Observable<any>
   {
-    const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
+    
     return this.http.get(`${this.url}/getAllCarRentals?pageNumber=${pageNumber.toString()}&pageSize=${pageSize.toString()}`);
   }
   getById(id:any):Observable<any>
   {
-     const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
+    
     return this.http.get(`${this.url}/getById?id=${id}`);
   }
   createCarRental(carRentalData:CarRental)
   {
-      const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
     return this.http.post(`${this.url}/createCarRental`,carRentalData);
   }
   searchByCarName(name:any):Observable<any>
@@ -47,18 +37,10 @@ export class CarRentalService {
   }
 updateCarRental(id:any,carRentalData:CarRental)
 {
-    const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
     return this.http.put(`${this.url}/updateCarRental?id=${id}`,carRentalData);
 }
 deleteCarRental(id:any)
 {
-   const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
     return this.http.delete(`${this.url}/deleteCarRental?id=${id}`);
 }
 }

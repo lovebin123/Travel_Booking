@@ -54,6 +54,7 @@ login() {
   }).subscribe({
     next: (response: any) => {
       console.log(response);
+      
       localStorage.setItem('token', response.result.token);
       localStorage.setItem('role',response.result.role);
       localStorage.setItem("refreshToken",response.result.refreshToken)

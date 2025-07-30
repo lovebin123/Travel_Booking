@@ -7,6 +7,7 @@ import jsPDF, { RGBAData } from 'jspdf';
 import domtoimage from 'dom-to-image';
 import { HotelPaymentService } from '../../../services/Hotels/HotelPayment/hotel-payment.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-hotel-ticket',
   standalone: true,
@@ -16,7 +17,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HotelTicketComponent implements OnInit {
   id:any;
-  constructor(private hotel:HotelPaymentService,private router:Router,private route:ActivatedRoute){
+  constructor(private hotel:HotelPaymentService,private router:Router,private route:ActivatedRoute,private cookieService:CookieService){
     const navigation=this.router.getCurrentNavigation();
     const state=navigation?.extras?.state as{id:any};
     if(state?.id)
@@ -25,6 +26,7 @@ export class HotelTicketComponent implements OnInit {
     }
     else{
       const temp=localStorage.getItem('token');
+      
       if(temp)
       {
         this.id=state?.id;

@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../services/Account/auth.service';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-forgot-password',
   standalone: true,
@@ -20,7 +21,7 @@ export class ForgotPasswordComponent implements OnInit {
   token:any;
   showToast=false;
   passwordMismatch=false;
-  constructor(private route:ActivatedRoute,private auth:AuthService,private router:Router){
+  constructor(private route:ActivatedRoute,private auth:AuthService,private router:Router,private cookieService:CookieService){
   }
   ngOnInit(): void {
     const token=this.route.snapshot.paramMap.get('sessionID');

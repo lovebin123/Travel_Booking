@@ -4,19 +4,21 @@ import { Router } from '@angular/router';
 import {JwtHelperService} from "@auth0/angular-jwt"
 import { Observable, Subject, throwError, timeout } from 'rxjs';
 import { UserDetails } from '../../models/userDetails';
+import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private url="http://localhost:5253/api/account";
   private jwtHelper=new JwtHelperService();
-  constructor(private http:HttpClient,private router:Router) { }
+  constructor(private http:HttpClient,private router:Router,private cookieService:CookieService) { }
   signup(userData:any)
   {
     console.log(userData);
     return this.http.post(this.url+'/signup',userData);
   }
   login(userData: any) {
+    
     return this.http.post(this.url + '/login', userData);
   }
   verifyEmail(userData:any)

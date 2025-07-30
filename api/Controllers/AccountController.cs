@@ -16,6 +16,7 @@ using Serilog;
 
 namespace api.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/account")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -62,7 +63,7 @@ namespace api.Controllers
                     {
                         _logger.LogInformation("Role assigned successfully");
                         Log.Information("Role assigned successfully");
-                        return Ok(
+                        return new OkObjectResult(
                             new NewUserDTO
                             {
                                 FirstName = user.FirstName,
@@ -121,7 +122,7 @@ namespace api.Controllers
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
                 Role = role,
-                RefreshTokenExpiryTime = DateTime.UtcNow.AddMinutes(5),
+                RefreshTokenExpiryTime = (DateTime)user.RefreshTokenExpiryTime,
                 RefreshToken=refreshToken
 
             });
@@ -255,12 +256,7 @@ namespace api.Controllers
             var principal = _tokenService.GetPrincipalFromExpiredToken(token);
             var email = principal.GetFirstName();
             var user=await _userManager.FindByNameAsync(email);
-            if (user == null ||
-        user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
-            {
-                Log.Error("Invalid refresh path");
-                return Unauthorized();
-            }
+            Console.WriteLine(email);
             var newAccessToken = _tokenService.CreateToken(user);
             var newRefreshToken = _tokenService.GenerateRefreshToken();
            user.RefreshToken = newRefreshToken;
@@ -276,17 +272,7 @@ namespace api.Controllers
             }
             );
         }
-        [Authorize]
-        [HttpDelete("revoke")]
-        public async Task<IActionResult> Revoke()
-        {
-            var username = User.GetFirstName();
-            var user=await _userManager.FindByNameAsync(username);
-            user.RefreshToken = null;
-            user.RefreshTokenExpiryTime = null;
-            await _userManager.UpdateAsync(user);
-            return NoContent();
-        }
+      
        
     }
 }

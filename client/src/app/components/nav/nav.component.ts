@@ -5,6 +5,7 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";
 import { NgbDropdown, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TabsComponent } from "../nav-tabs/tabs.component";
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-nav',
   standalone: true,
@@ -16,7 +17,7 @@ export class NavComponent {
   role=localStorage.getItem('role');
   @Input()firstName='';
   faUser=faUser;
-    constructor(private router:Router,private auth:AuthService){}
+    constructor(private router:Router,private auth:AuthService,private cookieService:CookieService){}
 
   logout()
   {

@@ -24,6 +24,7 @@ export class VerifyEmailComponent {
     this.auth.verifyEmail(this.userData).subscribe(
     {
       next:(response:any)=>{
+        
         localStorage.setItem('token',response.result.token);
         this.showToast1=true;
       },

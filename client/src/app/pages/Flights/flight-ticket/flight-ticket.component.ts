@@ -10,6 +10,7 @@ import { FlightSeatComponent } from '../../../components/cards/Flights/flight-se
 import { FlightTicketPaymentComponent } from '../../../components/cards/Flights/flight-ticket-payment/flight-ticket-payment.component';
 import { FligtCardComponent } from '../../../components/cards/Flights/fligt-card/fligt-card.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-flight-ticket',
   standalone: true,
@@ -27,7 +28,7 @@ export class FlightTicketComponent {
   userDetails:any[]=[];
   sessionId:any;
   id:any;
-  constructor(private flightPayment:FlightPaymentService,private router:Router,private route:ActivatedRoute){
+  constructor(private flightPayment:FlightPaymentService,private router:Router,private route:ActivatedRoute,private cookieService:CookieService){
      const navigation = this.router.getCurrentNavigation();
 const state = navigation?.extras?.state as { id: any };
 

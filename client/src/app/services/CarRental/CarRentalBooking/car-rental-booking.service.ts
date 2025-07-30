@@ -11,11 +11,8 @@ private url='http://localhost:5253/api/carRentalBooking';
   constructor(private http:HttpClient) { }
   createBooking(id:any,createCarRentalBooking:createCarRentalBooking):Observable<any>
   {
-    const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
-    return this.http.post(`${this.url}/createBooking?id=${id}`,createCarRentalBooking,{headers:headers});
+   
+    return this.http.post(`${this.url}/createBooking?id=${id}`,createCarRentalBooking);
   }
   createCheckout(id:any):Observable<any>
   {
@@ -23,10 +20,7 @@ private url='http://localhost:5253/api/carRentalBooking';
   }
   getUserBooking():Observable<any>
   {
-    const token=localStorage.getItem('token');
-    const headers=new HttpHeaders({
-      'Authorization':`Bearer ${token}`
-    });
-    return this.http.get(`${this.url}/getUserBooking`,{headers:headers});
+  
+    return this.http.get(`${this.url}/getUserBooking`);
   }
 }
