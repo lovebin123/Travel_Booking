@@ -1,4 +1,5 @@
 using api.Data;
+using api.Filters;
 using api.Interfaces;
 using api.Interfaces.Car_Rentals;
 using api.Interfaces.Flights;
@@ -139,8 +140,11 @@ builder.Services.AddCors();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
-
-var log = new LoggerConfiguration().WriteTo.File("C:\\OneDrive - H&R BLOCK LTD\\Documents\\New folder\\hhg\\Travel_Booking\\api\\Logs\\log.txt", rollingInterval: RollingInterval.Day).CreateLogger();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<CustomFilter>(); 
+});
+var log = new LoggerConfiguration().WriteTo.File("C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Logs\\log.txt", rollingInterval: RollingInterval.Day).CreateLogger();
 Log.Logger = log;
 Env.Load();
 var app = builder.Build();

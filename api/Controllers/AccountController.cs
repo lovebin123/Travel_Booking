@@ -43,8 +43,6 @@ namespace api.Controllers
         [HttpPost("signup")]
         public async Task<IActionResult> SignUp([FromBody] SignUpDTO signUpDTO)
         {
-            try
-            {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
                 var user = new AppUser
@@ -62,6 +60,7 @@ namespace api.Controllers
                     var roleResult = await _userManager.AddToRoleAsync(user, role);
                     if (roleResult.Succeeded)
                     {
+                        _logger.LogInformation("Role assigned successfully");
                         Log.Information("Role assigned successfully");
                         return Ok(
                             new NewUserDTO
@@ -77,22 +76,17 @@ namespace api.Controllers
                     }
                     else
                     {
+                        _logger.LogError("User creation failed");
                     Log.Error("User creation failed");
                         return StatusCode(500, roleResult.Errors);
                     }
                 }
                 else
                 {
+                    _logger.LogError("Error ");
                     Log.Error("Error");
                     return StatusCode(500, createdUser.Errors);
                 }
-
-            }
-            catch (Exception e)
-            {
-               Log.Error("Catch block error");
-                return StatusCode(500, e);
-            }
         }
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO loginDTO)
@@ -102,12 +96,14 @@ namespace api.Controllers
             var user = await _userManager.Users.FirstOrDefaultAsync(x => string.Compare(x.UserName, loginDTO.Email.ToLower()) == 0);
             if (user == null)
             {
+                _logger.LogTrace("Invalid username");
                 Log.Error("Invalid username");
                 return Unauthorized("Invalid username");
             }
             var result = await _signinManager.PasswordSignInAsync(loginDTO.Email, loginDTO.Password, isPersistent: true, lockoutOnFailure: false);
             if (!result.Succeeded)
             {
+                _logger.LogInformation("Invalid credentials");
                 Log.Error("Invalid credentials");
                 return Unauthorized("Invalid credentials");
             }
