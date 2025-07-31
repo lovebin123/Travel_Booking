@@ -31,7 +31,6 @@ namespace api.Controllers.Flights
         }
 
         [HttpPost("postBooking")]
-        [Authorize(Roles = "User")]
         public async Task<IActionResult> CreateFlightBooking(int id, string no_of_adults1, string no_of_children11)
         {
             var userName = User.GetFirstName();

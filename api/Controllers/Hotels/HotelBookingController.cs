@@ -30,7 +30,6 @@ namespace api.Controllers.Hotels
         }
 
         [HttpPost("postBooking")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
         public async Task<IActionResult> CreateHotelBooking(int id, CreateHotelBookingDTO dto)
         {
             var username = User.GetFirstName();

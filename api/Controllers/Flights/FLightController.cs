@@ -29,6 +29,7 @@ namespace api.Controllers
             _mapper = mapper;
         }
         [HttpGet("getByQuery")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> GetFromQuery([FromQuery] QueryObject query)
         {
             var flights = await _flightService.GetFlightsByQuery(query);
@@ -75,7 +76,7 @@ namespace api.Controllers
             return Ok(destinations);
         }
         [HttpPost("createFlight")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> CreateFlight(FlightDTO flightModal)
         {
 
@@ -84,7 +85,6 @@ namespace api.Controllers
             return Ok(flights);
         }
         [HttpGet("getById")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             var flight = await _flightService.GetById(id);
@@ -92,7 +92,6 @@ namespace api.Controllers
             return Ok(flight);
         }
         [HttpPut("updateFlight")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateFlight(int id, FlightDTO flightModal)
         {
             var flight = await _flightService.UpdateFlightAsync(id, flightModal);
@@ -100,7 +99,6 @@ namespace api.Controllers
             return Ok(flight);
         }
         [HttpDelete("deleteFlight")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteFlight(int id)
         {
              await _flightService.DeleteFlightAsync(id);

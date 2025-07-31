@@ -28,6 +28,7 @@ namespace api.Service.Flight
                 sessionId = payment.sessionId,
                 card = payment.card,
                 FlightBookingId = payment.FlightBookingId,
+
                 flightBooking = new ResponseFlightBookingDto
                 {
                     id = payment.flightBooking.id,
@@ -80,6 +81,13 @@ namespace api.Service.Flight
                     no_of_adults = payment.flightBooking.no_of_adults,
                     no_of_children = payment.flightBooking.no_of_children,
                     paymentId = payment.flightBooking.paymentId,
+                    AppUser = new DTO.Account.AppUserDto
+                    {
+                        Email = payment.flightBooking.AppUser.Email,
+                        FirstName = payment.flightBooking.AppUser.FirstName,
+                        LastName = payment.flightBooking.AppUser.LastName,
+                        Id = payment.flightBooking.AppUser.Id
+                    },
                     Flight = new ResponseFlightDto
                     {
                         date_of_departure = payment.flightBooking.Flight.date_of_departure,
@@ -125,6 +133,13 @@ namespace api.Service.Flight
                     no_of_adults = payment.flightBooking.no_of_adults,
                     no_of_children = payment.flightBooking.no_of_children,
                     paymentId = payment.flightBooking.paymentId,
+                    AppUser=new DTO.Account.AppUserDto
+                    {
+                        Email=payment.flightBooking.AppUser.Email,
+                        FirstName=payment.flightBooking.AppUser.FirstName,
+                        LastName=payment.flightBooking.AppUser.LastName,
+                        Id = payment.flightBooking.AppUser.Id
+                    },
                     Flight = new ResponseFlightDto
                     {
                         date_of_departure = payment.flightBooking.Flight.date_of_departure,

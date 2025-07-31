@@ -16,6 +16,10 @@ export const authGuardGuard: CanActivateFn = (route, state): Observable<boolean>
     console.log(jwtHelper.decodeToken(token));
     return of(true);
   }
+  if(jwtHelper.isTokenExpired(token))
+  {
+    alert("Token expired please refresh the page");
+  }
 
   return tryRefreshingTokens(http).pipe(
     tap((success) => {

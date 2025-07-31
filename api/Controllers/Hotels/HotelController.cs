@@ -67,7 +67,6 @@ namespace api.Controllers.Hotels
         }
 
         [HttpPut("updateHotel")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> UpdateHotel(int id, HotelDTO hotelDTO)
         {
             var hotel = await _hotelService.UpdateHotel(id, hotelDTO);
@@ -75,7 +74,6 @@ namespace api.Controllers.Hotels
         }
 
         [HttpGet("getById")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> GetById(int id)
         {
             var hotel = await _hotelService.GetById(id);
@@ -83,7 +81,6 @@ namespace api.Controllers.Hotels
         }
 
         [HttpDelete("deleteHotel")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> DeleteHotel(int id)
         {
             await _hotelService.DeleteHotel(id);
