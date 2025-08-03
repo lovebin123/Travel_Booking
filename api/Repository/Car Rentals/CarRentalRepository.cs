@@ -5,7 +5,7 @@ using api.Helpers;
 using api.Interfaces.Car_Rentals;
 using api.Models.Car_Rental;
 using Microsoft.EntityFrameworkCore;
-
+#pragma warning disable 8618,8603,8601,8625,8600,8619,8613,8604
 namespace api.Repository.Car_Rentals
 {
 

@@ -43,7 +43,7 @@ console.log(refreshToken);
     refreshToken: refreshToken
   };
 
-  return http.post<any>("http://localhost:5253/api/account/refresh", credentials).pipe(
+  return http.post<any>("http://localhost:5253/api/v1/account/refresh", credentials).pipe(
     map((res: any) => {
       if (res) {
         localStorage.setItem('token', res.result.token);

@@ -13,10 +13,12 @@ using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Stripe.Checkout;
 
-namespace api.Controllers.Flights
+namespace api.Controllers.v1.Flights
 {
+
     [Route("api/flightBooking")]
     [ApiController]
+    [Authorize(Roles ="User")]
     public class FlightBookingController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;

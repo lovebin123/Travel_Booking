@@ -5,7 +5,7 @@ using api.Models;
 using api.Models.Flights;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-
+#pragma warning disable 8618,8603,8601,8625,8600,8619,8613
 namespace api.Service.Flight
 {
     public class FlightService : IFlightService
@@ -19,7 +19,7 @@ namespace api.Service.Flight
             _flightMapper = flightMapper;
         }
 
-        public async Task<List<ResponseFlightDto>> GetFlightsByQuery(QueryObject query)
+        public async Task<List<ResponseFlightDto?>> GetFlightsByQuery(QueryObject query)
         {
             var flights = _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable();
 
@@ -78,20 +78,12 @@ namespace api.Service.Flight
 
         public async Task<List<string>> GetSources()
         {
-            return await _unitOfWork.Repository<api.Models.Flights.Flight>()
-                .GetQueryable()
-                .Select(f => f.source)
-                .Distinct()
-                .ToListAsync();
+            return await _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable().Select(f => f.source).Distinct().ToListAsync();
         }
 
         public async Task<List<string>> GetDestinations()
         {
-            return await _unitOfWork.Repository<api.Models.Flights.Flight>()
-                .GetQueryable()
-                .Select(f => f.destination)
-                .Distinct()
-                .ToListAsync();
+            return await _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable().Select(f => f.destination).Distinct().ToListAsync();
         }
 
         public async Task<ResponseFlightDto> GetById(int id)
@@ -116,7 +108,6 @@ namespace api.Service.Flight
                 FlightBookings = flight.FlightBookings.ToList(),
                 time_of_departure = flight.time_of_departure
             };
-
             return response;
         }
 
@@ -125,10 +116,8 @@ namespace api.Service.Flight
             var query = _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable();
             var totalCount = await query.CountAsync();
 
-            var flights = await query
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .Select(x=>new ResponseFlightDto
+            var flights = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize)
+   .Select(x=>new ResponseFlightDto
                 {
                     price = x.price,
                     date_of_departure=x.date_of_departure,

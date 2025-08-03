@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace api.Controllers.CarRentals
+namespace api.Controllers.v1.CarRentals
 {
     [Route("api/carRentalPayment")]
     [ApiController]

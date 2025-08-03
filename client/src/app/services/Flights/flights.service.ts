@@ -10,7 +10,7 @@ import { Flight } from '../../models/flight';
 })
 export class FlightsService {
 private jwtHelper=new JwtHelperService();
-private url='http://localhost:5253/api/flights';
+private url='http://localhost:5253/api/v1/flights';
   tokenExpired$:Subject<boolean>=new Subject<boolean>();  
 constructor(private http:HttpClient,private router:Router) { }
 getByQuery(flightData: any): Observable<any> {

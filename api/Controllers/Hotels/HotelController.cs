@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System;
 
-namespace api.Controllers.Hotels
+namespace api.Controllers.v1.Hotels
 {
     [Route("api/hotels")]
     [ApiController]
@@ -27,9 +27,6 @@ namespace api.Controllers.Hotels
         [HttpGet("getHotelsFromQuery")]
         public async Task<IActionResult> GetFromQuery([FromQuery] HotelQueryObject hotelQuery)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
             var hotels = await _hotelService.GetHotelsByQuery(hotelQuery);
             Log.Information("Fetched hotels based on query");
             return Ok(hotels);

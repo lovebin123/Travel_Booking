@@ -146,3 +146,26 @@
 2025-07-31 10:35:37.757 +05:30 [INF] Listed all flights
 2025-07-31 10:35:38.188 +05:30 [INF] Listed all flights
 2025-07-31 10:35:52.466 +05:30 [INF] Fetched based on Id
+2025-07-31 11:18:29.599 +05:30 [ERR] Error
+2025-07-31 11:19:55.074 +05:30 [ERR] Error
+2025-07-31 11:25:32.566 +05:30 [ERR] Error
+2025-07-31 11:27:41.179 +05:30 [ERR] Error
+2025-07-31 11:34:32.310 +05:30 [ERR] Error
+2025-07-31 11:41:14.351 +05:30 [ERR] Error
+2025-07-31 11:43:22.572 +05:30 [ERR] Error
+2025-07-31 11:43:39.229 +05:30 [ERR] Error
+2025-07-31 11:48:14.869 +05:30 [INF] User name successfully found
+2025-07-31 11:48:15.010 +05:30 [INF] Listed all destinations
+2025-07-31 12:35:18.381 +05:30 [ERR] Invalid username
+2025-07-31 12:35:31.253 +05:30 [ERR] Invalid username
+2025-07-31 12:36:47.403 +05:30 [ERR] Invalid username
+2025-07-31 12:36:54.191 +05:30 [INF] User name successfully found
+2025-07-31 12:36:54.313 +05:30 [INF] Listed all destinations
+2025-07-31 12:36:56.800 +05:30 [INF] User name successfully found
+2025-07-31 12:36:59.032 +05:30 [INF] Listed all destinations
+2025-07-31 12:36:59.055 +05:30 [INF] User name successfully found
+2025-07-31 12:37:05.852 +05:30 [INF] User name successfully found
+2025-07-31 12:37:05.934 +05:30 [INF] Listed all flights
+2025-07-31 12:37:07.712 +05:30 [INF] Fetched based on Id
+2025-07-31 14:49:08.507 +05:30 [INF] User name successfully found
+2025-07-31 14:49:08.617 +05:30 [INF] Listed all destinations

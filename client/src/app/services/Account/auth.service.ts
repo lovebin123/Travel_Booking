@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class AuthService {
-  private url="http://localhost:5253/api/account";
+  private url="http://localhost:5253/api/v1/account";
   private jwtHelper=new JwtHelperService();
   constructor(private http:HttpClient,private router:Router,private cookieService:CookieService) { }
   signup(userData:any)

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace api.Controllers.Hotels
+namespace api.Controllers.v1.Hotels
 {
     [ApiController]
     [Route("api/hotelPayement")]
@@ -42,8 +42,6 @@ namespace api.Controllers.Hotels
         [HttpGet("getById")]
         public async Task<IActionResult> GetById(string id)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
             var payement = await _hotelPaymentRepository.GetById(id);
             return Ok(payement);
         }

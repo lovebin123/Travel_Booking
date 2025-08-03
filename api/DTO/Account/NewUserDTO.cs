@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+#pragma warning disable 8618,8603,8601,8625,8600,8619,8613
 
 namespace api.DTO.Account
 {
@@ -7,12 +8,12 @@ namespace api.DTO.Account
         [Required(ErrorMessage = "First name is required")]
         [StringLength(50, ErrorMessage = "First name cannot exceed 50 characters")]
         [Display(Name = "First Name")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [Required(ErrorMessage = "Last name is required")]
         [StringLength(50, ErrorMessage = "Last name cannot exceed 50 characters")]
         [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
@@ -25,11 +26,11 @@ namespace api.DTO.Account
 
         [Required(ErrorMessage = "Refresh token is required")]
         [Display(Name = "Refresh Token")]
-        public string RefreshToken { get; set; }
+        public string? RefreshToken { get; set; }
 
         [Required(ErrorMessage = "Role is required")]
         [StringLength(20, ErrorMessage = "Role cannot exceed 20 characters")]
-        public string Role { get; set; }
+        public string? Role { get; set; }
         public DateTime  RefreshTokenExpiryTime{ get; set; }
     }
 }

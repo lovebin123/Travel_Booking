@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-namespace api.Controllers.CarRentals
+#pragma warning disable 8618,8603,8601,8625,8600,8619,8613
+
+namespace api.Controllers.v1.CarRentals
 {
     [Route("api/carRentalBooking")]
     [ApiController]
@@ -28,7 +30,7 @@ namespace api.Controllers.CarRentals
         }
         [HttpPost("createBooking")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
-        public async Task<IActionResult> CreateCarRentalBooking(int id, CreateCarRentalBookingDTO carRentalBookingDTO)
+        public async Task<IActionResult> CreateCarRentalBooking(int id, CreateCarRentalBookingDto carRentalBookingDTO)
         {
             var userName = User.GetFirstName();
             if (userName == null)

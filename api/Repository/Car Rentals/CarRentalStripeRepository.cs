@@ -5,6 +5,7 @@ using api.Models.Car_Rental;
 using Stripe;
 using Stripe.Checkout;
 using DotNetEnv;
+#pragma warning disable 8618,8603,8601,8625,8600,8619,8613,8604,7022
 namespace api.Repository.Car_Rentals
 {
     public class CarRentalStripeRepository : ICarRentalStripeRepository

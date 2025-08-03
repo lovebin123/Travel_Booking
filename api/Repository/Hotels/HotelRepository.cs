@@ -7,7 +7,7 @@ using api.Interfaces.Hotels;
 using api.Models.Hotels;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
-
+#pragma warning disable 8618,8603,8601,8625,8600,8619,8613,8604
 namespace api.Repository.Hotels
 {
     public class HotelRepository : IHotelRepository

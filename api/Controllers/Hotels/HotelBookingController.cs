@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
 
-namespace api.Controllers.Hotels
+namespace api.Controllers.v1.Hotels
 {
      [ApiController]
     [Route("api/hotelBooking")]

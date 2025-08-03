@@ -2,14 +2,17 @@ using api.Extensions;
 using api.Interfaces.Flights;
 using api.Models;
 using api.Service.Flight;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-namespace api.Controllers.Flights
+namespace api.Controllers.v1.Flights
 {
     [Route("api/payments")]
     [ApiController]
+    [Authorize]
+    [ApiVersion("1.0")]
     public class FlightPaymentController : ControllerBase
     {
         private readonly IFlightPaymentService _paymentService;

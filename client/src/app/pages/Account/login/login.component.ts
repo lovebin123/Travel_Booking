@@ -55,9 +55,9 @@ login() {
     next: (response: any) => {
       console.log(response);
       
-      localStorage.setItem('token', response.result.token);
-      localStorage.setItem('role',response.result.role);
-      localStorage.setItem("refreshToken",response.result.refreshToken)
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('role',response.role);
+      localStorage.setItem("refreshToken",response.refreshToken)
       if(this.registerForm.value.email==='admin@gmail.com')
       {
         this.ngOnDestroy();

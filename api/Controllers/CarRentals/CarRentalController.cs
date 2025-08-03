@@ -5,7 +5,7 @@ using api.Interfaces.Car_Rentals;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-namespace api.Controllers.CarRentals
+namespace api.Controllers.v1.CarRentals
 {
     [Route("api/carRentals")]
     [ApiController]

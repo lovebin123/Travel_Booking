@@ -8,15 +8,19 @@ using api.Mappers;
 using api.Models.Flights;
 using api.Service;
 using api.Service.Flight;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-namespace api.Controllers
+namespace api.Controllers.Flights
 {
-    [Route("api/flights")]
     [ApiController]
+    [Route("api/v{version:apiVersion}/flights")]
+    [Route("api/flights")]
+    [ApiVersion("1.0")]
+
     public class FLightController : ControllerBase
     {
         private readonly IFlightService _flightService;
@@ -29,6 +33,7 @@ namespace api.Controllers
             _mapper = mapper;
         }
         [HttpGet("getByQuery")]
+        [MapToApiVersion("1.0")]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> GetFromQuery([FromQuery] QueryObject query)
         {
@@ -37,6 +42,8 @@ namespace api.Controllers
             return Ok(flights);
         }
         [HttpGet("searchByFlightName")]
+        [MapToApiVersion("1.0")]
+
         public async Task<IActionResult> SearchByFlightName([FromQuery] string name)
         {
             var flights = await _flightService.SearchByName(name);
@@ -44,7 +51,9 @@ namespace api.Controllers
             return Ok(flights);
         }
         [HttpGet("getAllFlights")]
+        [MapToApiVersion("1.0")]
         [Authorize( Roles = "Admin")]
+
         public async Task<IActionResult> GetAllFlights(int pageNumber=1,int pageSize=20)
         {
             var (flights,totalCount) = await _flightService.GetPagedFlightsAsync(pageSize,pageNumber);
@@ -53,29 +62,33 @@ namespace api.Controllers
             {
                 flights,
                 totalCount
-               
-
             });
         }
         [HttpGet("getSources")]
+        [Authorize(Roles = "User")]
+        [MapToApiVersion("1.0")]
+
         public async Task<IActionResult> GetSources()
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
             var sources = await _flightService.GetSources();
             Console.WriteLine(sources);
             return Ok(sources);
         }
         [HttpGet("getDestinations")]
+        [Authorize(Roles = "User")]
+        [MapToApiVersion("1.0")]
+
         public async Task<IActionResult> GetDestinations()
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+           
             Log.Information("Listed all destinations");
             var destinations =await  _flightService.GetDestinations();
             return Ok(destinations);
         }
         [HttpPost("createFlight")]
+        [Authorize(Roles = "Admin")]
+        [MapToApiVersion("1.0")]
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> CreateFlight(FlightDTO flightModal)
         {
@@ -85,6 +98,9 @@ namespace api.Controllers
             return Ok(flights);
         }
         [HttpGet("getById")]
+        [Authorize(Roles = "Admin")]
+        [MapToApiVersion("1.0")]
+
         public async Task<IActionResult> GetById(int id)
         {
             var flight = await _flightService.GetById(id);
@@ -92,6 +108,10 @@ namespace api.Controllers
             return Ok(flight);
         }
         [HttpPut("updateFlight")]
+        [Authorize(Roles = "Admin")]
+        [MapToApiVersion("1.0")]
+
+
         public async Task<IActionResult> UpdateFlight(int id, FlightDTO flightModal)
         {
             var flight = await _flightService.UpdateFlightAsync(id, flightModal);
@@ -99,6 +119,9 @@ namespace api.Controllers
             return Ok(flight);
         }
         [HttpDelete("deleteFlight")]
+        [Authorize(Roles = "Admin")]
+        [MapToApiVersion("1.0")]
+
         public async Task<IActionResult> DeleteFlight(int id)
         {
              await _flightService.DeleteFlightAsync(id);

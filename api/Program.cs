@@ -1,3 +1,4 @@
+using api.Configurations;
 using api.Data;
 using api.Filters;
 using api.Interfaces;
@@ -12,9 +13,13 @@ using api.Repository.Flights;
 using api.Repository.Generic;
 using api.Repository.Hotels;
 using api.Service;
+using api.Service.Account;
 using api.Service.CarRental;
 using api.Service.Flight;
 using api.Service.Hotels;
+using Asp.Versioning;
+using Asp.Versioning.ApiExplorer;
+using Asp.Versioning.Conventions;
 using AutoWrapper;
 using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -22,13 +27,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.AspNetCore.Mvc;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
 options.UseSqlServer(Environment.GetEnvironmentVariable("DB_STRING"), options =>
@@ -48,6 +53,7 @@ var signingKey = jwtSettings["SigningKey"];
 
 if (string.IsNullOrEmpty(signingKey))
 {
+    Log.Error("JWT Signing Key is missing in configuration");
     throw new InvalidOperationException("JWT SigningKey is missing in configuration.");
 }
 var validationParams = new TokenValidationParameters
@@ -82,21 +88,30 @@ builder.Services.AddAuthentication(options =>
         RequireExpirationTime = true
     };
 });
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddControllers().AddNewtonsoftJson(options => {
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
-builder.Services.AddApiVersioning(x =>
+builder.Services.AddApiVersioning(opt =>
 {
-    x.DefaultApiVersion = new ApiVersion(1, 0);
-    x.AssumeDefaultVersionWhenUnspecified = true;
-    x.ReportApiVersions = true;
+    opt.DefaultApiVersion = new ApiVersion(1, 0);
+    opt.AssumeDefaultVersionWhenUnspecified = true;
+    opt.ReportApiVersions = true;
+    opt.ApiVersionReader = new UrlSegmentApiVersionReader();
 });
-builder.Services.AddEndpointsApiExplorer();
+builder.Services
+    .AddApiVersioning()
+    .AddApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'VVV";
+        options.SubstituteApiVersionInUrl = true;
+    });
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+  
+    options.OperationFilter<SwaggerDefaultValues>();
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -121,32 +136,12 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<FlightMapper>();
 builder.Services.AddScoped<HotelMapper>();
-builder.Services.AddScoped<IFlightRepository, FlightRepository>();
-builder.Services.AddScoped<IFlightService, FlightService>();
-builder.Services.AddScoped<IFlightBookingService, FlightBookingService>();
-builder.Services.AddScoped<IStripeService, StripeService>();
-builder.Services.AddScoped<IHotelService, HotelService>();
-builder.Services.AddScoped<IHotelBookingService, HotelBookingService>();
-builder.Services.AddScoped<IHotelStripeService, HotelStripeService>();
-builder.Services.AddScoped<IHotelPaymentService, HotelPaymentService>();
-builder.Services.AddScoped<IFlightPaymentService, FlightPaymentService>();
-builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IStripePayementRepository, StripeRepository>();
-builder.Services.AddScoped<IFlightPaymentRepository, FlightPaymentRepository>();
-builder.Services.AddScoped<IFlightBookingRepository, FlightBookingRepository>();
-builder.Services.AddScoped<IHotelRepository, HotelRepository>();
-builder.Services.AddScoped<IHotelBookingRepository, HotelBookingRepository>();
-builder.Services.AddScoped<IHotelStripeRepository, HotelStripeRepository>();
-builder.Services.AddScoped<IHotelPaymentRepository, HotelPaymentRepository>();
-builder.Services.AddScoped<ICarRentalRepository, CarRentalRepository>();
-builder.Services.AddScoped<ICarRentalBookingRepository, CarRentalBookingRepository>();
-builder.Services.AddScoped<ICarRentalStripeRepository, CarRentalStripeRepository>();
-builder.Services.AddScoped<ICarRentalPaymentRepository, CarRentalPaymentRepository>();
+builder.Services.RegisterServicesRepositories();
 builder.Services.AddCors();
-
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 builder.Services.AddControllers(options =>
@@ -157,15 +152,24 @@ var log = new LoggerConfiguration().WriteTo.File("C:\\OneDrive - H&R BLOCK LTD\\
 Log.Logger = log;
 Env.Load();
 var app = builder.Build();
+var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 app.UseApiResponseAndExceptionWrapper();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
+    app.UseSwaggerUI(options =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        options.RoutePrefix = string.Empty;
+        var descriptions = app.DescribeApiVersions();
+        foreach (var description in descriptions)
+        {
+            var url = $"/swagger/{description.GroupName}/swagger.json";
+            var name = description.GroupName.ToUpperInvariant();
+            options.SwaggerEndpoint(url, name);
+        }
     });
 }
+
 app.UseCors(x => x.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 app.UseHttpsRedirection();
 app.UseAuthentication();

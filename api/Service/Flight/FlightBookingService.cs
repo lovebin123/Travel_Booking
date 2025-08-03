@@ -1,4 +1,5 @@
-﻿using api.DTO.Flight;
+﻿using api.DTO.Account;
+using api.DTO.Flight;
 using api.Extensions;
 using api.Interfaces;
 using api.Interfaces.Flights;
@@ -30,8 +31,6 @@ namespace api.Service.Flight
                 Log.Error("Flight not found");
                 throw new Exception("Flight not found");
             }
-
-
             var totalAmount = (noOfAdults + noOfChildren) * flight.price;
 
             var booking = new FlightBooking
@@ -89,12 +88,14 @@ namespace api.Service.Flight
             {
                 amount = result.amount,
                 flight_id = result.flight_id,
-                AppUser = result.AppUser == null ? null : new DTO.Account.AppUserDto
+                AppUser = result.AppUser == null ? null : new AppUserDto
                 {
-                    Email = result.AppUser.Email,
+                    Id =result.AppUser.Id,
                     FirstName = result.AppUser.FirstName,
                     LastName = result.AppUser.LastName,
-                    Id = result.AppUser.Id
+                    Email = result.AppUser.Email,
+
+
                 },
                 isBooked = result.isBooked,
                 no_of_adults = result.no_of_adults,

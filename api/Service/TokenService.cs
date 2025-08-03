@@ -1,3 +1,4 @@
+#pragma warning disable 8618,8603,8601,8625,8600,8619,8613,8604
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -10,7 +11,6 @@ using EllipticCurve.Utils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-
 namespace api.Service
 {
     public class TokenService : ITokenService
@@ -24,7 +24,6 @@ namespace api.Service
             _userManager = userManager;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:SigningKey"]));
         }
-
         public string CreateToken(AppUser user)
         {
             var claims = new List<Claim>
@@ -53,9 +52,6 @@ namespace api.Service
             return tokenHandler.WriteToken(token);
 
         }
-
-
-
         public string GenerateRefreshToken()
         {
             var randomNumber = new byte[32];
@@ -76,7 +72,6 @@ namespace api.Service
                 ValidateLifetime = false,
                 ValidateIssuerSigningKey = true,
             };
-
             var tokenHandler = new JwtSecurityTokenHandler();
             SecurityToken securityToken;
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);

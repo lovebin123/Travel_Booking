@@ -1,0 +1,20 @@
+2025-08-01 09:47:36.891 +05:30 [INF] Listed all destinations
+2025-08-01 09:50:28.955 +05:30 [INF] Listed all destinations
+2025-08-01 09:51:04.581 +05:30 [INF] Flights listed successfully based on query
+2025-08-01 09:51:23.495 +05:30 [INF] Flights listed successfully based on query
+2025-08-01 09:53:00.801 +05:30 [INF] Listed all flights
+2025-08-01 09:53:02.815 +05:30 [INF] Fetched based on Id
+2025-08-01 09:53:30.059 +05:30 [INF] Fetched based on Id
+2025-08-01 09:53:35.986 +05:30 [INF] Flight updated successfully
+2025-08-01 09:53:35.986 +05:30 [INF] Updated Flight Successfully
+2025-08-01 09:53:36.009 +05:30 [INF] Listed all flights
+2025-08-01 09:56:01.466 +05:30 [INF] Fetched based on Id
+2025-08-01 09:56:04.582 +05:30 [INF] Flight fetched
+2025-08-01 09:56:04.619 +05:30 [INF] Deleted flight Successfully
+2025-08-01 09:56:04.643 +05:30 [INF] Listed all flights
+2025-08-01 10:46:37.029 +05:30 [INF] Listed all destinations
+2025-08-01 10:56:22.993 +05:30 [INF] Listed all destinations
+2025-08-01 12:28:07.066 +05:30 [INF] Listed all destinations
+2025-08-01 12:28:17.148 +05:30 [INF] Listed all flights
+2025-08-01 12:29:12.958 +05:30 [INF] Created Flight Successfully
+2025-08-01 12:29:16.174 +05:30 [INF] Listed all flights
