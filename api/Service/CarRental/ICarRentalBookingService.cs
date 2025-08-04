@@ -5,9 +5,9 @@ namespace api.Service.CarRental
 {
     public interface ICarRentalBookingService
     {
-        Task<CarRentalBooking> CreateBookingAsync(string userName, int carId, CreateCarRentalBookingDto dto);
-        Task<List<CarRentalBooking>> GetUserBookingsAsync(string userName);
+        Task<CarRentalBookingEntity> CreateBookingAsync(string userName, int carId, CreateCarRentalBookingDto dto);
+        Task<List<CarRentalBookingEntity>> GetUserBookingsAsync(string userName);
         Task<string> CreateCheckoutSessionAsync(int bookingId);
-        Task<CarRentalPayment> ProcessCheckoutSuccessAsync(string sessionId, int bookingId);
+        Task<CarRentalPaymentEntity> ProcessCheckoutSuccessAsync(string sessionId, int bookingId);
     }
 }

@@ -18,7 +18,7 @@ namespace api.Repository.Flights
             _context = context;
         }
 
-        public async Task<List<FlightPayement>> GetAllPayments(AppUser user)
+        public async Task<List<FlightPayementEntity>> GetAllPayments(AppUser user)
         {
             return await _context.flightPayements
                 .Where(fb => fb.flightBooking.user_id == user.Id)
@@ -27,7 +27,7 @@ namespace api.Repository.Flights
                 .ToListAsync();
         }
 
-        public async Task<FlightPayement?> GetById(string intentId)
+        public async Task<FlightPayementEntity?> GetById(string intentId)
         {
             return await _context.flightPayements
                 .Include(x => x.flightBooking.AppUser)
@@ -35,7 +35,7 @@ namespace api.Repository.Flights
                 .FirstOrDefaultAsync(x => x.stripe_payement_intent_id == intentId);
         }
 
-        public async Task<FlightPayement?> GetLatestPayment(string sessionId)
+        public async Task<FlightPayementEntity?> GetLatestPayment(string sessionId)
         {
             return await _context.flightPayements
                 .Include(x => x.flightBooking.AppUser)
@@ -60,28 +60,29 @@ namespace api.Repository.Flights
                 await _context.SaveChangesAsync();
             }
         }
+        #region
 
-        public IQueryable<FlightPayement> GetQueryable()
+        public IQueryable<FlightPayementEntity> GetQueryable()
         {
             throw new NotImplementedException();
         }
 
-        public Task<FlightPayement?> GetByIdAsync(int id)
+        public Task<FlightPayementEntity?> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task AddAsync(FlightPayement entity)
+        public Task AddAsync(FlightPayementEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(FlightPayement entity)
+        public void Update(FlightPayementEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(FlightPayement entity)
+        public void Remove(FlightPayementEntity entity)
         {
             throw new NotImplementedException();
         }
@@ -90,5 +91,6 @@ namespace api.Repository.Flights
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

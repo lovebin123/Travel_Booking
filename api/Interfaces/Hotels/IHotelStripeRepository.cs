@@ -6,7 +6,7 @@ namespace api.Interfaces.Hotels
 {
     public interface IHotelStripeRepository
     {
-        Task<HotelPayment> CreateHotelPayment(HotelPayment payment);
+        Task<HotelPaymentEntity> CreateHotelPayment(HotelPaymentEntity payment);
 
     }
 }

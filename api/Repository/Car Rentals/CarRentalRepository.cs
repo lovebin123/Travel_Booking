@@ -16,7 +16,7 @@ namespace api.Repository.Car_Rentals
         {
             _context = context;
         }
-        public async Task<List<CarRental>> GetCarRentalsByQuery(CarRentalQueryObject queryObject)
+        public async Task<List<CarRentalEntity>> GetCarRentalsByQuery(CarRentalQueryObjectDto queryObject)
         {
             var rentals = _context.CarRentals.AsQueryable();
             if (!string.IsNullOrWhiteSpace(queryObject.location))
@@ -32,15 +32,15 @@ namespace api.Repository.Car_Rentals
             return await rentals.OrderBy(x => x.price).ToListAsync();
         }
 
-        public async Task<CarRental> GetById(int id)
+        public async Task<CarRentalEntity> GetById(int id)
         {
             var rental = await _context.CarRentals.FirstOrDefaultAsync(x => x.id == id);
             return rental;
         }
 
-        public async Task<(List<CarRental> carRentals, int totalCount)> GetAllCarRentals(int pageSize, int pageNumber)
+        public async Task<(List<CarRentalEntity> carRentals, int totalCount)> GetAllCarRentals(int pageSize, int pageNumber)
         {
-            var carRentals1 = await _context.CarRentals.Select(x => new CarRental
+            var carRentals1 = await _context.CarRentals.Select(x => new CarRentalEntity
             {
                 AvailableFromDate = x.AvailableFromDate,
                 AvailableFromTime = x.AvailableFromTime,
@@ -66,9 +66,9 @@ namespace api.Repository.Car_Rentals
             return locations;
         }
 
-        public async Task<CarRental> CreateCarRental(CarRentalDTO carRentalDTO)
+        public async Task<CarRentalEntity> CreateCarRental(CarRentalDto carRentalDTO)
         {
-            var carRental = new CarRental
+            var carRental = new CarRentalEntity
             {
                 AvailableFromDate = carRentalDTO.AvailableFromDate,
                 AvailableFromTime = carRentalDTO.AvailableFromTime,
@@ -88,7 +88,7 @@ namespace api.Repository.Car_Rentals
             return carRental;
         }
 
-        public async Task<CarRental> UpdateCarRental(int id, CarRentalDTO carRentalDTO)
+        public async Task<CarRentalEntity> UpdateCarRental(int id, CarRentalDto carRentalDTO)
         {
             Console.WriteLine(carRentalDTO);
             var carRental = await _context.CarRentals.FirstOrDefaultAsync(x => x.id == id);
@@ -115,7 +115,7 @@ namespace api.Repository.Car_Rentals
 
         }
 
-        public async Task<List<CarRental>> SearchByCarName(string name)
+        public async Task<List<CarRentalEntity>> SearchByCarName(string name)
         {
             var carRentals = _context.CarRentals.AsQueryable();
             if (!string.IsNullOrWhiteSpace(name))

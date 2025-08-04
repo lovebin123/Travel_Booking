@@ -6,7 +6,7 @@ using api.Models.Flights;
 
 namespace api.Interfaces.Flights
 {
-    public interface IFlightRepository : IRepository<Flight>
+    public interface IFlightRepository : IRepository<FlightEnitity>
     {
         List<string> GetSources();
         List<string> GetDestinations();

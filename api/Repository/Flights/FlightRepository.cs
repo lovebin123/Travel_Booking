@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository.Flights
 {
-    public class FlightRepository :GenericRepository<Flight>, IFlightRepository
+    public class FlightRepository :GenericRepository<FlightEnitity>, IFlightRepository
     {
         private readonly ApplicationDBContext _context;
 

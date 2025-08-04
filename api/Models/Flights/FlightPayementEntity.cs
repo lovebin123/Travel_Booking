@@ -3,7 +3,7 @@ using System;
 
 namespace api.Models.Flights
 {
-    public class FlightPayement
+    public class FlightPayementEntity
     {
         public int id { get; set; }
         public int FlightBookingId { get; set; }
@@ -12,7 +12,7 @@ namespace api.Models.Flights
         public string payement_status { get; set; }
         public string card { get; set; }
         public double amount { get; set; }
-        public FlightBooking flightBooking { get; set; }
+        public FlightBookingEntity flightBooking { get; set; }
 
     }
 }

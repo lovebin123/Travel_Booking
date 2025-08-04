@@ -14,14 +14,14 @@ namespace api.Repository.Car_Rentals
         {
             _context = context;
         }
-        public async Task<CarRentalBooking> CreateCarRentalBooking(CarRentalBooking carRentalBooking)
+        public async Task<CarRentalBookingEntity> CreateCarRentalBooking(CarRentalBookingEntity carRentalBooking)
         {
             await _context.CarRentalBookings.AddAsync(carRentalBooking);
             await _context.SaveChangesAsync();
             return carRentalBooking;
         }
 
-        public async Task<CarRentalBooking> DeleteById(int id)
+        public async Task<CarRentalBookingEntity> DeleteById(int id)
         {
             var booking = await _context.CarRentalBookings.FirstOrDefaultAsync(x => x.id == id);
             _context.CarRentalBookings.Remove(booking);
@@ -29,15 +29,15 @@ namespace api.Repository.Car_Rentals
             return booking;
         }
 
-        public async Task<CarRentalBooking?> GetById(int id)
+        public async Task<CarRentalBookingEntity?> GetById(int id)
         {
             var booking = await _context.CarRentalBookings.Include(x => x.user).Include(x => x.carRental).FirstOrDefaultAsync(x => x.id ==id);
             return booking;
         }
 
-        public async Task<List<CarRentalBooking>> GetUserCarRentalBookings(AppUser user)
+        public async Task<List<CarRentalBookingEntity>> GetUserCarRentalBookings(AppUser user)
         {
-            var bookings = await _context.CarRentalBookings.Where(x => x.user_id == user.Id).Select(x => new CarRentalBooking
+            var bookings = await _context.CarRentalBookings.Where(x => x.user_id == user.Id).Select(x => new CarRentalBookingEntity
             {
                 amount = x.amount,
                 bookedFromDate = x.bookedFromDate,
@@ -47,7 +47,7 @@ namespace api.Repository.Car_Rentals
                 id = x.id,
                 isBooked = x.isBooked,
                 paymentId = x.paymentId,
-                carRental = new CarRental
+                carRental = new CarRentalEntity
                 {
                     car_name = x.carRental.car_name,
                     drive_type = x.carRental.drive_type,

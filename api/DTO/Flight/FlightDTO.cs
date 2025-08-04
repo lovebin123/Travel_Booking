@@ -4,7 +4,7 @@ using System;
 
 namespace api.DTO.Flight
 {
-    public class FlightDTO
+    public record FlightDto
     {
         [SmartRequired]
         public string? name { get; set; }

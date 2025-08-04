@@ -28,7 +28,7 @@ namespace api.Service.Account
             _tokenService = tokenService;
             _config = config;
         }
-        public async Task<IActionResult> SignUp(SignUpDTO signUpDTO)
+        public async Task<IActionResult> SignUp(SignUpDto signUpDTO)
         {
             var user = new AppUser
             {
@@ -54,7 +54,7 @@ namespace api.Service.Account
                 return new ObjectResult(roleResult.Errors) { StatusCode = 500 };
             }
             Log.Information("Successfully signed up");
-            return new OkObjectResult(new NewUserDTO
+            return new OkObjectResult(new NewUserDto
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
@@ -64,7 +64,7 @@ namespace api.Service.Account
                 RefreshToken = _tokenService.GenerateRefreshToken(),
             });
         }
-        public async Task<IActionResult> Login(LoginDTO loginDTO)
+        public async Task<IActionResult> Login(LoginDto loginDTO)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDTO.Email.ToLower());
             if (user == null)
@@ -86,7 +86,7 @@ namespace api.Service.Account
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
             await _userManager.UpdateAsync(user);
             Log.Information("Successfully logged in");
-            return new OkObjectResult(new NewUserDTO
+            return new OkObjectResult(new NewUserDto
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
@@ -121,7 +121,7 @@ namespace api.Service.Account
             }
         }
 
-        public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO dto)
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordDto dto)
         {
             var user = await _userManager.FindByNameAsync(dto.Email);
             if (user == null) return new UnauthorizedObjectResult("User does not exist");
@@ -169,7 +169,7 @@ namespace api.Service.Account
             });
         }
 
-        public async Task<IActionResult> RefreshPage(TokenResponse tokenResponse)
+        public async Task<IActionResult> RefreshPage(TokenResponseDto tokenResponse)
         {
             var principal = _tokenService.GetPrincipalFromExpiredToken(tokenResponse.AccessToken);
             var username = principal.GetFirstName();
@@ -181,7 +181,7 @@ namespace api.Service.Account
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
             await _userManager.UpdateAsync(user);
 
-            return new OkObjectResult(new NewUserDTO
+            return new OkObjectResult(new NewUserDto
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,

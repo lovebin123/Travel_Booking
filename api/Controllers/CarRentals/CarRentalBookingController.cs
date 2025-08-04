@@ -39,7 +39,7 @@ namespace api.Controllers.v1.CarRentals
             if (user == null)
                 return BadRequest();
             var carRental = await _carRentalRepository.GetById(id);
-            var booking = new CarRentalBooking
+            var booking = new CarRentalBookingEntity
             {
                 bookedFromDate = carRentalBookingDTO.pickupDate,
                 bookedTillDate = carRentalBookingDTO.dropoffDate,

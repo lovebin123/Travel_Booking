@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace api.DTO.Account
 {
-    public class NewUserDTO
+    public class NewUserDto
     {
         [Required(ErrorMessage = "First name is required")]
         [StringLength(50, ErrorMessage = "First name cannot exceed 50 characters")]

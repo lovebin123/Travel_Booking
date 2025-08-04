@@ -3,7 +3,7 @@ using System;
 
 namespace api.Helpers
 {
-    public class QueryObject
+    public class QueryObjectDto
     {
          public string? source { get; set; }=null;
         public string? destination { get; set; }=null;

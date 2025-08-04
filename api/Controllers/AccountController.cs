@@ -21,8 +21,6 @@ namespace api.Controllers
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/account")]
-    [ApiVersion("2.0")]
-
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -34,17 +32,17 @@ namespace api.Controllers
         [HttpPost("signup")]
         [AutoWrapIgnore(ShouldLogRequestData =false)]
 
-        public Task<IActionResult> SignUp([FromBody] SignUpDTO dto) => _accountService.SignUp(dto);
+        public Task<IActionResult> SignUp([FromBody] SignUpDto dto) => _accountService.SignUp(dto);
 
         [HttpPost("login")]
         [AutoWrapIgnore(ShouldLogRequestData = false)]
-        public Task<IActionResult> Login([FromBody] LoginDTO dto) => _accountService.Login(dto);
+        public Task<IActionResult> Login([FromBody] LoginDto dto) => _accountService.Login(dto);
 
         [HttpPost("verifyEmail")]
         public Task<IActionResult> VerifyEmail([FromBody] VerifyEmailDTO dto) => _accountService.VerifyEmail(dto);
 
         [HttpPost("forgotPassword")]
-        public Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDTO dto) => _accountService.ForgotPassword(dto);
+        public Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDto dto) => _accountService.ForgotPassword(dto);
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("getUserName")]
@@ -59,6 +57,6 @@ namespace api.Controllers
         public Task<IActionResult> EditUserDetails([FromBody] editUserDto dto) => _accountService.EditUserDetails(User.GetFirstName(), dto);
 
         [HttpPost("refresh")]
-        public Task<IActionResult> RefreshPage([FromBody] TokenResponse tokenResponse) => _accountService.RefreshPage(tokenResponse);
+        public Task<IActionResult> RefreshPage([FromBody] TokenResponseDto tokenResponse) => _accountService.RefreshPage(tokenResponse);
     }
 }

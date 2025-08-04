@@ -18,7 +18,7 @@ namespace api.Repository.Hotels
             _context = context;
         }
 
-        public async Task<HotelPayment> CreateHotelPayment(HotelPayment payment)
+        public async Task<HotelPaymentEntity> CreateHotelPayment(HotelPaymentEntity payment)
         {
             await _context.AddAsync(payment);
             await _context.SaveChangesAsync();

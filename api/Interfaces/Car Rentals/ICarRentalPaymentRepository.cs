@@ -6,8 +6,8 @@ namespace api.Interfaces.Car_Rentals
 {
     public interface ICarRentalPaymentRepository
     {
-        Task<CarRentalPayment> GetLatestCarRentalPayment(string sessionId);
-        Task<List<CarRentalPayment>> GetCarRentalPayments(AppUser user);
-        Task<CarRentalPayment> GetById(string paymentId);
+        Task<CarRentalPaymentEntity> GetLatestCarRentalPayment(string sessionId);
+        Task<List<CarRentalPaymentEntity>> GetCarRentalPayments(AppUser user);
+        Task<CarRentalPaymentEntity> GetById(string paymentId);
     }
 }

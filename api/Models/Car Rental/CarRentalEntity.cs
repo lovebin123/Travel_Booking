@@ -2,7 +2,7 @@ using System;
 #pragma warning disable 8618,8603,8601,8625,8600,8619,8613,8604
 namespace api.Models.Car_Rental
 {
-    public class CarRental
+    public class CarRentalEntity
     {
         public int id { get; set; }
         public string car_name { get; set; }
@@ -17,7 +17,7 @@ namespace api.Models.Car_Rental
         public string AvailableUntilDate { get; set; }
         public string AvailableFromTime { get; set; }
         public string AvailableUntilTime { get; set; }
-        public IEnumerable<CarRentalBooking> CarRentalBookings { get; set; } = new List<CarRentalBooking>();
+        public IEnumerable<CarRentalBookingEntity> CarRentalBookings { get; set; } = new List<CarRentalBookingEntity>();
 
     }
 }

@@ -13,7 +13,7 @@ namespace api.Service.Hotels
             _paymentRepo = paymentRepo;
         }
 
-        public async Task<HotelPayment?> GetLastPaymentAndUpdateRooms(string sessionId)
+        public async Task<HotelPaymentEntity?> GetLastPaymentAndUpdateRooms(string sessionId)
         {
             var payment = await _paymentRepo.GetLastPayment(sessionId);
             if (payment == null) return null;
@@ -28,12 +28,12 @@ namespace api.Service.Hotels
             return payment;
         }
 
-        public async Task<List<HotelPayment>> GetHotelPayments(AppUser user)
+        public async Task<List<HotelPaymentEntity>> GetHotelPayments(AppUser user)
         {
             return await _paymentRepo.GetHotelPayments(user);
         }
 
-        public async Task<HotelPayment> GetById(string id)
+        public async Task<HotelPaymentEntity> GetById(string id)
         {
             return await _paymentRepo.GetById(id);
         }

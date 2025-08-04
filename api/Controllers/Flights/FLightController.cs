@@ -24,9 +24,9 @@ namespace api.Controllers.Flights
     public class FLightController : ControllerBase
     {
         private readonly IFlightService _flightService;
-        private readonly ILogger<Flight> _logger;
+        private readonly ILogger<FlightEnitity> _logger;
         private readonly FlightMapper _mapper;
-        public FLightController(IFlightService flightService, ILogger<Flight> logger, FlightMapper mapper)
+        public FLightController(IFlightService flightService, ILogger<FlightEnitity> logger, FlightMapper mapper)
         {
             _logger = logger;
             _flightService=flightService;
@@ -35,13 +35,14 @@ namespace api.Controllers.Flights
         [HttpGet("getByQuery")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> GetFromQuery([FromQuery] QueryObject query)
+        public async Task<IActionResult> GetFromQuery([FromQuery] QueryObjectDto query)
         {
             var flights = await _flightService.GetFlightsByQuery(query);
             Log.Information("Flights listed successfully based on query");
             return Ok(flights);
         }
         [HttpGet("searchByFlightName")]
+        [Authorize(Roles ="Admin")]
         [MapToApiVersion("1.0")]
 
         public async Task<IActionResult> SearchByFlightName([FromQuery] string name)
@@ -90,7 +91,7 @@ namespace api.Controllers.Flights
         [MapToApiVersion("1.0")]
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> CreateFlight(FlightDTO flightModal)
+        public async Task<IActionResult> CreateFlight(FlightDto flightModal)
         {
 
             var flights = await _flightService.CreateFlightAsync(flightModal);
@@ -112,7 +113,7 @@ namespace api.Controllers.Flights
         [MapToApiVersion("1.0")]
 
 
-        public async Task<IActionResult> UpdateFlight(int id, FlightDTO flightModal)
+        public async Task<IActionResult> UpdateFlight(int id, FlightDto flightModal)
         {
             var flight = await _flightService.UpdateFlightAsync(id, flightModal);
             Log.Information("Updated Flight Successfully");

@@ -3,7 +3,7 @@ using System;
 
 namespace api.Models.Hotels
 {
-    public class Hotel
+    public class HotelEntity
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -16,7 +16,7 @@ namespace api.Models.Hotels
         public int no_of_stars { get; set; }
         public string bed_type { get; set; }
 
-        public IEnumerable<HotelBooking> hotelBookings { get; set; }=new List<HotelBooking>();
+        public IEnumerable<HotelBookingEnitity> hotelBookings { get; set; }=new List<HotelBookingEnitity>();
 
     }
 }

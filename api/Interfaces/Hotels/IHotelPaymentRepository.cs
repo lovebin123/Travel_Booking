@@ -6,9 +6,9 @@ namespace api.Interfaces.Hotels
 {
     public interface IHotelPaymentRepository
     {
-        Task<HotelPayment> GetById(string id);
-        Task<List<HotelPayment>> GetHotelPayments(AppUser user);
-        Task<HotelPayment?> GetLastPayment(string sessionId);
+        Task<HotelPaymentEntity> GetById(string id);
+        Task<List<HotelPaymentEntity>> GetHotelPayments(AppUser user);
+        Task<HotelPaymentEntity?> GetLastPayment(string sessionId);
         Task SaveChangesAsync();
     }
 }

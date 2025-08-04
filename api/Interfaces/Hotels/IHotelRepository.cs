@@ -8,12 +8,12 @@ namespace api.Interfaces.Hotels
     public interface IHotelRepository
     {
         List<string> GetLocations();
-        Task<Hotel> GetById(int id);
-        Task<List<Hotel>> GetHotelsByQuery(HotelQueryObject hotelQueryObject);
-        Task<List<Hotel>> GetByHotelName(string name);
-        Task<(List<Hotel> hotels, int totalCount)> GetAllHotels(int pageNumber,int pageSize);
-        Task<Hotel> CreateHotel(HotelDTO hotelModel);
-        Task<Hotel> UpdateHotel(int id, HotelDTO hotelDTO);
+        Task<HotelEntity> GetById(int id);
+        Task<List<HotelEntity>> GetHotelsByQuery(HotelQueryObjectDto hotelQueryObject);
+        Task<List<HotelEntity>> GetByHotelName(string name);
+        Task<(List<HotelEntity> hotels, int totalCount)> GetAllHotels(int pageNumber,int pageSize);
+        Task<HotelEntity> CreateHotel(HotelDTO hotelModel);
+        Task<HotelEntity> UpdateHotel(int id, HotelDTO hotelDTO);
         Task DeleteHotel(int id);
     }
 }

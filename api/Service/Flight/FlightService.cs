@@ -19,9 +19,9 @@ namespace api.Service.Flight
             _flightMapper = flightMapper;
         }
 
-        public async Task<List<ResponseFlightDto?>> GetFlightsByQuery(QueryObject query)
+        public async Task<IEnumerable<ResponseFlightDto?>> GetFlightsByQuery(QueryObjectDto query)
         {
-            var flights = _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable();
+            var flights = _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetQueryable();
 
             if (!string.IsNullOrWhiteSpace(query.source))
                 flights = flights.Where(s => s.source.ToLower().Contains(query.source.ToLower()));
@@ -52,9 +52,9 @@ namespace api.Service.Flight
             }).ToListAsync();
         }
 
-        public async Task<List<ResponseFlightDto>> SearchFlights(string flightName)
+        public async Task<IEnumerable<ResponseFlightDto>> SearchFlights(string flightName)
         {
-            var flight = _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable();
+            var flight = _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetQueryable();
 
             if (!string.IsNullOrWhiteSpace(flightName))
                 flight = flight.Where(x => x.name.ToLower().Contains(flightName.ToLower()));
@@ -76,19 +76,19 @@ namespace api.Service.Flight
             }).ToListAsync();
         }
 
-        public async Task<List<string>> GetSources()
+        public async Task<IEnumerable<string>> GetSources()
         {
-            return await _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable().Select(f => f.source).Distinct().ToListAsync();
+            return await _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetQueryable().Select(f => f.source).Distinct().ToListAsync();
         }
 
-        public async Task<List<string>> GetDestinations()
-        {
-            return await _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable().Select(f => f.destination).Distinct().ToListAsync();
+        public async Task<IEnumerable<string>> GetDestinations()
+        {   
+            return await _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetQueryable().Select(f => f.destination).Distinct().ToListAsync();
         }
 
         public async Task<ResponseFlightDto> GetById(int id)
         {
-            var flight = await _unitOfWork.Repository<api.Models.Flights.Flight>().GetByIdAsync(id);
+            var flight = await _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetByIdAsync(id);
             if (flight == null)
             {
                 Log.Error("Flight not found");
@@ -111,9 +111,9 @@ namespace api.Service.Flight
             return response;
         }
 
-        public async Task<(List<ResponseFlightDto> Flights, int TotalCount)> GetPagedFlightsAsync(int pageSize, int pageNumber)
+        public async Task<(IEnumerable<ResponseFlightDto> Flights, int TotalCount)> GetPagedFlightsAsync(int pageSize, int pageNumber)
         {
-            var query = _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable();
+            var query = _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetQueryable();
             var totalCount = await query.CountAsync();
 
             var flights = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize)
@@ -135,10 +135,10 @@ namespace api.Service.Flight
             return (flights, totalCount);
         }
 
-        public async Task<ResponseFlightDto> CreateFlightAsync(FlightDTO dto)
+        public async Task<ResponseFlightDto> CreateFlightAsync(FlightDto dto)
         {
             var flight = _flightMapper.ConvertFlightDTOToFlight(dto);
-            await _unitOfWork.Repository<api.Models.Flights.Flight>().AddAsync(flight);
+            await _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().AddAsync(flight);
             await _unitOfWork.CompleteAsync();
             var responseDto = new ResponseFlightDto
             {
@@ -157,9 +157,9 @@ namespace api.Service.Flight
             return responseDto;
         }
 
-        public async Task<ResponseFlightDto> UpdateFlightAsync(int id, FlightDTO dto)
+        public async Task<ResponseFlightDto> UpdateFlightAsync(int id, FlightDto dto)
         {
-            var flight = await _unitOfWork.Repository<api.Models.Flights.Flight>().GetByIdAsync(id);
+            var flight = await _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetByIdAsync(id);
             if (flight == null)
             {
                 Log.Error("Flight not found");
@@ -176,7 +176,7 @@ namespace api.Service.Flight
             flight.price = dto.price;
             flight.seatType = dto.seatType;
 
-            _unitOfWork.Repository<api.Models.Flights.Flight>().Update(flight);
+            _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().Update(flight);
             await _unitOfWork.CompleteAsync();
             Log.Information("Flight updated successfully");
             var responseDto = new ResponseFlightDto
@@ -198,20 +198,20 @@ namespace api.Service.Flight
 
         public async Task DeleteFlightAsync(int id)
         {
-            var flight = await _unitOfWork.Repository<api.Models.Flights.Flight>().GetByIdAsync(id);
+            var flight = await _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetByIdAsync(id);
             if (flight == null)
             {
                 Log.Error("Flight not found");
                 throw new Exception("Flight not found");
             }
             Log.Information("Flight fetched");
-            _unitOfWork.Repository<api.Models.Flights.Flight>().Remove(flight);
+            _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().Remove(flight);
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task<List<ResponseFlightDto>> SearchByName(string name)
+        public async Task<IEnumerable<ResponseFlightDto>> SearchByName(string name)
         {
-            var flights = _unitOfWork.Repository<api.Models.Flights.Flight>().GetQueryable();
+            var flights = _unitOfWork.Repository<api.Models.Flights.FlightEnitity>().GetQueryable();
             if (!string.IsNullOrEmpty(name))
                 flights = flights.Where(x => x.name.Contains(name));
 

@@ -44,7 +44,7 @@ namespace api.Controllers.v1.Hotels
             if (hotel.price - int.Parse(dto.no_of_rooms) < 0)
                 return BadRequest("Not enough room capacity");
             Console.WriteLine(hotel);
-            var booking = new HotelBooking
+            var booking = new HotelBookingEnitity
             {
                 check_in_date = dto.check_in_date,
                 check_out_date = dto.check_out_date,

@@ -5,7 +5,7 @@ namespace api.Interfaces.Flights
 {
     public interface IStripePayementRepository
     {
-        Task SavePaymentAsync(FlightPayement payment);
+        Task SavePaymentAsync(FlightPayementEntity payment);
 
     }
 }

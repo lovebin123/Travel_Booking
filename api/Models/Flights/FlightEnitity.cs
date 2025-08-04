@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace api.Models.Flights
 {
-    public class Flight
+    public class FlightEnitity
     {
         public int id { get; set; }
         [MaxLength(255)]
@@ -17,6 +17,6 @@ namespace api.Models.Flights
         public string? time_of_arrival { get; set; }
         public string? seatType { get; set; }
         public int no_of_seats { get; set; }
-        public IEnumerable<FlightBooking> FlightBookings { get; set; } = new List<FlightBooking>();
+        public IEnumerable<FlightBookingEntity> FlightBookings { get; set; } = new List<FlightBookingEntity>();
     }
 }

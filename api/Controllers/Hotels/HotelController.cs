@@ -4,6 +4,7 @@ using api.Interfaces.Hotels;
 using api.Mappers.Hotels;
 using api.Models;
 using api.Service.Hotels;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,7 +14,8 @@ using System;
 
 namespace api.Controllers.v1.Hotels
 {
-    [Route("api/hotels")]
+    [Route("api/v{version:apiVersion}/hotels")]
+    [ApiVersion("2.0")]
     [ApiController]
     public class HotelController : ControllerBase
     {
@@ -25,7 +27,7 @@ namespace api.Controllers.v1.Hotels
         }
 
         [HttpGet("getHotelsFromQuery")]
-        public async Task<IActionResult> GetFromQuery([FromQuery] HotelQueryObject hotelQuery)
+        public async Task<IActionResult> GetFromQuery([FromQuery] HotelQueryObjectDto hotelQuery)
         {
             var hotels = await _hotelService.GetHotelsByQuery(hotelQuery);
             Log.Information("Fetched hotels based on query");

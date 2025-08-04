@@ -14,22 +14,22 @@ namespace api.Service.Hotels
             _hotelRepository = hotelRepository;
         }
 
-        public async Task<Hotel> CreateHotel(HotelDTO hotelModel) => await _hotelRepository.CreateHotel(hotelModel);
+        public async Task<HotelEntity> CreateHotel(HotelDTO hotelModel) => await _hotelRepository.CreateHotel(hotelModel);
 
         public async Task DeleteHotel(int id) => await _hotelRepository.DeleteHotel(id);
 
-        public async Task<(List<Hotel> hotels, int totalCount)> GetAllHotels(int pageSize, int pageNumber) =>
+        public async Task<(List<HotelEntity> hotels, int totalCount)> GetAllHotels(int pageSize, int pageNumber) =>
             await _hotelRepository.GetAllHotels(pageSize, pageNumber);
 
-        public async Task<Hotel> GetById(int id) => await _hotelRepository.GetById(id);
+        public async Task<HotelEntity> GetById(int id) => await _hotelRepository.GetById(id);
 
-        public async Task<List<Hotel>> GetHotelsByQuery(HotelQueryObject query) =>
+        public async Task<List<HotelEntity>> GetHotelsByQuery(HotelQueryObjectDto query) =>
             await _hotelRepository.GetHotelsByQuery(query);
 
-        public async Task<List<Hotel>> GetByHotelName(string name) => await _hotelRepository.GetByHotelName(name);
+        public async Task<List<HotelEntity>> GetByHotelName(string name) => await _hotelRepository.GetByHotelName(name);
 
         public List<string> GetLocations() => _hotelRepository.GetLocations();
 
-        public async Task<Hotel> UpdateHotel(int id, HotelDTO hotelDTO) => await _hotelRepository.UpdateHotel(id, hotelDTO);
+        public async Task<HotelEntity> UpdateHotel(int id, HotelDTO hotelDTO) => await _hotelRepository.UpdateHotel(id, hotelDTO);
     }
 }

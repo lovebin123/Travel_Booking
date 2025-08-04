@@ -7,6 +7,6 @@ namespace api.Service.Hotels
     public interface IHotelStripeService
     {
         Task<Session> CreateCheckoutSession(int bookingId);
-        Task<HotelPayment> HandleStripeSuccess(string sessionId, int bookingId);
+        Task<HotelPaymentEntity> HandleStripeSuccess(string sessionId, int bookingId);
     }
 }

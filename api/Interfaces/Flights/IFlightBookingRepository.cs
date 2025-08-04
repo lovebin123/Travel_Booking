@@ -4,10 +4,10 @@ using api.Models.Flights;
 
 namespace api.Interfaces.Flights
 {
-    public interface IFlightBookingRepository : IRepository<FlightBooking>
+    public interface IFlightBookingRepository : IRepository<FlightBookingEntity>
     {
-        Task<List<FlightBooking>> GetUserFlightBookings(AppUser user);
-        Task<FlightBooking?> GetById(int id);
-        Task<FlightBooking> CreateAsync(FlightBooking flightBooking);
+        Task<List<FlightBookingEntity>> GetUserFlightBookings(AppUser user);
+        Task<FlightBookingEntity?> GetById(int id);
+        Task<FlightBookingEntity> CreateAsync(FlightBookingEntity flightBooking);
     }
 }

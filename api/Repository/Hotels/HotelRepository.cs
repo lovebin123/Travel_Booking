@@ -19,9 +19,9 @@ namespace api.Repository.Hotels
             _context = context;
         }
 
-        public async Task<Hotel> CreateHotel(HotelDTO hotelModel)
+        public async Task<HotelEntity> CreateHotel(HotelDTO hotelModel)
         {
-            var hotel = new Hotel
+            var hotel = new HotelEntity
             {
                 bed_type = hotelModel.bed_type,
                 bedroom_type = hotelModel.bedroom_type,
@@ -48,7 +48,7 @@ namespace api.Repository.Hotels
             }
         }
 
-        public async Task<(List<Hotel> hotels, int totalCount)> GetAllHotels(int pageNumber, int pageSize)
+        public async Task<(List<HotelEntity> hotels, int totalCount)> GetAllHotels(int pageNumber, int pageSize)
         {
             var totalCount = await _context.hotels.CountAsync();
             var hotels = await _context.hotels
@@ -59,12 +59,12 @@ namespace api.Repository.Hotels
             return (hotels, totalCount);
         }
 
-        public async Task<Hotel> GetById(int id)
+        public async Task<HotelEntity> GetById(int id)
         {
             return await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
         }
 
-        public async Task<List<Hotel>> GetHotelsByQuery(HotelQueryObject query)
+        public async Task<List<HotelEntity>> GetHotelsByQuery(HotelQueryObjectDto query)
         {
             var hotels = _context.hotels.AsQueryable();
 
@@ -76,7 +76,7 @@ namespace api.Repository.Hotels
             return await hotels.OrderBy(h => h.price).ToListAsync();
         }
 
-        public async Task<List<Hotel>> GetByHotelName(string name)
+        public async Task<List<HotelEntity>> GetByHotelName(string name)
         {
             return await _context.hotels
                 .Where(h => h.name.Contains(name))
@@ -88,7 +88,7 @@ namespace api.Repository.Hotels
             return _context.hotels.Select(h => h.location).Distinct().ToList();
         }
 
-        public async Task<Hotel> UpdateHotel(int id, HotelDTO hotelDTO)
+        public async Task<HotelEntity> UpdateHotel(int id, HotelDTO hotelDTO)
         {
             var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
             if (hotel == null) return null;

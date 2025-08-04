@@ -14,14 +14,14 @@ namespace api.Repository.Hotels
         {
             _context = context;
         }
-        public async Task<HotelBooking> CreateHotelBooking(HotelBooking hotelBooking)
+        public async Task<HotelBookingEnitity> CreateHotelBooking(HotelBookingEnitity hotelBooking)
         {
             await _context.HotelBookings.AddAsync(hotelBooking);
             await _context.SaveChangesAsync();
             return hotelBooking;
         }
 
-        public async Task<HotelBooking> GetById(int bookingId)
+        public async Task<HotelBookingEnitity> GetById(int bookingId)
         {
             var booking = await _context.HotelBookings.Include(x => x.user).Include(x => x.hotel).FirstOrDefaultAsync(x => x.id == bookingId);
             if (booking == null)
@@ -29,9 +29,9 @@ namespace api.Repository.Hotels
             return booking;
 
         }
-        public async Task<List<HotelBooking>>GetUserBookings(AppUser user)
+        public async Task<List<HotelBookingEnitity>>GetUserBookings(AppUser user)
         {
-            var bookings = await _context.HotelBookings.Where(x => x.user_id == user.Id).Select(x => new HotelBooking
+            var bookings = await _context.HotelBookings.Where(x => x.user_id == user.Id).Select(x => new HotelBookingEnitity
             {
                 id = x.id,
                 hotel_id = x.hotel_id,
@@ -39,7 +39,7 @@ namespace api.Repository.Hotels
                 isBooked=x.isBooked,
                 check_in_date=x.check_in_date,
                 check_out_date=x.check_out_date,
-                hotel = new Hotel
+                hotel = new HotelEntity
                 {
                     name = x.hotel.name,
                     location = x.hotel.location,

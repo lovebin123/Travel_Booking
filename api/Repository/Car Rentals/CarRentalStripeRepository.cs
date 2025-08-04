@@ -54,14 +54,14 @@ namespace api.Repository.Car_Rentals
             return session;
         }
 
-        public async Task<CarRentalPayment> CreateCarRentalPayment(CarRentalPayment payment)
+        public async Task<CarRentalPaymentEntity> CreateCarRentalPayment(CarRentalPaymentEntity payment)
         {
             await _context.AddAsync(payment);
             await _context.SaveChangesAsync();
             return payment;
         }
 
-        public async Task<CarRentalPayment> GetSuccess(string sessionId, int bookingId)
+        public async Task<CarRentalPaymentEntity> GetSuccess(string sessionId, int bookingId)
         {
             var sessionService = new SessionService();
             var session = sessionService.Get(sessionId);
@@ -75,7 +75,7 @@ namespace api.Repository.Car_Rentals
             var chargeService = new ChargeService();
             var charge = chargeService.Get(chargeId);
             card = charge.PaymentMethodDetails.Card.Brand;
-            var payment = new CarRentalPayment
+            var payment = new CarRentalPaymentEntity
             {
                 stripe_payement_intent_id = session.PaymentIntentId,
                 status = session.PaymentStatus,

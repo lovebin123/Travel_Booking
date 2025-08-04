@@ -10,12 +10,12 @@ public class FlightMapper
         _mapper = mapper;
 
     }
-    public FlightDTO ConvertFlightToFlightDTO(Flight flight)
+    public FlightDto ConvertFlightToFlightDTO(FlightEnitity flight)
     {
-        return _mapper.Map<FlightDTO>(flight);
+        return _mapper.Map<FlightDto>(flight);
     }
-    public Flight ConvertFlightDTOToFlight(FlightDTO flightDTO)
+    public FlightEnitity ConvertFlightDTOToFlight(FlightDto flightDTO)
     {
-        return _mapper.Map<Flight>(flightDTO);
+        return _mapper.Map<FlightEnitity>(flightDTO);
     }
 }

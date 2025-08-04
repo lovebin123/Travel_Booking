@@ -5,15 +5,15 @@ namespace api.Service.Flight
 {
     public interface IFlightService
     {
-        Task<List<ResponseFlightDto?>> GetFlightsByQuery(QueryObject query);
-        Task<List<ResponseFlightDto?>> SearchFlights(string flightName);
-        Task<List<string?>> GetSources();
-        Task<List<string?>> GetDestinations();
+        Task<IEnumerable<ResponseFlightDto?>> GetFlightsByQuery(QueryObjectDto query);
+        Task<IEnumerable<ResponseFlightDto?>> SearchFlights(string flightName);
+        Task<IEnumerable<string?>> GetSources();
+        Task<IEnumerable<string?>> GetDestinations();
         Task<ResponseFlightDto?> GetById(int id); 
-        Task<List<ResponseFlightDto?>>SearchByName(string name);
-        Task<(List<ResponseFlightDto?> Flights, int TotalCount)> GetPagedFlightsAsync(int pageSize, int pageNumber); 
-        Task<ResponseFlightDto> CreateFlightAsync(FlightDTO dto); 
-        Task<ResponseFlightDto> UpdateFlightAsync(int id, FlightDTO dto); 
+        Task<IEnumerable<ResponseFlightDto?>>SearchByName(string name);
+        Task<(IEnumerable<ResponseFlightDto?> Flights, int TotalCount)> GetPagedFlightsAsync(int pageSize, int pageNumber); 
+        Task<ResponseFlightDto> CreateFlightAsync(FlightDto dto); 
+        Task<ResponseFlightDto> UpdateFlightAsync(int id, FlightDto dto); 
         Task DeleteFlightAsync(int id); 
     }
 }

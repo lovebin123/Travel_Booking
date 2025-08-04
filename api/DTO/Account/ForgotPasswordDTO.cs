@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace api.DTO.Account
 {
-    public class ForgotPasswordDTO
+    public class ForgotPasswordDto
     {
         [EmailAddress]
         [Required]

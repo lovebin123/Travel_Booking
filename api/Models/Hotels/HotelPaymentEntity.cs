@@ -3,7 +3,7 @@ using System;
 
 namespace api.Models.Hotels
 {
-    public class HotelPayment
+    public class HotelPaymentEntity
     {
         public int Id { get; set; }
         public string stripe_payement_intent_id { get; set; }
@@ -14,7 +14,7 @@ namespace api.Models.Hotels
         public string status { get; set; }
         public string booking_date { get; set; }
         public string booking_time { get; set; }
-       public HotelBooking hotelBooking { get; set; }
+       public HotelBookingEnitity hotelBooking { get; set; }
 
     }
 }

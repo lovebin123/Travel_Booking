@@ -15,27 +15,27 @@ namespace api.Repository.Car_Rentals
             _context = context;
         }
 
-        public async Task<CarRentalPayment> GetById(string paymentId)
+        public async Task<CarRentalPaymentEntity> GetById(string paymentId)
         {
             var payment = await _context.CarRentalPayments.Include(x => x.carRentalBooking).Include(x => x.carRentalBooking.carRental).Include(x => x.carRentalBooking.user).Where(x => string.Compare(x.stripe_payement_intent_id, paymentId) == 0).FirstOrDefaultAsync();
             return payment;
         }
 
-        public async Task<List<CarRentalPayment>> GetCarRentalPayments(AppUser user)
+        public async Task<List<CarRentalPaymentEntity>> GetCarRentalPayments(AppUser user)
         {
-            var payments = await _context.CarRentalPayments.Where(x => x.carRentalBooking.user_id == user.Id).Select(x => new CarRentalPayment
+            var payments = await _context.CarRentalPayments.Where(x => x.carRentalBooking.user_id == user.Id).Select(x => new CarRentalPaymentEntity
             {
                 amount = x.amount,
                 stripe_payement_intent_id = x.stripe_payement_intent_id,
                 card = x.card,
                 id = x.id,
-                carRentalBooking = new CarRentalBooking
+                carRentalBooking = new CarRentalBookingEntity
                 {
                     bookedFromDate = x.carRentalBooking.bookedFromDate,
                     bookedTillDate = x.carRentalBooking.bookedTillDate,
                     bookedFromTime = x.carRentalBooking.bookedFromTime,
                     bookedTillTime = x.carRentalBooking.bookedTillTime,
-                    carRental = new CarRental
+                    carRental = new CarRentalEntity
                     {
                         car_name = x.carRentalBooking.carRental.car_name
                     }
@@ -46,7 +46,7 @@ namespace api.Repository.Car_Rentals
 
         }
 
-        public async Task<CarRentalPayment> GetLatestCarRentalPayment(string sessionId)
+        public async Task<CarRentalPaymentEntity> GetLatestCarRentalPayment(string sessionId)
         {
             var payement = await _context.CarRentalPayments.Where(x => string.Compare(x.sessionId, sessionId) == 0).Include(x => x.carRentalBooking).Include(x => x.carRentalBooking.carRental).Include(x => x.carRentalBooking.user).FirstOrDefaultAsync();
             return payement;

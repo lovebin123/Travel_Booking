@@ -12,13 +12,13 @@ namespace api.Mappers.Hotels
         {
             _mapper = mapper;
         }
-        public HotelDTO HotelToHotelDTO(Hotel hotel)
+        public HotelDTO HotelToHotelDTO(HotelEntity hotel)
         {
             return _mapper.Map<HotelDTO>(hotel);
         }
-        public Hotel HotelDTOToHotel(HotelDTO hotelDTO)
+        public HotelEntity HotelDTOToHotel(HotelDTO hotelDTO)
         {
-            return _mapper.Map<Hotel>(hotelDTO);
+            return _mapper.Map<HotelEntity>(hotelDTO);
         }
     }
 }

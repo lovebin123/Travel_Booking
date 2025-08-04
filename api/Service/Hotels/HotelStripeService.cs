@@ -56,7 +56,7 @@ namespace api.Service.Hotels
             return sessionService.Create(sessionOptions);
         }
 
-        public async Task<HotelPayment> HandleStripeSuccess(string sessionId, int bookingId)
+        public async Task<HotelPaymentEntity> HandleStripeSuccess(string sessionId, int bookingId)
         {
             var booking = await _hotelBookingRepo.GetById(bookingId);
             if (booking == null)
@@ -71,7 +71,7 @@ namespace api.Service.Hotels
             var chargeService = new ChargeService();
             var charge = chargeService.Get(paymentIntent.LatestChargeId);
 
-            var payment = new HotelPayment
+            var payment = new HotelPaymentEntity
             {
                 stripe_payement_intent_id = session.PaymentIntentId,
                 status = session.PaymentStatus,

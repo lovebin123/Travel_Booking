@@ -14,45 +14,28 @@ namespace api.Repository.Flights
         {
             _context = context;
         }
-
-        public Task AddAsync(FlightBooking entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<FlightBooking> CreateAsync(FlightBooking flightBooking)
+        public async Task<FlightBookingEntity> CreateAsync(FlightBookingEntity flightBooking)
         {
             await _context.FlightBookings.AddAsync(flightBooking);
             await _context.SaveChangesAsync();
             return flightBooking;
         }
 
-        public async Task<FlightBooking?> GetById(int id)
+        public async Task<FlightBookingEntity?> GetById(int id)
         {
          return await _context.FlightBookings.Include(ft=>ft.Flight).Include(u=>u.AppUser).FirstOrDefaultAsync(x => x.id == id);
 
         }
-
-        public Task<FlightBooking?> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<FlightBooking> GetQueryable()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<List<FlightBooking>> GetUserFlightBookings(AppUser user)
+        public async Task<List<FlightBookingEntity>> GetUserFlightBookings(AppUser user)
         {
             
-            return await _context.FlightBookings.Where(u => u.user_id == user.Id).Select(fb => new FlightBooking
+            return await _context.FlightBookings.Where(u => u.user_id == user.Id).Select(fb => new FlightBookingEntity
             {
                 id = fb.id,
                 user_id = fb.user_id,
                 isBooked = fb.isBooked,
                 paymentId = fb.paymentId,
-                Flight = new Flight
+                Flight = new FlightEnitity
                 {
                     id = fb.flight_id,
                     name = fb.Flight.name,
@@ -67,8 +50,8 @@ namespace api.Repository.Flights
                 amount = fb.amount
             }).OrderByDescending(x => x.isBooked).ToListAsync();
         }
-
-        public void Remove(FlightBooking entity)
+#region
+        public void Remove(FlightBookingEntity entity)
         {
             throw new NotImplementedException();
         }
@@ -78,9 +61,24 @@ namespace api.Repository.Flights
             throw new NotImplementedException();
         }
 
-        public void Update(FlightBooking entity)
+        public void Update(FlightBookingEntity entity)
         {
             throw new NotImplementedException();
         }
+        public Task AddAsync(FlightBookingEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+        public Task<FlightBookingEntity?> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IQueryable<FlightBookingEntity> GetQueryable()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

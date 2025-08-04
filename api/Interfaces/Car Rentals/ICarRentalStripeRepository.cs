@@ -7,7 +7,7 @@ namespace api.Interfaces.Car_Rentals
     public interface ICarRentalStripeRepository
     {
         Task<Session> CreateCheckoutSession(int bookingId);
-        Task<CarRentalPayment> CreateCarRentalPayment(CarRentalPayment payment);
-        Task<CarRentalPayment> GetSuccess(string sessionId, int bookingId);
+        Task<CarRentalPaymentEntity> CreateCarRentalPayment(CarRentalPaymentEntity payment);
+        Task<CarRentalPaymentEntity> GetSuccess(string sessionId, int bookingId);
     }
 }

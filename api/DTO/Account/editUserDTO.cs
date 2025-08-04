@@ -3,11 +3,10 @@ using System;
 
 namespace api.DTO.Account
 {
-    public class editUserDto
-    {
-        public string? firstName { get; set; }
-        public string? lastName { get; set; }
-        public string? email { get; set; }
-        public string? phoneNumber { get; set; }
-    }
+    public record editUserDto(
+       string? firstName,
+        string? lastName,
+        string? email,
+       string? phoneNumber 
+    );
 }

@@ -19,11 +19,11 @@ public class FlightServiceTests
     public async Task GetFlightsByQuery_ShouldReturnFilteredFlightsOrderedByPrice()
     {
         var mockUnitOfWork = new Mock<IUnitOfWork>();
-        var mockFlightRepo = new Mock<IRepository<Flight>>();
+        var mockFlightRepo = new Mock<IRepository<FlightEnitity>>();
         var mockMapper = new Mock<IMapper>();
-        var flightData = new List<Flight>
+        var flightData = new List<FlightEnitity>
         {
-            new Flight {
+            new FlightEnitity {
                 id = 1,
                 name = "Air India",
                 source = "Kochi",
@@ -34,9 +34,9 @@ public class FlightServiceTests
                 time_of_departure = "08:00",
                 price = 5000,
                 no_of_seats = 100,
-                FlightBookings = new List<FlightBooking>()
+                FlightBookings = new List<FlightBookingEntity>()
             },
-            new Flight {
+            new FlightEnitity {
                 id = 2,
                 name = "Indigo",
                 source = "Kochi",
@@ -47,15 +47,15 @@ public class FlightServiceTests
                 time_of_departure = "09:00",
                 price = 4500,
                 no_of_seats = 90,
-                FlightBookings = new List<FlightBooking>()
+                FlightBookings = new List<FlightBookingEntity>()
             }
         }.AsQueryable();
-        mockFlightRepo.Setup(r => r.GetQueryable()).Returns(new TestAsyncEnumerable<Flight>(flightData));
-        mockUnitOfWork.Setup(u => u.Repository<Flight>()).Returns(mockFlightRepo.Object);
+        mockFlightRepo.Setup(r => r.GetQueryable()).Returns(new TestAsyncEnumerable<FlightEnitity>(flightData));
+        mockUnitOfWork.Setup(u => u.Repository<FlightEnitity>()).Returns(mockFlightRepo.Object);
 
         // Set up AutoMapper
-        mockMapper.Setup(m => m.Map<ResponseFlightDto>(It.IsAny<Flight>()))
-            .Returns<Flight>(f => new ResponseFlightDto
+        mockMapper.Setup(m => m.Map<ResponseFlightDto>(It.IsAny<FlightEnitity>()))
+            .Returns<FlightEnitity>(f => new ResponseFlightDto
             {
                 id = f.id,
                 name = f.name,
@@ -73,7 +73,7 @@ public class FlightServiceTests
         var flightMapper = new FlightMapper(mockMapper.Object);
         var service = new FlightService(mockUnitOfWork.Object, flightMapper);
 
-        var query = new QueryObject
+        var query = new QueryObjectDto
         {
             source = "kochi",
             destination = "bangalore",

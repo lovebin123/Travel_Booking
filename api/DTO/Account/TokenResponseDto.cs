@@ -2,7 +2,7 @@
 
 namespace api.DTO.Account
 {
-    public class TokenResponse
+    public class TokenResponseDto
     {
         public string? AccessToken { get; set; }
         public string? RefreshToken { get; set; }

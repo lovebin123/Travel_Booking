@@ -7,6 +7,6 @@ namespace api.Service.CarRental
     public interface ICarRentalStripeService
     {
         Task<string> CreateCheckoutSessionAsync(int bookingId);
-        Task<CarRentalPayment> HandleSuccessfulPayment(string sessionId, int bookingId);
+        Task<CarRentalPaymentEntity> HandleSuccessfulPayment(string sessionId, int bookingId);
     }
 }

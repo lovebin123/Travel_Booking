@@ -3,7 +3,7 @@ using System;
 
 namespace api.DTO.Car_Rental
 {
-    public class CarRentalDTO
+    public class CarRentalDto
     {
         public string carName { get; set; } = string.Empty;
         public string location { get; set; } = string.Empty;

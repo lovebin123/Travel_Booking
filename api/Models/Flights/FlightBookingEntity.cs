@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace api.Models.Flights
 {
-    public class FlightBooking
+    public class FlightBookingEntity
     {
         public int id { get; set; }
         public string no_of_adults { get; set; }
@@ -15,8 +15,8 @@ namespace api.Models.Flights
         
         public int isBooked { get; set; }
         public string? paymentId { get; set; }
-        public Flight Flight { get; set; }
+        public FlightEnitity Flight { get; set; }
         public AppUser AppUser { get; set; }
-        public IEnumerable<FlightPayement> flightPayements { get; set; } = new List<FlightPayement>();
+        public IEnumerable<FlightPayementEntity> flightPayements { get; set; } = new List<FlightPayementEntity>();
     }
 }

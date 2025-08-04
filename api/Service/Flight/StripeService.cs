@@ -70,7 +70,7 @@ namespace api.Service.Flight
             booking.isBooked = 1;
             booking.paymentId = session.PaymentIntentId;
 
-            var payment = new FlightPayement
+            var payment = new FlightPayementEntity
             {
                 stripe_payement_intent_id = session.PaymentIntentId,
                 payement_status = session.PaymentStatus,

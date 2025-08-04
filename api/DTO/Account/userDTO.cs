@@ -3,7 +3,7 @@ using System;
 
 namespace api.DTO.Account
 {
-    public class userDTO
+    public class userDto
     {
         public string? email { get; set; }
     }

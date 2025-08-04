@@ -17,7 +17,7 @@ namespace api.Controllers.v1.CarRentals
             _carRentalRepository = carRentalRepository;
         }
         [HttpGet("getFromQuery")]
-        public async Task<IActionResult> GetCarRentalsFromQuery([FromQuery] CarRentalQueryObject queryObject)
+        public async Task<IActionResult> GetCarRentalsFromQuery([FromQuery] CarRentalQueryObjectDto queryObject)
         {
             var rentals = await _carRentalRepository.GetCarRentalsByQuery(queryObject);
             return Ok(rentals);
@@ -43,14 +43,14 @@ namespace api.Controllers.v1.CarRentals
         }
         [HttpPost("createCarRental")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> CreateCarRental(CarRentalDTO carRentalDTO)
+        public async Task<IActionResult> CreateCarRental(CarRentalDto carRentalDTO)
         {
             var carRental = await _carRentalRepository.CreateCarRental(carRentalDTO);
             return Ok(carRental);
         }
         [HttpPut("updateCarRental")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public async Task<IActionResult> UpdateCarRental(int id, CarRentalDTO carRentalDTO)
+        public async Task<IActionResult> UpdateCarRental(int id, CarRentalDto carRentalDTO)
         {
             var carRental = await _carRentalRepository.UpdateCarRental(id, carRentalDTO);
             return Ok(carRental);

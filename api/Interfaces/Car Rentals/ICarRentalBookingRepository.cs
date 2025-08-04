@@ -6,9 +6,9 @@ namespace api.Interfaces.Car_Rentals
 {
     public interface ICarRentalBookingRepository
     {
-        Task<CarRentalBooking> CreateCarRentalBooking(CarRentalBooking carRentalBooking);
-        Task<List<CarRentalBooking>> GetUserCarRentalBookings(AppUser user);
-        Task<CarRentalBooking> GetById(int id);
-        Task<CarRentalBooking> DeleteById(int id);
+        Task<CarRentalBookingEntity> CreateCarRentalBooking(CarRentalBookingEntity carRentalBooking);
+        Task<List<CarRentalBookingEntity>> GetUserCarRentalBookings(AppUser user);
+        Task<CarRentalBookingEntity> GetById(int id);
+        Task<CarRentalBookingEntity> DeleteById(int id);
     }
 }

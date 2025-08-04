@@ -6,13 +6,13 @@ namespace api.Service.Hotels
 {
     public interface IHotelService
     {
-        Task<Hotel> CreateHotel(HotelDTO hotelModel);
+        Task<HotelEntity> CreateHotel(HotelDTO hotelModel);
         Task DeleteHotel(int id);
-        Task<(List<Hotel> hotels, int totalCount)> GetAllHotels(int pageSize, int pageNumber);
-        Task<Hotel> GetById(int id);
-        Task<List<Hotel>> GetHotelsByQuery(HotelQueryObject query);
-        Task<List<Hotel>> GetByHotelName(string name);
+        Task<(List<HotelEntity> hotels, int totalCount)> GetAllHotels(int pageSize, int pageNumber);
+        Task<HotelEntity> GetById(int id);
+        Task<List<HotelEntity>> GetHotelsByQuery(HotelQueryObjectDto query);
+        Task<List<HotelEntity>> GetByHotelName(string name);
         List<string> GetLocations();
-        Task<Hotel> UpdateHotel(int id, HotelDTO hotelDTO);
+        Task<HotelEntity> UpdateHotel(int id, HotelDTO hotelDTO);
     }
 }

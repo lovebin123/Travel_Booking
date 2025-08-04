@@ -11,7 +11,7 @@ namespace api.Controllers.v1.Flights
 {
     [Route("api/payments")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles ="User")]
     [ApiVersion("1.0")]
     public class FlightPaymentController : ControllerBase
     {

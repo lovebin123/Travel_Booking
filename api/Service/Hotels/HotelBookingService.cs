@@ -20,17 +20,17 @@ namespace api.Service.Hotels
             _stripeService = stripeService;
         }
 
-        public async Task<HotelBooking> CreateHotelBooking(HotelBooking booking)
+        public async Task<HotelBookingEnitity> CreateHotelBooking(HotelBookingEnitity booking)
         {
             return await _bookingRepo.CreateHotelBooking(booking);
         }
 
-        public async Task<HotelBooking> GetById(int id)
+        public async Task<HotelBookingEnitity> GetById(int id)
         {
             return await _bookingRepo.GetById(id);
         }
 
-        public async Task<List<HotelBooking>> GetUserBookings(AppUser user)
+        public async Task<List<HotelBookingEnitity>> GetUserBookings(AppUser user)
         {
             return await _bookingRepo.GetUserBookings(user);
         }
@@ -45,7 +45,7 @@ namespace api.Service.Hotels
             return await _stripeService.HandleStripeSuccess(sessionId, bookingId); 
         }
 
-        public async Task<Hotel> GetHotelById(int id)
+        public async Task<HotelEntity> GetHotelById(int id)
         {
             return await _hotelRepository.GetById(id);
         }

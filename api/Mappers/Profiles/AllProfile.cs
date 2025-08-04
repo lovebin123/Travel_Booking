@@ -13,11 +13,11 @@ namespace api.Mappers
     {
         public FlightProfile()
         {
-            CreateMap<Flight, FlightDTO>().ReverseMap();
-            CreateMap<Hotel, HotelDTO>().ReverseMap();
-            CreateMap<CarRental, CarRentalDTO>().ReverseMap();
-            CreateMap<ResponseFlightDto, Flight>().ReverseMap();
-            CreateMap<ResponseFlightBookingDto,api.Models.Flights.FlightBooking>().ReverseMap();
+            CreateMap<FlightEnitity, FlightDto>().ReverseMap();
+            CreateMap<HotelEntity, HotelDTO>().ReverseMap();
+            CreateMap<CarRentalEntity, CarRentalDto>().ReverseMap();
+            CreateMap<ResponseFlightDto, FlightEnitity>().ReverseMap();
+            CreateMap<ResponseFlightBookingDto,api.Models.Flights.FlightBookingEntity>().ReverseMap();
 
         }
     }

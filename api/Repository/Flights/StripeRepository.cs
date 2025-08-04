@@ -20,7 +20,7 @@ namespace api.Service
             _context = context;
         }
 
-        public async Task SavePaymentAsync(FlightPayement payment)
+        public async Task SavePaymentAsync(FlightPayementEntity payment)
         {
             await _context.AddAsync(payment);
             await _context.SaveChangesAsync();

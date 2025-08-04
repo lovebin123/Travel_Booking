@@ -159,7 +159,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.RoutePrefix = string.Empty;
         var descriptions = app.DescribeApiVersions();
         foreach (var description in descriptions)
         {

@@ -33,7 +33,7 @@ namespace api.Service.Flight
             }
             var totalAmount = (noOfAdults + noOfChildren) * flight.price;
 
-            var booking = new FlightBooking
+            var booking = new FlightBookingEntity
             {
                 user_id = user.Id,
                 flight_id = flight.id,
@@ -80,7 +80,7 @@ namespace api.Service.Flight
             return responseDto;
         }
 
-        public async Task<List<ResponseFlightBookingDto>>GetUserBookingsAsync(AppUser user)
+        public async Task<IEnumerable<ResponseFlightBookingDto>>GetUserBookingsAsync(AppUser user)
         {
             var res = await _unitOfWork.FlightBookingRepository.GetUserFlightBookings(user);
 
@@ -107,7 +107,7 @@ namespace api.Service.Flight
                     date_of_departure = result.Flight.date_of_departure,
                     destination = result.Flight.destination,
                     id = result.Flight.id,
-                    FlightBookings = result.Flight.FlightBookings?.ToList() ?? new List<FlightBooking>(),
+                    FlightBookings = result.Flight.FlightBookings?.ToList() ?? new List<FlightBookingEntity>(),
                     name = result.Flight.name,
                     no_of_seats = result.Flight.no_of_seats,
                     price = result.Flight.price,
