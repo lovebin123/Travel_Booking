@@ -21,7 +21,7 @@ namespace api.Repository.Flights
             _context = context;
         }
 
-        public List<string> GetSources()
+        public IEnumerable<string> GetSources()
         {
             return _context.Flights
                 .Select(x => x.source)
@@ -29,7 +29,7 @@ namespace api.Repository.Flights
                 .ToList();
         }
 
-        public List<string> GetDestinations()
+        public IEnumerable<string> GetDestinations()
         {
             return _context.Flights
                 .Select(x => x.destination)
@@ -42,7 +42,7 @@ namespace api.Repository.Flights
             return await _context.Flights.CountAsync();
         }
 
-        public async Task<(List<ResponseFlightDto> Flights, int TotalCount)> GetPagedAsync(int pageSize, int pageNumber)
+        public async Task<(IEnumerable<ResponseFlightDto> Flights, int TotalCount)> GetPagedAsync(int pageSize, int pageNumber)
         {
             var totalCount = await _context.Flights.CountAsync();
 

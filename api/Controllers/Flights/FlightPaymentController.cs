@@ -11,7 +11,6 @@ namespace api.Controllers.v1.Flights
 {
     [Route("api/payments")]
     [ApiController]
-    [Authorize(Roles ="User")]
     [ApiVersion("1.0")]
     public class FlightPaymentController : ControllerBase
     {
@@ -33,7 +32,6 @@ namespace api.Controllers.v1.Flights
         }
 
         [HttpGet("getAllPayments")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetPayments()
         {
             var userName = User.GetFirstName();

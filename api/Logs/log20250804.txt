@@ -1,2 +1,45 @@
 2025-08-04 10:04:50.551 +05:30 [INF] Successfully logged in
 2025-08-04 10:44:33.665 +05:30 [INF] Successfully logged in
+2025-08-04 11:53:04.338 +05:30 [INF] Successfully logged in
+2025-08-04 11:54:32.672 +05:30 [INF] Successfully logged in
+2025-08-04 11:54:32.716 +05:30 [INF] Listed all destinations
+2025-08-04 11:54:45.717 +05:30 [INF] Flights listed successfully based on query
+2025-08-04 11:54:48.131 +05:30 [INF] Created booking successfully
+2025-08-04 12:03:32.576 +05:30 [INF] Listed all destinations
+2025-08-04 12:04:11.980 +05:30 [INF] Listed all destinations
+2025-08-04 12:04:42.538 +05:30 [INF] Listed all destinations
+2025-08-04 12:05:31.189 +05:30 [INF] Listed all destinations
+2025-08-04 12:05:36.151 +05:30 [INF] Listed all destinations
+2025-08-04 12:05:53.070 +05:30 [INF] Fetched hotels based on query
+2025-08-04 12:06:04.228 +05:30 [INF] Fetched hotels based on query
+2025-08-04 12:06:55.787 +05:30 [INF] Listed all destinations
+2025-08-04 12:14:11.991 +05:30 [INF] Listed all destinations
+2025-08-04 13:11:40.227 +05:30 [INF] Successfully created account
+2025-08-04 13:11:40.351 +05:30 [INF] Successfully signed up
+2025-08-04 13:12:11.920 +05:30 [INF] Successfully created account
+2025-08-04 13:12:11.935 +05:30 [INF] Successfully signed up
+2025-08-04 13:12:15.349 +05:30 [ERR] Failed to create account
+2025-08-04 13:12:18.776 +05:30 [ERR] Failed to create account
+2025-08-04 13:12:25.204 +05:30 [ERR] Failed to create account
+2025-08-04 13:13:40.494 +05:30 [INF] Successfully created account
+2025-08-04 13:13:40.518 +05:30 [INF] Successfully signed up
+2025-08-04 13:14:33.802 +05:30 [INF] Successfully created account
+2025-08-04 13:14:33.819 +05:30 [INF] Successfully signed up
+2025-08-04 13:15:04.475 +05:30 [INF] Successfully logged in
+2025-08-04 13:15:04.630 +05:30 [INF] Listed all destinations
+2025-08-04 13:21:08.692 +05:30 [INF] Successfully created account
+2025-08-04 13:21:08.711 +05:30 [INF] Successfully signed up
+2025-08-04 16:54:35.682 +05:30 [INF] Successfully logged in
+2025-08-04 16:54:35.963 +05:30 [INF] Listed all destinations
+2025-08-04 16:55:51.898 +05:30 [INF] Flights listed successfully based on query
+2025-08-04 16:57:27.295 +05:30 [INF] Flights listed successfully based on query
+2025-08-04 17:01:42.688 +05:30 [INF] Successfully logged in
+2025-08-04 17:01:42.719 +05:30 [INF] Listed all destinations
+2025-08-04 17:01:57.514 +05:30 [INF] Flights listed successfully based on query
+2025-08-04 17:01:59.157 +05:30 [INF] Created booking successfully
+2025-08-04 17:14:35.951 +05:30 [INF] Listed all destinations
+2025-08-04 17:17:21.741 +05:30 [INF] Listed all destinations
+2025-08-04 17:18:32.244 +05:30 [INF] Listed all destinations
+2025-08-04 17:18:34.653 +05:30 [INF] Listed all destinations
+2025-08-04 17:18:43.189 +05:30 [INF] Listed all destinations
+2025-08-04 23:50:13.160 +05:30 [INF] Successfully logged in

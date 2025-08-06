@@ -111,7 +111,6 @@ builder.Services
 builder.Services.AddSwaggerGen(options =>
 {
   
-    options.OperationFilter<SwaggerDefaultValues>();
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -159,9 +158,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
+        
         var descriptions = app.DescribeApiVersions();
         foreach (var description in descriptions)
         {
+
             var url = $"/swagger/{description.GroupName}/swagger.json";
             var name = description.GroupName.ToUpperInvariant();
             options.SwaggerEndpoint(url, name);

@@ -1,0 +1,25 @@
+   
+   <div class="d-flex flex-column ">
+    <div class="d-flex  flex-column" style="background-color: #003580; height: 13rem;position: static;">
+<app-nav  [firstName]="firstName"/>
+<div class="d-flex flex-column text-white justify-content-center align-items-center" style="cursor: pointer;" >
+    <app-transaction-tabs/>
+</div>
+
+</div>
+<div class="tab-content" >
+    <div id="flightTransaction" class="tab-pane fade show active ">
+        <app-fligtht-transactions/>
+    </div>
+    <div id="hotelTransaction" class="tab-pane fade  ">
+        <app-hotel-transactions/>
+    </div>
+    <div id="carRentalTransaction" class="tab-pane fade">
+        <app-car-rental-transactions/>
+    </div>
+</div>
+</div>
+
+
+
+

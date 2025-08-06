@@ -18,7 +18,6 @@ namespace api.Controllers.Flights
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/flights")]
-    [Route("api/flights")]
     [ApiVersion("1.0")]
 
     public class FLightController : ControllerBase
@@ -26,9 +25,8 @@ namespace api.Controllers.Flights
         private readonly IFlightService _flightService;
         private readonly ILogger<FlightEnitity> _logger;
         private readonly FlightMapper _mapper;
-        public FLightController(IFlightService flightService, ILogger<FlightEnitity> logger, FlightMapper mapper)
+        public FLightController(IFlightService flightService,  FlightMapper mapper)
         {
-            _logger = logger;
             _flightService=flightService;
             _mapper = mapper;
         }

@@ -27,6 +27,7 @@ namespace api.Controllers.v1.Hotels
         }
 
         [HttpGet("getHotelsFromQuery")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> GetFromQuery([FromQuery] HotelQueryObjectDto hotelQuery)
         {
             var hotels = await _hotelService.GetHotelsByQuery(hotelQuery);
@@ -35,6 +36,8 @@ namespace api.Controllers.v1.Hotels
         }
 
         [HttpGet("searchByHotelName")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> SearchByHotelName(string name)
         {
             var hotels = await _hotelService.GetByHotelName(name);
@@ -43,6 +46,7 @@ namespace api.Controllers.v1.Hotels
         }
 
         [HttpGet("getAllHotels")]
+        [Authorize(Roles = "Admin")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> GetAllHotels(int pageNumber = 1, int pageSize = 20)
         {
@@ -51,6 +55,7 @@ namespace api.Controllers.v1.Hotels
         }
 
         [HttpGet("getLocations")]
+        [Authorize(Roles ="User")]
         public IActionResult GetLocations()
         {
             var locations = _hotelService.GetLocations();
@@ -66,6 +71,7 @@ namespace api.Controllers.v1.Hotels
         }
 
         [HttpPut("updateHotel")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> UpdateHotel(int id, HotelDTO hotelDTO)
         {
             var hotel = await _hotelService.UpdateHotel(id, hotelDTO);
@@ -73,6 +79,8 @@ namespace api.Controllers.v1.Hotels
         }
 
         [HttpGet("getById")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> GetById(int id)
         {
             var hotel = await _hotelService.GetById(id);
@@ -80,6 +88,7 @@ namespace api.Controllers.v1.Hotels
         }
 
         [HttpDelete("deleteHotel")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> DeleteHotel(int id)
         {
             await _hotelService.DeleteHotel(id);

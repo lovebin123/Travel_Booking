@@ -3,22 +3,23 @@ using api.Data;
 using api.Interfaces.Flights;
 using api.Models;
 using api.Models.Flights;
+using api.Repository.Generic;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository.Flights
 {
-    public class FlightPaymentRepository : IFlightPaymentRepository
+    public class FlightPaymentRepository : GenericRepository<api.Models.Flights.FlightPayementEntity>,IFlightPaymentRepository
     {
         private readonly ApplicationDBContext _context;
 
-        public FlightPaymentRepository(ApplicationDBContext context)
+        public FlightPaymentRepository(ApplicationDBContext context):base(context)
         {
             _context = context;
         }
 
-        public async Task<List<FlightPayementEntity>> GetAllPayments(AppUser user)
+        public async Task<IEnumerable<FlightPayementEntity>> GetAllPayments(AppUser user)
         {
             return await _context.flightPayements
                 .Where(fb => fb.flightBooking.user_id == user.Id)
@@ -60,37 +61,6 @@ namespace api.Repository.Flights
                 await _context.SaveChangesAsync();
             }
         }
-        #region
-
-        public IQueryable<FlightPayementEntity> GetQueryable()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<FlightPayementEntity?> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddAsync(FlightPayementEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(FlightPayementEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(FlightPayementEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
+     
     }
 }

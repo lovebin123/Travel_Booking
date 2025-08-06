@@ -1,0 +1,20 @@
+<div class="d-flex flex-column" >
+    <div class="d-flex  flex-column" style="background-color: #003580; height: 13rem;">
+<app-nav  [firstName]="firstName"/>
+<div class="d-flex flex-column text-white justify-content-center align-items-center" style="cursor: pointer;" >
+   <app-nav-tabs/>
+</div>
+
+</div>
+<div class="tab-content" style="background-color:  #e0dfdf;">
+    <div id="flightHome" role="tabpanel"  class=" show active tab-pane fade ">
+        <app-flight-home />
+    </div>
+    <div id="hotelHome" role="tabpanel" class="tab-pane fade  ">
+        <app-hotel-home-page/>
+    </div>
+    <div id="carRentalHome" role="tabpanel" class="tab-pane fade  ">
+        <app-car-rental/>
+    </div>
+</div>
+</div>

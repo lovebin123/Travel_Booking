@@ -8,7 +8,7 @@ namespace api.Interfaces.Flights
     public interface IFlightPaymentRepository : IRepository<FlightPayementEntity>
     {
         Task<FlightPayementEntity?> GetLatestPayment(string sessionId);
-        Task<List<FlightPayementEntity>> GetAllPayments(AppUser user);
+        Task<IEnumerable<FlightPayementEntity>> GetAllPayments(AppUser user);
         Task<FlightPayementEntity?> GetById(string intentId);
         Task DeductFlightSeatsAsync(int bookingId);
     }

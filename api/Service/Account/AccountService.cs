@@ -104,10 +104,10 @@ namespace api.Service.Account
             if (user == null) return new UnauthorizedObjectResult("Email does not exist");
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_ID");
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("bookvoyage@maildrop.cc", "Book Voyage");
+            var from = new EmailAddress("travelvoyage@maildrop.cc", "Book Voyage");
             var to = new EmailAddress(user.Email);
             var token = _tokenService.CreateToken(user);
-            var link = $"http://localhost:4200/forgotPassword/{token}";
+            var link = $"http://localhost:4200/auth/forgotPassword/{token}";
             var htmlContent = $"<strong>Click to reset:</strong><br/><a href=\"{link}\">{link}</a>";
             var msg = MailHelper.CreateSingleEmail(from, to, "Password reset mail", link, htmlContent);
             var response = await client.SendEmailAsync(msg);

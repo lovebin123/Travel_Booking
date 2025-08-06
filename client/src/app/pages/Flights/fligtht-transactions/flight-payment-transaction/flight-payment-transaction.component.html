@@ -1,7 +1,0 @@
-<div class="d-flex flex-column justify-content-center align-items-center gap-2  height: 100vh;" >
-    @for (item of data; track $index) {
-    <app-flight-payment-list [id]="item.id" [destination]="item.flightBooking.flight.destination" [flightData]="item.flightBooking.flight" [firstName]="item.flightBooking.appUser.firstName" [lastName]="item.flightBooking.appUser.lastName" 
-    [paymentIntentId]="item.stripe_payement_intent_id" [date_of_departure]="item.flightBooking.flight.date_of_departure" [name1]="item.flightBooking.flight.name"
-    [source]="item.flightBooking.flight.source"  [time_of_arrival]="item.flightBooking.flight.time_of_arrival" [time_of_departure]="item.flightBooking.flight.time_of_departure"/>
-    }
-</div>

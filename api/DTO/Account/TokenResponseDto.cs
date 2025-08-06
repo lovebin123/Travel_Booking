@@ -2,9 +2,8 @@
 
 namespace api.DTO.Account
 {
-    public class TokenResponseDto
-    {
-        public string? AccessToken { get; set; }
-        public string? RefreshToken { get; set; }
-    }
+    public record TokenResponseDto(
+      string? AccessToken,
+      string? RefreshToken
+    );
 }

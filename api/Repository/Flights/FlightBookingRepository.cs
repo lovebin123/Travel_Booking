@@ -3,14 +3,15 @@ using api.Data;
 using api.Interfaces.Flights;
 using api.Models;
 using api.Models.Flights;
+using api.Repository.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository.Flights
 {
-    public class FlightBookingRepository : IFlightBookingRepository
+    public class FlightBookingRepository : GenericRepository<FlightBookingEntity>,IFlightBookingRepository
     {
         private readonly ApplicationDBContext _context;
-        public FlightBookingRepository(ApplicationDBContext context)
+        public FlightBookingRepository(ApplicationDBContext context) : base(context)
         {
             _context = context;
         }
@@ -26,7 +27,7 @@ namespace api.Repository.Flights
          return await _context.FlightBookings.Include(ft=>ft.Flight).Include(u=>u.AppUser).FirstOrDefaultAsync(x => x.id == id);
 
         }
-        public async Task<List<FlightBookingEntity>> GetUserFlightBookings(AppUser user)
+        public async Task<IEnumerable<FlightBookingEntity>> GetUserFlightBookings(AppUser user)
         {
             
             return await _context.FlightBookings.Where(u => u.user_id == user.Id).Select(fb => new FlightBookingEntity
@@ -50,35 +51,6 @@ namespace api.Repository.Flights
                 amount = fb.amount
             }).OrderByDescending(x => x.isBooked).ToListAsync();
         }
-#region
-        public void Remove(FlightBookingEntity entity)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<int> SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(FlightBookingEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-        public Task AddAsync(FlightBookingEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-        public Task<FlightBookingEntity?> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public IQueryable<FlightBookingEntity> GetQueryable()
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
     }
 }

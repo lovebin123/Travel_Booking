@@ -8,9 +8,9 @@ namespace api.Interfaces.Flights
 {
     public interface IFlightRepository : IRepository<FlightEnitity>
     {
-        List<string> GetSources();
-        List<string> GetDestinations();
+       IEnumerable<string> GetSources();
+        IEnumerable<string> GetDestinations();
         Task<int> GetTotalCountAsync();
-        Task<(List<ResponseFlightDto> Flights, int TotalCount)> GetPagedAsync(int skip, int take);
+        Task<(IEnumerable<ResponseFlightDto> Flights, int TotalCount)> GetPagedAsync(int skip, int take);
     }
 }

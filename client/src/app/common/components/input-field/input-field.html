@@ -1,0 +1,11 @@
+<input
+  [attr.id]="id"
+  [attr.name]="name"
+  [attr.placeholder]="placeholder"
+  [attr.required]="required ? '' : null"
+  [type]="type"
+  [disabled]="isDisabled"
+  [value]="value"
+  [class]="class"
+  (input)="onInput($event)"
+  (blur)="onTouched()" />

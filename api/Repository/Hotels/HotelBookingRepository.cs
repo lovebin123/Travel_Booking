@@ -3,14 +3,15 @@ using api.Data;
 using api.Interfaces.Hotels;
 using api.Models;
 using api.Models.Hotels;
+using api.Repository.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository.Hotels
 {
-    public class HotelBookingRepository : IHotelBookingRepository
+    public class HotelBookingRepository : GenericRepository<HotelBookingEnitity>,IHotelBookingRepository
     {
         private readonly ApplicationDBContext _context;
-        public HotelBookingRepository(ApplicationDBContext context)
+        public HotelBookingRepository(ApplicationDBContext context):base(context) 
         {
             _context = context;
         }

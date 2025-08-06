@@ -18,7 +18,6 @@ namespace api.Controllers.v1.Flights
 
     [Route("api/flightBooking")]
     [ApiController]
-    [Authorize(Roles ="User")]
     public class FlightBookingController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
@@ -33,6 +32,7 @@ namespace api.Controllers.v1.Flights
         }
 
         [HttpPost("postBooking")]
+        [Authorize(Roles ="User")]
         public async Task<IActionResult> CreateFlightBooking(int id, string no_of_adults1, string no_of_children11)
         {
             var userName = User.GetFirstName();
@@ -54,6 +54,7 @@ namespace api.Controllers.v1.Flights
         {
             var userName = User.GetFirstName();
             var appUser = await _userManager.FindByNameAsync(userName);
+           
             if (appUser == null) return BadRequest();
 
             var bookings = await _bookingService.GetUserBookingsAsync(appUser);
@@ -61,6 +62,7 @@ namespace api.Controllers.v1.Flights
         }
 
         [HttpPost("payement-session")]
+        [Authorize(Roles ="User")]
         public async Task<IActionResult> CreateCheckoutSession(int id)
         {
             var session = await _stripeService.CreateFlightBookingPaymentSession(id);

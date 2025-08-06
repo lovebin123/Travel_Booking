@@ -5,16 +5,17 @@ using api.DTO.Hotel;
 using api.Helpers;
 using api.Interfaces.Hotels;
 using api.Models.Hotels;
+using api.Repository.Generic;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 #pragma warning disable 8618,8603,8601,8625,8600,8619,8613,8604
 namespace api.Repository.Hotels
 {
-    public class HotelRepository : IHotelRepository
+    public class HotelRepository :GenericRepository<HotelEntity>, IHotelRepository
     {
         private readonly ApplicationDBContext _context;
 
-        public HotelRepository(ApplicationDBContext context)
+        public HotelRepository(ApplicationDBContext context):base(context)
         {
             _context = context;
         }

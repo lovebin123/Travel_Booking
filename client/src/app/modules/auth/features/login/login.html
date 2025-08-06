@@ -1,0 +1,56 @@
+@if(errorMessage==="Invalid username")
+{
+  <ngb-toast  aria-live="polite" [delay]="2500" class="bg-danger text-white position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+    Invalid Username
+  </ngb-toast>
+}
+@else if (errorMessage==="Invalid credentials") {
+<ngb-toast  aria-live="polite" [delay]="2500" class="bg-danger text-white position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+  Invalid credentials
+</ngb-toast>
+}
+
+<form class="form was-validated" [formGroup]="registerForm" (ngSubmit)="login()">
+  <div class="card " style="width: 36rem; height: 36rem;">
+    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex gap-md-4 flex-column justify-content-center align-items-center " >
+  <div class="d-flex justify-content-center align-items-center  bg-custom rounded-circle " style="width:150px; height: 150px;">
+    <fa-icon  [icon]="faUser" size="4x" style="color: white;" ></fa-icon>
+</div>
+<div class="d-flex flex-column gap-3">
+<div class="d-flex flex-column gap-1">
+  <div class="input-group input-group-lg " style="width: 400px;">
+    <span class="input-group-text" >
+  <fa-icon [icon]="faEnvelope"></fa-icon>
+</span>
+<app-input-field name="email" id="email" formControlName="email" type="text" class="form-control p-2 btn-x border-start-0" [required]="true" placeholder="Email"/>
+</div>
+ <span class="text-danger"  *ngIf="(registerFormControlEmail?.touched && registerFormControlEmail?.invalid) && registerFormControlEmail?.errors">
+                             Email is required
+  </span>
+</div>
+<div class="input-group input-group-lg" style="width: 400px;" >
+  <span class="input-group-text" >
+  <fa-icon [icon]="faKey"></fa-icon>
+</span>
+<app-input-field id="'password'" [required]="true" formControlName="password"   [type]="showPassword1? 'text' : 'password'" class="form-control p-2 btn-x border-start-0" placeholder="Password"/>
+<span class="input-group-text " style="cursor: pointer;"  >
+<i (click)="show()" class="fa fa-eye-slash" id="showPassword" #showPassword></i>
+</span>
+</div>
+ <span class="text-danger"  *ngIf="(registerFormControlPassword?.touched && registerFormControlPassword?.invalid) && registerFormControlPassword?.errors">
+    Password is required
+  </span>
+</div>
+<div class="w-100 text-end mb-1">
+  <a routerLink="/auth/verifyEmail">Forgot Password</a>
+</div>
+<app-button [backgroundColor]="'#003580'" [width]="'8rem'" [height]="'4rem'" type="submit">Login</app-button>
+<div class="text-center mb-lg-3">
+  Don't have an account?
+  <a  routerLink="/auth/signup" class="text-decoration-none">Signup</a>
+</div>
+</div>
+</div>
+</div>
+</form>
