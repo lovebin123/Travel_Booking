@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthInterceptor } from './common/interceptor/auth-interceptor.interceptor';
+import { AuthInterceptor } from './common/interceptor/auth.interceptor';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { PageNotFound } from './common/components/page-not-found/page-not-found';
 

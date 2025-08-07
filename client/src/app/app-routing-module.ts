@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { authGuardGuard } from './common/authGuard/auth-guard.guard';
-import { adminGuard } from './common/authGuard/admin-guard.guard';
+import { authGuardGuard } from './common/authGuard/auth.guard';
+import { adminGuard } from './common/authGuard/admin.guard';
 import { LandingPage } from './common/components/landing-page/landing-page';
 import { PageNotFound } from './common/components/page-not-found/page-not-found';
 
