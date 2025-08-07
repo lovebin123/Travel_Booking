@@ -10,7 +10,7 @@ import { HotelAdminAddUpdateModal } from '../user/shared/hotels/hotel-admin-add-
 import { HotelAdminDeleteModal } from '../user/shared/hotels/hotel-admin-delete-modal/hotel-admin-delete-modal';
 import { CarRemtalAddUpdateModal } from '../user/shared/carRental/car-remtal-add-update-modal/car-remtal-add-update-modal';
 import { CarRentalAdminDelete } from '../user/shared/carRental/car-rental-admin-delete/car-rental-admin-delete';
-import { AdminDashboard } from './features/admin-dashboard/admin-dashboard';
+import { AdminDashboard } from './shared/admin-dashboard/admin-dashboard';
 import { Nav } from "../../common/components/nav/nav";
 import { AdminTabs } from "../../common/components/admin-tabs/admin-tabs";
 import { FlightAdmin } from './features/flight-admin/flight-admin';

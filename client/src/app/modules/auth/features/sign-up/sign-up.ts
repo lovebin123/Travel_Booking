@@ -104,7 +104,7 @@ export class SignUp implements OnInit{
     }).subscribe({
       next: (response: any) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
       },
       error: () => {
         this.error_message = 'Please fill all details';

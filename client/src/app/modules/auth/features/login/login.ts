@@ -23,6 +23,7 @@ faKey=faLock;
 showToast=false;
 errorMessage='';
 currentType='';
+
 constructor(private auth:AuthService,private router:Router,private fb:FormBuilder){
 }
   ngOnInit(): void {
