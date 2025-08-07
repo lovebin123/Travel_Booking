@@ -29,7 +29,7 @@ id:any;
   }
     backHome()
   {
-    this.router.navigate(['/transactions'],{state:{status:"Success"}});
+    this.router.navigate(['/dashboard/transactions'],{state:{status:"Success"}});
   }
     data:any={};
   ngOnInit(): void {
