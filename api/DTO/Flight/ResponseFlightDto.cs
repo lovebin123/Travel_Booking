@@ -17,7 +17,7 @@ namespace api.DTO.Flight
         public string? time_of_arrival { get; set; }
         public string? seatType { get; set; }
         public int no_of_seats { get; set; }
-        public IEnumerable<FlightBookingEntity> FlightBookings { get; set; } = new List<FlightBookingEntity>();
+        public IEnumerable<ResponseFlightBookingDto> FlightBookings { get; set; } = new List<ResponseFlightBookingDto>();
 
     }
 }

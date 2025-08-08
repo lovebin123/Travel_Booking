@@ -51,7 +51,7 @@ namespace api.Service.Flight
                         source = payment.flightBooking.Flight.source,
                         time_of_arrival = payment.flightBooking.Flight.time_of_arrival,
                         time_of_departure = payment.flightBooking.Flight.time_of_departure,
-                        FlightBookings = payment.flightBooking.Flight.FlightBookings?.ToList() ?? new List<FlightBookingEntity>()
+                        FlightBookings = new List<ResponseFlightBookingDto>()
                     }
                 }
             }).ToList();
@@ -100,7 +100,7 @@ namespace api.Service.Flight
                         source = payment.flightBooking.Flight.source,
                         time_of_arrival = payment.flightBooking.Flight.time_of_arrival,
                         time_of_departure = payment.flightBooking.Flight.time_of_departure,
-                        FlightBookings = payment.flightBooking.Flight.FlightBookings?.ToList() ?? new List<FlightBookingEntity>()
+                        FlightBookings = new List<ResponseFlightBookingDto>()
                     }
                 }
             };
@@ -152,7 +152,7 @@ namespace api.Service.Flight
                         source = payment.flightBooking.Flight.source,
                         time_of_arrival = payment.flightBooking.Flight.time_of_arrival,
                         time_of_departure = payment.flightBooking.Flight.time_of_departure,
-                        FlightBookings = payment.flightBooking.Flight.FlightBookings?.ToList() ?? new List<FlightBookingEntity>()
+                        FlightBookings = new List<ResponseFlightBookingDto>()
                     }
                 }
             };

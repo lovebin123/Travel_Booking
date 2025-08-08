@@ -1,3 +1,4 @@
+using api.DTO.Flight;
 using api.Extensions;
 using api.Interfaces.Flights;
 using api.Models;
@@ -24,6 +25,7 @@ namespace api.Controllers.v1.Flights
         }
 
         [HttpGet("getLatestPayment")]
+        [ProducesResponseType(typeof(ResponseFlightPaymentDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetLatest(string sessionId)
         {
             var payment = await _paymentService.GetLatestPaymentAsync(sessionId);
@@ -31,18 +33,10 @@ namespace api.Controllers.v1.Flights
             return Ok(payment);
         }
 
-        [HttpGet("getAllPayments")]
-        public async Task<IActionResult> GetPayments()
-        {
-            var userName = User.GetFirstName();
-            var user = await _userManager.FindByNameAsync(userName);
-            if (user == null) return BadRequest("User not found");
-
-            var payments = await _paymentService.GetAllPaymentsAsync(user);
-            return Ok(payments);
-        }
+ 
 
         [HttpGet("getById")]
+        [ProducesResponseType(typeof(ResponseFlightPaymentDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById(string id)
         {
             var payment = await _paymentService.GetByPaymentIntentIdAsync(id);

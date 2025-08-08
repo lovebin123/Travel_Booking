@@ -32,6 +32,7 @@ namespace api.Controllers.Flights
         [HttpGet("getByQuery")]
         [MapToApiVersion("1.0")]
         [Authorize(Roles = "User")]
+        [ProducesResponseType(typeof(ResponseFlightDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFromQuery([FromQuery] QueryObjectDto query)
         {
             var flights = await _flightService.GetFlightsByQuery(query);
@@ -39,6 +40,7 @@ namespace api.Controllers.Flights
             return Ok(flights);
         }
         [HttpGet("searchByFlightName")]
+        [ProducesResponseType(typeof(ResponseFlightDto), StatusCodes.Status200OK)]
         [Authorize(Roles ="Admin")]
 
         public async Task<IActionResult> SearchByFlightName([FromQuery] string name)
@@ -47,6 +49,7 @@ namespace api.Controllers.Flights
             return Ok(flights);
         }
         [HttpGet("getAllFlights")]
+        [ProducesResponseType(typeof(ResponseFlightDto), StatusCodes.Status200OK)]
         [MapToApiVersion("1.0")]
         [Authorize( Roles = "Admin")]
 
@@ -84,6 +87,7 @@ namespace api.Controllers.Flights
         [HttpPost("createFlight")]
         [Authorize(Roles = "Admin")]
         [MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(ResponseFlightDto), StatusCodes.Status200OK)]
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> CreateFlight(FlightDto flightModal)
@@ -95,6 +99,7 @@ namespace api.Controllers.Flights
         }
         [HttpGet("getById")]
         [Authorize(Roles = "Admin")]
+        [ProducesResponseType(typeof(ResponseFlightDto), StatusCodes.Status200OK)]
         [MapToApiVersion("1.0")]
 
         public async Task<IActionResult> GetById(int id)
@@ -105,6 +110,7 @@ namespace api.Controllers.Flights
         }
         [HttpPut("updateFlight")]
         [Authorize(Roles = "Admin")]
+        [ProducesResponseType(typeof(ResponseFlightDto), StatusCodes.Status200OK)]
         [MapToApiVersion("1.0")]
 
 

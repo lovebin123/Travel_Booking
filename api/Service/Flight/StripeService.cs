@@ -114,7 +114,7 @@ namespace api.Service.Flight
                         source=booking.Flight.source,
                         time_of_arrival=booking.Flight.time_of_arrival,
                         time_of_departure=booking.Flight.time_of_departure,
-                        FlightBookings = booking.Flight.FlightBookings
+                        FlightBookings = new List<ResponseFlightBookingDto>()
                     }
                 }
             };

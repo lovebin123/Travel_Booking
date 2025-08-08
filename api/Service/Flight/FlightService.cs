@@ -44,7 +44,7 @@ namespace api.Service.Flight
                 source = x.source,
                 seatType = x.seatType,
                 date_of_departure=x.date_of_departure,
-                FlightBookings= x.FlightBookings.ToList(),
+                FlightBookings= new List<ResponseFlightBookingDto>(),
                 no_of_seats=x.no_of_seats,
                 price=x.price,
                 time_of_departure = x.time_of_departure,
@@ -71,7 +71,7 @@ namespace api.Service.Flight
                 source = x.source,
                 time_of_arrival = x.time_of_arrival,
                 time_of_departure = x.time_of_departure,
-                FlightBookings=x.FlightBookings.ToList()
+                FlightBookings=new List<ResponseFlightBookingDto>()
 
             }).ToListAsync();
         }
@@ -105,7 +105,7 @@ namespace api.Service.Flight
                 id = flight.id,
                 name = flight.name,
                 time_of_arrival = flight.time_of_arrival,
-                FlightBookings = flight.FlightBookings.ToList(),
+                FlightBookings = new List<ResponseFlightBookingDto>(),
                 time_of_departure = flight.time_of_departure
             };
             return response;
@@ -152,7 +152,7 @@ namespace api.Service.Flight
                 price = flight.price,
                 time_of_arrival = flight.time_of_arrival,
                 time_of_departure = flight.time_of_departure,
-                FlightBookings=flight.FlightBookings.ToList()
+                FlightBookings=new List<ResponseFlightBookingDto>()
             };
             return responseDto;
         }
@@ -191,7 +191,7 @@ namespace api.Service.Flight
                 price = flight.price,
                 time_of_arrival = flight.time_of_arrival,
                 time_of_departure = flight.time_of_departure,
-                FlightBookings = flight.FlightBookings.ToList()
+                FlightBookings = new List<ResponseFlightBookingDto>()
             };
             return responseDto;
         }
@@ -219,7 +219,7 @@ namespace api.Service.Flight
             {
                 name = x.name,
                 date_of_departure=x.date_of_departure,
-                FlightBookings=x.FlightBookings.ToList(),
+                FlightBookings=new List<ResponseFlightBookingDto>(),
                 time_of_departure= x.time_of_departure,
                 time_of_arrival=x.time_of_arrival,
                 destination= x.destination,

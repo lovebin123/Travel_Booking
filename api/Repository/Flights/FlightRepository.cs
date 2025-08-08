@@ -54,7 +54,7 @@ namespace api.Repository.Flights
                 {
                     date_of_departure=x.date_of_departure,
                     destination=x.destination,
-                    FlightBookings = x.FlightBookings,
+                    FlightBookings = new List<ResponseFlightBookingDto>(),
                     id=x.id,
                     name=x.name,
                     no_of_seats=x.no_of_seats,

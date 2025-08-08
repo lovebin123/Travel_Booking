@@ -1,5 +1,5 @@
-using System;
 using api.Data;
+using api.DTO.Flight;
 using api.Extensions;
 using api.Interfaces.Flights;
 using api.Models;
@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Stripe;
 using Stripe.Checkout;
+using System;
 
 namespace api.Controllers.v1.Flights
 {
@@ -33,6 +34,7 @@ namespace api.Controllers.v1.Flights
         }
 
         [HttpPost("postBooking")]
+        [ProducesResponseType(typeof(ResponseFlightBookingDto), StatusCodes.Status200OK)]
         [Authorize(Roles ="User")]
         public async Task<IActionResult> CreateFlightBooking(int id, string no_of_adults1, string no_of_children11)
         {
@@ -50,6 +52,7 @@ namespace api.Controllers.v1.Flights
         }
 
         [HttpGet("getBookings")]
+        [ProducesResponseType(typeof(ResponseFlightBookingDto), StatusCodes.Status200OK)]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserFlightBookings()
         {

@@ -1,4 +1,5 @@
 using api.DTO.Account;
+using api.DTO.Flight;
 using api.Extensions;
 using api.Interfaces;
 using api.Models;
@@ -30,11 +31,13 @@ namespace api.Controllers
         }
 
         [HttpPost("signup")]
+        [ProducesResponseType(typeof(NewUserDto), StatusCodes.Status200OK)]
         [AutoWrapIgnore(ShouldLogRequestData =false)]
 
         public Task<IActionResult> SignUp([FromBody] SignUpDto dto) => _accountService.SignUp(dto);
 
         [HttpPost("login")]
+        [ProducesResponseType(typeof(NewUserDto), StatusCodes.Status200OK)]
         [AutoWrapIgnore(ShouldLogRequestData = false)]
         public Task<IActionResult> Login([FromBody] LoginDto dto) => _accountService.Login(dto);
 
