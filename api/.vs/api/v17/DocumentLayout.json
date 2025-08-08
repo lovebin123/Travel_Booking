@@ -130,8 +130,7 @@
               "RelativeToolTip": "Controllers\\AccountController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAuwCwAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T12:21:37.379Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T12:21:37.379Z"
             },
             {
               "$type": "Document",
@@ -143,8 +142,7 @@
               "RelativeToolTip": "DTO\\Flight\\ResponseFlightDto.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAA1wBMAAAB1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T11:59:11.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T11:59:11.818Z"
             },
             {
               "$type": "Document",
@@ -156,8 +154,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-08T09:30:06.249Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T09:30:06.249Z"
             },
             {
               "$type": "Document",
@@ -169,8 +166,7 @@
               "RelativeToolTip": "Service\\Flight\\StripeService.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAmwHQAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T12:07:26.554Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T12:07:26.554Z"
             },
             {
               "$type": "Document",
@@ -178,8 +174,8 @@
               "Title": "TokenService.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\TokenService.cs",
               "RelativeDocumentMoniker": "Service\\TokenService.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\TokenService.cs*",
-              "RelativeToolTip": "Service\\TokenService.cs*",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\TokenService.cs",
+              "RelativeToolTip": "Service\\TokenService.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAYwCwAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T12:24:49.157Z",
@@ -195,8 +191,7 @@
               "RelativeToolTip": "Controllers\\Flights\\FlightPaymentController.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAQwCYAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T12:17:46.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T12:17:46.005Z"
             },
             {
               "$type": "Document",
@@ -208,8 +203,7 @@
               "RelativeToolTip": "Controllers\\Flights\\FlightBookingController.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAcwDYAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:22:10.059Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T11:22:10.059Z"
             },
             {
               "$type": "Document",
@@ -221,8 +215,7 @@
               "RelativeToolTip": "Controllers\\Flights\\FLightController.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAQwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:32:12.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T11:32:12.799Z"
             },
             {
               "$type": "Document",
@@ -234,8 +227,7 @@
               "RelativeToolTip": "Service\\Flight\\FlightService.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAuwC4AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:29:17.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T11:29:17.956Z"
             },
             {
               "$type": "Document",
@@ -247,8 +239,7 @@
               "RelativeToolTip": "Service\\Flight\\FlightBookingService.cs",
               "ViewState": "AgIAAGoAAAAAAAAAAAAmwHoAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:27:22.977Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T11:27:22.977Z"
             },
             {
               "$type": "Document",
@@ -260,8 +251,7 @@
               "RelativeToolTip": "DTO\\Flight\\ResponseFlightBookingDto.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T11:59:40.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T11:59:40.574Z"
             },
             {
               "$type": "Document",
@@ -273,8 +263,7 @@
               "RelativeToolTip": "api.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-08-08T09:29:35.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T09:29:35.83Z"
             },
             {
               "$type": "Document",
@@ -286,8 +275,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAHcAAAAAAAAAAAAUwEsAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T09:28:40.254Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T09:28:40.254Z"
             },
             {
               "$type": "Document",
@@ -299,8 +287,7 @@
               "RelativeToolTip": "DTO\\Flight\\FlightDto.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T05:01:58.751Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T05:01:58.751Z"
             },
             {
               "$type": "Document",
@@ -312,8 +299,7 @@
               "RelativeToolTip": "Repository\\Car Rentals\\CarRentalStripeRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T12:09:32.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T12:09:32.262Z"
             },
             {
               "$type": "Document",
@@ -325,8 +311,7 @@
               "RelativeToolTip": "Service\\Flight\\IFlightService.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAA2wA4AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:26:32.507Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T11:26:32.507Z"
             },
             {
               "$type": "Document",
@@ -338,8 +323,7 @@
               "RelativeToolTip": "Data\\ApplicationDBContext.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T09:57:24.957Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T09:57:24.957Z"
             },
             {
               "$type": "Document",
@@ -351,8 +335,7 @@
               "RelativeToolTip": "DTO\\Account\\editUserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T05:02:25.069Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T05:02:25.069Z"
             },
             {
               "$type": "Document",
@@ -364,8 +347,7 @@
               "RelativeToolTip": "Service\\CarRental\\CarRentalStripeService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T12:09:15.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T12:09:15.672Z"
             },
             {
               "$type": "Document",
@@ -377,8 +359,7 @@
               "RelativeToolTip": "Service\\CarRental\\CarRentalService.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T12:09:16.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T12:09:16.179Z"
             },
             {
               "$type": "Document",
@@ -390,8 +371,7 @@
               "RelativeToolTip": "DTO\\Account\\LoginDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T05:02:30.002Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T05:02:30.002Z"
             },
             {
               "$type": "Document",
@@ -403,8 +383,7 @@
               "RelativeToolTip": "DTO\\Account\\NewUserDto.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T05:02:32.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T05:02:32.866Z"
             },
             {
               "$type": "Document",
@@ -416,8 +395,7 @@
               "RelativeToolTip": "Service\\Hotels\\HotelStripeService.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAYwDMAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T12:09:01.045Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T12:09:01.045Z"
             },
             {
               "$type": "Document",
@@ -429,8 +407,11 @@
               "RelativeToolTip": "Service\\Flight\\IFlightBookingService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:26:23.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T11:26:23.891Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             }
           ]
         },
@@ -446,7 +427,7 @@
               "RelativeDocumentMoniker": "Service\\Flight\\FlightPaymentService.cs",
               "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightPaymentService.cs",
               "RelativeToolTip": "Service\\Flight\\FlightPaymentService.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAiwHwAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAA4wHwAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-08T12:06:48.243Z",
               "EditorCaption": ""
@@ -465,8 +446,7 @@
               "RelativeToolTip": "Repository\\Flights\\FlightRepository.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAvwDgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T12:02:25.752Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T12:02:25.752Z"
             }
           ]
         }

@@ -5,6 +5,7 @@ import {JwtHelperService} from "@auth0/angular-jwt"
 import { Observable, Subject, throwError, timeout } from 'rxjs';
 import { UserDetails } from '../common/models/userDetails';
 import { environment } from '../../environments/environment.development';
+import { NewUserDto } from '../../ap-api-client-angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,14 +14,14 @@ export class AuthService {
   private jwtHelper=new JwtHelperService();
   tokenExpired$: any;
   constructor(private http:HttpClient,private router:Router) { }
-  signup(userData:any)
+  signup(userData:any):Observable<NewUserDto>
   {
     console.log(userData);
-    return this.http.post(this.url+'/signup',userData);
+    return this.http.post<NewUserDto>(this.url+'/signup',userData);
   }
-  login(userData: any) {
+  login(userData: any):Observable<NewUserDto> {
     
-    return this.http.post(this.url + '/login', userData);
+    return this.http.post<NewUserDto>(this.url + '/login', userData);
   }
   verifyEmail(userData:any)
   {

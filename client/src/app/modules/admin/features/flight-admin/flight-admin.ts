@@ -57,7 +57,7 @@ constructor(private flights:FlightsService,private cd:ChangeDetectorRef){}
 searchByFlightName()
 {
   this.flights.searchByFlightName(this.searchQuery).subscribe({
-    next:(response)=>{
+    next:(response:any)=>{
       response=response.result;
       console.log(response);
       this.data=response;

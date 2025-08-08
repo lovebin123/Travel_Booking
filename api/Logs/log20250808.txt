@@ -80,3 +80,27 @@
 2025-08-08 17:59:33.807 +05:30 [INF] Flights listed successfully based on query
 2025-08-08 17:59:35.502 +05:30 [INF] Created booking successfully
 2025-08-08 19:38:20.428 +05:30 [INF] Listed all destinations
+2025-08-08 22:35:12.927 +05:30 [INF] Successfully logged in
+2025-08-08 22:35:12.927 +05:30 [INF] Successfully logged in
+2025-08-08 22:35:14.113 +05:30 [INF] Listed all destinations
+2025-08-08 22:35:33.523 +05:30 [INF] Flights listed successfully based on query
+2025-08-08 22:35:52.053 +05:30 [INF] Flights listed successfully based on query
+2025-08-08 22:36:44.757 +05:30 [INF] Listed all destinations
+2025-08-08 22:38:45.928 +05:30 [INF] Listed all destinations
+2025-08-08 22:43:28.147 +05:30 [INF] Listed all destinations
+2025-08-08 22:45:15.639 +05:30 [INF] Listed all destinations
+2025-08-08 22:46:11.570 +05:30 [INF] Successfully logged in
+2025-08-08 22:46:11.821 +05:30 [INF] Listed all flights
+2025-08-08 22:46:15.559 +05:30 [INF] Fetched based on Id
+2025-08-08 22:46:17.447 +05:30 [INF] Fetched based on Id
+2025-08-08 22:51:25.257 +05:30 [INF] Successfully logged in
+2025-08-08 22:51:25.767 +05:30 [INF] Listed all flights
+2025-08-08 22:51:28.177 +05:30 [INF] Listed all flights
+2025-08-08 22:51:29.193 +05:30 [INF] Listed all flights
+2025-08-08 23:01:57.608 +05:30 [INF] Listed all flights
+2025-08-08 23:02:14.547 +05:30 [INF] Successfully logged in
+2025-08-08 23:02:14.682 +05:30 [INF] Listed all destinations
+2025-08-08 23:03:08.993 +05:30 [INF] FlightBooking fetched
+2025-08-08 23:03:09.062 +05:30 [INF] Flight Booking deleted successfuly
+2025-08-08 23:05:56.442 +05:30 [INF] Successfully logged in
+2025-08-08 23:05:56.813 +05:30 [INF] Listed all flights

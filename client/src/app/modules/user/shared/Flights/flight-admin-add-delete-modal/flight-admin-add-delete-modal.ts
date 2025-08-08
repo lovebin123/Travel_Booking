@@ -19,7 +19,7 @@ export class FlightAdminAddDeleteModal {
     {
       console.log(this.id);
       this.flight.getById(this.id).subscribe({
-        next:(response)=>{
+        next:(response:any)=>{
           response=response.result;
           this.data=response;
           this.flightData.date_of_departure=this.data.date_of_departure;

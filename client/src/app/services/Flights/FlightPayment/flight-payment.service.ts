@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
+import { ResponseFlightPaymentDto } from '../../../../ap-api-client-angular';
+import { AutoWrapperResponse } from '../../../common/models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +11,16 @@ import { environment } from '../../../../environments/environment.development';
 export class FlightPaymentService {
   constructor(private http:HttpClient) { }
   private url=`${environment.apiUrl}/payments`;
-  getLastPayement(sessionId:any):Observable<any>
+  getLastPayement(sessionId:any):Observable<AutoWrapperResponse<ResponseFlightPaymentDto>>
   {
-    console.log(sessionId);
-    return this.http.get(`${this.url}/getLatestPayment?sessionId=${sessionId}`);
+    return this.http.get<AutoWrapperResponse<ResponseFlightPaymentDto>>(`${this.url}/getLatestPayment?sessionId=${sessionId}`);
   }
   getAllPayments():Observable<any>
   {
     return this.http.get(this.url+"/getAllPayments");
   }
-  getByid(id: any):Observable<any>
+  getByid(id: any):Observable<AutoWrapperResponse<ResponseFlightPaymentDto>>
   {
-    return this.http.get(`${this.url}/getById?id=${id}`);
+    return this.http.get<AutoWrapperResponse<ResponseFlightPaymentDto>>(`${this.url}/getById?id=${id}`);
   }
 }
