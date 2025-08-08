@@ -23,7 +23,6 @@ namespace api.Controllers.Flights
     public class FLightController : ControllerBase
     {
         private readonly IFlightService _flightService;
-        private readonly ILogger<FlightEnitity> _logger;
         private readonly FlightMapper _mapper;
         public FLightController(IFlightService flightService,  FlightMapper mapper)
         {
@@ -41,12 +40,10 @@ namespace api.Controllers.Flights
         }
         [HttpGet("searchByFlightName")]
         [Authorize(Roles ="Admin")]
-        [MapToApiVersion("1.0")]
 
         public async Task<IActionResult> SearchByFlightName([FromQuery] string name)
         {
             var flights = await _flightService.SearchByName(name);
-            _logger.LogInformation("Flights fetched successfully based on name");
             return Ok(flights);
         }
         [HttpGet("getAllFlights")]

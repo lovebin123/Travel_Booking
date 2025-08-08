@@ -45,7 +45,7 @@ namespace api.Service.Flight
                 },
                 Mode = "payment",
                 SuccessUrl = $"http://localhost:5253/api/flightBooking/success?sessionId={{CHECKOUT_SESSION_ID}}&booking_id={bookingId}",
-                CancelUrl = "http://localhost:4200/failure"
+                CancelUrl = "http://localhost:4200/paymentFailure"
             };
 
             var sessionService = new SessionService();

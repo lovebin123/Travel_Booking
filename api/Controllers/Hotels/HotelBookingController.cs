@@ -73,7 +73,7 @@ namespace api.Controllers.v1.Hotels
             [FromQuery(Name = "booking_id")] int bookingId)
         {
             var result = await _hotelBookingService.HandleStripeSuccess(sessionId, bookingId);
-            return TypedResults.Redirect($"http://localhost:4200/hotelTicket/{sessionId}", true, true);
+            return TypedResults.Redirect($"http://localhost:4200/dashboard/hotelTicket/{sessionId}", true, true);
         }
 
         [HttpGet("getUserBookings")]

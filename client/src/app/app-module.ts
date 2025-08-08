@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthInterceptor } from './common/interceptor/auth.interceptor';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { PageNotFound } from './common/components/page-not-found/page-not-found';
@@ -16,9 +16,10 @@ import { PageNotFound } from './common/components/page-not-found/page-not-found'
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule
+    
   ],
   providers: [
+    provideHttpClient(withInterceptorsFromDi()),
     provideBrowserGlobalErrorListeners(),
     {
       provide: HTTP_INTERCEPTORS,
@@ -31,6 +32,7 @@ import { PageNotFound } from './common/components/page-not-found/page-not-found'
     },
     JwtHelperService
   ],
+  
   bootstrap: [App]
 })
 export class AppModule { }

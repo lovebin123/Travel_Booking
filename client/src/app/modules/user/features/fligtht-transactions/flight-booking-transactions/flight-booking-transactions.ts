@@ -12,7 +12,11 @@ data:any=null;
   bookingId:any;
 constructor(private  flightBooking:FlightBookingService){}
   ngOnInit(): void {
-    this.flightBooking.getUserBookings().subscribe((response:any)=>{
+  this.loadData();
+  }
+  loadData()
+  {
+  this.flightBooking.getUserBookings().subscribe((response:any)=>{
       this.data=response.result;
       console.log(response);
       for(let i=0;i<this.data.length;i++)
@@ -21,5 +25,9 @@ constructor(private  flightBooking:FlightBookingService){}
         this.bookingId=this.data[i].id;
       }
     })
+  }
+  handleChange(event:any)
+  {
+    this.loadData();
   }
 }

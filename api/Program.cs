@@ -40,6 +40,7 @@ options.UseSqlServer(Environment.GetEnvironmentVariable("DB_STRING"), options =>
 {
     options.CommandTimeout(60);
 }));
+
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
     options.Password.RequireDigit = true;

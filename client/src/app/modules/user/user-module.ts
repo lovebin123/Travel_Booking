@@ -72,12 +72,13 @@ import { HotelAdminDeleteModal } from './shared/hotels/hotel-admin-delete-modal/
 import { HotelAdminAddUpdateModal } from './shared/hotels/hotel-admin-add-update-modal/hotel-admin-add-update-modal';
 import { CarRentalAdminDelete } from './shared/carRental/car-rental-admin-delete/car-rental-admin-delete';
 import { CarRemtalAddUpdateModal } from './shared/carRental/car-remtal-add-update-modal/car-remtal-add-update-modal';
+import { FlightDeleteBooking } from './shared/Flights/flight-delete-booking/flight-delete-booking';
 
 @NgModule({
   declarations: [
     FlightList,FlightBooking,FlightList,FlightDetails, FlightBaggage, FlightUser, FlightSearch,FlightFrom, FlightTo, FlightDestinationDate, FlightPassenger, UserLayout, FlightHome,FlightTicket, FligtCard, FlightTicketUser, FlightSeat, FlightTicketPayment, TransactionsLayout, Profile, FligthtTransactions, FlightBookingTransactions, HotelList, HotelBookingModal, HotelSearch, HotelLocation, HotelCheckin, HotelCheckout, HotelAdultsRooms, HotelDetails, HotelCheckinCheckout, HotelServices, HotelUser, HotelHomePage,
 TransactionTabs, HotelTicket, HotelTicketDetails, HotelPaymentDetails, HotelServiceList, HotelTransactions, HotelBookingTransaction, CarRental, CarRentalSearch, CarRentalPickUpLocation, CarRentalPickUpDate, CarRentalDropOffDate, CarRentalDropOffTime, CarRentalPickUpTime, CarRentalList, CarRentalBookingModal, CarRentalDetails, CarRentalServices, CarRentalUser, CarRentalTransactions,CarRentalBookingTransaction, CarRentalTicket, CarRentalTicketDetails, CarRentalPaymentDetails, CarRentalServiceList,FlightAdminAddDeleteModal,FlightAdminDeleteAdmin,HotelAdminDeleteModal,HotelAdminAddUpdateModal,
-CarRentalAdminDelete,HotelAdminDeleteModal,HotelAdminAddUpdateModal,CarRemtalAddUpdateModal,CarRentalAdminDelete
+CarRentalAdminDelete,HotelAdminDeleteModal,HotelAdminAddUpdateModal,CarRemtalAddUpdateModal,CarRentalAdminDelete, FlightDeleteBooking
   ],
   imports: [
     CommonModule, UserRoutingModule,

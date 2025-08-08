@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUser, faUserCircle, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../../../services/auth-service';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-user-layout',
@@ -15,7 +16,8 @@ faUser=faUser;
   faSuitcase=faSuitcase;
   firstName:any='';
   data:any=[];
-  constructor(private router:Router,private auth:AuthService){
+  private stateListener:any;
+  constructor(private router:Router,private auth:AuthService,private location:LocationStrategy){
   }
   ngOnInit(): void {
   this.auth.getUserName().subscribe((response:any)=>{
@@ -24,7 +26,10 @@ faUser=faUser;
       this.firstName=this.data.firstName;
   }
     );
-  
+      this.stateListener=this.location.onPopState(()=>{
+    this.auth.logout();
+  })
+
   }
   logout()
   {

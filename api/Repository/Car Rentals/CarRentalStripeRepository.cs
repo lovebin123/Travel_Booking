@@ -47,7 +47,7 @@ namespace api.Repository.Car_Rentals
                 },
                 Mode = "payment",
                 SuccessUrl = $"http://localhost:5253/api/carRentalBooking/success?sessionId={{CHECKOUT_SESSION_ID}}&bookingId={bookingId}",
-                CancelUrl = "http://localhost:4200/failure"
+                CancelUrl = "http://localhost:4200/paymentFailure"
             };
             var sessionService = new SessionService();
             Session session = sessionService.Create(sessionOptions);

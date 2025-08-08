@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using Stripe;
 using Stripe.Checkout;
 
@@ -60,7 +61,15 @@ namespace api.Controllers.v1.Flights
             var bookings = await _bookingService.GetUserBookingsAsync(appUser);
             return Ok(bookings);
         }
+        [HttpDelete("deleteById")]
+        [Authorize(Roles ="User")]
+        public async Task<IActionResult>DeleteById(int id)
+        {
+            await _bookingService.DeleteFlightBookingAsync(id);
+            Log.Information("Flight Booking deleted successfuly");
+            return NoContent();
 
+        }
         [HttpPost("payement-session")]
         [Authorize(Roles ="User")]
         public async Task<IActionResult> CreateCheckoutSession(int id)
@@ -73,7 +82,7 @@ namespace api.Controllers.v1.Flights
         public async Task<Results<RedirectHttpResult, BadRequest>> CheckOutSuccess([FromQuery(Name = "sessionId")] string sessionId, [FromQuery(Name = "booking_id")] int bookingId)
         {
             var payment = await _stripeService.HandleSuccessfulPayment(sessionId, bookingId);
-            return TypedResults.Redirect($"http://localhost:4200/flightTicket/{payment.sessionId}", true, true);
+            return TypedResults.Redirect($"http://localhost:4200/dashboard/flightTicket/{payment.sessionId}", true, true);
         }
     }
 }

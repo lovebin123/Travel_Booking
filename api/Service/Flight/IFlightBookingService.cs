@@ -8,5 +8,6 @@ namespace api.Service.Flight
     {
         Task<ResponseFlightBookingDto> CreateBookingAsync(AppUser user, int flightId, int noOfAdults, int noOfChildren);
         Task<IEnumerable<ResponseFlightBookingDto>> GetUserBookingsAsync(AppUser user);
+        Task DeleteFlightBookingAsync(int id);
     }
 }

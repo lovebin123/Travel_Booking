@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import {JwtHelperService} from "@auth0/angular-jwt"
 import { Observable, Subject, throwError, timeout } from 'rxjs';
 import { UserDetails } from '../common/models/userDetails';
+import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private url="http://localhost:5253/api/v1/account";
+  private readonly url=`${environment.apiUrl}/v1/account`;
   private jwtHelper=new JwtHelperService();
   tokenExpired$: any;
   constructor(private http:HttpClient,private router:Router) { }
@@ -29,10 +30,15 @@ export class AuthService {
   {
     return this.http.post(this.url+'/forgotPassword',userData);
   }
-  refreshToken():Observable<any>
-  {
-    return this.http.get(`${this.url}/refresh`);
-  }
+  refreshToken(): Observable<any> {
+  const token = this.getToken();
+  const refreshToken = this.getToken();
+
+  return this.http.post<any>('http://localhost:5253/api/v1/account/refresh', {
+    accessToken: token,
+    refreshToken: refreshToken
+  });
+}
   revokeToken():Observable<any>
   {
     return this.http.delete(`${this.url}/revokeToken`);

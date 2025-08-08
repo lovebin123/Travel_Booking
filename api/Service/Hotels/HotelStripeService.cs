@@ -49,7 +49,7 @@ namespace api.Service.Hotels
                 },
                 Mode = "payment",
                 SuccessUrl = $"http://localhost:5253/api/hotelBooking/success?sessionId={{CHECKOUT_SESSION_ID}}&booking_id={bookingId}",
-                CancelUrl = "http://localhost:4200/failure"
+                CancelUrl = "http://localhost:4200/paymentFailure"
             };
 
             var sessionService = new SessionService();

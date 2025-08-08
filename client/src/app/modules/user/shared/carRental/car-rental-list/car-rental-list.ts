@@ -77,7 +77,7 @@ pay(id:any)
 navToPayment()
 {
   console.log(this.carRentaldata);
-  this.router.navigate(['carRentalTicket'],{state:{id:this.carRentaldata.paymentId}});
+  this.router.navigate(['dashboard/carRentalTicket'],{state:{id:this.carRentaldata.paymentId}});
 }
 editModal=inject(NgbModal);
 editSuccessfull=false;

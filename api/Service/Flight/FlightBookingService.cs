@@ -80,6 +80,19 @@ namespace api.Service.Flight
             return responseDto;
         }
 
+        public async Task DeleteFlightBookingAsync(int id)
+        {
+            var flightBooking = await _unitOfWork.Repository<FlightBookingEntity>().GetByIdAsync(id);
+            if (flightBooking == null)
+            {
+                Log.Error("FlightBooking not found");
+                throw new Exception("FlightBooking not found");
+            }
+            Log.Information("FlightBooking fetched");
+            _unitOfWork.Repository<FlightBookingEntity>().Remove(flightBooking);
+            await _unitOfWork.CompleteAsync();
+        }
+
         public async Task<IEnumerable<ResponseFlightBookingDto>>GetUserBookingsAsync(AppUser user)
         {
             var res = await _unitOfWork.FlightBookingRepository.GetUserFlightBookings(user);

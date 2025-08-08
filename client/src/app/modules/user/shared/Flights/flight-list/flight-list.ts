@@ -111,6 +111,14 @@ handleEditEmiiter(event:any)
 {
   this.editEmitter.emit(event);
 }
+bookingDeletionSuccessful=false;
+deleteBooking(id:any,content:TemplateRef<any>)
+{
+  const modalRef=this.modalService.open(content,{centered:true,size:'sm'});
+  modalRef.result.catch((data)=>{
+   this.bookingDeletionSuccessful=data;
+  })
+}
 delete(id:any,content:TemplateRef<any>)
 {
   const modalRef=this.modalService.open(content,{centered:true,size:'sm'});
@@ -118,13 +126,18 @@ delete(id:any,content:TemplateRef<any>)
    this.deletionSuccessfull=data;
   })
 }
+@Output()deleteBookingEmitter=new EventEmitter<any>();
 handleDeleteEmitter(event:any)
 {
     this.deleteEmitter.emit(event);
 }
+handleBookingDeleteEmitter(event:any)
+{
+  this.deleteBookingEmitter.emit(event);
+}
   navToPayment()
 {
-  this.router.navigate(['flightTicket'],{state:{id:this.paymentId}});
+  this.router.navigate(['/dashboard/flightTicket'],{state:{id:this.paymentId}});
 }
   
 }

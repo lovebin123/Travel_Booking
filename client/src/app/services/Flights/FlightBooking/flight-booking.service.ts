@@ -20,4 +20,8 @@ goToPayement(id:number):Observable<any[]>
 getUserBookings():Observable<any[]>{
   return this.http.get<any[]>(this.url+'/getBookings');
 }
+deleteById(id:any):Observable<any>
+{
+  return this.http.delete(`${this.url}/deleteById?id=${id}`);
+}
 }

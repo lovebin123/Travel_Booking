@@ -78,7 +78,7 @@ namespace api.Controllers.v1.CarRentals
         {
             var booking = await _carRentalStripeRepository.GetSuccess(sessionId, bookingId);
             var payment = await _carRentalStripeRepository.CreateCarRentalPayment(booking);
-            return TypedResults.Redirect($"http://localhost:4200/carRentalTicket/{payment.sessionId}", true, true); ;
+            return TypedResults.Redirect($"http://localhost:4200/dashboard/carRentalTicket/{payment.sessionId}", true, true); ;
 
         }
 
