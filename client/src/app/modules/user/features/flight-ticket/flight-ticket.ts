@@ -15,7 +15,7 @@ export class FlightTicket{
     @ViewChild('backHome',{static:false}) backHome!:ElementRef;
  paymentDetails={paymen_id:'',card_type:'',amount:''};
   data:any={};
-  flightDetails:any=[];
+  flightDetails:any;
   userDetails:any[]=[];
   sessionId:any;
   id:any;
@@ -37,7 +37,6 @@ else{
          this.sessionId=this.route.snapshot.paramMap.get('sessionID');
   if(this.id===undefined)
   {
-    console.log(this.sessionId);
    this.flightPayment.getLastPayement(this.sessionId).subscribe((response:any)=>{
     this.data=response.result;
     this.flightDetails=this.data.flightBooking.flight;
@@ -48,11 +47,10 @@ else{
    })
   }
   else{
-        console.log(this.id);
     this.flightPayment.getByid(this.id).subscribe((response:any)=>{
       response=response.result;
-      console.log(response);
       this.data=response;
+      console.log(this.data);
     this.flightDetails=this.data.flightBooking.flight;
     this.userDetails=this.data.flightBooking.appUser;
     this.paymentDetails.paymen_id=this.data.stripe_payement_intent_id;

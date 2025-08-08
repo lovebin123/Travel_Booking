@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, Subject } from 'rxjs';
 import { Flight } from '../../common/models/flight';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightsService {
 private jwtHelper=new JwtHelperService();
-private url='http://localhost:5253/api/v1/flights';
+private readonly url=`${environment.apiUrl}/v1/flights`;
 constructor(private http:HttpClient,private router:Router) { }
 getByQuery(flightData: any): Observable<any> {
   

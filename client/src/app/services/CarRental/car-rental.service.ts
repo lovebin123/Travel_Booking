@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CarRental } from '../../common/models/carRentals';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarRentalService {
   constructor(private http:HttpClient) {}
-  private url="http://localhost:5253/api/carRentals";
+  private url=`${environment.apiUrl}/carRentals`;
   getFromQuery(query:any):Observable<any>
   {
     return this.http.get(`${this.url}/getFromQuery?AvailableFromDate=${query.pickupdate}&AvailableUntilDate=${query.dropoffdate}&AvailableFromTime=${query.pickuptime}&AvailableUntilTime=${query.dropofftime}&location=${query.location}`);

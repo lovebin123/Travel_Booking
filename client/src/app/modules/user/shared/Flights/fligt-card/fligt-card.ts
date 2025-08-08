@@ -17,6 +17,7 @@ date_of_dep:string='';
   return n < 10 ? '0' + n : n.toString();
 }
   ngOnInit(): void {
+    console.log(this.flightClicked);
    this.date_of_dep=this.flightClicked.date_of_departure;
   }
 

@@ -2,12 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hotel } from '../../common/models/hotels';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelServiceService {
-private url="http://localhost:5253/api/v2/hotels";
+private url=`${environment.apiUrl}/v2/hotels`;
   constructor(private http:HttpClient) { }
   getHotelLocations():Observable<any>
   {

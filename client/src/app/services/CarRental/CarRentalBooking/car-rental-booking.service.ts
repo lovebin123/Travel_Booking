@@ -2,12 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { createCarRentalBooking } from '../../../common/models/createCarRentalBooking';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarRentalBookingService {
-private url='http://localhost:5253/api/carRentalBooking';
+private url=`${environment.apiUrl}/carRentalBooking`;
   constructor(private http:HttpClient) { }
   createBooking(id:any,createCarRentalBooking:createCarRentalBooking):Observable<any>
   {

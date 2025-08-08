@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightPaymentService {
   constructor(private http:HttpClient) { }
-  private url="http://localhost:5253/api/payments";
+  private url=`${environment.apiUrl}/payments`;
   getLastPayement(sessionId:any):Observable<any>
   {
     console.log(sessionId);
