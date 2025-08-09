@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
-import { HotelPaymentService } from '../../../../services/Hotels/HotelPayment/hotel-payment.service';
+import { HotelPaymentService } from '../../../../common/services/Hotels/HotelPayment/hotel-payment.service';
 @Component({
   selector: 'app-hotel-ticket',
   standalone: false,

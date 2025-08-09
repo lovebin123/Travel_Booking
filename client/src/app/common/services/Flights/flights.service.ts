@@ -3,10 +3,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, Subject } from 'rxjs';
-import { Flight } from '../../common/models/flight';
-import { environment } from '../../../environments/environment.development';
-import { AutoWrapperResponse } from '../../common/models/response';
-import { ResponseFlightDto } from '../../../ap-api-client-angular';
+import { Flight } from '../../models/flight';
+import { ResponseFlightDto } from '../../../../ap-api-client-angular';
+import { environment } from '../../../../environments/environment.development';
+import { AutoWrapperResponse } from '../../models/response';
+
 
 @Injectable({
   providedIn: 'root'

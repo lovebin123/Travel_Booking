@@ -9,8 +9,8 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject, of } from 'rxjs';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
-import { AuthService } from '../../services/auth-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from '../services/auth-service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

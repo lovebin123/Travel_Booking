@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FlightsService } from '../../../../../../services/Flights/flights.service';
 import { Observable, debounceTime, distinctUntilChanged, map } from 'rxjs';
+import { FlightsService } from '../../../../../../common/services/Flights/flights.service';
 @Component({
   selector: 'app-flight-from',
   standalone: false,

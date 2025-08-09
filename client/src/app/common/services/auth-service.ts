@@ -3,9 +3,10 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {JwtHelperService} from "@auth0/angular-jwt"
 import { Observable, Subject, throwError, timeout } from 'rxjs';
-import { UserDetails } from '../common/models/userDetails';
-import { environment } from '../../environments/environment.development';
-import { NewUserDto } from '../../ap-api-client-angular';
+import { NewUserDto } from '../../../ap-api-client-angular';
+import { environment } from '../../../environments/environment.development';
+import { UserDetails } from '../models/userDetails';
+
 @Injectable({
   providedIn: 'root'
 })

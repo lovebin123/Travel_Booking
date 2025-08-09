@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { Nav } from '../nav/nav';
-import { AuthService } from '../../../services/auth-service';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-edit-profile',

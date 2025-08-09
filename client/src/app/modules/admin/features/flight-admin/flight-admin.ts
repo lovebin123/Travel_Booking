@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, inject, OnChanges, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
-import { FlightsService } from '../../../../services/Flights/flights.service';
+import { FlightsService } from '../../../../common/services/Flights/flights.service';
 
 @Component({
   selector: 'app-flight-admin',

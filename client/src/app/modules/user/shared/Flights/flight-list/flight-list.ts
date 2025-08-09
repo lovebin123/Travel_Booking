@@ -1,8 +1,8 @@
 import { Component, EventEmitter, inject, Input, OnChanges, Output, TemplateRef } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {FlightBookingService} from '../../../../../services/Flights/FlightBooking/flight-booking.service'
 import { Router } from '@angular/router';
-import { DateTimeService } from '../../../../../services/DateTime/date-time.service';
+import { FlightBookingService } from '../../../../../common/services/Flights/FlightBooking/flight-booking.service';
+import { DateTimeService } from '../../../../../common/services/DateTime/date-time.service';
 @Component({
   selector: 'app-flight-list',
   standalone: false,

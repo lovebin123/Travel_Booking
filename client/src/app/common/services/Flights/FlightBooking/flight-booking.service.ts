@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment.development';
-import { AutoWrapperResponse } from '../../../common/models/response';
-import { ResponseFlightBookingDto } from '../../../../ap-api-client-angular';
+import { ResponseFlightBookingDto } from '../../../../../ap-api-client-angular';
+import { environment } from '../../../../../environments/environment.development';
+import { AutoWrapperResponse } from '../../../models/response';
+
 
 @Injectable({
   providedIn: 'root'

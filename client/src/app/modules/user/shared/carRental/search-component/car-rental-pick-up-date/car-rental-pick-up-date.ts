@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { DateTimeService } from '../../../../../../services/DateTime/date-time.service';
+import { DateTimeService } from '../../../../../../common/services/DateTime/date-time.service';
 
 @Component({
   selector: 'app-car-rental-pick-up-date',

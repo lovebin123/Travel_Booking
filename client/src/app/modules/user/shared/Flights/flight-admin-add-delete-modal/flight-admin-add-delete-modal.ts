@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NgbModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Flight } from '../../../../../common/models/flight';
-import {FlightsService} from '../../../../../services/Flights/flights.service'
+import { FlightsService } from '../../../../../common/services/Flights/flights.service';
 @Component({
   selector: 'app-flight-admin-add-delete-modal',
   standalone: false,

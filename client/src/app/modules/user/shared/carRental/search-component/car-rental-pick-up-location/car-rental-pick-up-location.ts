@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable, debounceTime, distinctUntilChanged, map } from 'rxjs';
-import { CarRentalService } from '../../../../../../services/CarRental/car-rental.service';
+import { CarRentalService } from '../../../../../../common/services/CarRental/car-rental.service';
 
 @Component({
   selector: 'app-car-rental-pick-up-location',

@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { DateTimeService } from '../../../../services/DateTime/date-time.service';
-import { FlightBookingService } from '../../../../services/Flights/FlightBooking/flight-booking.service';
+import { FlightBookingService } from '../../../../common/services/Flights/FlightBooking/flight-booking.service';
+import { DateTimeService } from '../../../../common/services/DateTime/date-time.service';
+
 
 @Component({
   selector: 'app-flight-booking',

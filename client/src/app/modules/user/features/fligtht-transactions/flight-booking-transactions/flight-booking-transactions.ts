@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FlightBookingService } from '../../../../../services/Flights/FlightBooking/flight-booking.service';
+import { FlightBookingService } from '../../../../../common/services/Flights/FlightBooking/flight-booking.service';
 @Component({
   selector: 'app-flight-booking-transactions',
   standalone: false,

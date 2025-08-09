@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FlightsService } from '../../../../../services/Flights/flights.service';
+import { FlightsService } from '../../../../../common/services/Flights/flights.service';
 
 @Component({
   selector: 'app-flight-admin-delete-admin',

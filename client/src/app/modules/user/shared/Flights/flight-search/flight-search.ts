@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FlightsService } from '../../../../../services/Flights/flights.service';
+import { FlightsService } from '../../../../../common/services/Flights/flights.service';
 
 @Component({
   selector: 'app-flight-search',

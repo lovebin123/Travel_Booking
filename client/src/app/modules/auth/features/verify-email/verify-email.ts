@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../../services/auth-service';
 import { Router } from '@angular/router';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../../../../common/services/auth-service';
 
 @Component({
   selector: 'app-verify-email',

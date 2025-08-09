@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DateTimeService } from '../../../../../services/DateTime/date-time.service';
+import { DateTimeService } from '../../../../../common/services/DateTime/date-time.service';
 
 @Component({
   selector: 'app-car-rental-payment-details',

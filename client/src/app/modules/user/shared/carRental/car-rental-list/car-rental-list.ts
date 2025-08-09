@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, Input, Output, TemplateRef } from '@an
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { createCarRentalBooking } from '../../../../../common/models/createCarRentalBooking';
-import { CarRentalBookingService } from '../../../../../services/CarRental/CarRentalBooking/car-rental-booking.service';
+import { CarRentalBookingService } from '../../../../../common/services/CarRental/CarRentalBooking/car-rental-booking.service';
 
 @Component({
   selector: 'app-car-rental-list',

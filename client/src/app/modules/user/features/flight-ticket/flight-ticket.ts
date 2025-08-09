@@ -1,8 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {FlightPaymentService} from '../../../../services/Flights/FlightPayment/flight-payment.service'
 import domtoimage from 'dom-to-image';
 import jsPDF from 'jspdf';
+import { FlightPaymentService } from '../../../../common/services/Flights/FlightPayment/flight-payment.service';
 @Component({
   selector: 'app-flight-ticket',
   standalone: false,

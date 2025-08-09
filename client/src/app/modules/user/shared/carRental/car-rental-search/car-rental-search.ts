@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { CarRentalService } from '../../../../../services/CarRental/car-rental.service';
+import { CarRentalService } from '../../../../../common/services/CarRental/car-rental.service';
 
 @Component({
   selector: 'app-car-rental-search',

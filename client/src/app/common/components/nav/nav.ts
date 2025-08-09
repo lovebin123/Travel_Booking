@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { AuthService } from '../../../services/auth-service';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../../services/auth-service';
 @Component({
   selector: 'app-nav',
   imports: [FontAwesomeModule,NgbDropdownModule],

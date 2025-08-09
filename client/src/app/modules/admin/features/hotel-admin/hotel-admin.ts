@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { HotelServiceService } from '../../../../services/Hotels/hotel-service.service';
+import { HotelServiceService } from '../../../../common/services/Hotels/hotel-service.service';
 
 @Component({
   selector: 'app-hotel-admin',

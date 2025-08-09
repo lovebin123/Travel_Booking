@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FlightsService } from '../../../../../services/Flights/flights.service';
-import { FlightBookingService } from '../../../../../services/Flights/FlightBooking/flight-booking.service';
+import { FlightBookingService } from '../../../../../common/services/Flights/FlightBooking/flight-booking.service';
+
 
 @Component({
   selector: 'app-flight-delete-booking',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable, debounceTime, distinctUntilChanged, map } from 'rxjs';
-import { HotelServiceService } from '../../../../../../services/Hotels/hotel-service.service';
+import { HotelServiceService } from '../../../../../../common/services/Hotels/hotel-service.service';
 
 @Component({
   selector: 'app-hotel-location',

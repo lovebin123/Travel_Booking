@@ -2,8 +2,8 @@ import { Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, Tem
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { createHotelBooking } from '../../../../../common/models/createHotelBooking';
-import { DateTimeService } from '../../../../../services/DateTime/date-time.service';
-import { HotelBookingServiceService } from '../../../../../services/Hotels/HotelBooking/hotel-booking-service.service';
+import { DateTimeService } from '../../../../../common/services/DateTime/date-time.service';
+import { HotelBookingServiceService } from '../../../../../common/services/Hotels/HotelBooking/hotel-booking-service.service';
 
 @Component({
   selector: 'app-hotel-list',

@@ -4,7 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { AuthService } from '../../services/auth-service';
+import { AuthService } from '../services/auth-service';
 
 export const authGuardGuard: CanActivateFn = (route, state) => {
   const router=inject(Router);

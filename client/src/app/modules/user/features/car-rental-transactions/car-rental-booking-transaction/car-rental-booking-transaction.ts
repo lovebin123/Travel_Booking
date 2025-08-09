@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarRentalBookingService } from '../../../../../services/CarRental/CarRentalBooking/car-rental-booking.service';
-import { CarRentalPaymentService } from '../../../../../services/CarRental/CarRentalPayment/car-rental-payment.service';
+import { CarRentalBookingService } from '../../../../../common/services/CarRental/CarRentalBooking/car-rental-booking.service';
 
 @Component({
   selector: 'app-car-rental-booking-transaction',

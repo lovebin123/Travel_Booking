@@ -5,8 +5,8 @@ import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, Validators,ReactiveFormsModule } from '@angular/forms';
 import {CommonModule} from "@angular/common";
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
-import {AuthService} from "../../../../services/auth-service"
 import { tick } from '@angular/core/testing';
+import { AuthService } from '../../../../common/services/auth-service';
 @Component({
   selector: 'app-login',
   standalone: false,

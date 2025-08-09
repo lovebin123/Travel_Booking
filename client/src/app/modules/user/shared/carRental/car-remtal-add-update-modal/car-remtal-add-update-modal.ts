@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { NgbModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { CarRentalService } from '../../../../../services/CarRental/car-rental.service';
 import {CarRental} from '../../../../../common/models/carRentals'
+import { CarRentalService } from '../../../../../common/services/CarRental/car-rental.service';
 @Component({
   selector: 'app-car-remtal-add-update-modal',
   standalone: false,

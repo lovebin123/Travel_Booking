@@ -104,3 +104,5 @@
 2025-08-08 23:03:09.062 +05:30 [INF] Flight Booking deleted successfuly
 2025-08-08 23:05:56.442 +05:30 [INF] Successfully logged in
 2025-08-08 23:05:56.813 +05:30 [INF] Listed all flights
+2025-08-08 23:16:12.004 +05:30 [INF] Successfully created account
+2025-08-08 23:16:12.078 +05:30 [INF] Successfully signed up

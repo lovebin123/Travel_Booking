@@ -4,8 +4,8 @@ import { AbstractControl,FormBuilder, FormGroup, ReactiveFormsModule, Validators
 import { RouterModule } from '@angular/router';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AuthService } from '../../../../services/auth-service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../common/services/auth-service';
 
 @Component({
   selector: 'app-sign-up',

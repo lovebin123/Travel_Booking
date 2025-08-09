@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CarRentalBookingService } from '../../../../services/CarRental/CarRentalBooking/car-rental-booking.service';
+import { CarRentalBookingService } from '../../../../common/services/CarRental/CarRentalBooking/car-rental-booking.service';
 
 @Component({
   selector: 'app-car-rental-booking-modal',

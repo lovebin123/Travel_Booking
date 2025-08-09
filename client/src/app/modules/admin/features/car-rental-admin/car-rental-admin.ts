@@ -1,6 +1,6 @@
 import { Component, inject, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CarRentalService } from '../../../../services/CarRental/car-rental.service';
+import { CarRentalService } from '../../../../common/services/CarRental/car-rental.service';
 
 @Component({
   selector: 'app-car-rental-admin',

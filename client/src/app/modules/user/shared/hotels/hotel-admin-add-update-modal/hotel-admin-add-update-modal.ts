@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Hotel } from '../../../../../common/models/hotels'
-import { HotelServiceService } from '../../../../../services/Hotels/hotel-service.service';
+import { HotelServiceService } from '../../../../../common/services/Hotels/hotel-service.service';
 
 @Component({
   selector: 'app-hotel-admin-add-update-modal',

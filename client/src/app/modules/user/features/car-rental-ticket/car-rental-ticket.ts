@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import jsPDF from 'jspdf';
-import { CarRentalPaymentService } from '../../../../services/CarRental/CarRentalPayment/car-rental-payment.service';
 import domtoimage from 'dom-to-image';
+import { CarRentalPaymentService } from '../../../../common/services/CarRental/CarRentalPayment/car-rental-payment.service';
 @Component({
   selector: 'app-car-rental-ticket',
   standalone: false,

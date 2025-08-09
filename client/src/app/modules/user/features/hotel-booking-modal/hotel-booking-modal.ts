@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HotelBookingServiceService } from '../../../../services/Hotels/HotelBooking/hotel-booking-service.service';
+import { HotelBookingServiceService } from '../../../../common/services/Hotels/HotelBooking/hotel-booking-service.service';
 
 @Component({
   selector: 'app-hotel-booking-modal',
