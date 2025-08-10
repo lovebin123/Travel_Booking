@@ -1,14 +1,8 @@
-@if(errorMessage==="Invalid username")
-{
-  <ngb-toast  aria-live="polite" [delay]="2500" class="bg-danger text-white position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
-    Invalid Username
-  </ngb-toast>
-}
-@else if (errorMessage==="Invalid credentials") {
-<ngb-toast  aria-live="polite" [delay]="2500" class="bg-danger text-white position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+
+<ngb-toast *ngIf="showToast"  aria-live="polite" [delay]="2500" class="bg-danger text-white position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
   Invalid credentials
 </ngb-toast>
-}
+
 
 <form class="form was-validated" [formGroup]="registerForm" (ngSubmit)="login()">
   <div class="card " style="width: 36rem; height: 36rem;">

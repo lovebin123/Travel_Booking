@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl,FormBuilder, FormGroup, ReactiveFormsModule, Validators,ValidatorFn } from '@angular/forms';
+import { AbstractControl,FormBuilder, FormGroup, ReactiveFormsModule, Validators,ValidatorFn, FormControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -31,9 +31,9 @@ export class SignUp implements OnInit{
       lastName:[''],
       email:['',[Validators.required,Validators.email]],
       password:['',[Validators.required,Validators.minLength(8)]],
-      confirmPassword:['',Validators.required]
+      confirmPassword:new FormControl('',[Validators.required])
     },{
-      validatiors:this.checkPassword('password','confirmPassword')
+      validators:this.checkPassword
     })
   }
   get registerFormFirstName(){
@@ -55,31 +55,10 @@ export class SignUp implements OnInit{
   {
     return this.registerForm.get('confirmPassword');
   }
-  checkPassword(password:string,confirmPassword:string):ValidatorFn
+  checkPassword(control:AbstractControl)
   {
-    return (formGroup:AbstractControl):{ [ key:string ]: any }| null=>{
-      console.log(formGroup.get(password));
-      const passwordControl=formGroup.get(password);
-      const confirmPasswordCOntrol=formGroup.get(confirmPassword);
-      if(!passwordControl || !confirmPasswordCOntrol)
-      {
-        return null
-      }
-      if(confirmPasswordCOntrol.errors && !confirmPasswordCOntrol.errors['checkPassword'])
-      {
-        return null;
-      }
-      if(passwordControl.value !==confirmPasswordCOntrol.value)
-      {
-        confirmPasswordCOntrol.setErrors({ passwordMismatch:true });
-        return { passwordMismach:true };
-      }
-        else{
-        confirmPasswordCOntrol.setErrors(null);
-        return null;   
-        }
-      }
-    }
+    return control.get('password')?.value===control.get('confirmPassword')?.value?null :{mismatch:true};
+  }
   
   handleChange()
   {

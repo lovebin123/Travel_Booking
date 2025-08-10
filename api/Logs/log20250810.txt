@@ -1,0 +1,88 @@
+2025-08-10 11:48:14.650 +05:30 [INF] Successfully logged in
+2025-08-10 11:48:15.399 +05:30 [INF] Listed all destinations
+2025-08-10 11:48:31.881 +05:30 [INF] Flights listed successfully based on query
+2025-08-10 11:55:15.946 +05:30 [INF] Listed all destinations
+2025-08-10 11:56:14.473 +05:30 [INF] Listed all destinations
+2025-08-10 11:57:35.922 +05:30 [INF] Listed all destinations
+2025-08-10 11:57:43.596 +05:30 [INF] Listed all destinations
+2025-08-10 11:58:19.354 +05:30 [INF] Listed all destinations
+2025-08-10 11:58:25.788 +05:30 [INF] Listed all destinations
+2025-08-10 11:59:55.729 +05:30 [INF] Listed all destinations
+2025-08-10 12:33:14.143 +05:30 [INF] Successfully logged in
+2025-08-10 12:33:14.609 +05:30 [INF] Listed all destinations
+2025-08-10 12:34:14.738 +05:30 [ERR] Invalid Username
+2025-08-10 12:34:22.522 +05:30 [ERR] Invalid Username
+2025-08-10 12:34:28.428 +05:30 [INF] Successfully logged in
+2025-08-10 12:34:28.737 +05:30 [INF] Listed all destinations
+2025-08-10 12:34:38.945 +05:30 [INF] Successfully logged in
+2025-08-10 12:34:39.166 +05:30 [INF] Listed all flights
+2025-08-10 12:34:52.272 +05:30 [ERR] Invalid Username
+2025-08-10 12:36:11.040 +05:30 [INF] Successfully logged in
+2025-08-10 12:36:11.407 +05:30 [INF] Listed all destinations
+2025-08-10 12:36:25.414 +05:30 [ERR] Invalid Username
+2025-08-10 12:37:20.654 +05:30 [ERR] Invalid Username
+2025-08-10 12:37:26.347 +05:30 [ERR] Invalid Username
+2025-08-10 12:37:45.518 +05:30 [INF] Successfully logged in
+2025-08-10 12:37:45.921 +05:30 [INF] Listed all destinations
+2025-08-10 12:38:21.330 +05:30 [ERR] Invalid Username
+2025-08-10 12:39:15.241 +05:30 [INF] Successfully logged in
+2025-08-10 12:39:15.545 +05:30 [INF] Listed all destinations
+2025-08-10 12:39:59.421 +05:30 [ERR] Invalid Username
+2025-08-10 12:40:05.441 +05:30 [INF] Successfully logged in
+2025-08-10 12:40:05.813 +05:30 [INF] Listed all destinations
+2025-08-10 12:40:32.226 +05:30 [INF] Successfully created account
+2025-08-10 12:40:32.274 +05:30 [INF] Successfully signed up
+2025-08-10 12:40:41.131 +05:30 [INF] Successfully logged in
+2025-08-10 12:40:41.242 +05:30 [INF] Listed all destinations
+2025-08-10 12:40:51.152 +05:30 [INF] Listed all destinations
+2025-08-10 12:41:11.063 +05:30 [INF] Flights listed successfully based on query
+2025-08-10 12:41:12.476 +05:30 [INF] Created booking successfully
+2025-08-10 13:06:30.098 +05:30 [INF] Successfully logged in
+2025-08-10 13:06:30.445 +05:30 [INF] Listed all destinations
+2025-08-10 14:07:21.266 +05:30 [INF] Listed all destinations
+2025-08-10 14:16:47.997 +05:30 [INF] Successfully logged in
+2025-08-10 14:16:48.273 +05:30 [INF] Listed all flights
+2025-08-10 14:19:30.288 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:30.288 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:30.288 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:30.288 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:30.288 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:35.512 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:35.632 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:35.768 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:35.913 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:36.748 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:37.018 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:19:37.260 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[api.Models.Car_Rental.CarRentalEntity]
+2025-08-10 14:20:28.415 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:28.415 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:28.415 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:28.995 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:29.418 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:29.427 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:29.441 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:29.562 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:29.791 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:29.936 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:30.120 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:20:36.146 +05:30 [INF] Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[System.String]
+2025-08-10 14:21:36.017 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.017 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.017 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.017 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.065 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.320 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.447 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.448 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.449 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.449 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:36.643 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:37.089 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:21:37.743 +05:30 [INF] System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.List`1[api.Models.Car_Rental.CarRentalEntity],Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions+<ToListAsync>d__67`1[api.Models.Car_Rental.CarRentalEntity]]
+2025-08-10 14:23:07.342 +05:30 [INF] Listed all flights
+2025-08-10 14:23:28.531 +05:30 [INF] Listed all flights
+2025-08-10 14:25:39.068 +05:30 [INF] Listed all flights
+2025-08-10 14:35:09.512 +05:30 [INF] Listed all flights
+2025-08-10 14:35:21.571 +05:30 [INF] Listed all flights
+2025-08-10 14:41:01.015 +05:30 [INF] Fetched based on Id
+2025-08-10 14:41:04.636 +05:30 [INF] Fetched based on Id

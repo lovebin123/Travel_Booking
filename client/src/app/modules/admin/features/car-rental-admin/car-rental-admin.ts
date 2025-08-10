@@ -12,7 +12,7 @@ export class CarRentalAdmin {
 searchByCarName() {
 this.carRental.searchByCarName(this.searchQuery).subscribe({
   next:(response)=>{
-    this.data=response;
+    this.data=response.result;
   }
 })
 

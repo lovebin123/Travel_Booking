@@ -6,6 +6,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../services/auth-service';
 @Component({
   selector: 'app-nav',
+  standalone:true,
   imports: [FontAwesomeModule,NgbDropdownModule],
   templateUrl: './nav.html',
   styleUrl: './nav.css'

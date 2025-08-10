@@ -90,7 +90,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddControllers().AddNewtonsoftJson(options => {
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

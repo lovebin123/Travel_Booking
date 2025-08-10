@@ -69,8 +69,7 @@ login() {
     },
     error: (err:any) => {
       this.showToast=true;
-      this.errorMessage=err.error.responseException.exceptionMessage;
-      console.log(this.errorMessage)
+      console.log(err)
     }
   });
 }

@@ -63,17 +63,12 @@
         </span>
         <app-input-field [required]="true" name="cPassword" id="cPassword" formControlName="confirmPassword" type="password" class="form-control p-2 btn-x border-start-0" placeholder="Confirm Password" aria-label="Password"/>
      </div>
-      <span class="text-danger"
-                                *ngIf="( registerFormConfirmPassword?.touched || submitted)&&  registerFormConfirmPassword?.errors">
+      <span class="text-danger"  *ngIf="( registerFormConfirmPassword?.touched || submitted)&&  registerFormConfirmPassword?.errors">
                                 Confirm Password is required
                             </span>
-                            <span class="text-danger"
-                                *ngIf=" registerFormConfirmPassword?.touched && registerFormConfirmPassword?.errors?.['passwordMismatch']">
-                                Passwords doesnot match
-                            </span>
      </div>
      </div>
-      <p class="position-fixed text-danger top-10" *ngIf="passwordMismach"> Passwords do not match</p>
+      <p class="position-fixed text-danger top-10" *ngIf="registerForm.errors?.['mismatch'] && registerForm.touched"> Passwords do not match</p>
       <div class="form-check mt-4 d-flex gap-2 justify-content-start align-items-start">
         <input class="form-check-input"  type="checkbox" (click)="handleChange()" id="flexCheckDefault">
         <label class="form-check-label"  for="flexCheckDefault">
