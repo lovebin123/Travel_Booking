@@ -1,4 +1,6 @@
-   
+   <ngb-toast *ngIf="loginSuccessful"  aria-live="polite" [delay]="2500" class="bg-success text-white position-fixed top-0 end-0 m-3" (hidden)="loginSuccessful=false">
+Welcome Admin
+</ngb-toast>
    <div class="d-flex flex-column ">
     <div class="d-flex  flex-column" style="background-color: #003580; height: 13rem;position: static;">
 <app-nav  [firstName]="firstName"/>

@@ -47,6 +47,7 @@ get registerFormControlPassword()
 {
   return this.registerForm.get('password');
 }
+loginSuccessful=false;
 login() {
   this.submitted=true;
   this.auth.login({
@@ -54,17 +55,16 @@ login() {
     password:this.registerForm.value.password
   }).subscribe({
     next: (response: any) => {
-      
       localStorage.setItem('token', response.token);
       localStorage.setItem('role',response.role);
-      localStorage.setItem("refreshToken",response.refreshToken)
+      localStorage.setItem("refreshToken",response.refreshToken);
+      this.loginSuccessful=true;
       if(this.registerForm.value.email==='admin@gmail.com')
       {
-        this.ngOnDestroy();
-          this.router.navigate(['/admin'])
+          this.router.navigate(['/admin'],{state:{loginSuccessful:this.loginSuccessful}});
       }
       else
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard'],{state:{loginSuccessful:this.loginSuccessful}});
     },
     error: (err:any) => {
       this.showToast=true;

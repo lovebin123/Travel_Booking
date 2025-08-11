@@ -18,7 +18,12 @@ faUser=faUser;
   data:any=[];
   private stateListener:any;
   constructor(private router:Router,private auth:AuthService,private location:LocationStrategy){
+    const nav=this.router.getCurrentNavigation();
+    const state=nav?.extras.state as({loginSuccessful:boolean});
+    this.loginSuccessful=state?.loginSuccessful;
+    history.replaceState({},'');
   }
+  loginSuccessful=false;
   ngOnInit(): void {
   this.auth.getUserName().subscribe((response:any)=>{
    this.data=response.result;
