@@ -38,7 +38,6 @@ loadData()
 {
    this.auth.getAllUserDetails().subscribe({
     next:(response:any)=>{
-      console.log(response);
       this.userData=response.result;
       this.data1.email=this.userData.email;
       this.data1.firstName=this.userData.firstName;

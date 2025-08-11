@@ -12,7 +12,6 @@ export class CarRentalPickUpTime {
     findVals()
     {
       this.pickupTimeEmitter.emit(this.pickup_time);
-      console.log(this.pickup_time);
     }
 pickup_time:any;
 }

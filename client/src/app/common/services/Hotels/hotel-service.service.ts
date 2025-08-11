@@ -41,7 +41,7 @@ private url=`${environment.apiUrl}/v2/hotels`;
   }
   getById(id:any):Observable<any>
   {
-      
     return this.http.get(`${this.url}/getById?id=${id}`);
   }
+
 }

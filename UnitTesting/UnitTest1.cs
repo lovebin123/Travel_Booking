@@ -67,7 +67,7 @@ public class FlightServiceTests
                 time_of_arrival = f.time_of_arrival,
                 price = f.price,
                 no_of_seats = f.no_of_seats,
-                FlightBookings = f.FlightBookings.ToList()
+                FlightBookings = new List<ResponseFlightBookingDto>()
             });
 
         var flightMapper = new FlightMapper(mockMapper.Object);

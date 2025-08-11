@@ -16,7 +16,6 @@ findTotalTravellers()
 {
   this.no_of_travellers=+this.travellerDetails.adults + +this.travellerDetails.children;
   this.passengerDetailsEmitted.emit(this.travellerDetails);
-  console.log(this.travellerDetails);
   this.seatTypeEmitted.emit(this.seatType);
 }
 }

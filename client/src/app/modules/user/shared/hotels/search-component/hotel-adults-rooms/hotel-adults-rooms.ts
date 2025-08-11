@@ -12,6 +12,5 @@ roomAdults={rooms:'1',adults:'1',children:'0'};
   findVals()
   {
     this.roomEmitter.emit(this.roomAdults);
-    console.log(this.roomAdults);
   }
 }

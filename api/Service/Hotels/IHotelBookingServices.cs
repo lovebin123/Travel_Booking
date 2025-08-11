@@ -11,5 +11,6 @@ namespace api.Service.Hotels
         Task<object> CreateStripeSession(int bookingId);
         Task<object> HandleStripeSuccess(string sessionId, int bookingId);
         Task<HotelEntity> GetHotelById(int id);
+        Task DeleteById(int id);
     }
 }

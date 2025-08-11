@@ -20,7 +20,6 @@ export class VerifyEmail {
     this.auth.verifyEmail(this.userData).subscribe(
     {
       next:(response:any)=>{
-        console.log(response);
         localStorage.setItem('token',response.result.token);
         this.showToast1=true;
       },

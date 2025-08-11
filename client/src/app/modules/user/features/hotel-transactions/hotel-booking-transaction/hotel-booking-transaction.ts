@@ -11,11 +11,19 @@ export class HotelBookingTransaction implements OnInit {
 constructor(private hotels:HotelBookingServiceService){}
 data:any={};
   ngOnInit(): void {
-   this.hotels.getUserBookings().subscribe({
+  this.loadData();
+  }
+  loadData()
+  {
+     this.hotels.getUserBookings().subscribe({
     next:(response:any)=>{
       response=response.result;
       this.data=response;
     }
    })
+  }
+  handleChange(event:any)
+  {
+    this.loadData();
   }
 }

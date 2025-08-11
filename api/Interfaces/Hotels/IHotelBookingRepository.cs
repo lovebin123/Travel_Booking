@@ -10,5 +10,7 @@ namespace api.Interfaces.Hotels
         Task<HotelBookingEnitity> GetById(int bookingId);
         Task<List<HotelBookingEnitity>> GetUserBookings(AppUser user);
 
+        Task DeleteById(int id);
+
     }
 }

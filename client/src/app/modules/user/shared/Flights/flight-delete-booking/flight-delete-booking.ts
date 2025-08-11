@@ -19,7 +19,6 @@ delete1(id:any)
 {
 this.flight.deleteById(id).subscribe({
 next:(response:any)=>{
-  console.log(id);
   this.deleteEmitter.emit();
   this.modal.dismissAll(this.showToast=true);
 }

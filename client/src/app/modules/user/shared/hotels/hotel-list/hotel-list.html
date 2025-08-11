@@ -8,6 +8,11 @@
         <app-hotel-admin-add-update-modal [type]="'Edit'" [id]="hotelData.id" (updaterEmitted)="handleEmitter($event)" />
     </div>
 </ng-template>
+<ng-template #content3 let-modal1>
+	<div class="modal-body">
+        <app-hotel-delete-booking [id]="data.id" (deleteEmitter)="handleBookingDeleteEmitter($event)" />
+    </div>
+</ng-template>
 <ng-template #content2 let-modal2>
     <div class="modal-body">
         <app-hotel-admin-delete-modal (deleteEmitted)="handleDeleteEmitter($event)" [id]="hotelData.id"/>
@@ -25,6 +30,10 @@ Hotel Deletion Successfull
 <ngb-toast *ngIf="editSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
 Hotel Edited Successfully
 </ngb-toast>
+<ngb-toast *ngIf="bookingDeletionSuccessful" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
+Hotel Booking Deleted Successfully
+</ngb-toast>
+
 <div class="d-flex justify-content-center align-items-center pb-2"  >
 <div class="card " style="width: 60rem;">
 <div class="card-body" >
@@ -101,8 +110,14 @@ Hotel Edited Successfully
 </div>
 }
 @else if(data.isBooked==0){
-    <div class="d-flex justify-content-end">
-    <button (click)="pay(data.id)" class="btn fs-5 btn-success" type="submit" style="color: white;">Confirm Payment</button>
+    <div class="d-flex flex-column  gap-2">
+    <button (click)="pay(data.id)" class="btn text-white bg-success p-2" type="submit" style="color: white;">Confirm Payment</button>
+  <button (click)="deleteBooking(content3)" type="submit" class="btn btn-danger p-2" >
+                     <div class="d-flex gap-1 align-items-center justify-content-center">
+                            <i class="fa-regular fa-trash"></i>
+                            <div>Delete</div>
+                            </div>
+                </button>
 </div>
 }
 @else if (data.isBooked==1) {

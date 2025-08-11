@@ -5,6 +5,7 @@ using api.Models;
 using api.Models.Hotels;
 using api.Repository.Generic;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace api.Repository.Hotels
 {
@@ -20,6 +21,17 @@ namespace api.Repository.Hotels
             await _context.HotelBookings.AddAsync(hotelBooking);
             await _context.SaveChangesAsync();
             return hotelBooking;
+        }
+
+        public async Task DeleteById(int id)
+        {
+            Log.Information($"{id}");
+            var booking = await _context.HotelBookings.FirstOrDefaultAsync(x=>x.id==id);
+           if(booking!=null)
+            {
+                 _context.HotelBookings.Remove(booking);
+              await  _context.SaveChangesAsync();
+            }
         }
 
         public async Task<HotelBookingEnitity> GetById(int bookingId)

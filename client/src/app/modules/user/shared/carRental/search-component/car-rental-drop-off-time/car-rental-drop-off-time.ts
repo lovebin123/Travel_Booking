@@ -11,7 +11,6 @@ export class CarRentalDropOffTime {
     findVals()
     {
       this.dropoffTimeEmitter.emit(this.dropoff_time);
-      console.log(this.dropoff_time);
     }
 dropoff_time:any;
 }

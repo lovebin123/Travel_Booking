@@ -30,10 +30,8 @@ constructor(private flights:FlightsService,private cd:ChangeDetectorRef){}
     this.adminFlightData=this.flights.getAllFlights(this.page,this.pageSize).subscribe({
       next:(respose:any)=>{
         respose=respose.result;
-        console.log(respose);
         this.data=respose.flights;
         this.totalRecords=respose.totalCount;
-        console.log(this.totalRecords);
       }
     })
   }
@@ -59,7 +57,6 @@ searchByFlightName()
   this.flights.searchByFlightName(this.searchQuery).subscribe({
     next:(response:any)=>{
       response=response.result;
-      console.log(response);
       this.data=response;
     }
   })

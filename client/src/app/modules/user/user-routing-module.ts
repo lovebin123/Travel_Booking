@@ -5,8 +5,8 @@ import { TransactionsLayout } from './shared/transactions-layout/transactions-la
 import { FlightTicket } from './features/flight-ticket/flight-ticket';
 import { HotelTicket } from './features/hotel-ticket/hotel-ticket';
 import { CarRentalTicket } from './features/car-rental-ticket/car-rental-ticket';
-import { authGuardGuard } from '../../common/authGuard/auth.guard';
-import { userGuardGuard } from '../../common/authGuard/user.guard';
+import { authGuardGuard } from '../../common/guards/auth.guard';
+import { userGuardGuard } from '../../common/guards/user.guard';
 
 const routes: Routes = [{
     path:'',component:UserLayout,

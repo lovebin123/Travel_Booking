@@ -35,8 +35,6 @@ export class ForgotPassword {
     this.auth.forgotPassword(this.userData).subscribe({
       next:(response:any)=>{
         this.checkPassword();
-        console.log(response);
-        console.log("Password reset successfully");
         localStorage.setItem('token',response.result.token);
         this.showToast=true;
         this.userData.email='';

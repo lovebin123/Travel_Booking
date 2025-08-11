@@ -36,12 +36,6 @@ export class FlightList implements OnChanges {
   dateDetails={date:'',day:'',month:'',year:''}
   userBooked=[];
   showToast=false;
-  f1:number=0;
-  t1:number=0;
-  tra:number=0;
-  dep1:number=0;
-  a1:number=0;
-  c1:number=0;
   showToast1=false;
   padZero(n: number): string {
   return n < 10 ? '0' + n : n.toString();
@@ -71,7 +65,6 @@ this.diff = `${this.padZero(hours)}:${this.padZero(minutes)}`;
   }
   bookFlight(id:any,content:TemplateRef<any>)
   {
-    console.log(this.data1);
     this.flightBooking.postFlightBooking(id,this.no_of_adults,this.no_of_children).subscribe({
       next:(response:any)=>{
         response=response.result;

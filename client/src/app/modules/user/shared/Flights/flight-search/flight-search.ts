@@ -49,7 +49,6 @@ swap() {
   let temp = this.flightDetails.source;
   this.flightDetails.source = this.flightDetails.destination;
   this.flightDetails.destination = temp;
-  console.log(this.flightDetails.source, this.flightDetails.destination);
 }
 flightsFromQuery$: any=[];
 printVals()

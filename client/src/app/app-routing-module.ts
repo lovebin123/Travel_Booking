@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { authGuardGuard } from './common/authGuard/auth.guard';
-import { adminGuard } from './common/authGuard/admin.guard';
 import { LandingPage } from './common/components/landing-page/landing-page';
 import { PageNotFound } from './common/components/page-not-found/page-not-found';
 import { EditProfileComponent } from './common/components/edit-profile/edit-profile.component';
 import { PaymentFailureComponent } from './common/components/payment-failure/payment-failure.component';
-import { userGuardGuard } from './common/authGuard/user.guard';
+import { adminGuard } from './common/guards/admin.guard';
+import { authGuardGuard } from './common/guards/auth.guard';
+import { userGuardGuard } from './common/guards/user.guard';
 
 const routes: Routes = [
   {path:'',component:LandingPage,pathMatch:'full'},

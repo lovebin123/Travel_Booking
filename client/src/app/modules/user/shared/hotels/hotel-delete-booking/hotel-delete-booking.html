@@ -1,0 +1,13 @@
+    <ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-danger text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">Flight Booking Deleted Successfully</ngb-toast>
+<div class="d-flex flex-column gap-3">
+<div class="d-flex flex-column">
+<div style="font-weight: bold;">Delete</div>
+<div>Are you sure you want to delete? This action cannot be undone</div>
+</div>
+<div class="d-flex justify-content-center w-100">
+    <div class="d-flex gap-2">
+        <button (click)="delete1(id)"  class="btn btn-danger" type="button">Delete</button>
+        <button  (click)="close()" class="btn" >Cancel</button>
+    </div>
+</div>
+</div>

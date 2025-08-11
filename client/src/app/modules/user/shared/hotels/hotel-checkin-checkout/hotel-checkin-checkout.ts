@@ -20,8 +20,7 @@ export class HotelCheckinCheckout implements OnInit {
   ngOnInit(): void {
    this.checkin_date=this.dateService.findDateTime(this.checkin);
    this.checkout_date=this.dateService.findDateTime(this.checkout);
-   console.log(this.checkin_date);
-   console.log(this.checkout_date);
+   
    
   }
 

@@ -91,5 +91,13 @@ namespace api.Controllers.v1.Hotels
             var bookings = await _hotelBookingService.GetUserBookings(user);
             return Ok(bookings);
         }
+        [HttpDelete("deleteById")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
+        public async Task<IActionResult>DeleteById(int id)
+        {
+           await _hotelBookingService.DeleteById(id);
+            
+            return NoContent();
+        }
     }
 }

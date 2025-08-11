@@ -41,12 +41,10 @@ namespace api.Repository.Hotels
 
         public async Task DeleteHotel(int id)
         {
-            var hotel = await _context.hotels.FirstOrDefaultAsync(x => x.id == id);
-            if (hotel != null)
-            {
+            var hotel = await _context.hotels.Where(x => x.id == id).FirstOrDefaultAsync();
                 _context.hotels.Remove(hotel);
                 await _context.SaveChangesAsync();
-            }
+            
         }
 
         public async Task<(List<HotelEntity> hotels, int totalCount)> GetAllHotels(int pageNumber, int pageSize)

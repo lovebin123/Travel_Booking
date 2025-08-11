@@ -39,7 +39,6 @@ id:any;
     this.hotel.getLatest(sessionID).subscribe({
       next:(response:any)=>{
         response=response.result;
-        console.log(response);
         this.data=response;
       }
     })

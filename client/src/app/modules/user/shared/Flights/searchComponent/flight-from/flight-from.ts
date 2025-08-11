@@ -37,7 +37,6 @@ export class FlightFrom implements OnInit{
   this.locations.delete(from.name);
   this.handleFromEmitter.emit(from);
   this.handleLocationsSetEmitter.emit(this.locations);
-  console.log(this.locations);
 }
 search = (text$: Observable<string>) =>
   text$.pipe(

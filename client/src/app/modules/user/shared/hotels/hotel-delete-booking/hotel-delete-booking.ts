@@ -1,22 +1,22 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { HotelBookingServiceService } from '../../../../../common/services/Hotels/HotelBooking/hotel-booking-service.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FlightsService } from '../../../../../common/services/Flights/flights.service';
 
 @Component({
-  selector: 'app-flight-admin-delete-admin',
+  selector: 'app-hotel-delete-booking',
   standalone: false,
-  templateUrl: './flight-admin-delete-admin.html',
-  styleUrl: './flight-admin-delete-admin.css'
+  templateUrl: './hotel-delete-booking.html',
+  styleUrl: './hotel-delete-booking.css'
 })
-export class FlightAdminDeleteAdmin {
- constructor(private flight:FlightsService,public activeModal:NgbActiveModal){}
+export class HotelDeleteBooking {
+constructor(private hotel:HotelBookingServiceService,public activeModal:NgbActiveModal){}
   showToast=false;
   @Input()id:any;
   modal=inject(NgbModal);
   @Output()deleteEmitter=new EventEmitter<any>;
 delete1(id:any)
 {
-this.flight.deleteById(id).subscribe({
+this.hotel.deleteById(id).subscribe({
 next:(response:any)=>{
   this.deleteEmitter.emit();
   this.modal.dismissAll(this.showToast=true);

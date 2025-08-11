@@ -29,7 +29,7 @@
 </span>
 <app-input-field id="'password'" [required]="true" formControlName="password"   [type]="showPassword1? 'text' : 'password'" class="form-control p-2 btn-x border-start-0" placeholder="Password"/>
 <span class="input-group-text " style="cursor: pointer;"  >
-<i (click)="show()" class="fa fa-eye-slash" id="showPassword" #showPassword></i>
+<fa-icon  [icon]="showPassword1?faEye:faEyeSlash" (click)="show()"></fa-icon>
 </span>
 </div>
  <span class="text-danger"  *ngIf="(registerFormControlPassword?.touched && registerFormControlPassword?.invalid) && registerFormControlPassword?.errors">

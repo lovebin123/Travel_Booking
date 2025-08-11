@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, DoCheck, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import {faUser,faEnvelope,faLock} from "@fortawesome/free-solid-svg-icons"
+import {faUser,faEnvelope,faLock, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, Validators,ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +23,8 @@ faKey=faLock;
 showToast=false;
 errorMessage='';
 currentType='';
-
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
 constructor(private auth:AuthService,private router:Router,private fb:FormBuilder){
 }
   ngOnInit(): void {
@@ -48,13 +49,11 @@ get registerFormControlPassword()
 }
 login() {
   this.submitted=true;
-  console.log(this.registerForm.value);
   this.auth.login({
     email:this.registerForm.value.email,
     password:this.registerForm.value.password
   }).subscribe({
     next: (response: any) => {
-      console.log(response);
       
       localStorage.setItem('token', response.token);
       localStorage.setItem('role',response.role);
@@ -77,21 +76,19 @@ show()
 {
     this.showPassword1 = !this.showPassword1;
   const input=this.password.nativeElement;
-  const btn=this.showPassword.nativeElement;
 this.currentType=input.getAttribute('type');
   if(this.currentType==='password')
   {
-       btn.classList.remove('fa-eye-slash');
-    btn.classList.add('fa-eye');
     input.setAttribute('type','text');
   }
   else if(this.currentType==='text')
   {
-      btn.classList.remove('fa-eye');
-    btn.classList.add('fa-eye-slash');
     input.setAttribute('type','password');
   }
   
 }
+get passwordIcon() {
+    return this.showPassword1 ? this.faEyeSlash : this.faEye;
+  }
 
 }

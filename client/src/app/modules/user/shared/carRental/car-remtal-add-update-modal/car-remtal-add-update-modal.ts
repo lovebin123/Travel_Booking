@@ -16,7 +16,6 @@ export class CarRemtalAddUpdateModal implements OnInit {
         this.carRental.getById(this.id).subscribe((response:any)=>{
           response=response.result;
           this.data=response;
-          console.log(this.data);
           this.carRentalData.AvailableFromDate=this.data.availableFromDate;
           this.carRentalData.AvailableFromTime=this.data.availableFromTime;
           this.carRentalData.AvailableUntilDate=this.data.availableUntilDate;
@@ -80,9 +79,6 @@ findAvailableToDate()
 @Output()updateEmitted=new EventEmitter<any>();
 update(id:any,carRentalData:CarRental)
 {
-    console.log(this.carRentalData.AvailableFromDate);
-    
-
   this,this.carRental.updateCarRental(id,carRentalData).subscribe({
     next:(response)=>{
       this.updateEmitted.emit();

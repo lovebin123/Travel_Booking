@@ -15,7 +15,6 @@ showToast=false;
 @Output()deleteEmitted=new EventEmitter<any>;
 delete1(id:any)
 {
-  console.log(this.id);
   this.hotel.deleteHotel(id).subscribe({
     next:(response)=>{
 

@@ -55,7 +55,6 @@ book(id:any,content:TemplateRef<any>)
   this.createCarRentalBooking.dropoffTime=this.dropofftime;
 this.carRental.createBooking(id,this.createCarRentalBooking).subscribe({
   next:(response:any)=>{
-    console.log(response.result);
       this.modal.open(content,{size:'lg',centered:true});
     this.carData=response.result;
   },
@@ -68,7 +67,6 @@ pay(id:any)
 {
   this.carRental.createCheckout(id).subscribe({
     next:(response:any)=>{
-      console.log(response);
       response=response.result;
       document.location.href=response.url;
     }
@@ -76,7 +74,6 @@ pay(id:any)
 }
 navToPayment()
 {
-  console.log(this.carRentaldata);
   this.router.navigate(['dashboard/carRentalTicket'],{state:{id:this.carRentaldata.paymentId}});
 }
 editModal=inject(NgbModal);

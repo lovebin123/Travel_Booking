@@ -14,7 +14,6 @@ Book: string='Book';
 showToast=false;
   onSearch(data:any)
   {
-    console.log(data);
     this.searchClicked=true;
     this.temp=data;
   }

@@ -17,7 +17,6 @@ export class FlightAdminAddDeleteModal {
     this.cd.detectChanges();
     if(this.id!=undefined)
     {
-      console.log(this.id);
       this.flight.getById(this.id).subscribe({
         next:(response:any)=>{
           response=response.result;

@@ -25,7 +25,6 @@ const state = navigation?.extras?.state as { id: any };
 
 if (state?.id) {
   this.id = state.id;
-  console.log(this.id);
 }
 else{
       const mail=localStorage.getItem('token');
@@ -50,7 +49,6 @@ else{
     this.flightPayment.getByid(this.id).subscribe((response:any)=>{
       response=response.result;
       this.data=response;
-      console.log(this.data);
     this.flightDetails=this.data.flightBooking.flight;
     this.userDetails=this.data.flightBooking.appUser;
     this.paymentDetails.paymen_id=this.data.stripe_payement_intent_id;

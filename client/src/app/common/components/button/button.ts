@@ -3,7 +3,9 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-button',
   templateUrl: './button.html',
-  styleUrl: './button.css'
+  styleUrl: './button.css',
+  standalone:true,
+  imports:[]
 })
 export class Button{
   @Input() type: 'submit' | 'reset' | 'button' = 'button';

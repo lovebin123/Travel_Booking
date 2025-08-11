@@ -1,6 +1,8 @@
 ﻿using api.Interfaces.Hotels;
 using api.Models;
+using api.Models.Flights;
 using api.Models.Hotels;
+using Serilog;
 
 namespace api.Service.Hotels
 {
@@ -29,7 +31,11 @@ namespace api.Service.Hotels
         {
             return await _bookingRepo.GetById(id);
         }
+        public  Task DeleteById(int id)
+        {
+            return _bookingRepo.DeleteById(id);
 
+        }
         public async Task<List<HotelBookingEnitity>> GetUserBookings(AppUser user)
         {
             return await _bookingRepo.GetUserBookings(user);

@@ -28,7 +28,6 @@ constructor(private carRental:CarRentalPaymentService,private route:ActivatedRou
         const sessionId=this.route.snapshot.paramMap.get('sessionID');
       this.carRental.getLatestPayment(sessionId).subscribe({
         next:(response)=>{
-          console.log(response);
           this.data=response.result;
         }
       })

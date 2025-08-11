@@ -15,7 +15,6 @@ book(id:any)
   this.carRental.createCheckout(id).subscribe({
     next:(response:any)=>{
       response=response.result;
-      console.log(response);
       document.location.href=response.url;
     }
   })

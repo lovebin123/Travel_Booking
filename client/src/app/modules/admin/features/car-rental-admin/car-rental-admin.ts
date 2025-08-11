@@ -32,7 +32,6 @@ loadData()
 {
   this.carRental.getAllCarRentals(this.pageSize,this.page).subscribe({
     next:(resposne:any)=>{
-      console.log(resposne);
       this.totalRecords=resposne.result.totalCount;
       this.data=resposne.result.carRentals;
     }

@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { createHotelBooking } from '../../../../../common/models/createHotelBooking';
 import { DateTimeService } from '../../../../../common/services/DateTime/date-time.service';
 import { HotelBookingServiceService } from '../../../../../common/services/Hotels/HotelBooking/hotel-booking-service.service';
@@ -9,7 +9,8 @@ import { HotelBookingServiceService } from '../../../../../common/services/Hotel
   selector: 'app-hotel-list',
   standalone: false,
   templateUrl: './hotel-list.html',
-  styleUrl: './hotel-list.css'
+  styleUrl: './hotel-list.css',
+    providers:[NgbActiveModal]
 })
 export class HotelList implements OnInit{
 constructor(private hotelBooking:HotelBookingServiceService,private router:Router,private dateService:DateTimeService,private modal:NgbModal){}
@@ -48,7 +49,6 @@ handleEmitter(event:any)
 }
 handleDeleteEmitter(event:any)
 {
-  console.log(event);
   this.deleteEmitted.emit(event);
 }
 bookHotel(id:any,content:TemplateRef<any>)
@@ -77,6 +77,19 @@ pay(id:any)
       document.location.href=response.url;
     }
   })
+}
+bookingDeletionSuccessful=false;
+deleteBooking(content:TemplateRef<any>)
+{
+  const modalRef=this.modal2.open(content,{centered:true,size:'sm'});
+  modalRef.result.catch((data)=>{
+    this.bookingDeletionSuccessful=data;
+  })
+}
+@Output()deleteBookingEmitter=new EventEmitter<any>();
+handleBookingDeleteEmitter(event:any)
+{
+  this.deleteBookingEmitter.emit(event);
 }
 navToPayment()
 {

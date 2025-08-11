@@ -3,9 +3,10 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {JwtHelperService} from "@auth0/angular-jwt"
 import { Observable, Subject, throwError, timeout } from 'rxjs';
-import { NewUserDto } from '../../../ap-api-client-angular';
+import { NewUserDto, TokenResponseDto } from '../../../ap-api-client-angular';
 import { environment } from '../../../environments/environment.development';
 import { UserDetails } from '../models/userDetails';
+import { AutoWrapperResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,6 @@ export class AuthService {
   constructor(private http:HttpClient,private router:Router) { }
   signup(userData:any):Observable<NewUserDto>
   {
-    console.log(userData);
     return this.http.post<NewUserDto>(this.url+'/signup',userData);
   }
   login(userData: any):Observable<NewUserDto> {
@@ -32,11 +32,11 @@ export class AuthService {
   {
     return this.http.post(this.url+'/forgotPassword',userData);
   }
-  refreshToken(): Observable<any> {
+  refreshToken(): Observable<AutoWrapperResponse<TokenResponseDto>> {
   const token = this.getToken();
   const refreshToken = this.getToken();
 
-  return this.http.post<any>('http://localhost:5253/api/v1/account/refresh', {
+  return this.http.post<AutoWrapperResponse<TokenResponseDto>>('http://localhost:5253/api/v1/account/refresh', {
     accessToken: token,
     refreshToken: refreshToken
   });

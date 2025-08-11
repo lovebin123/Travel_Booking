@@ -22,4 +22,8 @@ export class HotelBookingServiceService {
   {
     return this.http.post(`${this.url}/payment-session?id=${id}`,{});
   }
+    deleteById(id:any)
+  {
+    return this.http.delete(`${this.url}/deleteById?id=${id}`);
+  }
 }

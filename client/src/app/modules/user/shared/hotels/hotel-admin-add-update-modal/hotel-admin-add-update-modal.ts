@@ -18,7 +18,6 @@ export class HotelAdminAddUpdateModal {
        this.hotel.getById(this.id).subscribe({
       next:(response:any)=>{
         response=response.result;
-        console.log(response);
         this.data=response;
          this.hotelData.bed_type=this.data.bed_type;
       this.hotelData.bedroom_type=this.data.bedroom_type;

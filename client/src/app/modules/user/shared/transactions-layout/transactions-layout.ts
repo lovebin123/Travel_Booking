@@ -15,7 +15,6 @@ export class TransactionsLayout implements OnInit {
   this.auth.getUserName().subscribe((response:any)=>{
     response=response.result;
    this.data=response;
-    console.log(this.data);
       this.firstName=this.data.firstName;
   }
     );

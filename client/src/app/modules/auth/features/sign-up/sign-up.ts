@@ -88,7 +88,6 @@ export class SignUp implements OnInit{
       error: () => {
         this.error_message = 'Please fill all details';
         this.showToast = true;
-        console.log("Error");
       }
     });
   }
