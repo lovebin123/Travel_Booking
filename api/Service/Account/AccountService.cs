@@ -2,6 +2,7 @@
 using api.Extensions;
 using api.Interfaces;
 using api.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,22 +12,24 @@ using Serilog;
 #pragma warning disable 8618,8603,8601,8625,8600,8619,8613,8604
 namespace api.Service.Account
 {
-    public class AccountService:IAccountService
+    public class AccountService : IAccountService
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signinManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ITokenService _tokenService;
         private readonly IConfiguration _config;
+        private readonly IHttpContextAccessor _httpContext;
 
-        public AccountService( UserManager<AppUser> userManager,SignInManager<AppUser> signinManager,RoleManager<IdentityRole> roleManager,ITokenService tokenService,
-            IConfiguration config)
+        public AccountService(UserManager<AppUser> userManager, SignInManager<AppUser> signinManager, RoleManager<IdentityRole> roleManager, ITokenService tokenService,
+            IConfiguration config, IHttpContextAccessor httpContext)
         {
             _userManager = userManager;
             _signinManager = signinManager;
             _roleManager = roleManager;
             _tokenService = tokenService;
             _config = config;
+            _httpContext = httpContext;
         }
         public async Task<IActionResult> SignUp(SignUpDto signUpDTO)
         {
@@ -72,7 +75,7 @@ namespace api.Service.Account
                 Log.Error("Invalid Username");
                 return new UnauthorizedObjectResult("Invalid username");
             }
-            
+
             var result = await _signinManager.PasswordSignInAsync(loginDTO.Email, loginDTO.Password, true, false);
             if (!result.Succeeded)
             {
@@ -100,6 +103,7 @@ namespace api.Service.Account
 
         public async Task<IActionResult> VerifyEmail(VerifyEmailDTO dto)
         {
+
             var user = await _userManager.FindByNameAsync(dto.Email);
             if (user == null) return new UnauthorizedObjectResult("Email does not exist");
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_ID");
@@ -107,12 +111,28 @@ namespace api.Service.Account
             var from = new EmailAddress("travelvoyage@maildrop.cc", "Book Voyage");
             var to = new EmailAddress(user.Email);
             var token = _tokenService.CreateToken(user);
+            var rnd = new Random();
+            int verificationCode = rnd.Next(1000000, 8000000);
+            string verCode = verificationCode.ToString();
+            _httpContext.HttpContext.Response.Cookies.Append(
+                "verificationCode",
+                verCode,
+                new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.None,
+                    Expires = DateTimeOffset.UtcNow.AddMinutes(10),
+                    Path = "/"
+                }
+            );
             var link = $"http://localhost:4200/auth/forgotPassword/{token}";
-            var htmlContent = $"<strong>Click to reset:</strong><br/><a href=\"{link}\">{link}</a>";
+            var htmlContent = $"<strong>Click to reset:</strong><br/><a href=\"{link}\">{link}</a><br/><center>Your verification code is:{verificationCode}</center>";
             var msg = MailHelper.CreateSingleEmail(from, to, "Password reset mail", link, htmlContent);
             var response = await client.SendEmailAsync(msg);
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
+
                 return new OkObjectResult(new { username = dto.Email });
             }
             else
@@ -123,6 +143,11 @@ namespace api.Service.Account
 
         public async Task<IActionResult> ForgotPassword(ForgotPasswordDto dto)
         {
+            var verificationCode = _httpContext.HttpContext.Request.Cookies["verificationCode"];
+            if(verificationCode.CompareTo(dto.verificationCode)!=0)
+            {
+                return new UnauthorizedObjectResult("Invalud Verification Code");
+            }
             var user = await _userManager.FindByNameAsync(dto.Email);
             if (user == null) return new UnauthorizedObjectResult("User does not exist");
             var result = await _userManager.RemovePasswordAsync(user);

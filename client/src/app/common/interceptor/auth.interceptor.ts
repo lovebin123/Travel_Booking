@@ -4,10 +4,9 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpErrorResponse,
-  HttpResponse
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, throwError, BehaviorSubject, of } from 'rxjs';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from '../services/auth-service';
@@ -15,7 +14,7 @@ import { AuthService } from '../services/auth-service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private isRefreshing = false;
-  private refreshTokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+  private refreshTokenSubject = new BehaviorSubject<string | null>(null);
 
   constructor(
     private authService: AuthService,
@@ -25,22 +24,29 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.authService.getToken();
 
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
-      req = this.addToken(req, token);
+    if (this.isValidJwt(token) && !this.jwtHelper.isTokenExpired(token!)) {
+      req = this.addToken(req, token!);
     }
 
-    return next.handle(req).pipe(
-      catchError(error => {
-        if (
-          error instanceof HttpErrorResponse &&
-          error.status === 401 &&
-          !req.url.includes('/account/refresh')
-        ) {
-          return this.handle401Error(req, next);
-        }
-        return throwError(() => error);
-      })
-    );
+   return next.handle(req).pipe(
+  catchError(error => {
+    if (
+      error instanceof HttpErrorResponse &&
+      error.status === 401 &&
+      !req.url.includes('/account/refresh') &&
+      !req.url.includes('/forgotPassword') &&
+      !req.url.includes('/login') &&
+      !req.url.includes('/signup')
+    ) {
+      return this.handle401Error(req, next);
+    }
+    return throwError(() => error);
+  })
+);
+  }
+
+  private isValidJwt(token: string | null): boolean {
+    return !!token && token.split('.').length === 3;
   }
 
   private addToken(request: HttpRequest<any>, token: string) {
@@ -53,7 +59,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!this.isRefreshing) {
-      console.log("Refreshing");
       this.isRefreshing = true;
       this.refreshTokenSubject.next(null);
 
@@ -61,8 +66,8 @@ export class AuthInterceptor implements HttpInterceptor {
         switchMap((res: any) => {
           this.isRefreshing = false;
           const newToken = res.result.token;
-          localStorage.setItem('token',res.result.token);
-          localStorage.setItem('refreshToken',res.result.refreshToken);
+          localStorage.setItem('token', res.result.token);
+          localStorage.setItem('refreshToken', res.result.refreshToken);
           this.refreshTokenSubject.next(newToken);
           return next.handle(this.addToken(request, newToken));
         }),

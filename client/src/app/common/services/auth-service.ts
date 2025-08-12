@@ -26,11 +26,11 @@ export class AuthService {
   }
   verifyEmail(userData:any)
   {
-    return this.http.post(this.url+'/verifyEmail',userData);
+    return this.http.post(this.url+'/verifyEmail',userData,{withCredentials:true});
   }
   forgotPassword(userData:any)
   {
-    return this.http.post(this.url+'/forgotPassword',userData);
+    return this.http.post(this.url+'/forgotPassword',userData,{withCredentials:true});
   }
   refreshToken(): Observable<AutoWrapperResponse<TokenResponseDto>> {
   const token = this.getToken();

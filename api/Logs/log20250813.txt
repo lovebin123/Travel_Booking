@@ -1,0 +1,15 @@
+2025-08-13 00:00:16.427 +05:30 [ERR] Invalid Credentials
+2025-08-13 00:00:26.698 +05:30 [INF] Successfully logged in
+2025-08-13 00:00:27.119 +05:30 [INF] Listed all destinations
+2025-08-13 00:13:00.677 +05:30 [ERR] Invalid Credentials
+2025-08-13 00:13:37.098 +05:30 [ERR] Invalid Credentials
+2025-08-13 00:13:57.222 +05:30 [INF] Successfully logged in
+2025-08-13 00:13:57.713 +05:30 [INF] Listed all destinations
+2025-08-13 00:15:11.620 +05:30 [ERR] Invalid Credentials
+2025-08-13 00:15:50.691 +05:30 [ERR] Invalid Credentials
+2025-08-13 00:28:19.702 +05:30 [INF] 
+2025-08-13 00:28:19.702 +05:30 [INF] 
+2025-08-13 00:31:25.652 +05:30 [INF] 4848977
+2025-08-13 00:31:25.652 +05:30 [INF] 4848977
+2025-08-13 00:32:09.214 +05:30 [INF] Successfully logged in
+2025-08-13 00:32:09.662 +05:30 [INF] Listed all destinations

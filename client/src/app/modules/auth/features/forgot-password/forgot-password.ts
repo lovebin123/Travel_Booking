@@ -11,7 +11,7 @@ import { AuthService } from '../../../../common/services/auth-service';
   styleUrl: './forgot-password.css'
 })
 export class ForgotPassword {
- userData={email:'',password:''};
+ userData={email:'',password:'',verificationCode:''};
   cpassword='';
   token:any;
   showToast=false;
@@ -32,14 +32,14 @@ export class ForgotPassword {
     this.passwordMismatch=false;
   }   
   forgotPassword(){
-    this.auth.forgotPassword(this.userData).subscribe({
+    this.auth.forgotPassword({email:this.userData.email,password:this.userData.password,verificationCode:this.userData.verificationCode}).subscribe({
       next:(response:any)=>{
-        this.checkPassword();
         localStorage.setItem('token',response.result.token);
         this.showToast=true;
         this.userData.email='';
         this.userData.password='';
         this.cpassword='';
+        this.router.navigate(['/auth/login']);
       },
       error:()=>{
         console.log("Error");
