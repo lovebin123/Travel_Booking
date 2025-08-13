@@ -2,16 +2,17 @@
     <div class="d-flex flex-column gap-2">
         <div style="font-weight: bold;font-size: larger;">{{data.name}}</div>
         <div class="d-flex">
-        @for (item of no_stars_active; track $index) {
+            @for (item of no_stars_active; track $index) {
             <i class="fa-solid fa-star fa-xs"></i>
-        }
-        @for (item of no_stars_inactive; track $index) {
+            }
+            @for (item of no_stars_inactive; track $index) {
             <i class="fa-regular fa-star fa-xs"></i>
-        }
+            }
         </div>
         <div style="font-weight: lighter; font-size: 14px;">{{data.location}}</div>
     </div>
     <div>
-        <img src="https://cf.bstatic.com/xdata/images/hotel/square240/630261077.webp?k=3a13c1266c4a9a38b604af00cc650e49228bcc4b8379de4fad3f079a7ebe5a81&o=" class="rounded" style="width: 100px;height:100px;">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/square240/630261077.webp?k=3a13c1266c4a9a38b604af00cc650e49228bcc4b8379de4fad3f079a7ebe5a81&o="
+            class="rounded" style="width: 100px;height:100px;">
     </div>
 </div>

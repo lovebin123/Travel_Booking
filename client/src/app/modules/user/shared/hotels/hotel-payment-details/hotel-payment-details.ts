@@ -8,10 +8,10 @@ import { DateTimeService } from '../../../../../common/services/DateTime/date-ti
   styleUrl: './hotel-payment-details.css'
 })
 export class HotelPaymentDetails implements OnInit {
-@Input()data:any={};
-dateMonth={date:'',month:'',day:'',year:''}
-constructor(private dateService:DateTimeService){}
+  @Input() data: any = {};
+  dateMonth = { date: '', month: '', day: '', year: '' }
+  constructor(private dateService: DateTimeService) { }
   ngOnInit(): void {
-    this.dateMonth=this.dateService.findDateTime(this.data.booking_date);
+    this.dateMonth = this.dateService.findDateTime(this.data.booking_date);
   }
 }

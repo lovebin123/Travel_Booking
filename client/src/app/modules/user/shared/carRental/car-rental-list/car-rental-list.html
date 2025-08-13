@@ -1,72 +1,100 @@
 <ng-template #content let-modal>
-	<div class="modal-body">
-        <app-car-rental-booking-modal [data]="carData"/>
+    <div class="modal-body">
+        <app-car-rental-booking-modal [data]="carData" />
     </div>
 </ng-template>
 <ng-template #content1 let-modal1>
-	<div class="modal-body">
+    <div class="modal-body">
         <app-car-remtal-add-update-modal [id]="data.id" [type]="'Edit'" (updateEmitted)="handleChange($event)" />
     </div>
 </ng-template>
 <ng-template #content2 let-modal1>
-	<div class="modal-body">
-        <app-car-rental-admin-delete [id]="data.id"  (deleteEmitted)="handleChange($event)" />
+    <div class="modal-body">
+        <app-car-rental-admin-delete [id]="data.id" (deleteEmitted)="handleChange($event)" />
     </div>
 </ng-template>
-<ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-danger text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
-Car already booked by user
+<ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+    class="bg-danger text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+    Car already booked by user
 </ngb-toast>
-<ngb-toast *ngIf="deletionSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="deletionSuccessfull=false">
-Car Deletion Successfull
+<ngb-toast *ngIf="deletionSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+    class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="deletionSuccessfull=false">
+    Car Deletion Successfull
 </ngb-toast>
-<ngb-toast *ngIf="editSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
-Car Edited Successfully
+<ngb-toast *ngIf="editSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+    class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
+    Car Edited Successfully
 </ngb-toast>
 <div class="d-flex flex-column gap-3 pb-2">
-<div class="card" style="width: 60rem;">
-    <div class="card-body">
-        <div class="d-flex w-100 justify-content-between">
-            <div class="d-flex gap-3 align-items-center">
-                <img src="https://cdn2.rcstatic.com/images/car_images_b/web/nissan/versa_lrg.jpg">
-                <div class="d-flex flex-column gap-3">
-                    <div style="font-weight: 600;" class="fs-3">{{data.car_name}}</div>
-                    <div class="d-flex gap-4">
-                        <div class="d-flex flex-column gap-1">
-                           <div class="d-flex gap-1 align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 16px;height: 16px;" viewBox="0 0 24 24"><path d="M16.5 6a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0M18 6A6 6 0 1 0 6 6a6 6 0 0 0 12 0M3 23.25a9 9 0 1 1 18 0 .75.75 0 0 0 1.5 0c0-5.799-4.701-10.5-10.5-10.5S1.5 17.451 1.5 23.25a.75.75 0 0 0 1.5 0"></path></svg>
-                            <div>{{data.no_of_seats}} seats</div>    
-                        </div>
-                           <div class="d-flex gap-1 align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 16px;height: 16px;" viewBox="0 0 24 24"><path d="M22.5 14.249v4.5a2.25 2.25 0 0 1-2.25 2.25H3.75a2.25 2.25 0 0 1-2.25-2.25v-9a2.25 2.25 0 0 1 2.25-2.25h16.5a2.25 2.25 0 0 1 2.25 2.25zm1.5 0v-4.5a3.75 3.75 0 0 0-3.75-3.75H3.75A3.75 3.75 0 0 0 0 9.749v9a3.75 3.75 0 0 0 3.75 3.75h16.5a3.75 3.75 0 0 0 3.75-3.75zm-18-7.5v15a.75.75 0 0 0 1.5 0v-15a.75.75 0 0 0-1.5 0m10.5 0v15a.75.75 0 0 0 1.5 0v-15a.75.75 0 0 0-1.5 0m0 0v-3a2.25 2.25 0 0 0-2.25-2.25h-4.5a2.25 2.25 0 0 0-2.25 2.25v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v3a.75.75 0 0 0 1.5 0"></path></svg>
-                            <div>1 Large bag</div>
-                        </div>
-                           <div class="d-flex gap-1 align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 16px;height: 16px;" viewBox="0 0 24 24"><path d="M9.75 15.292v-.285a2.25 2.25 0 0 1 4.5 0v.285a.75.75 0 0 0 1.5 0v-.285a3.75 3.75 0 1 0-7.5 0v.285a.75.75 0 0 0 1.5 0M13.54 5.02l-2.25 6.75a.75.75 0 0 0 1.424.474l2.25-6.75a.75.75 0 1 0-1.424-.474M6.377 6.757a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5m12.75 3.75a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5m-1.496-3.75a1.125 1.125 0 1 0 1.119 1.131v-.006c0-.621-.504-1.125-1.125-1.125a.75.75 0 0 0 0 1.5.375.375 0 0 1-.375-.375V7.88a.375.375 0 1 1 .373.377.75.75 0 1 0 .008-1.5m-8.254-3a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5M21.88 17.541a16.5 16.5 0 0 0-19.76 0 .75.75 0 1 0 .898 1.202 15 15 0 0 1 17.964 0 .75.75 0 1 0 .898-1.202m.62-5.534c0 5.799-4.701 10.5-10.5 10.5s-10.5-4.701-10.5-10.5 4.701-10.5 10.5-10.5 10.5 4.701 10.5 10.5m1.5 0c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12m-19.123-1.5a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5"></path></svg>
-                            <div>Unlimited mileage</div>
-                        </div>
-                        </div>
-                        <div class="d-flex flex-column gap-1 justify-content-center">
-                           <div class="d-flex gap-1 align-items-center">
-                                <svg style="width: 16px;height: 16px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.25 14.25v-4.5l-1.374.416 3 4.5c.412.617 1.374.326 1.374-.416v-4.5a.75.75 0 0 0-1.5 0v4.5l1.374-.416-3-4.5c-.412-.617-1.374-.326-1.374.416v4.5a.75.75 0 0 0 1.5 0m3 6a3.75 3.75 0 0 0-3.75-3.75.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75a3.75 3.75 0 0 0 3.75-3.75m-1.5 0a2.25 2.25 0 0 1-2.25 2.25l.75.75v-6l-.75.75a2.25 2.25 0 0 1 2.25 2.25M18.5 4.5H20A2.25 2.25 0 0 0 20 0h-1.5a.75.75 0 0 0-.75.75v6a.75.75 0 0 0 1.5 0v-6l-.75.75H20A.75.75 0 0 1 20 3h-1.5a.75.75 0 0 0 0 1.5M4.25 6.75v4.5A2.25 2.25 0 0 0 6.5 13.5H8a.75.75 0 0 1 .75.75v4.5A2.25 2.25 0 0 0 11 21h3a.75.75 0 0 0 0-1.5h-3a.75.75 0 0 1-.75-.75v-4.5A2.25 2.25 0 0 0 8 12H6.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-1.5 0m3-3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0m1.5 0a3.75 3.75 0 1 0-7.5 0 3.75 3.75 0 0 0 7.5 0"></path></svg>
-                                <div>{{data.drive_type}}</div>
+    <div class="card" style="width: 60rem;">
+        <div class="card-body">
+            <div class="d-flex w-100 justify-content-between">
+                <div class="d-flex gap-3 align-items-center">
+                    <img src="https://cdn2.rcstatic.com/images/car_images_b/web/nissan/versa_lrg.jpg">
+                    <div class="d-flex flex-column gap-3">
+                        <div style="font-weight: 600;" class="fs-3">{{data.car_name}}</div>
+                        <div class="d-flex gap-4">
+                            <div class="d-flex flex-column gap-1">
+                                <div class="d-flex gap-1 align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 16px;height: 16px;"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M16.5 6a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0M18 6A6 6 0 1 0 6 6a6 6 0 0 0 12 0M3 23.25a9 9 0 1 1 18 0 .75.75 0 0 0 1.5 0c0-5.799-4.701-10.5-10.5-10.5S1.5 17.451 1.5 23.25a.75.75 0 0 0 1.5 0">
+                                        </path>
+                                    </svg>
+                                    <div>{{data.no_of_seats}} seats</div>
+                                </div>
+                                <div class="d-flex gap-1 align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 16px;height: 16px;"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M22.5 14.249v4.5a2.25 2.25 0 0 1-2.25 2.25H3.75a2.25 2.25 0 0 1-2.25-2.25v-9a2.25 2.25 0 0 1 2.25-2.25h16.5a2.25 2.25 0 0 1 2.25 2.25zm1.5 0v-4.5a3.75 3.75 0 0 0-3.75-3.75H3.75A3.75 3.75 0 0 0 0 9.749v9a3.75 3.75 0 0 0 3.75 3.75h16.5a3.75 3.75 0 0 0 3.75-3.75zm-18-7.5v15a.75.75 0 0 0 1.5 0v-15a.75.75 0 0 0-1.5 0m10.5 0v15a.75.75 0 0 0 1.5 0v-15a.75.75 0 0 0-1.5 0m0 0v-3a2.25 2.25 0 0 0-2.25-2.25h-4.5a2.25 2.25 0 0 0-2.25 2.25v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v3a.75.75 0 0 0 1.5 0">
+                                        </path>
+                                    </svg>
+                                    <div>1 Large bag</div>
+                                </div>
+                                <div class="d-flex gap-1 align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 16px;height: 16px;"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M9.75 15.292v-.285a2.25 2.25 0 0 1 4.5 0v.285a.75.75 0 0 0 1.5 0v-.285a3.75 3.75 0 1 0-7.5 0v.285a.75.75 0 0 0 1.5 0M13.54 5.02l-2.25 6.75a.75.75 0 0 0 1.424.474l2.25-6.75a.75.75 0 1 0-1.424-.474M6.377 6.757a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5m12.75 3.75a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5m-1.496-3.75a1.125 1.125 0 1 0 1.119 1.131v-.006c0-.621-.504-1.125-1.125-1.125a.75.75 0 0 0 0 1.5.375.375 0 0 1-.375-.375V7.88a.375.375 0 1 1 .373.377.75.75 0 1 0 .008-1.5m-8.254-3a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5M21.88 17.541a16.5 16.5 0 0 0-19.76 0 .75.75 0 1 0 .898 1.202 15 15 0 0 1 17.964 0 .75.75 0 1 0 .898-1.202m.62-5.534c0 5.799-4.701 10.5-10.5 10.5s-10.5-4.701-10.5-10.5 4.701-10.5 10.5-10.5 10.5 4.701 10.5 10.5m1.5 0c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12m-19.123-1.5a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5">
+                                        </path>
+                                    </svg>
+                                    <div>Unlimited mileage</div>
+                                </div>
                             </div>
-                           <div class="d-flex gap-1 align-items-center">
-                                <svg style="width: 16px;height: 16px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 14.75H9a.75.75 0 0 1 0-1.5h6a.75.75 0 0 1 0 1.5m.75 3.25a.76.76 0 0 0-.75-.75H9a.75.75 0 0 0 0 1.5h6a.76.76 0 0 0 .75-.75m3-6.5v9a2.25 2.25 0 0 1-2.25 2.25h-.75v.5a.75.75 0 0 1-1.5 0v-.5h-4.5v.5a.75.75 0 0 1-1.5 0v-.5H7.5a2.25 2.25 0 0 1-2.25-2.25v-9A2.25 2.25 0 0 1 7.5 9.25h1.75v-8C9.25.56 9.81 0 10.5 0h3c.69 0 1.25.56 1.25 1.25v8h1.75a2.25 2.25 0 0 1 2.25 2.25m-8-2.25h2.5V1.5h-2.5zm6.5 2.25a.76.76 0 0 0-.75-.75h-9a.76.76 0 0 0-.75.75v9a.76.76 0 0 0 .75.75h9a.76.76 0 0 0 .75-.75z"></path></svg>
-                                <div>1 Small bag</div>
+                            <div class="d-flex flex-column gap-1 justify-content-center">
+                                <div class="d-flex gap-1 align-items-center">
+                                    <svg style="width: 16px;height: 16px;" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M19.25 14.25v-4.5l-1.374.416 3 4.5c.412.617 1.374.326 1.374-.416v-4.5a.75.75 0 0 0-1.5 0v4.5l1.374-.416-3-4.5c-.412-.617-1.374-.326-1.374.416v4.5a.75.75 0 0 0 1.5 0m3 6a3.75 3.75 0 0 0-3.75-3.75.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75a3.75 3.75 0 0 0 3.75-3.75m-1.5 0a2.25 2.25 0 0 1-2.25 2.25l.75.75v-6l-.75.75a2.25 2.25 0 0 1 2.25 2.25M18.5 4.5H20A2.25 2.25 0 0 0 20 0h-1.5a.75.75 0 0 0-.75.75v6a.75.75 0 0 0 1.5 0v-6l-.75.75H20A.75.75 0 0 1 20 3h-1.5a.75.75 0 0 0 0 1.5M4.25 6.75v4.5A2.25 2.25 0 0 0 6.5 13.5H8a.75.75 0 0 1 .75.75v4.5A2.25 2.25 0 0 0 11 21h3a.75.75 0 0 0 0-1.5h-3a.75.75 0 0 1-.75-.75v-4.5A2.25 2.25 0 0 0 8 12H6.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-1.5 0m3-3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0m1.5 0a3.75 3.75 0 1 0-7.5 0 3.75 3.75 0 0 0 7.5 0">
+                                        </path>
+                                    </svg>
+                                    <div>{{data.drive_type}}</div>
+                                </div>
+                                <div class="d-flex gap-1 align-items-center">
+                                    <svg style="width: 16px;height: 16px;" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M15 14.75H9a.75.75 0 0 1 0-1.5h6a.75.75 0 0 1 0 1.5m.75 3.25a.76.76 0 0 0-.75-.75H9a.75.75 0 0 0 0 1.5h6a.76.76 0 0 0 .75-.75m3-6.5v9a2.25 2.25 0 0 1-2.25 2.25h-.75v.5a.75.75 0 0 1-1.5 0v-.5h-4.5v.5a.75.75 0 0 1-1.5 0v-.5H7.5a2.25 2.25 0 0 1-2.25-2.25v-9A2.25 2.25 0 0 1 7.5 9.25h1.75v-8C9.25.56 9.81 0 10.5 0h3c.69 0 1.25.56 1.25 1.25v8h1.75a2.25 2.25 0 0 1 2.25 2.25m-8-2.25h2.5V1.5h-2.5zm6.5 2.25a.76.76 0 0 0-.75-.75h-9a.76.76 0 0 0-.75.75v9a.76.76 0 0 0 .75.75h9a.76.76 0 0 0 .75-.75z">
+                                        </path>
+                                    </svg>
+                                    <div>1 Small bag</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                  <div class="d-flex" style="color: #003580;font-weight: 700;font-size: larger;">
-                    {{data.location}}
-                  </div>
+                        <div class="d-flex" style="color: #003580;font-weight: 700;font-size: larger;">
+                            {{data.location}}
+                        </div>
                     </div>
                 </div>
-                  <div class="d-flex flex-column justify-content-end gap-3">
+                <div class="d-flex flex-column justify-content-end gap-3">
                     <div class="d-flex flex-column gap-0">
-                @if(type!='Edit')
-                {
-                    @if(type==='Book' || type==='Confirm Ticket' || type==='Ticket')
-                    {
+                        @if(type!='Edit')
+                        {
+                        @if(type==='Book' || type==='Confirm Ticket' || type==='Ticket')
+                        {
                         @if(data?.price!=undefined)
                         {
                         <div style="font-weight: lighter;">Price for {{+diff + 1}} days</div>
@@ -76,57 +104,65 @@ Car Edited Successfully
                         <div style="font-weight: 600;font-size: x-large;">₹ {{data.price * (+diff + 1)}}</div>
                         }
                         @else if(carRentaldata.amount!=undefined){
-                    <div style="font-weight: 600;font-size: x-large;">₹ {{carRentaldata.amount}}</div>
+                        <div style="font-weight: 600;font-size: x-large;">₹ {{carRentaldata.amount}}</div>
                         }
                         <div class="text-success">Free Cancellation</div>
-                    }
-                }
-                    @if(type==='Edit') {
-                    <div class="d-flex flex-column align-items-center justify-content-center">
-                    <div style="font-weight: lighter;font-size: small;">Available from </div>
-                    <div style="font-weight: lighter;font-size: small;" >{{data.availableFromDate}} to {{data.availableUntilDate}}</div>
-                    </div>
-                    <div style="font-weight: 600;font-size: x-large;">₹ {{data.price}}</div>
-                    }
+                        }
+                        }
+                        @if(type==='Edit') {
+                        <div class="d-flex flex-column align-items-center justify-content-center">
+                            <div style="font-weight: lighter;font-size: small;">Available from </div>
+                            <div style="font-weight: lighter;font-size: small;">{{data.availableFromDate}} to
+                                {{data.availableUntilDate}}</div>
                         </div>
-                        @if(type==="Book" )
-                        {
-                        <button (click)="book(data.id,content)" class="btn fs-4" type="submit" style="background-color: #003580;color: white;">Book</button>
+                        <div style="font-weight: 600;font-size: x-large;">₹ {{data.price}}</div>
                         }
-                         @if(carRentaldata!=undefined)
+                    </div>
+                    @if(type==="Book" )
                     {
-                         @if (type==="Confirm Payment" || carRentaldata.isBooked!=undefined && carRentaldata.isBooked==0) {
-                        <button class="btn btn-success p-2" type="submit" (click)="pay(carRentaldata.id)">Confirm Payment</button>
-                        }
-                        @else if(type==='Ticket' || carRentaldata.isBooked!=undefined && carRentaldata.isBooked==1)
-                        {
-            <button class="btn" style="background-color: #003580;color: white; " (click)="navToPayment()">View Ticket</button>
-                        }
+                    <button (click)="book(data.id,content)" class="btn fs-4" type="submit"
+                        style="background-color: #003580;color: white;">Book</button>
                     }
-                    
-                         @if(type==='Edit'){
-    <div class="d-flex justify-content-end">
-    <div class="d-flex flex-column gap-2 ">
-        <button type="submit" class="btn btn-primary" (click)="edit(content1)">
-            <div class="d-flex gap-1 align-items-center">
-            <i class="fa-light fa-pencil"></i>
-            <div>Edit</div>
-        </div></button>
-       <button type="submit" class="btn btn-danger" (click)="delete1(content2)">
-            <div class="d-flex gap-1 align-items-center">
-            <i class="fa-regular fa-trash"></i>
-            <div>Delete</div>
-        </div></button>
-    </div>
-</div>
-}
-</div>
+                    @if(carRentaldata!=undefined)
+                    {
+                    @if (type==="Confirm Payment" || carRentaldata.isBooked!=undefined && carRentaldata.isBooked==0) {
+                    <button class="btn btn-success p-2" type="submit" (click)="pay(carRentaldata.id)">Confirm
+                        Payment</button>
+                    }
+                    @else if(type==='Ticket' || carRentaldata.isBooked!=undefined && carRentaldata.isBooked==1)
+                    {
+                    <button class="btn" style="background-color: #003580;color: white; " (click)="navToPayment()">View
+                        Ticket</button>
+                    }
+                    }
+
+                    @if(type==='Edit'){
+                    <div class="d-flex justify-content-end">
+                        <div class="d-flex flex-column gap-2 ">
+                            <button type="submit" class="btn btn-primary" (click)="edit(content1)">
+                                <div class="d-flex gap-1 align-items-center">
+                                    <i class="fa-light fa-pencil"></i>
+                                    <div>Edit</div>
+                                </div>
+                            </button>
+                            <button type="submit" class="btn btn-danger" (click)="delete1(content2)">
+                                <div class="d-flex gap-1 align-items-center">
+                                    <i class="fa-regular fa-trash"></i>
+                                    <div>Delete</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    }
+                </div>
             </div>
             <hr>
             <div class="d-flex gap-3">
-                <img width="80px" style="height: 40px;" src="https://cdn2.rcstatic.com/sp/images/suppliers/102_logo_200.png" class="rounded">
+                <img width="80px" style="height: 40px;"
+                    src="https://cdn2.rcstatic.com/sp/images/suppliers/102_logo_200.png" class="rounded">
                 <div class="d-flex gap-1">
-                    <div style="width: 40px;height: 40px;background-color: #003580;color: white;font-weight: bold;" class="rounded d-flex justify-content-center align-items-center">{{data.rating}}</div>
+                    <div style="width: 40px;height: 40px;background-color: #003580;color: white;font-weight: bold;"
+                        class="rounded d-flex justify-content-center align-items-center">{{data.rating}}</div>
                     <div class="d-flex flex-column">
                         <div>{{data.user_review}}</div>
                         <div style="font-weight: lighter;">400+ reviews</div>

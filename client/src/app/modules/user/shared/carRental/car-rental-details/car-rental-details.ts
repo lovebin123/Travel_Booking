@@ -8,13 +8,13 @@ import { DateTimeService } from '../../../../../common/services/DateTime/date-ti
   styleUrl: './car-rental-details.css'
 })
 export class CarRentalDetails implements OnInit {
-pickup_date={date:'',month:'',day:'',year:''};
-  dropoff_date={date:'',month:'',day:'',year:''};
-      constructor(private dateService:DateTimeService){}
+  pickup_date = { date: '', month: '', day: '', year: '' };
+  dropoff_date = { date: '', month: '', day: '', year: '' };
+  constructor(private dateService: DateTimeService) { }
   ngOnInit(): void {
-    
-    this.pickup_date=this.dateService.findDateTime(this.data.bookedFromDate);
-    this.dropoff_date=this.dateService.findDateTime(this.data.bookedTillDate);
+
+    this.pickup_date = this.dateService.findDateTime(this.data.bookedFromDate);
+    this.dropoff_date = this.dateService.findDateTime(this.data.bookedTillDate);
   }
-  @Input()data:any=null;
+  @Input() data: any = null;
 }

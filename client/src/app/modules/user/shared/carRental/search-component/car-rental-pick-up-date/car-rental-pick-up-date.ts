@@ -9,17 +9,24 @@ import { DateTimeService } from '../../../../../../common/services/DateTime/date
   styleUrl: './car-rental-pick-up-date.css'
 })
 export class CarRentalPickUpDate {
- constructor(private dateService:DateTimeService){}
-  @Output()pickupDateEmited=new EventEmitter<any>();
-  pickupDateModel:NgbDateStruct | undefined;
-  dateDetails={day:'',month:'',date:''}
-date:string='';
-  findDateMonth()
-{
-this.date=this.pickupDateModel
-  ? `${this.pickupDateModel.year}-${String(this.pickupDateModel.month).padStart(2, '0')}-${String(this.pickupDateModel.day).padStart(2, '0')}`
-  : '';
-  this.pickupDateEmited.emit(this.date);
-  this.dateDetails=this.dateService.findDateTime(this.date);
-}
+  constructor(private dateService: DateTimeService) { }
+  @Output() pickupDateEmited = new EventEmitter<any>();
+  pickupDateModel: NgbDateStruct | undefined;
+  dateDetails = { day: '', month: '', date: '' }
+  date: string = '';
+  findDateMonth() {
+    this.date = this.pickupDateModel
+      ? `${this.pickupDateModel.year}-${String(this.pickupDateModel.month).padStart(2, '0')}-${String(this.pickupDateModel.day).padStart(2, '0')}`
+      : '';
+    this.pickupDateEmited.emit(this.date);
+    this.dateDetails = this.dateService.findDateTime(this.date);
+  }
+  getToday(): NgbDateStruct {
+    const today = new Date();
+    return {
+      year: today.getFullYear(),
+      month: today.getMonth() + 1,
+      day: today.getDate()
+    };
+  }
 }

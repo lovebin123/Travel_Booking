@@ -1,147 +1,164 @@
 <ng-template #content let-modal>
-	<div class="modal-body">
-        <app-hotel-booking-modal [data]="data"/>
+    <div class="modal-body">
+        <app-hotel-booking-modal [data]="data" />
     </div>
 </ng-template>
 <ng-template #conten1 let-modal1>
-	<div class="modal-body">
-        <app-hotel-admin-add-update-modal [type]="'Edit'" [id]="hotelData.id" (updaterEmitted)="handleEmitter($event)" />
+    <div class="modal-body">
+        <app-hotel-admin-add-update-modal [type]="'Edit'" [id]="hotelData.id"
+            (updaterEmitted)="handleEmitter($event)" />
     </div>
 </ng-template>
 <ng-template #content3 let-modal1>
-	<div class="modal-body">
+    <div class="modal-body">
         <app-hotel-delete-booking [id]="data.id" (deleteEmitter)="handleBookingDeleteEmitter($event)" />
     </div>
 </ng-template>
 <ng-template #content2 let-modal2>
     <div class="modal-body">
-        <app-hotel-admin-delete-modal (deleteEmitted)="handleDeleteEmitter($event)" [id]="hotelData.id"/>
+        <app-hotel-admin-delete-modal (deleteEmitted)="handleDeleteEmitter($event)" [id]="hotelData.id" />
     </div>
 </ng-template>
 @if(showToast==true)
 {
-    <ngb-toast [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-danger text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
-Hotel already booked by user
+<ngb-toast [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+    class="bg-danger text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+    Hotel already booked by user
 </ngb-toast>
 }
-<ngb-toast *ngIf="deletionSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="deletionSuccessfull=false">
-Hotel Deletion Successfull
+<ngb-toast *ngIf="deletionSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+    class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="deletionSuccessfull=false">
+    Hotel Deletion Successfull
 </ngb-toast>
-<ngb-toast *ngIf="editSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
-Hotel Edited Successfully
+<ngb-toast *ngIf="editSuccessfull" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+    class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
+    Hotel Edited Successfully
 </ngb-toast>
-<ngb-toast *ngIf="bookingDeletionSuccessful" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
-Hotel Booking Deleted Successfully
+<ngb-toast *ngIf="bookingDeletionSuccessful" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+    class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="editSuccessfull=false">
+    Hotel Booking Deleted Successfully
 </ngb-toast>
 
-<div class="d-flex justify-content-center align-items-center pb-2"  >
-<div class="card " style="width: 60rem;">
-<div class="card-body" >
-<div class="d-flex justify-content-between w-100">
-<div class="d-flex gap-3">
-    <div  style="max-width: 22rem;position: relative;">
-    <img class="rounded mb-auto" style="width: 15rem;height: 15rem;"  src="https://cf.bstatic.com/xdata/images/hotel/square240/630261077.webp?k=3a13c1266c4a9a38b604af00cc650e49228bcc4b8379de4fad3f079a7ebe5a81&o=">
-        <div class="position-absolute top-0 rounded-circle d-flex justify-content-center align-items-center" style="right: 0.5rem;bottom: 0.5rem;background-color: white;width: 28px;height: 25px;">
-        <i #loveBtn class="fa-solid fa-heart" style="color: #000000;" (click)="loveClick()"></i>
-            </div>
-</div>
-    <div class="d-flex flex-column gap-4 w-100 ">
-    <div class="d-flex flex-column gap-1 ">
-        <div class="d-flex gap-1 align-items-center w-100">
-        <div class=" flex-wrap fs-4" style="font-weight: 800;color:#003580" >{{hotelData.name}}</div>
-        @for (item of no_of_stars; track $index) {
-        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-        }
-        </div>
-        <a class="text-primary text-decoration-none" >{{hotelData.location}}</a>
-        <div class="badge bg-success text-white " style="font-size:x-small;width: 100px;" >Limited-time Deal</div>
-    </div>
-    <div class="d-flex w-100 justify-content-between">
-    <div class="d-flex gap-2 w-100">
-        <div class="vr" style="height:100% ;"></div>
-        <div class="d-flex flex-column">
-        <div style="font-weight: 600;">{{hotelData.bedroom_type}} Room</div>
-        <div>1 {{hotelData.bed_type}} bed</div>
-    @if(type!='Ticket' && type!='Confirm Payment')
-    {
-        <div class="d-flex flex-column pt-3">
-        <div class="d-flex gap-1 align-items-center">
-<i class="fa-regular fa-check" style="color: #5cb85c;"></i> <div>Free Cancellation</div>
-</div>
-<div class="d-flex gap-1 align-items-center">
-    <i class="fa-regular fa-check" style="color: #5cb85c;"></i> <div>No prepayment required</div>
-</div>
-    </div>
-}
-        </div>
-    </div>
-    </div>
-       @if(type==='Confirm Payment') {
-    <div class="d-flex  justify-content-between  align-items-center " >
-        <div class="d-flex flex-column align-items-center ">
-            <div style="font-size: larger;font-weight: 600;">Check IN</div>
-            <div>{{date1.date}} {{date1.month}} {{date1.year}}</div>
-        </div>
-         <div class="d-flex flex-column align-items-center ">
-            <div style="font-size: larger;font-weight: 600;">Check OUT</div>
-            <div>{{date2.date}} {{date2.month}} {{date2.year}}</div>
-        </div>
-    </div>
-}
-</div>
-</div>
-
-<div class="d-flex flex-column h-100 gap-5 align-content-between">
-<div class="d-flex gap-2 align-items-center">
-<div class="d-flex flex-column justify-content-center align-items-center">
-    <div>{{hotelData.user_review}}</div>
-    <div style="font-weight: lighter;font-size: smaller;">207 reviews</div>
-</div>
-<div style="width: 40px;height: 40px;background-color: #003580;color: white;font-weight: bold;" class="rounded d-flex justify-content-center align-items-center">{{hotelData.rating}}</div>
-</div>
-<div class="d-flex flex-column  align-items-center">
-<div style="font-size:x-large;font-weight: 600;">₹ {{price}}</div>
-<div style="font-size:11px;">Including taxes and fees</div>
-</div>
-@if(type==='Book')
-{
-<div class="d-flex justify-content-end">
-    <button (click)="bookHotel(hotelData.id,content)" class="btn fs-5" type="submit" style="background-color: #003580;color: white;">Reserve</button>
-</div>
-}
-@else if(data.isBooked==0){
-    <div class="d-flex flex-column  gap-2">
-    <button (click)="pay(data.id)" class="btn text-white bg-success p-2" type="submit" style="color: white;">Confirm Payment</button>
-  <button (click)="deleteBooking(content3)" type="submit" class="btn btn-danger p-2" >
-                     <div class="d-flex gap-1 align-items-center justify-content-center">
-                            <i class="fa-regular fa-trash"></i>
-                            <div>Delete</div>
+<div class="d-flex justify-content-center align-items-center pb-2">
+    <div class="card " style="width: 60rem;">
+        <div class="card-body">
+            <div class="d-flex justify-content-between w-100">
+                <div class="d-flex gap-3">
+                    <div style="max-width: 22rem;position: relative;">
+                        <img class="rounded mb-auto" style="width: 15rem;height: 15rem;"
+                            src="https://cf.bstatic.com/xdata/images/hotel/square240/630261077.webp?k=3a13c1266c4a9a38b604af00cc650e49228bcc4b8379de4fad3f079a7ebe5a81&o=">
+                        <div class="position-absolute top-0 rounded-circle d-flex justify-content-center align-items-center"
+                            style="right: 0.5rem;bottom: 0.5rem;background-color: white;width: 28px;height: 25px;">
+                            <i #loveBtn class="fa-solid fa-heart" style="color: #000000;" (click)="loveClick()"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column gap-4 w-100 ">
+                        <div class="d-flex flex-column gap-1 ">
+                            <div class="d-flex gap-1 align-items-center w-100">
+                                <div class=" flex-wrap fs-4" style="font-weight: 800;color:#003580">{{hotelData.name}}
+                                </div>
+                                @for (item of no_of_stars; track $index) {
+                                <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                }
                             </div>
-                </button>
-</div>
-}
-@else if (data.isBooked==1) {
-     <div class="d-flex justify-content-end">
-            <button class="btn" style="background-color: #003580;color: white; " (click)="navToPayment()">View Ticket</button>
-</div>
-}
-@else if(type==='Edit'){
-    <div class="d-flex justify-content-end">
-    <div class="d-flex flex-column gap-2 ">
-        <button type="submit" class="btn btn-primary" (click)="edit(conten1,hotelData.id)">
-            <div class="d-flex gap-1 align-items-center">
-            <i class="fa-light fa-pencil"></i>
-            <div>Edit</div>
-        </div></button>
-       <button type="submit" class="btn btn-danger" (click)="delete1(content2)">
-            <div class="d-flex gap-1 align-items-center">
-            <i class="fa-regular fa-trash"></i>
-            <div>Delete</div>
-        </div></button>
+                            <a class="text-primary text-decoration-none">{{hotelData.location}}</a>
+                            <div class="badge bg-success text-white " style="font-size:x-small;width: 100px;">
+                                Limited-time Deal</div>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="d-flex gap-2 w-100">
+                                <div class="vr" style="height:100% ;"></div>
+                                <div class="d-flex flex-column">
+                                    <div style="font-weight: 600;">{{hotelData.bedroom_type}} Room</div>
+                                    <div>1 {{hotelData.bed_type}} bed</div>
+                                    @if(type!='Ticket' && type!='Confirm Payment')
+                                    {
+                                    <div class="d-flex flex-column pt-3">
+                                        <div class="d-flex gap-1 align-items-center">
+                                            <i class="fa-regular fa-check" style="color: #5cb85c;"></i>
+                                            <div>Free Cancellation</div>
+                                        </div>
+                                        <div class="d-flex gap-1 align-items-center">
+                                            <i class="fa-regular fa-check" style="color: #5cb85c;"></i>
+                                            <div>No prepayment required</div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        @if(type==='Confirm Payment') {
+                        <div class="d-flex  justify-content-between  align-items-center ">
+                            <div class="d-flex flex-column align-items-center ">
+                                <div style="font-size: larger;font-weight: 600;">Check IN</div>
+                                <div>{{date1.date}} {{date1.month}} {{date1.year}}</div>
+                            </div>
+                            <div class="d-flex flex-column align-items-center ">
+                                <div style="font-size: larger;font-weight: 600;">Check OUT</div>
+                                <div>{{date2.date}} {{date2.month}} {{date2.year}}</div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column h-100 gap-5 align-content-between">
+                    <div class="d-flex gap-2 align-items-center">
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <div>{{hotelData.user_review}}</div>
+                            <div style="font-weight: lighter;font-size: smaller;">207 reviews</div>
+                        </div>
+                        <div style="width: 40px;height: 40px;background-color: #003580;color: white;font-weight: bold;"
+                            class="rounded d-flex justify-content-center align-items-center">{{hotelData.rating}}</div>
+                    </div>
+                    <div class="d-flex flex-column  align-items-center">
+                        <div style="font-size:x-large;font-weight: 600;">₹ {{price}}</div>
+                        <div style="font-size:11px;">Including taxes and fees</div>
+                    </div>
+                    @if(type==='Book')
+                    {
+                    <div class="d-flex justify-content-end">
+                        <button (click)="bookHotel(hotelData.id,content)" class="btn fs-5" type="submit"
+                            style="background-color: #003580;color: white;">Reserve</button>
+                    </div>
+                    }
+                    @else if(data.isBooked==0){
+                    <div class="d-flex flex-column  gap-2">
+                        <button (click)="pay(data.id)" class="btn text-white bg-success p-2" type="submit"
+                            style="color: white;">Confirm Payment</button>
+                        <button (click)="deleteBooking(content3)" type="submit" class="btn btn-danger p-2">
+                            <div class="d-flex gap-1 align-items-center justify-content-center">
+                                <i class="fa-regular fa-trash"></i>
+                                <div>Delete</div>
+                            </div>
+                        </button>
+                    </div>
+                    }
+                    @else if (data.isBooked==1) {
+                    <div class="d-flex justify-content-end">
+                        <button class="btn" style="background-color: #003580;color: white; "
+                            (click)="navToPayment()">View Ticket</button>
+                    </div>
+                    }
+                    @else if(type==='Edit'){
+                    <div class="d-flex justify-content-end">
+                        <div class="d-flex flex-column gap-2 ">
+                            <button type="submit" class="btn btn-primary" (click)="edit(conten1,hotelData.id)">
+                                <div class="d-flex gap-1 align-items-center">
+                                    <i class="fa-light fa-pencil"></i>
+                                    <div>Edit</div>
+                                </div>
+                            </button>
+                            <button type="submit" class="btn btn-danger" (click)="delete1(content2)">
+                                <div class="d-flex gap-1 align-items-center">
+                                    <i class="fa-regular fa-trash"></i>
+                                    <div>Delete</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-}
-</div>
-</div>
-</div>
-</div>

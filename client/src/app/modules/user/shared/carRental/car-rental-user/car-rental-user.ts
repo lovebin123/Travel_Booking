@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './car-rental-user.css'
 })
 export class CarRentalUser {
-@Input()data:any=null;
+  @Input() data: any = null;
 
 }

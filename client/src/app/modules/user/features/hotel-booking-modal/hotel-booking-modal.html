@@ -1,12 +1,14 @@
-<div class="d-flex flex-column gap-2  " >
-    <app-hotel-details [data]="data.hotel"/>
-    <app-hotel-checkin-checkout [checkin]="data.check_in_date"  [checkout]="data.check_out_date" [adults]="data.no_of_adults" [children]="data.no_of_children" [rooms]="data. no_of_rooms"/>
-    <app-hotel-services [hotelData]="data.hotel" [adults]="data. no_of_adults" [children]="data.no_of_children"/>
-    <app-hotel-user [data]="data.user"/>
+<div class="d-flex flex-column gap-2  ">
+    <app-hotel-details [data]="data.hotel" />
+    <app-hotel-checkin-checkout [checkin]="data.check_in_date" [checkout]="data.check_out_date"
+        [adults]="data.no_of_adults" [children]="data.no_of_children" [rooms]="data. no_of_rooms" />
+    <app-hotel-services [hotelData]="data.hotel" [adults]="data. no_of_adults" [children]="data.no_of_children" />
+    <app-hotel-user [data]="data.user" />
     <div class="d-flex justify-content-between w-100 px-3  mt-3">
         <div style="font-weight: bold;font-size: 22px;">INR {{data.price}}</div>
         <div>
-            <button (click)="pay(data.id)" class="btn bg-success text-white p-2" type="submit">Proceed to Payment</button>
+            <button (click)="pay(data.id)" class="btn bg-success text-white p-2" type="submit">Proceed to
+                Payment</button>
         </div>
     </div>
 </div>

@@ -7,10 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './car-rental-drop-off-time.css'
 })
 export class CarRentalDropOffTime {
-@Output()dropoffTimeEmitter=new EventEmitter<any>();
-    findVals()
-    {
-      this.dropoffTimeEmitter.emit(this.dropoff_time);
-    }
-dropoff_time:any;
+  @Output() dropoffTimeEmitter = new EventEmitter<any>();
+  findVals() {
+    this.dropoffTimeEmitter.emit(this.dropoff_time);
+  }
+  dropoff_time: any;
 }

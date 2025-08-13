@@ -85,14 +85,15 @@
                 }
                 @else if (isBooked!=undefined && isBooked==0) {
                 <div class="d-flex flex-column gap-1">
-                <button (click)="pay(id)" type="submit" class="btn text-white bg-success p-2">Confirm Payment</button>
-                <button type="submit" class="btn btn-danger p-2" (click)="deleteBooking(id,content3)">
-                     <div class="d-flex gap-1 align-items-center justify-content-center">
+                    <button (click)="pay(id)" type="submit" class="btn text-white bg-success p-2">Confirm
+                        Payment</button>
+                    <button type="submit" class="btn btn-danger p-2" (click)="deleteBooking(id,content3)">
+                        <div class="d-flex gap-1 align-items-center justify-content-center">
                             <i class="fa-regular fa-trash"></i>
                             <div>Delete</div>
-                            </div>
-                </button>
-            </div>
+                        </div>
+                    </button>
+                </div>
                 }
                 @else if (isBooked!=undefined && isBooked==1) {
                 <button class="btn" style="background-color: #003580;color:white; " (click)="navToPayment()">View

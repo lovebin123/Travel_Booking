@@ -1,19 +1,15 @@
-    <div class="d-flex flex-column align-items-center justify-content-center depModal" style="cursor: pointer;">
-  <button (click)="d.toggle()" autoClose="outside" type="button" placement="bottom" id="departureBtn" class="bi d-flex flex-column bi-calendar3 btn text-start text-black" style="width: 12rem; background-color: white; border: none;">
+<div class="d-flex flex-column align-items-center justify-content-center depModal" style="cursor: pointer;">
+  <button (click)="d.toggle()" autoClose="outside" type="button" placement="bottom" id="departureBtn"
+    class="bi d-flex flex-column bi-calendar3 btn text-start text-black"
+    style="width: 12rem; background-color: white; border: none;">
     <div class="text-black fs-4">Departure
       <i class="fa-regular fa-calendar fa-xs"></i>
     </div>
   </button>
-  <input
-    class="form-control"
-    name="date_of_departure"
-    id="date_of_departure"
-    [(ngModel)]="fromDateModel"
-    ngbDatepicker
-    #d="ngbDatepicker"
-    (ngModelChange)="findDateTIme($event)"
-    style="opacity: 0; height: 0; padding: 0; border: none; margin: 0;"
-  />
-    <div *ngIf="fromDateModel" class="fs-4 fw-bold text-black  mb-2">{{dateDetails.date}} {{dateDetails.month}} {{fromDateModel.year}}
+  <input class="form-control" name="date_of_departure" id="date_of_departure" [(ngModel)]="fromDateModel" ngbDatepicker
+    #d="ngbDatepicker" [minDate]="getToday()" (ngModelChange)="findDateTIme($event)"
+    style="opacity: 0; height: 0; padding: 0; border: none; margin: 0;" />
+  <div *ngIf="fromDateModel" class="fs-4 fw-bold text-black  mb-2">{{dateDetails.date}} {{dateDetails.month}}
+    {{fromDateModel.year}}
   </div>
 </div>

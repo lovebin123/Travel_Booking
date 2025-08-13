@@ -9,17 +9,24 @@ import { DateTimeService } from '../../../../../../common/services/DateTime/date
   styleUrl: './hotel-checkin.css'
 })
 export class HotelCheckin {
- constructor(private dateService:DateTimeService){}
-  @Output()checkinDateEmited=new EventEmitter<any>();
-    checkinDateModel:NgbDateStruct | undefined;
-  dateDetails={day:'',month:'',date:''}
-date:string='';
-  findDateMonth()
-{
-this.date=this.checkinDateModel
-  ? `${this.checkinDateModel.year}-${String(this.checkinDateModel.month).padStart(2, '0')}-${String(this.checkinDateModel.day).padStart(2, '0')}`
-  : '';
-  this.checkinDateEmited.emit(this.date);
-  this.dateDetails=this.dateService.findDateTime(this.date);
-}
+  constructor(private dateService: DateTimeService) { }
+  @Output() checkinDateEmited = new EventEmitter<any>();
+  checkinDateModel: NgbDateStruct | undefined;
+  dateDetails = { day: '', month: '', date: '' }
+  date: string = '';
+  findDateMonth() {
+    this.date = this.checkinDateModel
+      ? `${this.checkinDateModel.year}-${String(this.checkinDateModel.month).padStart(2, '0')}-${String(this.checkinDateModel.day).padStart(2, '0')}`
+      : '';
+    this.checkinDateEmited.emit(this.date);
+    this.dateDetails = this.dateService.findDateTime(this.date);
+  }
+  getToday(): NgbDateStruct {
+    const today = new Date();
+    return {
+      year: today.getFullYear(),
+      month: today.getMonth() + 1,
+      day: today.getDate()
+    };
+  }
 }

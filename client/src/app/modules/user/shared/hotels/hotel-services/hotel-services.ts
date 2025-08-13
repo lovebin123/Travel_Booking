@@ -7,8 +7,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './hotel-services.css'
 })
 export class HotelServices {
-@Input()hotelData:any;
-@Input()adults:any;
-@Input()children:any;
-@Input()data:any={};
+  @Input() hotelData: any;
+  @Input() adults: any;
+  @Input() children: any;
+  @Input() data: any = {};
 }

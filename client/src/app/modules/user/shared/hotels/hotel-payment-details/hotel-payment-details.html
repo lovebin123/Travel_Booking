@@ -1,30 +1,31 @@
 <div class="d-flex w-75 pt-3 justify-content-between px-4">
-    <div class="d-flex flex-column gap-4" >
+    <div class="d-flex flex-column gap-4">
         <div style="font-weight: 300;;">Customer ID:</div>
-        <div style="font-weight: 300;;" >Hotel Booking ID:</div>
+        <div style="font-weight: 300;;">Hotel Booking ID:</div>
         <div style="font-weight: 300;;">Date of Booking:</div>
         <div style="font-weight: 300;;">Room Type:</div>
         <div style="font-weight: 300;;">Room {{data.hotelBooking.no_of_rooms}}:</div>
     </div>
-       <div class="d-flex flex-column gap-4">
+    <div class="d-flex flex-column gap-4">
         <div>{{data.stripe_payement_intent_id}}</div>
         <div>{{data.bookingId}}</div>
         <div>{{dateMonth.date}} {{dateMonth.month}} {{dateMonth.year}} {{data.booking_time}}</div>
         <div>{{data.hotelBooking.hotel.bedroom_type}}</div>
         <div>{{data.hotelBooking.no_of_adults}} Adults / {{data.hotelBooking.no_of_children}} Child</div>
     </div>
-       <div class="d-flex flex-column gap-4 justify-content-center align-items-center">
+    <div class="d-flex flex-column gap-4 justify-content-center align-items-center">
         <div style="font-weight: 300;;">Total Amount Paid:</div>
         <div style="font-weight: 300;;">Payment Method:</div>
     </div>
-         <div class="d-flex flex-column  justify-content-center">
+    <div class="d-flex flex-column  justify-content-center">
         <div>{{data.amount}}</div>
-   <div style="position: relative;top: 3px;">    @if(data.card==="mastercard")
-                {
-                <img src="../../../../../assets/ma_symbol_opt_73_3x.png" width="45px" height="60px">
-                }
-                @else if (data.card==="visa") {
-                    <img src="../../../../../assets/visa.png" width="45px" height="60px">
-                }</div>
+        <div style="position: relative;top: 3px;"> @if(data.card==="mastercard")
+            {
+            <img src="../../../../../assets/ma_symbol_opt_73_3x.png" width="45px" height="60px">
+            }
+            @else if (data.card==="visa") {
+            <img src="../../../../../assets/visa.png" width="45px" height="60px">
+            }
+        </div>
     </div>
 </div>

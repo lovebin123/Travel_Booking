@@ -1,12 +1,12 @@
 <div class="d-flex flex-column px-4">
- <app-car-rental-details [data]="data" />
-<hr style="width: 100%;">
- <app-car-rental-services [data]="data"/>
-<hr style="width: 100%;">
- <app-car-rental-user [data]="data"/>
- <hr style="width: 100%;">
-<div class="d-flex justify-content-between w-100 align-items-center">
-    <div style="font-weight: bold;font-size: 22px;">INR  {{data.amount}}</div>
-    <button class="btn btn-success p-2" type="submit" (click)="book(data.id)">Confirm Payment</button>
-</div>
+    <app-car-rental-details [data]="data" />
+    <hr style="width: 100%;">
+    <app-car-rental-services [data]="data" />
+    <hr style="width: 100%;">
+    <app-car-rental-user [data]="data" />
+    <hr style="width: 100%;">
+    <div class="d-flex justify-content-between w-100 align-items-center">
+        <div style="font-weight: bold;font-size: 22px;">INR {{data.amount}}</div>
+        <button class="btn btn-success p-2" type="submit" (click)="book(data.id)">Confirm Payment</button>
+    </div>
 </div>

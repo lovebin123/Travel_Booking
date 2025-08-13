@@ -9,23 +9,21 @@ import { HotelServiceService } from '../../../../../common/services/Hotels/hotel
   styleUrl: './hotel-admin-delete-modal.css'
 })
 export class HotelAdminDeleteModal {
-@Input()id: any;
-constructor(private hotel:HotelServiceService,private modal:NgbModal){}
-showToast=false;
-@Output()deleteEmitted=new EventEmitter<any>;
-delete1(id:any)
-{
-  this.hotel.deleteHotel(id).subscribe({
-    next:(response)=>{
+  @Input() id: any;
+  constructor(private hotel: HotelServiceService, private modal: NgbModal) { }
+  showToast = false;
+  @Output() deleteEmitted = new EventEmitter<any>;
+  delete1(id: any) {
+    this.hotel.deleteHotel(id).subscribe({
+      next: (response) => {
 
-        const msg="Successful";
-  this.deleteEmitted.emit(msg);
-  this.modal.dismissAll(this.showToast=true);
-    }
-  })
-}
-close()
-{
-  this.modal.dismissAll();
-}
+        const msg = "Successful";
+        this.deleteEmitted.emit(msg);
+        this.modal.dismissAll(this.showToast = true);
+      }
+    })
+  }
+  close() {
+    this.modal.dismissAll();
+  }
 }

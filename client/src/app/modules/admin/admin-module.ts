@@ -37,7 +37,7 @@ import { UserModule } from "../user/user-module";
     AdminTabs,
     NgbPagination,
     UserModule
-],
-  exports:[]
+  ],
+  exports: []
 })
 export class AdminModule { }

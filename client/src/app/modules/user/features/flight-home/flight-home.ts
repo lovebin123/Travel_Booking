@@ -7,22 +7,19 @@ import { Component } from '@angular/core';
   styleUrl: './flight-home.css'
 })
 export class FlightHome {
-temp:any=null;
-  data:any;
-  searchClicked=false;
-Book: string='Book';
-showToast=false;
-  onSearch(data:any)
-  {
-    this.searchClicked=true;
-    this.temp=data;
+  temp: any = null;
+  data: any;
+  searchClicked = false;
+  Book: string = 'Book';
+  showToast = false;
+  onSearch(data: any) {
+    this.searchClicked = true;
+    this.temp = data;
   }
-  onPlay(data:any)
-  {
-    if(!data)
-    {
-      this.showToast=true;
+  onPlay(data: any) {
+    if (!data) {
+      this.showToast = true;
     }
-    this.data=data;
+    this.data = data;
   }
 }

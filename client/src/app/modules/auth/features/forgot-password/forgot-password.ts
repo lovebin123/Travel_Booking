@@ -11,43 +11,43 @@ import { AuthService } from '../../../../common/services/auth-service';
   styleUrl: './forgot-password.css'
 })
 export class ForgotPassword {
- userData={email:'',password:'',verificationCode:''};
-  cpassword='';
-  token:any;
-  showToast=false;
-  passwordMismatch=false;
-  constructor(private route:ActivatedRoute,private auth:AuthService,private router:Router){
+  userData = { email: '', password: '', verificationCode: '' };
+  cpassword = '';
+  token: any;
+  showToast = false;
+  passwordMismatch = false;
+  changeSuccessful = false;
+  constructor(private route: ActivatedRoute, private auth: AuthService, private router: Router) {
   }
   ngOnInit(): void {
-    const token=this.route.snapshot.paramMap.get('sessionID');
-    this.userData.email=this.auth.findEmail(token);
+    const token = this.route.snapshot.paramMap.get('sessionID');
+    this.userData.email = this.auth.findEmail(token);
   }
-  checkPassword()
-  {
-    if(this.userData.password!=this.cpassword)
-    {
-      this.passwordMismatch=true;
+  checkPassword() {
+    if (this.userData.password != this.cpassword) {
+      this.passwordMismatch = true;
       return;
     }
-    this.passwordMismatch=false;
-  }   
-  forgotPassword(){
-    this.auth.forgotPassword({email:this.userData.email,password:this.userData.password,verificationCode:this.userData.verificationCode}).subscribe({
-      next:(response:any)=>{
-        localStorage.setItem('token',response.result.token);
-        this.showToast=true;
-        this.userData.email='';
-        this.userData.password='';
-        this.cpassword='';
-        this.router.navigate(['/auth/login']);
+    this.passwordMismatch = false;
+  }
+  forgotPassword() {
+    this.auth.forgotPassword({ email: this.userData.email, password: this.userData.password, verificationCode: this.userData.verificationCode }).subscribe({
+      next: (response: any) => {
+        localStorage.setItem('token', response.result.token);
+        this.showToast = true;
+        this.userData.email = '';
+        this.userData.password = '';
+        this.cpassword = '';
+        this.changeSuccessful = true;
+        this.router.navigate(['/auth/login'], { state: { changeSuccessful: this.changeSuccessful } });
       },
-      error:()=>{
+      error: () => {
         console.log("Error");
       }
     })
   }
 
-faEnvelope=faEnvelope;
-faKey=faLock;
-faUser=faUser;
+  faEnvelope = faEnvelope;
+  faKey = faLock;
+  faUser = faUser;
 }

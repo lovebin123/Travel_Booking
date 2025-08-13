@@ -48,6 +48,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.Password.RequiredLength = 8;
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
 
 }).AddEntityFrameworkStores<ApplicationDBContext>();
 var jwtSettings = builder.Configuration.GetSection("JWT");

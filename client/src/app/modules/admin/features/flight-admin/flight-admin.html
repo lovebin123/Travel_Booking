@@ -1,28 +1,33 @@
 <ng-template #content let-modal>
-    <app-flight-admin-add-delete-modal [type]="'Add'" (componentEmitted)="handleChange($event)"/>
+    <app-flight-admin-add-delete-modal [type]="'Add'" (componentEmitted)="handleChange($event)" />
 </ng-template>
-<ngb-toast *ngIf="additionSuccessful" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500" class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="additionSuccessful=false">
-Flight Added Successfully
+<ngb-toast *ngIf="additionSuccessful" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+    class="bg-success text-light position-fixed top-0 end-0 m-3" (hidden)="additionSuccessful=false">
+    Flight Added Successfully
 </ngb-toast>
 <div class="d-flex flex-column gap-3 pt-3 pb-3 align-items-center">
     <div class="d-flex w-75 justify-content-end">
         <button class="btn btn-primary btn-lg" type="button" (click)="addFlights(content)">
-        <div class="d-flex gap-1 align-items-center">
-            <i class="fa-regular fa-plus"></i>
-            <div>Add</div>
+            <div class="d-flex gap-1 align-items-center">
+                <i class="fa-regular fa-plus"></i>
+                <div>Add</div>
             </div>
-        </button>  
+        </button>
     </div>
     <div class="d-flex w-50 pb-3">
-    <div class="input-group">
-        <div class="input-group-text">
-            <i class="fa-light fa-magnifying-glass"></i>
+        <div class="input-group">
+            <div class="input-group-text">
+                <i class="fa-light fa-magnifying-glass"></i>
+            </div>
+            <input placeholder="Search By Flight Name" class="form-control" [(ngModel)]="searchQuery"
+                (ngModelChange)="searchByFlightName()">
         </div>
-        <input placeholder="Search By Flight Name" class="form-control" [(ngModel)]="searchQuery" (ngModelChange)="searchByFlightName()">
-    </div>
     </div>
     @for (item of data; track $index) {
-        <app-flight-list (deleteEmitter)="handleChange($event)" (editEmitter)="handleChange($event)" [btnTitle]="'Edit'"  [id]="item.id" [btnTitle]="'Edit'" [destination]="item.destination" [name]="item.name" [price]="item.price" [source]="item.source" [time_of_departure]="item.time_of_departure" [time_of_arrival]="item.time_of_arrival" />
+    <app-flight-list (deleteEmitter)="handleChange($event)" (editEmitter)="handleChange($event)" [btnTitle]="'Edit'"
+        [id]="item.id" [btnTitle]="'Edit'" [destination]="item.destination" [name]="item.name" [price]="item.price"
+        [source]="item.source" [time_of_departure]="item.time_of_departure" [time_of_arrival]="item.time_of_arrival" />
     }
-    <ngb-pagination [collectionSize]="totalRecords" [(page)]="page" [pageSize]="pageSize"  (pageChange)="onPageChange($event)" ></ngb-pagination>
+    <ngb-pagination [collectionSize]="totalRecords" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="onPageChange($event)"></ngb-pagination>
 </div>

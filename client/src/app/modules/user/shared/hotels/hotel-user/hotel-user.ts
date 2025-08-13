@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './hotel-user.css'
 })
 export class HotelUser {
-@Input()data:any={};
+  @Input() data: any = {};
 }

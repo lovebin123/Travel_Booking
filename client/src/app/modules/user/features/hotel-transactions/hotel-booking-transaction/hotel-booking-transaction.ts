@@ -8,22 +8,20 @@ import { HotelBookingServiceService } from '../../../../../common/services/Hotel
   styleUrl: './hotel-booking-transaction.css'
 })
 export class HotelBookingTransaction implements OnInit {
-constructor(private hotels:HotelBookingServiceService){}
-data:any={};
+  constructor(private hotels: HotelBookingServiceService) { }
+  data: any = {};
   ngOnInit(): void {
-  this.loadData();
+    this.loadData();
   }
-  loadData()
-  {
-     this.hotels.getUserBookings().subscribe({
-    next:(response:any)=>{
-      response=response.result;
-      this.data=response;
-    }
-   })
+  loadData() {
+    this.hotels.getUserBookings().subscribe({
+      next: (response: any) => {
+        response = response.result;
+        this.data = response;
+      }
+    })
   }
-  handleChange(event:any)
-  {
+  handleChange(event: any) {
     this.loadData();
   }
 }

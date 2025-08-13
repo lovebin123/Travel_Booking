@@ -6,12 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './flight-user.html',
   styleUrl: './flight-user.css'
 })
-export class FlightUser implements OnInit{
-@Input() user:any={};
-  @Input() no_of_adults:any;
-  @Input()no_of_children:any;
-  fullname='';
-ngOnInit(): void {
-  this.fullname=this.user.firstName+" "+this.user.lastName;
-}
+export class FlightUser implements OnInit {
+  @Input() user: any = {};
+  @Input() no_of_adults: any;
+  @Input() no_of_children: any;
+  fullname = '';
+  ngOnInit(): void {
+    this.fullname = this.user.firstName + " " + this.user.lastName;
+  }
 }

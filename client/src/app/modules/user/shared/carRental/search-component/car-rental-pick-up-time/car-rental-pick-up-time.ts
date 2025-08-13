@@ -8,10 +8,9 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './car-rental-pick-up-time.css'
 })
 export class CarRentalPickUpTime {
- @Output()pickupTimeEmitter=new EventEmitter<any>();
-    findVals()
-    {
-      this.pickupTimeEmitter.emit(this.pickup_time);
-    }
-pickup_time:any;
+  @Output() pickupTimeEmitter = new EventEmitter<any>();
+  findVals() {
+    this.pickupTimeEmitter.emit(this.pickup_time);
+  }
+  pickup_time: any;
 }

@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, DoCheck, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import {faUser,faEnvelope,faLock, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons"
+import { faUser, faEnvelope, faLock, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Router, RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, Validators,ReactiveFormsModule } from '@angular/forms';
-import {CommonModule} from "@angular/common";
+import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from "@angular/common";
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { tick } from '@angular/core/testing';
 import { AuthService } from '../../../../common/services/auth-service';
@@ -13,81 +13,81 @@ import { AuthService } from '../../../../common/services/auth-service';
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
-export class Login{
-     registerForm!:FormGroup;
-  submitted=false;
-  faUser=faUser;
-faEnvelope=faEnvelope;
-showPassword1=false;
-faKey=faLock;
-showToast=false;
-errorMessage='';
-currentType='';
+export class Login {
+  registerForm!: FormGroup;
+  submitted = false;
+  faUser = faUser;
+  faEnvelope = faEnvelope;
+  showPassword1 = false;
+  faKey = faLock;
+  showToast = false;
+  errorMessage = '';
+  currentType = '';
   faEye = faEye;
+  passwordChangeSuccessful = false;
   faEyeSlash = faEyeSlash;
-constructor(private auth:AuthService,private router:Router,private fb:FormBuilder){
-}
+  constructor(private auth: AuthService, private router: Router, private fb: FormBuilder) {
+    const nav = this.router.getCurrentNavigation();
+    const state = nav?.extras?.state as ({ changeSuccessful: any });
+    console.log(state?.changeSuccessful);
+    this.passwordChangeSuccessful = state?.changeSuccessful;
+  }
   ngOnInit(): void {
-    this.registerForm=this.fb.group({
-      email:['',[Validators.required,Validators.email]],
-      password:['',Validators.required]
+
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     })
   }
   ngOnDestroy(): void {
-    this.registerForm.value.email='';
-    this.registerForm.value.password='';
+    this.registerForm.value.email = '';
+    this.registerForm.value.password = '';
   }
-@ViewChild('showPassword',{static:false}) showPassword!:ElementRef;
-@ViewChild('password',{static:false})password!:ElementRef;
-get registerFormControlEmail()
-{
-  return this.registerForm.get('email');
-}
-get registerFormControlPassword()
-{
-  return this.registerForm.get('password');
-}
-loginSuccessful=false;
-login() {
-  this.submitted=true;
-  this.auth.login({
-    email:this.registerForm.value.email,
-    password:this.registerForm.value.password
-  }).subscribe({
-    next: (response: any) => {
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('role',response.role);
-      localStorage.setItem("refreshToken",response.refreshToken);
-      this.loginSuccessful=true;
-      if(this.registerForm.value.email==='admin@gmail.com')
-      {
-          this.router.navigate(['/admin'],{state:{loginSuccessful:this.loginSuccessful}});
+  @ViewChild('showPassword', { static: false }) showPassword!: ElementRef;
+  @ViewChild('password', { static: false }) password!: ElementRef;
+  get registerFormControlEmail() {
+    return this.registerForm.get('email');
+  }
+  get registerFormControlPassword() {
+    return this.registerForm.get('password');
+  }
+  loginSuccessful = false;
+  login() {
+    this.submitted = true;
+    this.auth.login({
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password
+    }).subscribe({
+      next: (response: any) => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('role', response.role);
+        localStorage.setItem("refreshToken", response.refreshToken);
+        this.loginSuccessful = true;
+        if (this.registerForm.value.email === 'admin@gmail.com') {
+          this.router.navigate(['/admin'], { state: { loginSuccessful: this.loginSuccessful } });
+        }
+        else
+          this.router.navigate(['/dashboard'], { state: { loginSuccessful: this.loginSuccessful } });
+      },
+      error: (err: any) => {
+        this.showToast = true;
+        console.log(err)
       }
-      else
-          this.router.navigate(['/dashboard'],{state:{loginSuccessful:this.loginSuccessful}});
-    },
-    error: (err:any) => {
-      this.showToast=true;
-      console.log(err)
-    }
-  });
-}
-show()
-{
+    });
+  }
+  show() {
     this.showPassword1 = !this.showPassword1;
-  const input=this.password.nativeElement;
-this.currentType=input.getAttribute('type');
-  if(this.currentType==='password')
-  {
-    input.setAttribute('type','text');
+    const input = this.password.nativeElement;
+    this.currentType = input.getAttribute('type');
+    if (this.currentType === 'password') {
+      input.setAttribute('type', 'text');
+    }
+    else if (this.currentType === 'text') {
+      input.setAttribute('type', 'password');
+    }
+
   }
-  else if(this.currentType==='text')
-  {
-    input.setAttribute('type','password');
-  }
-  
-}
-get passwordIcon() {
+  get passwordIcon() {
     return this.showPassword1 ? this.faEyeSlash : this.faEye;
   }
 

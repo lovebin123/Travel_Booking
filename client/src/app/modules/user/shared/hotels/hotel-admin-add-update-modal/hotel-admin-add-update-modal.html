@@ -3,65 +3,69 @@
         Hotel Data
     </div>
     <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
-    <div class="d-flex flex-column gap-1">
-        <div>Hotel Name</div>
-        <input class="form-control" type="text" [(ngModel)]="hotelData.name" [value]="hotelData.name" style="width: 15rem;">
+        <div class="d-flex flex-column gap-1">
+            <div>Hotel Name</div>
+            <input class="form-control" type="text" [(ngModel)]="hotelData.name" [value]="hotelData.name"
+                style="width: 15rem;">
+        </div>
+        <div class="d-flex flex-column gap-1">
+            <div>Hotel Location</div>
+            <input class="form-control" type="text" [(ngModel)]="hotelData.location" [value]="hotelData.location">
+        </div>
     </div>
-      <div class="d-flex flex-column gap-1">
-        <div>Hotel Location</div>
-        <input class="form-control" type="text" [(ngModel)]="hotelData.location" [value]="hotelData.location">
-    </div>
-    </div>
-        <div class="d-flex justify-content-center align-items-center">
-    <div class="d-flex flex-column gap-1">
-        <div>Price</div>
-        <input class="form-control" type="number" [(ngModel)]="hotelData.price" [value]="hotelData.price">
-        
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column gap-1">
+            <div>Price</div>
+            <input class="form-control" type="number" [(ngModel)]="hotelData.price" [value]="hotelData.price">
+
         </div>
     </div>
     <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
-    <div class="d-flex flex-column gap-1">
-        <div>Number of rooms available</div>
-        <input class="form-control" type="number" [(ngModel)]="hotelData.no_of_rooms_available" [value]="hotelData.no_of_rooms_available">
+        <div class="d-flex flex-column gap-1">
+            <div>Number of rooms available</div>
+            <input class="form-control" type="number" [(ngModel)]="hotelData.no_of_rooms_available"
+                [value]="hotelData.no_of_rooms_available">
+        </div>
+        <div class="d-flex flex-column gap-1">
+            <div>Number of stars</div>
+            <select class="form-select w-100" [(ngModel)]="hotelData.no_of_stars">
+                <ng-container *ngFor="let item of [1,2,3,4,5]">
+                    <option [value]="item">{{item}}</option>
+                </ng-container>
+            </select>
+        </div>
     </div>
-      <div class="d-flex flex-column gap-1">
-        <div>Number of stars</div>
-        <select class="form-select w-100" [(ngModel)]="hotelData.no_of_stars">
-        <ng-container *ngFor="let item of [1,2,3,4,5]">
-            <option  [value]="item">{{item}}</option>
-        </ng-container>
-        </select>    </div>
+    <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+        <div class="d-flex flex-column gap-1">
+            <div>Bed Type</div>
+            <input class="form-control" type="text" [(ngModel)]="hotelData.bed_type" [value]="hotelData.bed_type">
+        </div>
+        <div class="d-flex flex-column gap-1">
+            <div>Bedroom Type</div>
+            <input class="form-control" type="text" [(ngModel)]="hotelData.bedroom_type"
+                [value]="hotelData.bedroom_type">
+        </div>
     </div>
-       <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
-    <div class="d-flex flex-column gap-1">
-        <div>Bed Type</div>
-                 <input class="form-control" type="text" [(ngModel)]="hotelData.bed_type" [value]="hotelData.bed_type">
-    </div>
-      <div class="d-flex flex-column gap-1">
-        <div>Bedroom Type</div>
-                 <input class="form-control" type="text" [(ngModel)]="hotelData.bedroom_type" [value]="hotelData.bedroom_type">
-    </div>
-    </div>
-       <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
-    <div class="d-flex flex-column gap-1">
-        <div>Rating</div>
-                 <input class="form-control" type="text" [(ngModel)]="hotelData.rating" [value]="hotelData.rating">
-    </div>
-      <div class="d-flex flex-column gap-1">
-        <div>User Review</div>
-                 <input class="form-control" type="text" [(ngModel)]="hotelData.user_review" [value]="hotelData.user_review">
-    </div>
+    <div class="d-flex w-100  justify-content-between" style="padding-left: 30px; padding-right: 30px;">
+        <div class="d-flex flex-column gap-1">
+            <div>Rating</div>
+            <input class="form-control" type="text" [(ngModel)]="hotelData.rating" [value]="hotelData.rating">
+        </div>
+        <div class="d-flex flex-column gap-1">
+            <div>User Review</div>
+            <input class="form-control" type="text" [(ngModel)]="hotelData.user_review" [value]="hotelData.user_review">
+        </div>
     </div>
     @if(type==='Add')
     {
     <div class="d-flex justify-content-center align-items-center">
-        <button class="btn btn-primary" (click)="add()" >Submit</button>
+        <button class="btn btn-primary" (click)="add()">Submit</button>
     </div>
     }
     @else if(type==='Edit')
     {
-         <div class="d-flex justify-content-center align-items-center">
-        <button class="btn btn-primary" (click)="update(id,hotelData)" >Change</button>
+    <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary" (click)="update(id,hotelData)">Change</button>
     </div>
     }
 </div>

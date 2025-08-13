@@ -7,21 +7,18 @@ import { Component } from '@angular/core';
   styleUrl: './hotel-home-page.css'
 })
 export class HotelHomePage {
-data:any;
-  checkiCheckout:any;
-  searchClicked=false;
-  roomAdults:any;
-  getAllHotels(data:any)
-  {
-    this.searchClicked=true;
-    this.data=data;
+  data: any;
+  checkiCheckout: any;
+  searchClicked = false;
+  roomAdults: any;
+  getAllHotels(data: any) {
+    this.searchClicked = true;
+    this.data = data;
   }
-  getCheckinCheckout(data:any)
-  {
-    this.checkiCheckout=data;
+  getCheckinCheckout(data: any) {
+    this.checkiCheckout = data;
   }
-  getRoomAdults(data:any)
-  {
-    this.roomAdults=data;
+  getRoomAdults(data: any) {
+    this.roomAdults = data;
   }
 }

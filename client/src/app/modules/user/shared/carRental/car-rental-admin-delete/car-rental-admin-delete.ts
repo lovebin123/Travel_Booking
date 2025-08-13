@@ -9,22 +9,20 @@ import { CarRentalService } from '../../../../../common/services/CarRental/car-r
   styleUrl: './car-rental-admin-delete.css'
 })
 export class CarRentalAdminDelete {
-showToast=false;
-@Input()id:any;
-@Output()deleteEmitted=new EventEmitter<any>();
-modal=inject(NgbModal);
-constructor(private carRental:CarRentalService){}
-delete1(id:any)
-{
-  this.carRental.deleteCarRental(id).subscribe({
-    next:(response)=>{
-      this.modal.dismissAll(this.showToast=true);
-      this.deleteEmitted.emit();
-    }
-  })
-}
-close()
-{
-  this.modal.dismissAll();
-}
+  showToast = false;
+  @Input() id: any;
+  @Output() deleteEmitted = new EventEmitter<any>();
+  modal = inject(NgbModal);
+  constructor(private carRental: CarRentalService) { }
+  delete1(id: any) {
+    this.carRental.deleteCarRental(id).subscribe({
+      next: (response) => {
+        this.modal.dismissAll(this.showToast = true);
+        this.deleteEmitted.emit();
+      }
+    })
+  }
+  close() {
+    this.modal.dismissAll();
+  }
 }
