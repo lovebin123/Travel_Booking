@@ -13,7 +13,7 @@ namespace api.Models
         public string LastName { get; set; }
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpiryTime { get; set; }
-        public IEnumerable<FlightBookingEntity> FlightBookings { get; set; } = new List<FlightBookingEntity>();
+        public List<FlightBookingEntity> FlightBookings { get; set; } = new List<FlightBookingEntity>();
         public List<HotelBookingEnitity> HotelBookings { get; set; } = new List<HotelBookingEnitity>();
         public List<CarRentalBookingEntity> CarRentalBookings { get; set; } = new List<CarRentalBookingEntity>();
     }

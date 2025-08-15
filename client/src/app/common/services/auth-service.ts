@@ -7,6 +7,7 @@ import { NewUserDto, TokenResponseDto } from '../../../ap-api-client-angular';
 import { environment } from '../../../environments/environment.development';
 import { UserDetails } from '../models/userDetails';
 import { AutoWrapperResponse } from '../models/response';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,10 @@ export class AuthService {
   private jwtHelper=new JwtHelperService();
   tokenExpired$: any;
   constructor(private http:HttpClient,private router:Router) { }
-  signup(userData:any):Observable<NewUserDto>
+  signup(userData:FormGroup):Observable<any>
   {
-    return this.http.post<NewUserDto>(this.url+'/signup',userData);
+    console.log(userData.value);
+    return this.http.post<NewUserDto>(this.url+'/signup',userData.value);
   }
   login(userData: any):Observable<NewUserDto> {
     

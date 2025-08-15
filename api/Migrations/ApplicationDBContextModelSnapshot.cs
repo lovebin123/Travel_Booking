@@ -51,13 +51,13 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6df24607-4270-4f98-8c61-dbdb5a8e3005",
+                            Id = "bf8a88bf-97d1-477a-8b5f-2c35e8fb4a76",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "7e3ff0c6-7849-4217-a407-1c04db8475ec",
+                            Id = "dfdc01cc-b547-476f-858d-9634b2a33048",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -241,14 +241,58 @@ namespace api.Migrations
                         .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("api.Models.Car_Rental.CarRental", b =>
+            modelBuilder.Entity("api.Models.Car_Rental.CarRentalBookingEntity", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<double>("amount")
+                        .HasColumnType("float");
+
+                    b.Property<string>("bookedFromDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bookedFromTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bookedTillDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bookedTillTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("bookingId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("isBooked")
+                        .HasColumnType("int");
+
+                    b.Property<string>("paymentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("user_id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("user_id");
+
+                    b.HasIndex("bookingId", "user_id")
+                        .IsUnique()
+                        .HasFilter("[user_id] IS NOT NULL");
+
+                    b.ToTable("CarRentalBookings");
+                });
+
+            modelBuilder.Entity("api.Models.Car_Rental.CarRentalEntity", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -305,57 +349,7 @@ namespace api.Migrations
                     b.ToTable("CarRentals");
                 });
 
-            modelBuilder.Entity("api.Models.Car_Rental.CarRentalBooking", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<double>("amount")
-                        .HasColumnType("float");
-
-                    b.Property<string>("bookedFromDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("bookedFromTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("bookedTillDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("bookedTillTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("bookingId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("isBooked")
-                        .HasColumnType("int");
-
-                    b.Property<string>("paymentId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("user_id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("user_id");
-
-                    b.HasIndex("bookingId", "user_id")
-                        .IsUnique();
-
-                    b.ToTable("CarRentalBookings");
-                });
-
-            modelBuilder.Entity("api.Models.Car_Rental.CarRentalPayment", b =>
+            modelBuilder.Entity("api.Models.Car_Rental.CarRentalPaymentEntity", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -400,48 +394,7 @@ namespace api.Migrations
                     b.ToTable("CarRentalPayments");
                 });
 
-            modelBuilder.Entity("api.Models.Flights.Flight", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("date_of_departure")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("destination")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("no_of_seats")
-                        .HasColumnType("int");
-
-                    b.Property<double>("price")
-                        .HasColumnType("float");
-
-                    b.Property<string>("seatType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("source")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("time_of_arrival")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("time_of_departure")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Flights");
-                });
-
-            modelBuilder.Entity("api.Models.Flights.FlightBooking", b =>
+            modelBuilder.Entity("api.Models.Flights.FlightBookingEntity", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -483,7 +436,48 @@ namespace api.Migrations
                     b.ToTable("FlightBookings");
                 });
 
-            modelBuilder.Entity("api.Models.Flights.FlightPayement", b =>
+            modelBuilder.Entity("api.Models.Flights.FlightEnitity", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("date_of_departure")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("destination")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("no_of_seats")
+                        .HasColumnType("int");
+
+                    b.Property<double>("price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("seatType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("source")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("time_of_arrival")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("time_of_departure")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Flights");
+                });
+
+            modelBuilder.Entity("api.Models.Flights.FlightPayementEntity", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -520,53 +514,7 @@ namespace api.Migrations
                     b.ToTable("flightPayements");
                 });
 
-            modelBuilder.Entity("api.Models.Hotels.Hotel", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("bed_type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("bedroom_type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("no_of_rooms_available")
-                        .HasColumnType("int");
-
-                    b.Property<int>("no_of_stars")
-                        .HasColumnType("int");
-
-                    b.Property<double>("price")
-                        .HasColumnType("float");
-
-                    b.Property<string>("rating")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("user_review")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("hotels");
-                });
-
-            modelBuilder.Entity("api.Models.Hotels.HotelBooking", b =>
+            modelBuilder.Entity("api.Models.Hotels.HotelBookingEnitity", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -617,7 +565,53 @@ namespace api.Migrations
                     b.ToTable("HotelBookings");
                 });
 
-            modelBuilder.Entity("api.Models.Hotels.HotelPayment", b =>
+            modelBuilder.Entity("api.Models.Hotels.HotelEntity", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("bed_type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bedroom_type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("no_of_rooms_available")
+                        .HasColumnType("int");
+
+                    b.Property<int>("no_of_stars")
+                        .HasColumnType("int");
+
+                    b.Property<double>("price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("rating")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("user_review")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("hotels");
+                });
+
+            modelBuilder.Entity("api.Models.Hotels.HotelPaymentEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -713,9 +707,9 @@ namespace api.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("api.Models.Car_Rental.CarRentalBooking", b =>
+            modelBuilder.Entity("api.Models.Car_Rental.CarRentalBookingEntity", b =>
                 {
-                    b.HasOne("api.Models.Car_Rental.CarRental", "carRental")
+                    b.HasOne("api.Models.Car_Rental.CarRentalEntity", "carRental")
                         .WithMany("CarRentalBookings")
                         .HasForeignKey("bookingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -723,18 +717,16 @@ namespace api.Migrations
 
                     b.HasOne("api.Models.AppUser", "user")
                         .WithMany("CarRentalBookings")
-                        .HasForeignKey("user_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("user_id");
 
                     b.Navigation("carRental");
 
                     b.Navigation("user");
                 });
 
-            modelBuilder.Entity("api.Models.Car_Rental.CarRentalPayment", b =>
+            modelBuilder.Entity("api.Models.Car_Rental.CarRentalPaymentEntity", b =>
                 {
-                    b.HasOne("api.Models.Car_Rental.CarRentalBooking", "carRentalBooking")
+                    b.HasOne("api.Models.Car_Rental.CarRentalBookingEntity", "carRentalBooking")
                         .WithMany("CarRentalPayments")
                         .HasForeignKey("bookingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -743,9 +735,9 @@ namespace api.Migrations
                     b.Navigation("carRentalBooking");
                 });
 
-            modelBuilder.Entity("api.Models.Flights.FlightBooking", b =>
+            modelBuilder.Entity("api.Models.Flights.FlightBookingEntity", b =>
                 {
-                    b.HasOne("api.Models.Flights.Flight", "Flight")
+                    b.HasOne("api.Models.Flights.FlightEnitity", "Flight")
                         .WithMany("FlightBookings")
                         .HasForeignKey("flight_id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -762,9 +754,9 @@ namespace api.Migrations
                     b.Navigation("Flight");
                 });
 
-            modelBuilder.Entity("api.Models.Flights.FlightPayement", b =>
+            modelBuilder.Entity("api.Models.Flights.FlightPayementEntity", b =>
                 {
-                    b.HasOne("api.Models.Flights.FlightBooking", "flightBooking")
+                    b.HasOne("api.Models.Flights.FlightBookingEntity", "flightBooking")
                         .WithMany("flightPayements")
                         .HasForeignKey("FlightBookingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -773,9 +765,9 @@ namespace api.Migrations
                     b.Navigation("flightBooking");
                 });
 
-            modelBuilder.Entity("api.Models.Hotels.HotelBooking", b =>
+            modelBuilder.Entity("api.Models.Hotels.HotelBookingEnitity", b =>
                 {
-                    b.HasOne("api.Models.Hotels.Hotel", "hotel")
+                    b.HasOne("api.Models.Hotels.HotelEntity", "hotel")
                         .WithMany("hotelBookings")
                         .HasForeignKey("hotel_id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -792,9 +784,9 @@ namespace api.Migrations
                     b.Navigation("user");
                 });
 
-            modelBuilder.Entity("api.Models.Hotels.HotelPayment", b =>
+            modelBuilder.Entity("api.Models.Hotels.HotelPaymentEntity", b =>
                 {
-                    b.HasOne("api.Models.Hotels.HotelBooking", "hotelBooking")
+                    b.HasOne("api.Models.Hotels.HotelBookingEnitity", "hotelBooking")
                         .WithMany("hotelPayments")
                         .HasForeignKey("bookingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -812,34 +804,34 @@ namespace api.Migrations
                     b.Navigation("HotelBookings");
                 });
 
-            modelBuilder.Entity("api.Models.Car_Rental.CarRental", b =>
-                {
-                    b.Navigation("CarRentalBookings");
-                });
-
-            modelBuilder.Entity("api.Models.Car_Rental.CarRentalBooking", b =>
+            modelBuilder.Entity("api.Models.Car_Rental.CarRentalBookingEntity", b =>
                 {
                     b.Navigation("CarRentalPayments");
                 });
 
-            modelBuilder.Entity("api.Models.Flights.Flight", b =>
+            modelBuilder.Entity("api.Models.Car_Rental.CarRentalEntity", b =>
                 {
-                    b.Navigation("FlightBookings");
+                    b.Navigation("CarRentalBookings");
                 });
 
-            modelBuilder.Entity("api.Models.Flights.FlightBooking", b =>
+            modelBuilder.Entity("api.Models.Flights.FlightBookingEntity", b =>
                 {
                     b.Navigation("flightPayements");
                 });
 
-            modelBuilder.Entity("api.Models.Hotels.Hotel", b =>
+            modelBuilder.Entity("api.Models.Flights.FlightEnitity", b =>
                 {
-                    b.Navigation("hotelBookings");
+                    b.Navigation("FlightBookings");
                 });
 
-            modelBuilder.Entity("api.Models.Hotels.HotelBooking", b =>
+            modelBuilder.Entity("api.Models.Hotels.HotelBookingEnitity", b =>
                 {
                     b.Navigation("hotelPayments");
+                });
+
+            modelBuilder.Entity("api.Models.Hotels.HotelEntity", b =>
+                {
+                    b.Navigation("hotelBookings");
                 });
 #pragma warning restore 612, 618
         }

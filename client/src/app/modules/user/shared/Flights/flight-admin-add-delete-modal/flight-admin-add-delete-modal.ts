@@ -56,6 +56,20 @@ export class FlightAdminAddDeleteModal {
     };
   }
   add() {
+      if (
+    !this.flightData.name?.trim() ||
+    !this.flightData.time_of_arrival?.trim() ||
+    !this.flightData.time_of_departure?.trim() ||
+    !this.flightData.date_of_departure?.trim() ||
+    !this.flightData.no_of_seats ||
+    !this.flightData.seatType?.trim() ||
+    !this.flightData.source?.trim() ||
+    !this.flightData.destination?.trim() ||
+    !this.flightData.price
+  ) {
+    alert('Please fill all required fields before saving');
+    return;
+  }
     this.flight.createFlight(this.flightData).subscribe({
       next: (response: any) => {
         response = response.result;

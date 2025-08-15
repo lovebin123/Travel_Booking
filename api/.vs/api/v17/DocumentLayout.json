@@ -3,20 +3,108 @@
   "WorkspaceRootPath": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\dto\\account\\newuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:dto\\account\\newuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\dto\\account\\signupdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:dto\\account\\signupdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\.editorconfig||{68B46364-D378-42F2-9E72-37D86C5F4468}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:.editorconfig||{68B46364-D378-42F2-9E72-37D86C5F4468}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\models\\car rental\\carrentalbookingentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:models\\car rental\\carrentalbookingentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\models\\hotels\\hotelbookingenitity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:models\\hotels\\hotelbookingenitity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\models\\flights\\flightbookingentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:models\\flights\\flightbookingentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\models\\flights\\flightenitity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:models\\flights\\flightenitity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\filters\\customfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:filters\\customfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\extensions\\claimsextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:extensions\\claimsextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\controllers\\flights\\flightbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:controllers\\flights\\flightbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\flightbookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\flightbookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\flightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\flightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\controllers\\flights\\flightcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:controllers\\flights\\flightcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\stripeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\stripeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\iflightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\iflightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\account\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\account\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\dto\\account\\forgotpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,18 +121,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\hotels\\ihotelbookingservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\hotels\\ihotelbookingservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\account\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\account\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\repository\\hotels\\hotelbookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,28 +143,12 @@
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:repository\\hotels\\hotelrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\flightbookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\flightbookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\iflightbookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\iflightbookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\controllers\\flights\\flightbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:controllers\\flights\\flightbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\hotels\\hotelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\hotels\\hotelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\flightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\flightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\filters\\customfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:filters\\customfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\repository\\car rentals\\carrentalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -111,14 +171,6 @@
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:dto\\flight\\responseflightdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\controllers\\flights\\flightcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:controllers\\flights\\flightcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\stripeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\stripeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\dto\\flight\\responseflightbookingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:dto\\flight\\responseflightbookingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -131,20 +183,8 @@
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:repository\\car rentals\\carrentalstriperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\service\\flight\\iflightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:service\\flight\\iflightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\dto\\account\\newuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|solutionrelative:dto\\account\\newuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED562DFE-B9EF-5F88-771F-EBF333E4D08F}|api.csproj|c:\\onedrive - h\u0026r block ltd\\documents\\travelbooking\\travel_booking\\api\\dto\\account\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -174,53 +214,339 @@
       "DocumentGroups": [
         {
           "DockedWidth": 449,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAqwDIAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T09:28:40.254Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ForgotPasswordDto.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\ForgotPasswordDto.cs",
-              "RelativeDocumentMoniker": "DTO\\Account\\ForgotPasswordDto.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\ForgotPasswordDto.cs",
-              "RelativeToolTip": "DTO\\Account\\ForgotPasswordDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAJkAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T06:53:20.127Z"
+              "WhenOpened": "2025-08-08T09:28:40.254Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApplicationDBContext.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Data\\ApplicationDBContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDBContext.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Data\\ApplicationDBContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDBContext.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADoAAACAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T09:57:24.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FlightBookingEntity.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\Flights\\FlightBookingEntity.cs",
+              "RelativeDocumentMoniker": "Models\\Flights\\FlightBookingEntity.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\Flights\\FlightBookingEntity.cs",
+              "RelativeToolTip": "Models\\Flights\\FlightBookingEntity.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T07:55:34.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CarRentalBookingEntity.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\Car Rental\\CarRentalBookingEntity.cs",
+              "RelativeDocumentMoniker": "Models\\Car Rental\\CarRentalBookingEntity.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\Car Rental\\CarRentalBookingEntity.cs",
+              "RelativeToolTip": "Models\\Car Rental\\CarRentalBookingEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T07:55:55.382Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "api.http",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\api.http",
+              "RelativeDocumentMoniker": "api.http",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\api.http",
+              "RelativeToolTip": "api.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-08-08T09:29:35.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwOQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T12:21:37.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NewUserDto.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\NewUserDto.cs",
+              "RelativeDocumentMoniker": "DTO\\Account\\NewUserDto.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\NewUserDto.cs*",
+              "RelativeToolTip": "DTO\\Account\\NewUserDto.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T05:02:32.866Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "SignUpDto.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\SignUpDto.cs",
+              "RelativeDocumentMoniker": "DTO\\Account\\SignUpDto.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\SignUpDto.cs",
+              "RelativeToolTip": "DTO\\Account\\SignUpDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T07:25:18.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": ".editorconfig",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\.editorconfig",
+              "RelativeDocumentMoniker": ".editorconfig",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\.editorconfig",
+              "RelativeToolTip": ".editorconfig",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-15T08:30:08.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-15T08:30:11.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ExceptionMiddleware.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Middleware\\ExceptionMiddleware.cs",
+              "RelativeDocumentMoniker": "Middleware\\ExceptionMiddleware.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Middleware\\ExceptionMiddleware.cs",
+              "RelativeToolTip": "Middleware\\ExceptionMiddleware.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T07:29:33.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": ".env",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\.env",
+              "RelativeDocumentMoniker": ".env",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\.env",
+              "RelativeToolTip": ".env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-11T16:59:42.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\AppUser.cs",
+              "RelativeDocumentMoniker": "Models\\AppUser.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\AppUser.cs",
+              "RelativeToolTip": "Models\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T07:47:28.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FlightEnitity.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\Flights\\FlightEnitity.cs",
+              "RelativeDocumentMoniker": "Models\\Flights\\FlightEnitity.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\Flights\\FlightEnitity.cs",
+              "RelativeToolTip": "Models\\Flights\\FlightEnitity.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T07:55:26.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HotelBookingEnitity.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\Hotels\\HotelBookingEnitity.cs",
+              "RelativeDocumentMoniker": "Models\\Hotels\\HotelBookingEnitity.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Models\\Hotels\\HotelBookingEnitity.cs",
+              "RelativeToolTip": "Models\\Hotels\\HotelBookingEnitity.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T07:55:43.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\TokenService.cs",
+              "RelativeDocumentMoniker": "Service\\TokenService.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\TokenService.cs",
+              "RelativeToolTip": "Service\\TokenService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACwAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T12:24:49.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "AccountService.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Account\\AccountService.cs",
               "RelativeDocumentMoniker": "Service\\Account\\AccountService.cs",
               "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Account\\AccountService.cs",
               "RelativeToolTip": "Service\\Account\\AccountService.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAAAI4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAowOgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-11T12:25:41.63Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 18,
+              "Title": "ClaimsExtensions.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Extensions\\ClaimsExtensions.cs",
+              "RelativeDocumentMoniker": "Extensions\\ClaimsExtensions.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Extensions\\ClaimsExtensions.cs",
+              "RelativeToolTip": "Extensions\\ClaimsExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-14T05:59:44.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "FlightBookingController.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FlightBookingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Flights\\FlightBookingController.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FlightBookingController.cs",
+              "RelativeToolTip": "Controllers\\Flights\\FlightBookingController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAcwCgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:22:10.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CustomFilter.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Filters\\CustomFilter.cs",
+              "RelativeDocumentMoniker": "Filters\\CustomFilter.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Filters\\CustomFilter.cs",
+              "RelativeToolTip": "Filters\\CustomFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T11:21:52.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FlightService.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightService.cs",
+              "RelativeDocumentMoniker": "Service\\Flight\\FlightService.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightService.cs",
+              "RelativeToolTip": "Service\\Flight\\FlightService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:29:17.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "FLightController.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FLightController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Flights\\FLightController.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FLightController.cs",
+              "RelativeToolTip": "Controllers\\Flights\\FLightController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAswCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:32:12.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "StripeService.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\StripeService.cs",
+              "RelativeDocumentMoniker": "Service\\Flight\\StripeService.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\StripeService.cs",
+              "RelativeToolTip": "Service\\Flight\\StripeService.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAiwDAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T12:07:26.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IFlightService.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\IFlightService.cs",
+              "RelativeDocumentMoniker": "Service\\Flight\\IFlightService.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\IFlightService.cs",
+              "RelativeToolTip": "Service\\Flight\\IFlightService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:26:32.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "FlightBookingService.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightBookingService.cs",
+              "RelativeDocumentMoniker": "Service\\Flight\\FlightBookingService.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightBookingService.cs",
+              "RelativeToolTip": "Service\\Flight\\FlightBookingService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwFkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:27:22.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Account\\IAccountService.cs",
+              "RelativeDocumentMoniker": "Service\\Account\\IAccountService.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Account\\IAccountService.cs",
+              "RelativeToolTip": "Service\\Account\\IAccountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T04:49:26.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
               "Title": "IHotelBookingRepository.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Interfaces\\Hotels\\IHotelBookingRepository.cs",
               "RelativeDocumentMoniker": "Interfaces\\Hotels\\IHotelBookingRepository.cs",
@@ -232,43 +558,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TokenService.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\TokenService.cs",
-              "RelativeDocumentMoniker": "Service\\TokenService.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\TokenService.cs",
-              "RelativeToolTip": "Service\\TokenService.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAADwvywAAAA3AAAAAAAAAA==",
+              "DocumentIndex": 26,
+              "Title": "ForgotPasswordDto.cs",
+              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\ForgotPasswordDto.cs",
+              "RelativeDocumentMoniker": "DTO\\Account\\ForgotPasswordDto.cs",
+              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\ForgotPasswordDto.cs",
+              "RelativeToolTip": "DTO\\Account\\ForgotPasswordDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T12:24:49.157Z"
+              "WhenOpened": "2025-08-12T06:53:20.127Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ApplicationDBContext.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Data\\ApplicationDBContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDBContext.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Data\\ApplicationDBContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDBContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T09:57:24.957Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAC4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T12:21:37.379Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 28,
               "Title": "Logs20250730",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Logs20250730",
               "RelativeDocumentMoniker": "Logs20250730",
@@ -280,7 +582,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 29,
               "Title": "IHotelBookingServices.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Hotels\\IHotelBookingServices.cs",
               "RelativeDocumentMoniker": "Service\\Hotels\\IHotelBookingServices.cs",
@@ -292,19 +594,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Account\\IAccountService.cs",
-              "RelativeDocumentMoniker": "Service\\Account\\IAccountService.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Account\\IAccountService.cs",
-              "RelativeToolTip": "Service\\Account\\IAccountService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T04:49:26.947Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 30,
               "Title": "HotelBookingRepository.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Repository\\Hotels\\HotelBookingRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Hotels\\HotelBookingRepository.cs",
@@ -316,7 +606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 31,
               "Title": "HotelBookingService.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Hotels\\HotelBookingService.cs",
               "RelativeDocumentMoniker": "Service\\Hotels\\HotelBookingService.cs",
@@ -328,19 +618,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": ".env",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\.env",
-              "RelativeDocumentMoniker": ".env",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\.env",
-              "RelativeToolTip": ".env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-08-11T16:59:42.288Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 32,
               "Title": "HotelBookingController.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Hotels\\HotelBookingController.cs",
               "RelativeDocumentMoniker": "Controllers\\Hotels\\HotelBookingController.cs",
@@ -352,7 +630,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 33,
               "Title": "HotelController.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Hotels\\HotelController.cs",
               "RelativeDocumentMoniker": "Controllers\\Hotels\\HotelController.cs",
@@ -364,7 +642,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 34,
               "Title": "HotelRepository.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Repository\\Hotels\\HotelRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Hotels\\HotelRepository.cs",
@@ -376,19 +654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "FlightBookingService.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightBookingService.cs",
-              "RelativeDocumentMoniker": "Service\\Flight\\FlightBookingService.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightBookingService.cs",
-              "RelativeToolTip": "Service\\Flight\\FlightBookingService.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAYwFkAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:27:22.977Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 35,
               "Title": "IFlightBookingService.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\IFlightBookingService.cs",
               "RelativeDocumentMoniker": "Service\\Flight\\IFlightBookingService.cs",
@@ -400,19 +666,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "FlightBookingController.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FlightBookingController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Flights\\FlightBookingController.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FlightBookingController.cs",
-              "RelativeToolTip": "Controllers\\Flights\\FlightBookingController.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAmwEYAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:22:10.059Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 36,
               "Title": "HotelService.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Hotels\\HotelService.cs",
               "RelativeDocumentMoniker": "Service\\Hotels\\HotelService.cs",
@@ -424,19 +678,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "CustomFilter.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Filters\\CustomFilter.cs",
-              "RelativeDocumentMoniker": "Filters\\CustomFilter.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Filters\\CustomFilter.cs",
-              "RelativeToolTip": "Filters\\CustomFilter.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAUwCAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T11:21:52.432Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 37,
               "Title": "CarRentalRepository.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Repository\\Car Rentals\\CarRentalRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Car Rentals\\CarRentalRepository.cs",
@@ -448,7 +690,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 45,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -460,7 +702,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 39,
               "Title": "FlightPaymentRepository.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Repository\\Flights\\FlightPaymentRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Flights\\FlightPaymentRepository.cs",
@@ -472,31 +714,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "StripeService.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\StripeService.cs",
-              "RelativeDocumentMoniker": "Service\\Flight\\StripeService.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\StripeService.cs",
-              "RelativeToolTip": "Service\\Flight\\StripeService.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAmwHQAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T12:07:26.554Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "FlightService.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightService.cs",
-              "RelativeDocumentMoniker": "Service\\Flight\\FlightService.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\FlightService.cs",
-              "RelativeToolTip": "Service\\Flight\\FlightService.cs",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAgwC4AAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:29:17.956Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 41,
               "Title": "ResponseFlightDto.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Flight\\ResponseFlightDto.cs",
               "RelativeDocumentMoniker": "DTO\\Flight\\ResponseFlightDto.cs",
@@ -508,7 +726,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 38,
               "Title": "CarRentalController.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\CarRentals\\CarRentalController.cs",
               "RelativeDocumentMoniker": "Controllers\\CarRentals\\CarRentalController.cs",
@@ -520,7 +738,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 40,
               "Title": "FlightPaymentController.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FlightPaymentController.cs",
               "RelativeDocumentMoniker": "Controllers\\Flights\\FlightPaymentController.cs",
@@ -532,19 +750,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "FLightController.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FLightController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Flights\\FLightController.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Controllers\\Flights\\FLightController.cs",
-              "RelativeToolTip": "Controllers\\Flights\\FLightController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAQwCoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:32:12.799Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 42,
               "Title": "ResponseFlightBookingDto.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Flight\\ResponseFlightBookingDto.cs",
               "RelativeDocumentMoniker": "DTO\\Flight\\ResponseFlightBookingDto.cs",
@@ -556,19 +762,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "api.http",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\api.http",
-              "RelativeDocumentMoniker": "api.http",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\api.http",
-              "RelativeToolTip": "api.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-08-08T09:29:35.83Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 43,
               "Title": "FlightDto.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Flight\\FlightDto.cs",
               "RelativeDocumentMoniker": "DTO\\Flight\\FlightDto.cs",
@@ -580,7 +774,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 44,
               "Title": "CarRentalStripeRepository.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Repository\\Car Rentals\\CarRentalStripeRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Car Rentals\\CarRentalStripeRepository.cs",
@@ -592,19 +786,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "IFlightService.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\IFlightService.cs",
-              "RelativeDocumentMoniker": "Service\\Flight\\IFlightService.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Flight\\IFlightService.cs",
-              "RelativeToolTip": "Service\\Flight\\IFlightService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA2wA4AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:26:32.507Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 47,
               "Title": "editUserDto.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\editUserDto.cs",
               "RelativeDocumentMoniker": "DTO\\Account\\editUserDto.cs",
@@ -616,7 +798,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 48,
               "Title": "CarRentalStripeService.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\CarRental\\CarRentalStripeService.cs",
               "RelativeDocumentMoniker": "Service\\CarRental\\CarRentalStripeService.cs",
@@ -628,7 +810,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 49,
               "Title": "CarRentalService.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\CarRental\\CarRentalService.cs",
               "RelativeDocumentMoniker": "Service\\CarRental\\CarRentalService.cs",
@@ -640,7 +822,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 46,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\LoginDto.cs",
               "RelativeDocumentMoniker": "DTO\\Account\\LoginDto.cs",
@@ -652,19 +834,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "NewUserDto.cs",
-              "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\NewUserDto.cs",
-              "RelativeDocumentMoniker": "DTO\\Account\\NewUserDto.cs",
-              "ToolTip": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\DTO\\Account\\NewUserDto.cs",
-              "RelativeToolTip": "DTO\\Account\\NewUserDto.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T05:02:32.866Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 50,
               "Title": "HotelStripeService.cs",
               "DocumentMoniker": "C:\\OneDrive - H\u0026R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Service\\Hotels\\HotelStripeService.cs",
               "RelativeDocumentMoniker": "Service\\Hotels\\HotelStripeService.cs",
@@ -673,10 +843,6 @@
               "ViewState": "AgIAACcAAAAAAAAAAAAYwDMAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T12:09:01.045Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             }
           ]
         },

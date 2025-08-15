@@ -56,8 +56,13 @@ export class HotelAdminAddUpdateModal {
   showToast1 = false;
   showToast2 = false;
   add() {
+        if (!this.hotelData.name || !this.hotelData.location) {
+      alert('Hotel name and location are required.');
+      return;
+    }
     this.hotel.addHotel(this.hotelData).subscribe({
       next: (response) => {
+       
         response = response.result;
         const modelRef = this.modal.dismissAll(this.showToast1 = true);
         this.componentEmitted.emit();

@@ -117,3 +117,78 @@
 2025-08-13 16:39:14.746 +05:30 [ERR] Invalid Credentials
 2025-08-13 16:39:18.942 +05:30 [INF] Successfully logged in
 2025-08-13 16:39:19.281 +05:30 [INF] Listed all destinations
+2025-08-13 16:40:40.385 +05:30 [INF] Listed all destinations
+2025-08-13 17:00:44.111 +05:30 [ERR] Invalid Credentials
+2025-08-13 17:02:26.510 +05:30 [ERR] Failed to create account
+2025-08-13 17:02:26.512 +05:30 [ERR] Failed to create account
+2025-08-13 17:02:27.577 +05:30 [ERR] Failed to create account
+2025-08-13 17:02:27.588 +05:30 [ERR] Failed to create account
+2025-08-13 17:09:21.900 +05:30 [ERR] Failed to create account
+2025-08-13 17:09:21.900 +05:30 [ERR] Failed to create account
+2025-08-13 17:11:05.334 +05:30 [ERR] Failed to create account
+2025-08-13 17:11:05.339 +05:30 [ERR] Failed to create account
+2025-08-13 19:57:29.037 +05:30 [ERR] Failed to create account
+2025-08-13 19:57:29.037 +05:30 [ERR] Failed to create account
+2025-08-13 19:58:09.665 +05:30 [ERR] Failed to create account
+2025-08-13 19:58:09.665 +05:30 [ERR] Failed to create account
+2025-08-13 20:03:23.598 +05:30 [ERR] Failed to create account
+2025-08-13 20:03:23.599 +05:30 [ERR] Failed to create account
+2025-08-13 20:03:27.885 +05:30 [ERR] Failed to create account
+2025-08-13 20:03:27.903 +05:30 [ERR] Failed to create account
+2025-08-13 21:28:53.801 +05:30 [ERR] Invalid Credentials
+2025-08-13 21:28:56.624 +05:30 [INF] Successfully logged in
+2025-08-13 21:28:56.787 +05:30 [INF] Listed all destinations
+2025-08-13 22:52:30.484 +05:30 [ERR] Invalid Credentials
+2025-08-13 22:52:32.429 +05:30 [INF] Successfully logged in
+2025-08-13 22:52:33.054 +05:30 [INF] Listed all destinations
+2025-08-13 23:15:16.909 +05:30 [ERR] Invalid Credentials
+2025-08-13 23:15:17.990 +05:30 [INF] Successfully logged in
+2025-08-13 23:15:18.107 +05:30 [INF] Listed all destinations
+2025-08-13 23:38:24.793 +05:30 [ERR] Failed to create account
+2025-08-13 23:38:24.793 +05:30 [ERR] Failed to create account
+2025-08-13 23:41:43.822 +05:30 [INF] Successfully logged in
+2025-08-13 23:41:43.962 +05:30 [INF] Listed all destinations
+2025-08-13 23:46:24.127 +05:30 [INF] Successfully logged in
+2025-08-13 23:46:24.510 +05:30 [INF] Listed all flights
+2025-08-13 23:46:58.243 +05:30 [INF] Fetched based on Id
+2025-08-13 23:47:00.831 +05:30 [INF] Flight updated successfully
+2025-08-13 23:47:00.831 +05:30 [INF] Updated Flight Successfully
+2025-08-13 23:47:00.852 +05:30 [INF] Listed all flights
+2025-08-13 23:47:04.660 +05:30 [INF] Listed all flights
+2025-08-13 23:47:10.362 +05:30 [INF] Flight fetched
+2025-08-13 23:47:10.373 +05:30 [INF] Deleted flight Successfully
+2025-08-13 23:47:10.393 +05:30 [INF] Listed all flights
+2025-08-13 23:47:22.733 +05:30 [INF] Flight fetched
+2025-08-13 23:47:22.736 +05:30 [INF] Deleted flight Successfully
+2025-08-13 23:47:22.754 +05:30 [INF] Listed all flights
+2025-08-13 23:47:39.534 +05:30 [INF] Listed all flights
+2025-08-13 23:48:35.831 +05:30 [INF] Listed all flights
+2025-08-13 23:48:37.570 +05:30 [INF] Flight fetched
+2025-08-13 23:48:37.578 +05:30 [INF] Deleted flight Successfully
+2025-08-13 23:48:37.593 +05:30 [INF] Listed all flights
+2025-08-13 23:48:50.085 +05:30 [ERR] Invalid Credentials
+2025-08-13 23:48:51.385 +05:30 [INF] Successfully logged in
+2025-08-13 23:48:51.454 +05:30 [INF] Listed all destinations
+2025-08-13 23:49:07.388 +05:30 [INF] Flights listed successfully based on query
+2025-08-13 23:52:06.665 +05:30 [INF] Flights listed successfully based on query
+2025-08-13 23:52:06.986 +05:30 [INF] Flights listed successfully based on query
+2025-08-13 23:52:31.976 +05:30 [ERR] Invalid Credentials
+2025-08-13 23:52:34.036 +05:30 [INF] Successfully logged in
+2025-08-13 23:52:34.112 +05:30 [INF] Listed all destinations
+2025-08-13 23:52:41.161 +05:30 [INF] Listed all destinations
+2025-08-13 23:52:52.584 +05:30 [INF] Flights listed successfully based on query
+2025-08-13 23:52:55.698 +05:30 [INF] Flights listed successfully based on query
+2025-08-13 23:53:02.706 +05:30 [INF] Flights listed successfully based on query
+2025-08-13 23:53:11.949 +05:30 [INF] Successfully logged in
+2025-08-13 23:53:12.019 +05:30 [INF] Listed all flights
+2025-08-13 23:53:22.044 +05:30 [INF] Flight fetched
+2025-08-13 23:53:22.050 +05:30 [INF] Deleted flight Successfully
+2025-08-13 23:53:22.070 +05:30 [INF] Listed all flights
+2025-08-13 23:55:28.568 +05:30 [INF] Successfully logged in
+2025-08-13 23:55:28.719 +05:30 [INF] Listed all flights
+2025-08-13 23:55:41.704 +05:30 [INF] Successfully logged in
+2025-08-13 23:55:41.770 +05:30 [INF] Listed all destinations
+2025-08-13 23:55:47.638 +05:30 [INF] Listed all destinations
+2025-08-13 23:56:01.037 +05:30 [INF] Flights listed successfully based on query
+2025-08-13 23:56:45.082 +05:30 [INF] Flights listed successfully based on query
+2025-08-13 23:56:54.946 +05:30 [INF] Created booking successfully

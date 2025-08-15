@@ -8,7 +8,7 @@ namespace api.Models.Hotels
         public int id { get; set; }
         public int hotel_id { get; set; }
         public string user_id { get; set; }
-        public AppUser user { get; set; }
+        public AppUser? user { get; set; }
         public HotelEntity hotel { get; set; }
         public string check_in_date { get; set; }
         public string check_out_date { get; set; }

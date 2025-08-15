@@ -1,5 +1,14 @@
+@if(error_message==="One or more validation errors occured")
+{
 <ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
-  class="bg-warning text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">{{error_message}}</ngb-toast>
+  class="bg-danger text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+  {{error_message}}</ngb-toast>
+}
+@else if(error_message==="Please fill all details"){
+<ngb-toast *ngIf="showToast" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
+  class="bg-danger text-light position-fixed top-0 end-0 m-3" (hidden)="showToast=false">
+  {{error_message}}</ngb-toast>
+}
 <ngb-toast *ngIf="showToast1" [autohide]="true" aria-live="polite" [animation]="true" [delay]="2500"
   class="bg-warning text-light position-fixed top-0 end-0 m-3" (hidden)="showToast1=false">Please accept the terms and
   conditions</ngb-toast>
@@ -87,7 +96,7 @@
                 I accept the terms and conditions
               </label>
             </div>
-            <app-button (click)="signup()" [backgroundColor]="'#003580'" [width]="'8rem'" [height]="'4rem'" id="signup"
+            <app-button  [backgroundColor]="'#003580'" [width]="'8rem'" [height]="'4rem'" id="signup"
               type="submit">Signup</app-button>
           </div>
         </form>

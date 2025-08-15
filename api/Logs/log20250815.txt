@@ -1,0 +1,19 @@
+2025-08-15 12:56:12.196 +05:30 [INF] Successfully created account
+2025-08-15 12:56:12.226 +05:30 [INF] Successfully signed up
+2025-08-15 12:58:02.428 +05:30 [INF] Successfully created account
+2025-08-15 12:58:02.584 +05:30 [INF] Successfully signed up
+2025-08-15 13:01:02.176 +05:30 [INF] Successfully created account
+2025-08-15 13:01:02.327 +05:30 [INF] Successfully signed up
+2025-08-15 13:03:35.168 +05:30 [INF] Successfully created account
+2025-08-15 13:03:35.317 +05:30 [INF] Successfully signed up
+2025-08-15 13:06:07.295 +05:30 [INF] Successfully created account
+2025-08-15 13:06:07.445 +05:30 [INF] Successfully signed up
+2025-08-15 13:09:36.643 +05:30 [INF] Successfully created account
+2025-08-15 13:09:36.770 +05:30 [INF] Successfully signed up
+2025-08-15 13:44:30.738 +05:30 [ERR] Failed to assign role
+2025-08-15 13:45:27.039 +05:30 [ERR] Failed to assign role
+2025-08-15 13:59:29.657 +05:30 [ERR] Failed to assign role
+2025-08-15 14:19:25.584 +05:30 [ERR] Failed to create account
+2025-08-15 14:23:14.245 +05:30 [ERR] Failed to assign role
+2025-08-15 14:25:12.165 +05:30 [ERR] Failed to assign role
+2025-08-15 14:27:01.634 +05:30 [ERR] Failed to assign role

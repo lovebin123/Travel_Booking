@@ -1,0 +1,44 @@
+2025-08-14 00:05:53.686 +05:30 [INF] Listed all destinations
+2025-08-14 00:06:11.532 +05:30 [INF] Successfully logged in
+2025-08-14 00:06:11.610 +05:30 [INF] Listed all flights
+2025-08-14 00:06:51.651 +05:30 [INF] Listed all flights
+2025-08-14 00:06:53.450 +05:30 [INF] Listed all flights
+2025-08-14 00:06:55.408 +05:30 [INF] Listed all flights
+2025-08-14 00:06:59.434 +05:30 [INF] Listed all flights
+2025-08-14 00:07:02.405 +05:30 [INF] Listed all flights
+2025-08-14 00:07:37.535 +05:30 [INF] Listed all flights
+2025-08-14 00:11:38.711 +05:30 [ERR] Invalid Credentials
+2025-08-14 00:11:40.638 +05:30 [INF] Successfully logged in
+2025-08-14 00:11:40.769 +05:30 [INF] Listed all destinations
+2025-08-14 07:25:59.840 +05:30 [INF] Successfully logged in
+2025-08-14 07:26:00.071 +05:30 [INF] Listed all destinations
+2025-08-14 07:31:28.044 +05:30 [INF] Successfully logged in
+2025-08-14 07:31:28.140 +05:30 [INF] Listed all destinations
+2025-08-14 08:08:12.628 +05:30 [INF] Successfully logged in
+2025-08-14 08:08:12.762 +05:30 [INF] Listed all destinations
+2025-08-14 08:16:05.343 +05:30 [ERR] Invalid Credentials
+2025-08-14 08:16:07.208 +05:30 [INF] Successfully logged in
+2025-08-14 08:16:07.342 +05:30 [INF] Listed all destinations
+2025-08-14 10:13:45.840 +05:30 [INF] Listed all destinations
+2025-08-14 10:19:58.026 +05:30 [ERR] Failed to create account
+2025-08-14 10:19:59.936 +05:30 [ERR] Failed to create account
+2025-08-14 10:24:05.354 +05:30 [INF] Successfully created account
+2025-08-14 10:24:05.455 +05:30 [INF] Successfully signed up
+2025-08-14 10:24:15.519 +05:30 [ERR] Failed to create account
+2025-08-14 10:25:41.579 +05:30 [INF] Successfully created account
+2025-08-14 10:25:41.595 +05:30 [INF] Successfully signed up
+2025-08-14 10:25:41.604 +05:30 [ERR] Failed to create account
+2025-08-14 10:25:54.743 +05:30 [INF] Successfully logged in
+2025-08-14 10:25:55.021 +05:30 [INF] Listed all destinations
+2025-08-14 10:26:59.775 +05:30 [INF] Successfully created account
+2025-08-14 10:26:59.785 +05:30 [ERR] Failed to create account
+2025-08-14 10:26:59.812 +05:30 [INF] Successfully signed up
+2025-08-14 10:31:19.439 +05:30 [INF] Successfully created account
+2025-08-14 10:31:19.643 +05:30 [INF] Successfully signed up
+2025-08-14 10:34:45.375 +05:30 [INF] Successfully created account
+2025-08-14 10:34:45.392 +05:30 [INF] Successfully signed up
+2025-08-14 10:35:27.188 +05:30 [INF] Successfully created account
+2025-08-14 10:35:27.323 +05:30 [INF] Successfully signed up
+2025-08-14 11:07:48.656 +05:30 [INF] Successfully logged in
+2025-08-14 11:07:48.924 +05:30 [INF] Listed all flights
+2025-08-14 11:07:53.248 +05:30 [INF] Fetched based on Id

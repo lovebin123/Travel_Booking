@@ -33,6 +33,13 @@ namespace api.Service.Account
         }
         public async Task<IActionResult> SignUp(SignUpDto signUpDTO)
         {
+            var existingUser = await _userManager.FindByEmailAsync(signUpDTO.email);
+            if (existingUser != null)
+            {
+                Log.Warning("Attempt to sign up with existing email: {Email}", signUpDTO.email);
+                return new BadRequestObjectResult(new { message = "User already exists" });
+            }
+
             var user = new AppUser
             {
                 FirstName = signUpDTO.firstName,
@@ -47,7 +54,9 @@ namespace api.Service.Account
                 Log.Error("Failed to create account");
                 return new ObjectResult(createdUser.Errors) { StatusCode = 500 };
             }
+
             Log.Information("Successfully created account");
+
             var role = user.Email == "admin@gmail.com" ? "Admin" : "User";
             var roleResult = await _userManager.AddToRoleAsync(user, role);
 
@@ -56,7 +65,9 @@ namespace api.Service.Account
                 Log.Error("Failed to assign role");
                 return new ObjectResult(roleResult.Errors) { StatusCode = 500 };
             }
+
             Log.Information("Successfully signed up");
+
             return new OkObjectResult(new NewUserDto
             {
                 FirstName = user.FirstName,
@@ -67,6 +78,7 @@ namespace api.Service.Account
                 RefreshToken = _tokenService.GenerateRefreshToken(),
             });
         }
+
         public async Task<IActionResult> Login(LoginDto loginDTO)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDTO.Email.ToLower());
@@ -216,6 +228,5 @@ namespace api.Service.Account
             });
         }
 
-        private bool ValidateModel(object model) => model != null;
     }
 }

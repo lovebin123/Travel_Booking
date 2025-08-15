@@ -16,7 +16,7 @@ namespace api.Models.Flights
         public int isBooked { get; set; }
         public string? paymentId { get; set; }
         public FlightEnitity Flight { get; set; }
-        public AppUser AppUser { get; set; }
+        public AppUser? AppUser { get; set; }
         public IEnumerable<FlightPayementEntity> flightPayements { get; set; } = new List<FlightPayementEntity>();
     }
 }

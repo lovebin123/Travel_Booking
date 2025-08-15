@@ -56,6 +56,7 @@ namespace api.Data
             modelBuilder.Entity<CarRentalPaymentEntity>().HasOne(x => x.carRentalBooking).WithMany(x => x.CarRentalPayments).HasForeignKey(x => x.bookingId);
             modelBuilder.Entity<CarRentalPaymentEntity>().Property(x => x.id).ValueGeneratedOnAdd();
 
+            modelBuilder.Entity<AppUser>().HasIndex(x => x.NormalizedUserName).HasDatabaseName("UserNameIndex").IsUnique(false);
             modelBuilder.Entity<CarRentalEntity>().HasKey(x => x.id);
             List<IdentityRole> roles = new List<IdentityRole>{
                 new IdentityRole{

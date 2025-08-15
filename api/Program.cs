@@ -145,10 +145,7 @@ builder.Services.RegisterServicesRepositories();
 builder.Services.AddCors();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add<CustomFilter>(); 
-});
+builder.Services.AddControllers();
 var log = new LoggerConfiguration().WriteTo.File("C:\\OneDrive - H&R BLOCK LTD\\Documents\\TravelBooking\\Travel_Booking\\api\\Logs\\log.txt", rollingInterval: RollingInterval.Day).CreateLogger();
 Log.Logger = log;
 Env.Load();

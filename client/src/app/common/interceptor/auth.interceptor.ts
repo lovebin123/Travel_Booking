@@ -35,6 +35,7 @@ export class AuthInterceptor implements HttpInterceptor {
       error.status === 401 &&
       !req.url.includes('/account/refresh') &&
       !req.url.includes('/forgotPassword') &&
+      !req.url.includes('/verifyEmail') &&
       !req.url.includes('/login') &&
       !req.url.includes('/signup')
     ) {

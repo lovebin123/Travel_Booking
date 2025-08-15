@@ -67,21 +67,19 @@ export class SignUp implements OnInit {
       this.showToast1 = true;
       return;
     }
-    this.authservice.signup({
-      firstName: this.registerForm.value.firstName,
-      lastName: this.registerForm.value.lastName,
-      email: this.registerForm.value.email,
-      password: this.registerForm.value.password,
-
-    }).subscribe({
+    this.authservice.signup(this.registerForm).subscribe({
       next: (response: any) => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/auth/login']);
       },
-      error: () => {
-        this.error_message = 'Please fill all details';
+      error: (err:any) => {
+        console.log(err.error);
+        if(err.error.length>0)
+        this.error_message="One or more validation errors occured";
+     
         this.showToast = true;
-      }
+      
+    }
     });
   }
 

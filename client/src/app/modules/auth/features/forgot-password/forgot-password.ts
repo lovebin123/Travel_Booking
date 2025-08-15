@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import { AuthService } from '../../../../common/services/auth-service';
+import { NewUserDto } from '../../../../../ap-api-client-angular';
 
 @Component({
   selector: 'app-forgot-password',
@@ -24,6 +25,7 @@ export class ForgotPassword {
     this.userData.email = this.auth.findEmail(token);
   }
   checkPassword() {
+    NewUserDto
     if (this.userData.password != this.cpassword) {
       this.passwordMismatch = true;
       return;
