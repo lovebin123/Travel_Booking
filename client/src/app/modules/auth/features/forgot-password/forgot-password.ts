@@ -18,11 +18,21 @@ export class ForgotPassword {
   showToast = false;
   passwordMismatch = false;
   changeSuccessful = false;
+  email='';
   constructor(private route: ActivatedRoute, private auth: AuthService, private router: Router) {
   }
   ngOnInit(): void {
     const token = this.route.snapshot.paramMap.get('sessionID');
-    this.userData.email = this.auth.findEmail(token);
+    console.log(token);
+   this.auth.findEmailFromToken(token).subscribe({
+      next:(response:any)=>{
+        console.log(response);
+        this.userData.email=response.result;
+      },
+      error:(err:any)=>{
+        this.router.navigate(['/pageNotFound']);
+      }
+    });
   }
   checkPassword() {
     NewUserDto

@@ -100,4 +100,8 @@ getUserName() {
   {
   return this.http.put(`${this.url}/editDetails`,userDetails);
   }
+  findEmailFromToken(token:any)
+  {
+    return this.http.get(`${this.url}/getUserEmail?token=${token}`);
+  }
 }

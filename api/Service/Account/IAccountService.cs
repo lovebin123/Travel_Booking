@@ -13,5 +13,6 @@ namespace api.Service.Account
         Task<IActionResult> GetUserDetails(string email);
         Task<IActionResult> EditUserDetails(string username, editUserDto userDTO);
         Task<IActionResult> RefreshPage(TokenResponseDto tokenResponse);
+        Task<IActionResult> GetUserEmail(string token);
     }
 }

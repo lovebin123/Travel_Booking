@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Serilog;
@@ -20,9 +21,10 @@ namespace api.Service.Account
         private readonly ITokenService _tokenService;
         private readonly IConfiguration _config;
         private readonly IHttpContextAccessor _httpContext;
+        private readonly IMemoryCache _cache;
 
         public AccountService(UserManager<AppUser> userManager, SignInManager<AppUser> signinManager, RoleManager<IdentityRole> roleManager, ITokenService tokenService,
-            IConfiguration config, IHttpContextAccessor httpContext)
+            IConfiguration config, IHttpContextAccessor httpContext,IMemoryCache cache)
         {
             _userManager = userManager;
             _signinManager = signinManager;
@@ -30,6 +32,7 @@ namespace api.Service.Account
             _tokenService = tokenService;
             _config = config;
             _httpContext = httpContext;
+            _cache = cache;
         }
         public async Task<IActionResult> SignUp(SignUpDto signUpDTO)
         {
@@ -122,22 +125,12 @@ namespace api.Service.Account
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("travelvoyage@maildrop.cc", "Book Voyage");
             var to = new EmailAddress(user.Email);
-            var token = _tokenService.CreateToken(user);
+            string token = Guid.NewGuid().ToString();
             var rnd = new Random();
             int verificationCode = rnd.Next(1000000, 8000000);
             string verCode = verificationCode.ToString();
-            _httpContext.HttpContext.Response.Cookies.Append(
-                "verificationCode",
-                verCode,
-                new CookieOptions
-                {
-                    HttpOnly = true,
-                    Secure = true,
-                    SameSite = SameSiteMode.None,
-                    Expires = DateTimeOffset.UtcNow.AddMinutes(10),
-                    Path = "/"
-                }
-            );
+            _cache.Set(user.Email, verCode);
+            _cache.Set(token, user.Email);
             var link = $"http://localhost:4200/auth/forgotPassword/{token}";
             var htmlContent = $"<strong>Click to reset:</strong><br/><a href=\"{link}\">{link}</a><br/><center>Your verification code is:{verificationCode}</center>";
             var msg = MailHelper.CreateSingleEmail(from, to, "Password reset mail", link, htmlContent);
@@ -155,8 +148,12 @@ namespace api.Service.Account
 
         public async Task<IActionResult> ForgotPassword(ForgotPasswordDto dto)
         {
-            var verificationCode = _httpContext.HttpContext.Request.Cookies["verificationCode"];
-            if(verificationCode.CompareTo(dto.verificationCode)!=0)
+            _cache.TryGetValue(dto.Email, out string verificationCode);
+            if(verificationCode==null)
+            {
+                return new BadRequestObjectResult("Invalid link");
+            }
+            if (verificationCode.CompareTo(dto.verificationCode)!=0)
             {
                 return new UnauthorizedObjectResult("Invalud Verification Code");
             }
@@ -166,9 +163,15 @@ namespace api.Service.Account
             if (!result.Succeeded) return new UnauthorizedObjectResult("Failed to change password");
 
             result = await _userManager.AddPasswordAsync(user, dto.Password);
-            return result.Succeeded
-                ? new OkObjectResult(new { message = "Password changed successfully" })
-                : new UnauthorizedObjectResult("Password change failed");
+            if (result.Succeeded)
+            {
+                _cache.Remove(dto.Email);
+                return new OkObjectResult(new { message = "Password changed successfully" });
+            }
+            else
+            {
+                return new UnauthorizedObjectResult("Password change failed");
+            }
         }
 
         public async Task<IActionResult> GetUserName(string email)
@@ -228,5 +231,17 @@ namespace api.Service.Account
             });
         }
 
+        public async Task<IActionResult> GetUserEmail(string token)
+        {
+           _cache.TryGetValue(token, out var email);
+            Log.Information($"{email}");
+            if(email==null)
+            {
+                return new BadRequestObjectResult("Invalid token");
+            }
+            _cache.Remove(token);
+            return new OkObjectResult(email);
+            
+        }
     }
 }
